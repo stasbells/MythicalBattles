@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Developers/Stas/Scenes/StasTestScene.unity
+    guid: 582fc38fbbc8dc940bfa12474d3c59b8
   m_configObjects: {}
