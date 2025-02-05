@@ -1,24 +1,33 @@
 using UnityEngine;
-using Synty.AnimationBaseLocomotion.Samples;
 
 namespace MythicalBattles
 {
+    [RequireComponent (typeof(Animator))]
     public class PlayerAutoAim : MonoBehaviour
     {
-        [SerializeField] private SamplePlayerAnimationController _controller;
+        private readonly int _isShootHash = Animator.StringToHash("Shoot");
+
         [SerializeField] private float _aimRadius = 10f;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private float _rotationSpeed = 5f;
 
+        private Animator _animator;
         private Transform _targetEnemy;
         private Collider[] _hitColliders;
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         void Update()
         {
             FindNearestEnemy();
 
-            if (_controller.IsStopped & _targetEnemy != null)
+            if (_targetEnemy != null)
                 TurnToTargetEnemy();
+
+            Shoot();
         }
 
         void FindNearestEnemy()
@@ -46,6 +55,11 @@ namespace MythicalBattles
             Vector3 direction = (_targetEnemy.position - transform.position);
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+        }
+
+        private void Shoot()
+        {
+            _animator.SetBool(_isShootHash, _targetEnemy != null);
         }
 
         private void OnDrawGizmosSelected()
