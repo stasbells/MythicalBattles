@@ -7248,9 +7248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 7618062406947633571}
   _moveSpeed: 2
-  _attackRange: 1.5
+  _attackRange: 1.7
   _attackDamage: 10
-  _attackCooldown: 2
+  _attackCooldown: 1
 --- !u!95 &1690099785
 Animator:
   serializedVersion: 5
