@@ -142,12 +142,12 @@ namespace Synty.AnimationBaseLocomotion.Samples.InputSystem
         {
             if (context.started)
             {
-                onAimActivated?.Invoke();
+                //onAimActivated?.Invoke();
             }
 
             if (context.canceled)
             {
-                onAimDeactivated?.Invoke();
+                //onAimDeactivated?.Invoke();
             }
         }
 

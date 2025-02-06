@@ -330,6 +330,12 @@ namespace Synty.AnimationBaseLocomotion.Samples
 
         #endregion
 
+        #region Test
+
+        public bool IsStopped => _isStopped;
+
+        #endregion
+
         #region Animation Controller
 
         #region Start
