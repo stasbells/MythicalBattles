@@ -46,18 +46,21 @@ namespace MythicalBattles
             {
                 MoveTowardsPlayer();
             }
+
+            RotateTowardsPlayer();
+        }
+
+        private void RotateTowardsPlayer()
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(GetDirection());
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
         }
 
         private void MoveTowardsPlayer()
         {
             _animator.SetBool(_isAttack, false);
 
-            Vector3 direction = (_player.position - transform.position).normalized;
-
-            transform.position += direction * _moveSpeed * Time.deltaTime;
-
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+            transform.position += _moveSpeed * Time.deltaTime * GetDirection();
         }
 
         private void Attack()
@@ -65,6 +68,11 @@ namespace MythicalBattles
             _animator.SetBool(_isAttack, true);
 
             Debug.Log("Enemy attacks player for " + _attackDamage + " damage!");
+        }
+
+        private Vector3 GetDirection()
+        {
+            return (_player.position - transform.position).normalized;
         }
     }
 }
