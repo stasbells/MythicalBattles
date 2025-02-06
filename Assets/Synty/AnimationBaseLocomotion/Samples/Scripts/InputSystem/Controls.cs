@@ -271,7 +271,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""d525f998-4472-41e0-9012-d84906a07e33"",
                     ""path"": ""<Touchscreen>/primaryTouch/delta"",
                     ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""groups"": ""Touchscreen"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -280,7 +280,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""2D Vector WASD"",
                     ""id"": ""a5adb1ac-fe93-4053-a9c2-d5b0782e1c7c"",
-                    ""path"": ""2DVector(mode=2)"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
