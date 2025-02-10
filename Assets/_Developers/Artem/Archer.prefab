@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 1110657346221700707}
   - component: {fileID: 3061964522186876054}
   - component: {fileID: 5378286481559482326}
+  - component: {fileID: 3627261585845974446}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -853,7 +854,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.34, y: 0.09486675, z: -5.69}
-  m_LocalScale: {x: 0.0108, y: 0.0108, z: 0.0108}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2679119024925258274}
@@ -894,11 +895,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac4908878e1b204e95a3110149ea6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimRadius: 7.9
+  _aimRadius: 8
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  _rotationSpeed: 300
+  _rotationSpeed: 500
 --- !u!114 &3061964522186876054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631e08f308c0e0f45b66cab3447f9394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.1
+  _moveSpeed: 8
+  _smoothInputSpeed: 0.12
 --- !u!136 &5378286481559482326
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -928,13 +930,39 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 26.2
-  m_Height: 165.9
+  m_Radius: 37.6
+  m_Height: 174.7
   m_Direction: 1
-  m_Center: {x: 0, y: 86.9, z: 8.7}
+  m_Center: {x: 0, y: 89.6, z: 11}
+--- !u!143 &3627261585845974446
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2152971030917394324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 174.7
+  m_Radius: 37.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 89.6, z: 11}
 --- !u!1 &2191411230132265216
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Animator))]
-    public class EnemyMover : MonoBehaviour
+    [RequireComponent(typeof(Animator), typeof(Transform))]
+    public abstract class EnemyMover : MonoBehaviour
     {
         private readonly int _isAttack = Animator.StringToHash("isAttack");
 
@@ -16,11 +16,13 @@ namespace MythicalBattles
         [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _attackCooldown = 2.0f;
 
+        private Transform _transform;
         private Animator _animator;
         private float _lastAttackTime = 0f;
 
         private void Awake()
         {
+            _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
         }
 
@@ -32,7 +34,7 @@ namespace MythicalBattles
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+            float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
 
             if (distanceToPlayer <= _attackRange)
             {
@@ -50,29 +52,29 @@ namespace MythicalBattles
             RotateTowardsPlayer();
         }
 
-        private void RotateTowardsPlayer()
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(GetDirection());
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
-        }
-
-        private void MoveTowardsPlayer()
-        {
-            _animator.SetBool(_isAttack, false);
-
-            transform.position += _moveSpeed * Time.deltaTime * GetDirection();
-        }
-
-        private void Attack()
+        protected virtual void Attack()
         {
             _animator.SetBool(_isAttack, true);
 
             Debug.Log("Enemy attacks player for " + _attackDamage + " damage!");
         }
 
+        protected virtual void MoveTowardsPlayer()
+        {
+            _animator.SetBool(_isAttack, false);
+
+            _transform.position += _moveSpeed * Time.deltaTime * GetDirection();
+        }
+
+        private void RotateTowardsPlayer()
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(GetDirection());
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * 10f);
+        }
+
         private Vector3 GetDirection()
         {
-            return (_player.position - transform.position).normalized;
+            return (_player.position - _transform.position).normalized;
         }
     }
 }
