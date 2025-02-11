@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Artem\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Artem\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_MythicalBattles.1510338620.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Artem\Documents\MythicalBattles" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="_Developers" t="Include">
+          <e p="Artem" t="Include">
+            <e p="EquipmentGrades.cs" t="Include" />
+            <e p="EquipmentShopItem.cs" t="Include" />
+            <e p="EquipmentShopItems" t="Include" />
+            <e p="EquipmentsShopContent.cs" t="Include" />
+            <e p="EquipmentTypes.cs" t="Include" />
+            <e p="Models" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+            <e p="ShopItem.cs" t="Include" />
+            <e p="ShopItemView.cs" t="Include" />
+          </e>
+          <e p="Stas" t="Include">
+            <e p="Animations" t="Include" />
+            <e p="Materials" t="Include" />
+            <e p="Models" t="Include" />
+            <e p="Prefabs" t="Include" />
+            <e p="Scenes" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Enemy" t="Include">
+                <e p="Enemy.cs" t="Include" />
+                <e p="EnemyMover.cs" t="Include" />
+              </e>
+              <e p="PlayerAutoAim.cs" t="Include" />
+              <e p="PlayerFollower.cs" t="Include" />
+              <e p="PlayerMoveController.cs" t="Include" />
+              <e p="PlayerMovementTest.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Fantasy RPG Icons Pack" t="Include">
+          <e p="Equipment_Inventory" t="Include">
+            <e p="_backup" t="Include" />
+          </e>
+          <e p="Magical artifacts icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Armor icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Belt icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Boot icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Bow Icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Glove icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Greaves icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Helmet icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Jewelry Icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Shield icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Staff Icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="RPG Swords icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+          <e p="Treasure chests icons" t="Include">
+            <e p="PNG" t="Include">
+              <e p="background" t="Include" />
+              <e p="without background" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="GUI Kit Casual Game" t="Include">
+          <e p="+Document README+" t="Include" />
+          <e p="Extensions" t="Include">
+            <e p="TextMesh Pro" t="Include">
+              <e p="Documentation" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="LineBreaking Following Characters.txt" t="Include" />
+                <e p="LineBreaking Leading Characters.txt" t="Include" />
+                <e p="Shaders" t="Include">
+                  <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+                  <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+                  <e p="TMP_Bitmap.shader" t="Include" />
+                  <e p="TMP_SDF Overlay.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile.shader" t="Include" />
+                  <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+                  <e p="TMP_SDF-Surface.shader" t="Include" />
+                  <e p="TMP_SDF.shader" t="Include" />
+                  <e p="TMP_Sprite.shader" t="Include" />
+                  <e p="TMPro.cginc" t="Include" />
+                  <e p="TMPro_Properties.cginc" t="Include" />
+                  <e p="TMPro_Surface.cginc" t="Include" />
+                </e>
+                <e p="Sprite Assets" t="Include" />
+                <e p="Style Sheets" t="Include" />
+              </e>
+              <e p="Sprites" t="Include">
+                <e p="EmojiOne Attribution.txt" t="Include" />
+                <e p="EmojiOne.json" t="Include" />
+              </e>
+            </e>
+            <e p="UIParticle" t="Include">
+              <e p="hidden particle.shader" t="Include" />
+              <e p="UIParticleSystem.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Prefabs" t="Include">
+            <e p="Fx_Paticle" t="Include" />
+            <e p="UI_Buttons" t="Include" />
+            <e p="UI_CommonUI" t="Include" />
+            <e p="UI_Other" t="Include" />
+            <e p="UI_Play" t="Include" />
+            <e p="UI_Slider" t="Include" />
+          </e>
+          <e p="ResourcData" t="Include">
+            <e p="Animatons" t="Include" />
+            <e p="Particle" t="Include">
+              <e p="Materials" t="Include" />
+              <e p="Texture" t="Include" />
+            </e>
+            <e p="Preview" t="Include" />
+            <e p="Shader &amp; Materials" t="Include">
+              <e p="MobileAdditive.shader" t="Include" />
+              <e p="UIAdditive.shader" t="Include" />
+            </e>
+            <e p="Sprite" t="Include">
+              <e p="_Icons" t="Include">
+                <e p="ItemIcons" t="Include">
+                  <e p="128" t="Include" />
+                  <e p="256" t="Include" />
+                  <e p="32" t="Include" />
+                  <e p="512" t="Include" />
+                  <e p="64" t="Include" />
+                  <e p="backup" t="Include" />
+                </e>
+                <e p="Pictoicons" t="Include">
+                  <e p="128" t="Include" />
+                  <e p="256" t="Include" />
+                  <e p="32" t="Include" />
+                  <e p="512" t="Include" />
+                  <e p="64" t="Include" />
+                  <e p="backup" t="Include" />
+                </e>
+                <e p="RuneIcons" t="Include">
+                  <e p="128" t="Include" />
+                  <e p="256" t="Include" />
+                  <e p="512" t="Include" />
+                  <e p="64" t="Include" />
+                </e>
+              </e>
+              <e p="AdRemove" t="Include" />
+              <e p="Character_List_Select" t="Include" />
+              <e p="Character_Passive" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Chat" t="Include" />
+              <e p="Clan" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Common" t="Include" />
+              <e p="Equipment_Inventory" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Inbox" t="Include" />
+              <e p="LevelUp" t="Include" />
+              <e p="Levleup" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Loading" t="Include" />
+              <e p="Lobby" t="Include" />
+              <e p="Lobby_UserInfo" t="Include" />
+              <e p="LockScreen" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Mission" t="Include" />
+              <e p="OfflineReward" t="Include" />
+              <e p="Pass" t="Include">
+                <e p="_backup" t="Include" />
+              </e>
+              <e p="Play" t="Include" />
+              <e p="Play_Continue_Pause_Result" t="Include" />
+              <e p="PlayBattle_VS" t="Include" />
+              <e p="Popup" t="Include" />
+              <e p="PopupSubscribe" t="Include" />
+              <e p="Ranking" t="Include" />
+              <e p="Rate" t="Include" />
+              <e p="Reward" t="Include" />
+              <e p="Roulette" t="Include" />
+              <e p="RuneFuse" t="Include" />
+              <e p="Setting" t="Include" />
+              <e p="SettingLanguage" t="Include" />
+              <e p="Shop" t="Include" />
+              <e p="Stage" t="Include" />
+              <e p="Title" t="Include" />
+              <e p="Tutorial" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Panel.cs" t="Include" />
+            <e p="PanelControl.cs" t="Include" />
+          </e>
+        </e>
+        <e p="MythicalBattles" t="Include">
+          <e p="Scenes" t="Include" />
+        </e>
+        <e p="Synty" t="Include">
+          <e p="AnimationBaseLocomotion" t="Include">
+            <e p="Animations" t="Include">
+              <e p="Polygon" t="Include">
+                <e p="Feminine" t="Include">
+                  <e p="Idle" t="Include" />
+                  <e p="InAir" t="Include" />
+                  <e p="Locomotion" t="Include">
+                    <e p="Crouch" t="Include" />
+                    <e p="Run" t="Include" />
+                    <e p="Shuffle" t="Include" />
+                    <e p="Sprint" t="Include" />
+                    <e p="Turn" t="Include" />
+                    <e p="Walk" t="Include" />
+                  </e>
+                  <e p="Transitions" t="Include">
+                    <e p="Crouch_ToStand" t="Include" />
+                    <e p="Idle_ToRun" t="Include" />
+                    <e p="Idle_ToWalk" t="Include" />
+                    <e p="Run_ToIdle" t="Include" />
+                    <e p="Sprint_ToCrouch" t="Include" />
+                    <e p="Stand_ToCrouch" t="Include" />
+                    <e p="Walk_ToIdle" t="Include" />
+                  </e>
+                </e>
+                <e p="Masculine" t="Include">
+                  <e p="Idle" t="Include" />
+                  <e p="InAir" t="Include" />
+                  <e p="Locomotion" t="Include">
+                    <e p="Crouch" t="Include" />
+                    <e p="Run" t="Include" />
+                    <e p="Shuffle" t="Include" />
+                    <e p="Sprint" t="Include" />
+                    <e p="Turn" t="Include" />
+                    <e p="Walk" t="Include" />
+                  </e>
+                  <e p="Transitions" t="Include">
+                    <e p="Crouch_ToStand" t="Include" />
+                    <e p="Idle_ToRun" t="Include" />
+                    <e p="Idle_ToWalk" t="Include" />
+                    <e p="Run_ToIdle" t="Include" />
+                    <e p="Sprint_ToCrouch" t="Include" />
+                    <e p="Stand_ToCrouch" t="Include" />
+                    <e p="Walk_ToIdle" t="Include" />
+                  </e>
+                </e>
+                <e p="Neutral" t="Include">
+                  <e p="Additive" t="Include">
+                    <e p="Lean" t="Include" />
+                    <e p="Look" t="Include" />
+                    <e p="TPose" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+            <e p="Documentation" t="Include" />
+            <e p="Meshes" t="Include" />
+            <e p="Samples" t="Include">
+              <e p="Animations" t="Include">
+                <e p="Polygon" t="Include">
+                  <e p="Feminine" t="Include">
+                    <e p="Idles" t="Include" />
+                    <e p="InAir" t="Include" />
+                    <e p="Locomotion" t="Include">
+                      <e p="Crouch" t="Include" />
+                      <e p="Runs" t="Include" />
+                      <e p="Shuffles" t="Include" />
+                      <e p="Sprints" t="Include" />
+                      <e p="Turns" t="Include" />
+                      <e p="Walks" t="Include" />
+                    </e>
+                    <e p="Transitions" t="Include">
+                      <e p="Crouch_ToStand" t="Include" />
+                      <e p="Idle_ToRun" t="Include" />
+                      <e p="Idle_ToWalk" t="Include" />
+                      <e p="Run_ToIdle" t="Include" />
+                      <e p="Sprint_ToCrouch" t="Include" />
+                      <e p="Stand_ToCrouch" t="Include" />
+                      <e p="Walk_ToIdle" t="Include" />
+                    </e>
+                  </e>
+                  <e p="Masculine" t="Include">
+                    <e p="Idles" t="Include" />
+                    <e p="InAir" t="Include" />
+                    <e p="Locomotion" t="Include">
+                      <e p="Crouch" t="Include" />
+                      <e p="Runs" t="Include" />
+                      <e p="Shuffles" t="Include" />
+                      <e p="Sprints" t="Include" />
+                      <e p="Turns" t="Include" />
+                      <e p="Walks" t="Include" />
+                    </e>
+                    <e p="Transitions" t="Include">
+                      <e p="Crouch_ToStand" t="Include" />
+                      <e p="Idle_ToRun" t="Include" />
+                      <e p="Idle_ToWalk" t="Include" />
+                      <e p="Run_ToIdle" t="Include" />
+                      <e p="Sprint_ToCrouch" t="Include" />
+                      <e p="Stand_ToCrouch" t="Include" />
+                      <e p="Walk_ToIdle" t="Include" />
+                    </e>
+                  </e>
+                </e>
+              </e>
+              <e p="Materials" t="Include" />
+              <e p="Meshes" t="Include" />
+              <e p="Prefabs" t="Include" />
+              <e p="Scenes" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="InputSystem" t="Include">
+                  <e p="Controls.cs" t="Include" />
+                  <e p="InputReader.cs" t="Include" />
+                </e>
+                <e p="SampleCameraController.cs" t="Include" />
+                <e p="SampleObjectLockOn.cs" t="Include" />
+                <e p="SamplePlayerAnimationController.cs" t="Include" />
+              </e>
+              <e p="Textures" t="Include" />
+            </e>
+          </e>
+          <e p="InterfaceFantasyWarriorHUD" t="Include">
+            <e p="Animation" t="Include">
+              <e p="Clips" t="Include" />
+              <e p="Controllers" t="Include" />
+            </e>
+            <e p="Documentation" t="Include" />
+            <e p="Fonts" t="Include">
+              <e p="Grenze" t="Include">
+                <e p="OFL.txt" t="Include" />
+              </e>
+              <e p="Texturina" t="Include">
+                <e p="OFL.txt" t="Include" />
+              </e>
+            </e>
+            <e p="Materials" t="Include" />
+            <e p="Prefabs" t="Include">
+              <e p="_CommonComponents" t="Include" />
+              <e p="_PreMadeHUDs" t="Include" />
+              <e p="ActionBar" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Compass" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="FullscreenFX" t="Include" />
+              <e p="FullscreenOverlays" t="Include" />
+              <e p="Input_Interactions" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Log" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Map_Compass_Icons" t="Include" />
+              <e p="Minimap" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="NPC_HealthBars_EnemyData" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Objectives_Story_Location" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Player_Health_Equipment" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Popups_Notifications" t="Include" />
+              <e p="Portraits" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+              <e p="Reticles_Crosshairs" t="Include" />
+              <e p="Subtitles" t="Include" />
+              <e p="System" t="Include" />
+              <e p="Timed" t="Include" />
+              <e p="WeaponWheel_WeaponCross" t="Include">
+                <e p="_Parts" t="Include" />
+              </e>
+            </e>
+            <e p="Samples" t="Include">
+              <e p="Animation" t="Include" />
+              <e p="Prefabs" t="Include" />
+              <e p="Scenes" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="SampleAnimatorActionData.cs" t="Include" />
+                <e p="SampleButtonAction.cs" t="Include" />
+                <e p="SampleCountdownLabel.cs" t="Include" />
+                <e p="SampleLoopAnimator.cs" t="Include" />
+                <e p="SampleOscillateSliders.cs" t="Include" />
+                <e p="SampleRadialFillBar.cs" t="Include" />
+                <e p="SampleSceneLoader.cs" t="Include" />
+                <e p="SampleScrollUV.cs" t="Include" />
+                <e p="SampleTimeLabel.cs" t="Include" />
+                <e p="SampleURL.cs" t="Include" />
+                <e p="SampleXPBar.cs" t="Include" />
+              </e>
+              <e p="Sprites" t="Include" />
+            </e>
+            <e p="Sprites" t="Include">
+              <e p="Cursors" t="Include" />
+              <e p="FantasyWarrior" t="Include" />
+              <e p="FX" t="Include" />
+              <e p="HUD" t="Include" />
+              <e p="Icons_Elements" t="Include" />
+              <e p="Icons_Input" t="Include">
+                <e p="GamepadGeneric" t="Include" />
+                <e p="MouseKeyboard" t="Include" />
+                <e p="PlayStation" t="Include" />
+                <e p="SteamDeck" t="Include" />
+                <e p="Switch" t="Include" />
+                <e p="Xbox" t="Include" />
+              </e>
+              <e p="Icons_Inventory" t="Include" />
+              <e p="Icons_Map" t="Include" />
+              <e p="Icons_Resources" t="Include" />
+              <e p="Icons_Social" t="Include" />
+              <e p="Icons_Stats" t="Include" />
+              <e p="Icons_Status" t="Include" />
+              <e p="Icons_Weapons" t="Include" />
+            </e>
+          </e>
+          <e p="PolygonDarkFantasy" t="Include">
+            <e p="Animation" t="Include" />
+            <e p="FX" t="Include">
+              <e p="FX_Materials" t="Include" />
+              <e p="FX_Models" t="Include" />
+              <e p="FX_Prefabs" t="Include" />
+              <e p="FX_Textures" t="Include" />
+            </e>
+            <e p="Materials" t="Include">
+              <e p="Alts" t="Include" />
+              <e p="Misc" t="Include" />
+              <e p="Walls" t="Include">
+                <e p="Wallpaper" t="Include" />
+              </e>
+              <e p="WindowGlass" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="Base" t="Include" />
+              <e p="Collision" t="Include">
+                <e p="Convex" t="Include" />
+              </e>
+            </e>
+            <e p="Prefabs" t="Include">
+              <e p="Base" t="Include" />
+              <e p="Building" t="Include" />
+              <e p="Characters" t="Include">
+                <e p="Attachments" t="Include" />
+              </e>
+              <e p="Environment" t="Include" />
+              <e p="Props" t="Include" />
+              <e p="Vehicles" t="Include" />
+              <e p="Weapons" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Textures" t="Include">
+              <e p="Alts" t="Include" />
+              <e p="Emissive" t="Include" />
+              <e p="Misc" t="Include" />
+              <e p="Wallpaper" t="Include" />
+              <e p="Windows" t="Include" />
+            </e>
+          </e>
+          <e p="PolygonDungeon" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Alternatives" t="Include" />
+              <e p="Misc" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="CollisionConvex" t="Include" />
+              <e p="CollisionCustom" t="Include" />
+              <e p="FixedScale" t="Include" />
+            </e>
+            <e p="Prefabs" t="Include">
+              <e p="Characters" t="Include">
+                <e p="FixedScale" t="Include" />
+              </e>
+              <e p="Environments" t="Include">
+                <e p="Bones" t="Include" />
+                <e p="Floors" t="Include" />
+                <e p="Misc" t="Include" />
+                <e p="Optimized" t="Include" />
+                <e p="Pillars" t="Include" />
+                <e p="Rocks" t="Include" />
+                <e p="Walls" t="Include" />
+                <e p="Wood" t="Include" />
+              </e>
+              <e p="FX" t="Include" />
+              <e p="Items" t="Include" />
+              <e p="Props" t="Include">
+                <e p="Preset" t="Include" />
+              </e>
+              <e p="Weapons" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Textures" t="Include">
+              <e p="Alternatives" t="Include" />
+              <e p="Emmisive" t="Include" />
+              <e p="Misc" t="Include">
+                <e p="ExtraTiles" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="PolygonElvenRealm" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Alts" t="Include" />
+              <e p="Buildings" t="Include">
+                <e p="Floor" t="Include" />
+                <e p="Roof" t="Include" />
+                <e p="Walls" t="Include" />
+              </e>
+              <e p="Environment" t="Include" />
+              <e p="Sky" t="Include" />
+              <e p="Water" t="Include" />
+              <e p="WindowGlass" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="Base" t="Include" />
+              <e p="Collision" t="Include" />
+              <e p="Convex" t="Include" />
+            </e>
+            <e p="Prefabs" t="Include">
+              <e p="Base" t="Include" />
+              <e p="Buildings" t="Include" />
+              <e p="Characters" t="Include">
+                <e p="Attachments" t="Include">
+                  <e p="Rigged" t="Include" />
+                </e>
+              </e>
+              <e p="Environment" t="Include">
+                <e p="Flowers" t="Include" />
+              </e>
+              <e p="FX" t="Include">
+                <e p="FX_Compnents" t="Include">
+                  <e p="Aurora.shader" t="Include" />
+                  <e p="Large_Waterfall.shader" t="Include" />
+                  <e p="Materials" t="Include" />
+                  <e p="Polygon_UVScroll.shader" t="Include" />
+                  <e p="Waterfall.shader" t="Include" />
+                  <e p="waterfall_Transparent.shader" t="Include" />
+                  <e p="WaterFountain.shader" t="Include" />
+                </e>
+              </e>
+              <e p="Items" t="Include" />
+              <e p="Props" t="Include" />
+              <e p="Vehicles" t="Include" />
+              <e p="Weapons" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="SimpleRotate.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="NoFog.shader" t="Include" />
+              <e p="SyntyStudios_RockTriplanar.shader" t="Include" />
+              <e p="SyntyStudios_Skybox.shader" t="Include" />
+            </e>
+            <e p="Textures" t="Include">
+              <e p="Alts" t="Include" />
+              <e p="Emissive" t="Include" />
+              <e p="Metallic" t="Include" />
+              <e p="Misc" t="Include">
+                <e p="Materials" t="Include" />
+              </e>
+              <e p="Roof_Tiles" t="Include" />
+              <e p="Walls" t="Include" />
+            </e>
+          </e>
+          <e p="PolygonFantasyRivals" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Alts" t="Include" />
+              <e p="Misc" t="Include" />
+            </e>
+            <e p="Models" t="Include" />
+            <e p="Prefabs" t="Include">
+              <e p="Characters" t="Include" />
+              <e p="FX" t="Include" />
+              <e p="Props" t="Include" />
+              <e p="Weapons" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Textures" t="Include" />
+          </e>
+          <e p="PolygonParticles" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Materials" t="Include" />
+              <e p="SHARED BY LUXURYPANDA.txt" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="Materials" t="Include" />
+            </e>
+            <e p="Prefabs" t="Include" />
+            <e p="Scenes" t="Include" />
+            <e p="Textures" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Documentation" t="Include" />
+          <e p="Examples &amp; Extras" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="Anton OFL.txt" t="Include" />
+              <e p="Bangers - OFL.txt" t="Include" />
+              <e p="Oswald-Bold - OFL.txt" t="Include" />
+            </e>
+            <e p="Materials" t="Include" />
+            <e p="Prefabs" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="Color Gradient Presets" t="Include" />
+              <e p="Fonts &amp; Materials" t="Include" />
+              <e p="Sprite Assets" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Benchmark01.cs" t="Include" />
+              <e p="Benchmark01_UGUI.cs" t="Include" />
+              <e p="Benchmark02.cs" t="Include" />
+              <e p="Benchmark03.cs" t="Include" />
+              <e p="Benchmark04.cs" t="Include" />
+              <e p="CameraController.cs" t="Include" />
+              <e p="ChatController.cs" t="Include" />
+              <e p="DropdownSample.cs" t="Include" />
+              <e p="EnvMapAnimator.cs" t="Include" />
+              <e p="ObjectSpin.cs" t="Include" />
+              <e p="ShaderPropAnimator.cs" t="Include" />
+              <e p="SimpleScript.cs" t="Include" />
+              <e p="SkewTextExample.cs" t="Include" />
+              <e p="TeleType.cs" t="Include" />
+              <e p="TextConsoleSimulator.cs" t="Include" />
+              <e p="TextMeshProFloatingText.cs" t="Include" />
+              <e p="TextMeshSpawner.cs" t="Include" />
+              <e p="TMP_DigitValidator.cs" t="Include" />
+              <e p="TMP_ExampleScript_01.cs" t="Include" />
+              <e p="TMP_FrameRateCounter.cs" t="Include" />
+              <e p="TMP_PhoneNumberValidator.cs" t="Include" />
+              <e p="TMP_TextEventCheck.cs" t="Include" />
+              <e p="TMP_TextEventHandler.cs" t="Include" />
+              <e p="TMP_TextInfoDebugTool.cs" t="Include" />
+              <e p="TMP_TextSelector_A.cs" t="Include" />
+              <e p="TMP_TextSelector_B.cs" t="Include" />
+              <e p="TMP_UiFrameRateCounter.cs" t="Include" />
+              <e p="TMPro_InstructionOverlay.cs" t="Include" />
+              <e p="VertexColorCycler.cs" t="Include" />
+              <e p="VertexJitter.cs" t="Include" />
+              <e p="VertexShakeA.cs" t="Include" />
+              <e p="VertexShakeB.cs" t="Include" />
+              <e p="VertexZoom.cs" t="Include" />
+              <e p="WarpTextExample.cs" t="Include" />
+            </e>
+            <e p="Sprites" t="Include" />
+            <e p="Textures" t="Include" />
+          </e>
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="Fonts &amp; Materials" t="Include" />
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Sprite Assets" t="Include" />
+            <e p="Style Sheets" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+            <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+            <e p="TMP_Bitmap.shader" t="Include" />
+            <e p="TMP_SDF Overlay.shader" t="Include" />
+            <e p="TMP_SDF SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+            <e p="TMP_SDF-Mobile SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface.shader" t="Include" />
+            <e p="TMP_SDF.shader" t="Include" />
+            <e p="TMP_Sprite.shader" t="Include" />
+            <e p="TMPro.cginc" t="Include" />
+            <e p="TMPro_Mobile.cginc" t="Include" />
+            <e p="TMPro_Properties.cginc" t="Include" />
+            <e p="TMPro_Surface.cginc" t="Include" />
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+            <e p="EmojiOne.json" t="Include" />
+          </e>
+        </e>
+        <e p="VirtualButtonsForUnity" t="Include">
+          <e p="package.json" t="Include" />
+          <e p="VirtualButtonsForUnity" t="Include">
+            <e p="Examples" t="Include">
+              <e p="Materials" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="PlayerActionsExample.cs" t="Include" />
+                <e p="PlayerControllerExample.cs" t="Include" />
+                <e p="VirtualButtonsExamplesScripts.asmref" t="Include" />
+              </e>
+            </e>
+            <e p="Prefabs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="VirtualButton.cs" t="Include" />
+              <e p="VirtualButtonsScripts.asmdef" t="Include" />
+              <e p="VirtualDPad.cs" t="Include" />
+              <e p="VirtualJoystick.cs" t="Include" />
+              <e p="VirtualJoystickFloating.cs" t="Include" />
+            </e>
+            <e p="Sprites" t="Include" />
+          </e>
+        </e>
+        <e p="WebGLTemplates" t="Include">
+          <e p="LICENSE.txt" t="Include" />
+          <e p="Notices.txt" t="Include" />
+          <e p="PluginYG" t="Include" />
+        </e>
+        <e p="YandexGame" t="Include">
+          <e p="DebuggingMode" t="Include">
+            <e p="Prefabs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="DebuggingModeYG.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Example" t="Include">
+            <e p="Content" t="Include">
+              <e p="Materials" t="Include" />
+              <e p="Textures" t="Include" />
+            </e>
+            <e p="Scenes" t="Include">
+              <e p="ExampleYG" t="Include" />
+              <e p="ExampleYG_Two" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="DebugViewing.cs" t="Include" />
+              <e p="GetPlayerData.cs" t="Include" />
+              <e p="InitExample.cs" t="Include" />
+              <e p="LanguageExample.cs" t="Include" />
+              <e p="NewResultLBExample.cs" t="Include" />
+              <e p="OpenAuthorizationDialog.cs" t="Include" />
+              <e p="ReceivingPurchaseExample.cs" t="Include" />
+              <e p="RewardedAd.cs" t="Include" />
+              <e p="SaverTest.cs" t="Include" />
+              <e p="SwitchSceneTest.cs" t="Include" />
+              <e p="YandexMetricaExample.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Fonts" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+          <e p="LICENSE.txt" t="Include" />
+          <e p="Plugins" t="Include" />
+          <e p="Prefabs" t="Include">
+            <e p="Ads" t="Include" />
+            <e p="Leaderboards" t="Include" />
+            <e p="Payments" t="Include" />
+          </e>
+          <e p="Readme.txt" t="Include" />
+          <e p="ScriptsYG" t="Include">
+            <e p="ActivityOnAuthorizationYG.cs" t="Include" />
+            <e p="AdNotificationYG.cs" t="Include" />
+            <e p="Authorization" t="Include">
+              <e p="Auth_yg.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="Auth_build.cs" t="Include" />
+              </e>
+              <e p="Plugins" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="CreateYandexGameEditor.cs" t="Include" />
+              <e p="DocumentationEditor.cs" t="Include" />
+              <e p="Icons" t="Include" />
+              <e p="PostProcessBuild" t="Include">
+                <e p="ArchivingBuild.cs" t="Include" />
+                <e p="BuildLog.cs" t="Include" />
+                <e p="ModifyIndexFile" t="Include">
+                  <e p="AdWhenLoadingGame.cs" t="Include" />
+                  <e p="BackgroundFormat.cs" t="Include" />
+                  <e p="BuildLogYG.txt" t="Include" />
+                  <e p="LogoFormat.cs" t="Include" />
+                  <e p="MetricaCounterID.cs" t="Include" />
+                  <e p="ModifyBuildManager.cs" t="Include" />
+                  <e p="PixelRatioMobile.cs" t="Include" />
+                  <e p="SaveQuitGame.cs" t="Include" />
+                </e>
+                <e p="PostProcessBuild.cs" t="Include" />
+              </e>
+              <e p="Utils" t="Include">
+                <e p="DefineSymbols.cs" t="Include" />
+                <e p="PackageDownloader.cs" t="Include" />
+              </e>
+            </e>
+            <e p="EnvironmentData" t="Include">
+              <e p="Editor" t="Include">
+                <e p="EnvirData_build.cs" t="Include" />
+              </e>
+              <e p="EnvirData_yg.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+            </e>
+            <e p="ForVisualScriptYG.cs" t="Include" />
+            <e p="GameReadyAPI" t="Include">
+              <e p="GRA_yg.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+            </e>
+            <e p="GetPlayerYG.cs" t="Include" />
+            <e p="GraphicSettingsYG.cs" t="Include" />
+            <e p="ImageLoadYG.cs" t="Include" />
+            <e p="InfoYG" t="Include">
+              <e p="Editor" t="Include">
+                <e p="InfoYGEditor.cs" t="Include" />
+              </e>
+              <e p="InfoYG.cs" t="Include" />
+            </e>
+            <e p="Initialization" t="Include">
+              <e p="InitYGAttribute.cs" t="Include" />
+            </e>
+            <e p="Inside" t="Include">
+              <e p="CallingAnEvent.cs" t="Include" />
+              <e p="ConfigYG.cs" t="Include" />
+            </e>
+            <e p="Language" t="Include">
+              <e p="Editor" t="Include">
+                <e p="AutoLocalizationMasseWindow.cs" t="Include" />
+                <e p="CSVFileEditorWindow.cs" t="Include" />
+                <e p="CSVManager.cs" t="Include" />
+                <e p="FontMasseInstallEditorWindow.cs" t="Include" />
+                <e p="LanguageYGEditor.cs" t="Include" />
+                <e p="TranslationTableEditorWindow.cs" t="Include" />
+              </e>
+              <e p="Lang_yg.cs" t="Include" />
+              <e p="LanguageYG.cs" t="Include" />
+              <e p="LangYGAdditionalText.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+              <e p="UtilsLang.cs" t="Include" />
+            </e>
+            <e p="Leaderboards" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Leaderboards_build.cs" t="Include" />
+              </e>
+              <e p="InternalScripts" t="Include">
+                <e p="Leaderboards_yg.cs" t="Include" />
+                <e p="UtilsLB.cs" t="Include" />
+              </e>
+              <e p="LBPlayerDataYG.cs" t="Include" />
+              <e p="LeaderboardYG.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+            </e>
+            <e p="LocalStorage" t="Include">
+              <e p="LocalStorage_yg.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+            </e>
+            <e p="Payments" t="Include">
+              <e p="ConsumePurchasesYG.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="Payments_build.cs" t="Include" />
+              </e>
+              <e p="InternalScripts" t="Include">
+                <e p="Payments_yg.cs" t="Include" />
+                <e p="UtilsPayments.cs" t="Include" />
+              </e>
+              <e p="PaymentsCatalogYG.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+              <e p="PurchaseYG.cs" t="Include" />
+            </e>
+            <e p="PromptYG.cs" t="Include" />
+            <e p="ReviewYG.cs" t="Include" />
+            <e p="Storage" t="Include">
+              <e p="Editor" t="Include">
+                <e p="CloudStorage_build.cs" t="Include" />
+              </e>
+              <e p="Plugins" t="Include" />
+              <e p="Storage_yg.cs" t="Include" />
+            </e>
+            <e p="TimerBeforeAdsYG.cs" t="Include" />
+            <e p="UnityToolbag-main" t="Include">
+              <e p="ConditionallyVisiblePropertyDrawer" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ConditionallyVisiblePropertyDrawer.cs" t="Include" />
+                </e>
+                <e p="Runtime" t="Include">
+                  <e p="ConditionallyVisibleAttribute.cs" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+              <e p="Notices.txt" t="Include" />
+            </e>
+            <e p="ViewingAdsYG.cs" t="Include" />
+            <e p="YandexGame.cs" t="Include" />
+            <e p="YandexMetrica" t="Include">
+              <e p="JsonUtils.cs" t="Include" />
+              <e p="Plugins" t="Include" />
+              <e p="YandexMetrica.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Third-Party Notices.txt" t="Include" />
+          <e p="WorkingData" t="Include">
+            <e p="SavesYG.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="MythicalBattles.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+      <e p="VirtualButtonsScripts.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>
