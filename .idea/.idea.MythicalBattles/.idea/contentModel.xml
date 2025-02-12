@@ -9,15 +9,19 @@
       <e p="Assets" t="Include">
         <e p="_Developers" t="Include">
           <e p="Artem" t="Include">
-            <e p="EquipmentGrades.cs" t="Include" />
-            <e p="EquipmentShopItem.cs" t="Include" />
-            <e p="EquipmentShopItems" t="Include" />
-            <e p="EquipmentsShopContent.cs" t="Include" />
-            <e p="EquipmentTypes.cs" t="Include" />
             <e p="Models" t="Include" />
-            <e p="PlayerMovement.cs" t="Include" />
-            <e p="ShopItem.cs" t="Include" />
-            <e p="ShopItemView.cs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="EquipmentGrades.cs" t="Include" />
+              <e p="EquipmentShopItem.cs" t="Include" />
+              <e p="EquipmentShopItems" t="Include" />
+              <e p="EquipmentsShopContent.cs" t="Include" />
+              <e p="EquipmentTypes.cs" t="Include" />
+              <e p="IntValueView.cs" t="Include" />
+              <e p="PlayerMovement.cs" t="Include" />
+              <e p="ShopItem.cs" t="Include" />
+              <e p="ShopItemView.cs" t="Include" />
+              <e p="ValueView.cs" t="Include" />
+            </e>
           </e>
           <e p="Stas" t="Include">
             <e p="Animations" t="Include" />
