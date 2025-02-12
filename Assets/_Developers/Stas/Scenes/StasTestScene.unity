@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 177115868}
   - component: {fileID: 178207136}
   - component: {fileID: 64642294623416574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_Alcove_Small_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,6 +1163,10 @@ PrefabInstance:
     - target: {fileID: 1703131478790005849, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703131478790005849, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570379304240420412, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1749,7 +1753,7 @@ GameObject:
   - component: {fileID: 340883820}
   - component: {fileID: 340135140}
   - component: {fileID: 65082234759428006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1837,7 @@ GameObject:
   - component: {fileID: 357613455}
   - component: {fileID: 356580373}
   - component: {fileID: 65087726342474941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2888,7 +2892,7 @@ GameObject:
   - component: {fileID: 64257641249745820}
   - component: {fileID: 64714170185918660}
   - component: {fileID: 64220098506992536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_DoorFrame_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2965,6 +2969,18 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 7618062406947633571}
+    - target: {fileID: 3732544168456419976, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+      propertyPath: _raycastDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732544168456419976, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+      propertyPath: _obstacleLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732544168456419976, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+      propertyPath: _directionChangeInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7108774379072329100, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.42
@@ -3042,7 +3058,7 @@ GameObject:
   - component: {fileID: 665945908}
   - component: {fileID: 664913070}
   - component: {fileID: 65087725488878598}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_12 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3955,7 +3971,7 @@ GameObject:
   - component: {fileID: 867769836}
   - component: {fileID: 866694800}
   - component: {fileID: 64642295039344590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_Alcove_Small_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4144,7 +4160,7 @@ GameObject:
   - component: {fileID: 959179369}
   - component: {fileID: 960274401}
   - component: {fileID: 65082235119510691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5128,7 @@ GameObject:
   - component: {fileID: 1238345438}
   - component: {fileID: 1238897766}
   - component: {fileID: 65011338286388942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5524,7 +5540,7 @@ GameObject:
   - component: {fileID: 1378830026}
   - component: {fileID: 1379414850}
   - component: {fileID: 65082235807074304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6151,7 +6167,7 @@ GameObject:
   - component: {fileID: 1503228593}
   - component: {fileID: 1502140877}
   - component: {fileID: 64642295477653651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_Alcove_Small_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6355,7 +6371,7 @@ GameObject:
   - component: {fileID: 1556979226}
   - component: {fileID: 1557802146}
   - component: {fileID: 65011337967496714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6439,7 +6455,7 @@ GameObject:
   - component: {fileID: 1561322178}
   - component: {fileID: 1562354008}
   - component: {fileID: 65087727548158448}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6991,7 +7007,7 @@ GameObject:
   - component: {fileID: 1712334731}
   - component: {fileID: 1711301649}
   - component: {fileID: 65087726556353721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7109,7 +7125,7 @@ GameObject:
   - component: {fileID: 1746129372}
   - component: {fileID: 1746129371}
   - component: {fileID: 1746129370}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8244,7 +8260,7 @@ GameObject:
   - component: {fileID: 1983986945}
   - component: {fileID: 1985384377}
   - component: {fileID: 65011337320746257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_13 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8362,7 +8378,7 @@ GameObject:
   - component: {fileID: 2059109769}
   - component: {fileID: 2058077715}
   - component: {fileID: 65087726882043579}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_11 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8446,7 +8462,7 @@ GameObject:
   - component: {fileID: 2095280798}
   - component: {fileID: 2096312580}
   - component: {fileID: 65087726987395500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Wall_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10039,16 +10055,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7618062406947633571}
     - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: MoveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: _moveSpeed
       value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: _attackRange
-      value: 1.4
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: _attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: _raycastDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: _obstacleLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046743542941728330, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: _directionChangeInterval
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8789738611341214791, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10056,7 +10096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8789738611341214791, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 8789738611341214791, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10160,6 +10200,10 @@ PrefabInstance:
     - target: {fileID: 2152971030917394324, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_Name
       value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152971030917394324, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4603895787959383515, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_LocalPosition.x

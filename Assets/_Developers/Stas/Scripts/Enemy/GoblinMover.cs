@@ -1,11 +1,144 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class GoblinMover : EnemyMover
+    [RequireComponent(typeof(Transform), typeof(Animator))]
+    public class GoblinMover : MonoBehaviour
     {
-        
+        private readonly int _isAttack = Animator.StringToHash("isAttack");
+
+        [SerializeField] private Transform _player;
+        [SerializeField] private LayerMask _obstacleLayer;
+
+        [SerializeField] private float _moveSpeed = 1f;
+        [SerializeField] private float _moveDuration = 2f;
+        [SerializeField] private float _directionChangeInterval = 0.5f;
+        [SerializeField] private float _raycastDistance = 1f;
+        [SerializeField] private float _attackCooldown = 2f;
+        [SerializeField] private float _attackRange = 1.5f;
+        [SerializeField] private float _rotationSpeed = 10f;
+
+        private Transform _transform;
+        private Animator _animator;
+        private Vector3 _randomDirection;
+
+        private float _moveTimer;
+        private float _attackTimer;
+        private float _directionChangeTimer;
+        private bool _isMovingAway = false;
+
+        private void Awake()
+        {
+            _transform = GetComponent<Transform>();
+            _animator = GetComponent<Animator>();
+        }
+
+        private void Update()
+        {
+            float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
+
+            if (distanceToPlayer <= _attackRange && !_isMovingAway)
+            {
+                if (_attackTimer >= _attackCooldown)
+                {
+                    _attackTimer = 0f;
+                    _isMovingAway = true;
+                }
+                else
+                {
+                    _attackTimer += Time.deltaTime;
+                    Attack();
+                }
+            }
+            else if (_isMovingAway)
+            {
+                MoveRandomly();
+            }
+            else
+            {
+                MoveTo(GetDirectionsToPlayer());
+            }
+        }
+
+        private void MoveRandomly()
+        {
+            _moveTimer += Time.deltaTime;
+            _directionChangeTimer += Time.deltaTime;
+
+            if (_moveTimer >= _moveDuration)
+            {
+                _moveTimer = 0f;
+                _isMovingAway = false;
+            }
+            else
+            {
+                if (_directionChangeTimer >= _directionChangeInterval)
+                {
+                    _directionChangeTimer = 0f;
+                    _randomDirection = GetFreeRandomDirection();
+                }
+
+                if(_randomDirection == Vector3.zero)
+                    _randomDirection = GetFreeRandomDirection();
+
+                MoveTo(_randomDirection);
+            }
+        }
+
+        private void Attack()
+        {
+            _animator.SetBool(_isAttack, true);
+
+            RotateTowards(GetDirectionsToPlayer());
+        }
+
+        private Vector3 GetFreeRandomDirection()
+        {
+            Vector3 direction = GetRandomDirection();
+
+            while (IsObstacleIn(direction))
+                direction = GetRandomDirection();
+
+            return direction;
+        }
+
+        private Vector3 GetRandomDirection()
+        {
+            return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        }
+
+        private void RotateTowards(Vector3 direction)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+        }
+
+        private Vector3 GetDirectionsToPlayer()
+        {
+            return (_player.position - _transform.position).normalized;
+        }
+
+        private void MoveTo(Vector3 direction)
+        {
+            _animator.SetBool(_isAttack, false);
+
+            _transform.position += _moveSpeed * Time.deltaTime * direction;
+
+            RotateTowards(direction);
+        }
+
+        private bool IsObstacleIn(Vector3 direction)
+        {
+            if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, _obstacleLayer))
+            {
+                Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.red, 1f);
+
+                return true;
+            }
+
+            Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.green, 1f);
+
+            return false;
+        }
     }
 }
