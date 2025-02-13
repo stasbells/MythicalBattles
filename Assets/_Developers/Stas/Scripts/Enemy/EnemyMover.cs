@@ -5,13 +5,11 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform))]
     public abstract class EnemyMover : MonoBehaviour
     {
+        [SerializeField] protected float MoveSpeed = 3.0f;
+
         private readonly int _isAttack = Animator.StringToHash("isAttack");
 
-        [Header("Target")]
         [SerializeField] private Transform _player;
-
-        [Header("Parameters")]
-        [SerializeField] private float _moveSpeed = 3.0f;
         [SerializeField] private float _attackRange = 2.0f;
         [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _attackCooldown = 2.0f;
@@ -63,7 +61,7 @@ namespace MythicalBattles
         {
             _animator.SetBool(_isAttack, false);
 
-            _transform.position += _moveSpeed * Time.deltaTime * GetDirection();
+            _transform.position += MoveSpeed * Time.deltaTime * GetDirection();
         }
 
         private void RotateTowardsPlayer()
