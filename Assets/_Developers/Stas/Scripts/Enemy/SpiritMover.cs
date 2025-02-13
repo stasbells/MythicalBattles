@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Transform), typeof(Animator))]
-    public class AncientWarriorMover : MonoBehaviour
+    public class SpiritMover : MonoBehaviour
     {
         private readonly int _isAttack = Animator.StringToHash("isAttack");
 
@@ -82,8 +81,6 @@ namespace MythicalBattles
         private void Attack()
         {
             _animator.SetBool(_isAttack, true);
-
-            RotateTowards(GetDirectionsToPlayer());
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -98,18 +95,21 @@ namespace MythicalBattles
 
         private Vector3 GetRandomDirection()
         {
-            return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            Vector3[] directions =
+            {
+                transform.forward,
+                -transform.forward,
+                transform.right,
+                -transform.right
+            };
+
+            return directions[(Random.Range(0, directions.Length - 1))].normalized;
         }
 
         private void RotateTowards(Vector3 direction)
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
-        }
-
-        private Vector3 GetDirectionsToPlayer()
-        {
-            return (_player.position - _transform.position).normalized;
         }
 
         private void MoveTo(Vector3 direction)
