@@ -18,8 +18,12 @@
               <e p="EquipmentTypes.cs" t="Include" />
               <e p="IntValueView.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
+              <e p="Shop.cs" t="Include" />
+              <e p="ShopCategoryButton.cs" t="Include" />
               <e p="ShopItem.cs" t="Include" />
               <e p="ShopItemView.cs" t="Include" />
+              <e p="ShopItemViewFactory.cs" t="Include" />
+              <e p="ShopPanel.cs" t="Include" />
               <e p="ValueView.cs" t="Include" />
             </e>
           </e>

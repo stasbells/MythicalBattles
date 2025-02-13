@@ -10,6 +10,8 @@ namespace MythicalBattles
     {
         [SerializeField] private List<EquipmentShopItem> _equipmentItems;
 
+        public IEnumerable<EquipmentShopItem> EquipmentItems => _equipmentItems;
+
         private void OnValidate()
         {
             CheckForDuplicates();

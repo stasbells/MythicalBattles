@@ -27,7 +27,7 @@ namespace MythicalBattles
                 return;
             }
 
-            if (GetCurrenÂDistance() > _trackingStartDistance)
+            if (GetCurren–µDistance() > _trackingStartDistance)
                 Follow();
         }
 
@@ -44,7 +44,7 @@ namespace MythicalBattles
             _transform.position = new Vector3(_transform.position.x, _transform.position.y, _player.position.z + _offset);
         }
 
-        private float GetCurrenÂDistance()
+        private float GetCurren–µDistance()
         {
             return Math.Abs(_player.position.z + _offset - _transform.position.z);
         }
