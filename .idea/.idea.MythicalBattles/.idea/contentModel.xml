@@ -9,22 +9,44 @@
       <e p="Assets" t="Include">
         <e p="_Developers" t="Include">
           <e p="Artem" t="Include">
+            <e p="Animators" t="Include" />
             <e p="Models" t="Include" />
+            <e p="Prefabs" t="Include" />
             <e p="Scripts" t="Include">
-              <e p="EquipmentGrades.cs" t="Include" />
-              <e p="EquipmentShopItem.cs" t="Include" />
-              <e p="EquipmentShopItems" t="Include" />
-              <e p="EquipmentsShopContent.cs" t="Include" />
-              <e p="EquipmentTypes.cs" t="Include" />
+              <e p="Data" t="Include">
+                <e p="DataLocalProvider.cs" t="Include" />
+                <e p="IDataProvider.cs" t="Include" />
+                <e p="IPersistentData.cs" t="Include" />
+                <e p="PersistentData.cs" t="Include" />
+                <e p="PlayerData.cs" t="Include" />
+              </e>
               <e p="IntValueView.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
-              <e p="Shop.cs" t="Include" />
-              <e p="ShopCategoryButton.cs" t="Include" />
-              <e p="ShopItem.cs" t="Include" />
-              <e p="ShopItemView.cs" t="Include" />
-              <e p="ShopItemViewFactory.cs" t="Include" />
-              <e p="ShopPanel.cs" t="Include" />
+              <e p="Shop" t="Include">
+                <e p="EquipmentShop" t="Include">
+                  <e p="ArmorItem.cs" t="Include" />
+                  <e p="BootsItem.cs" t="Include" />
+                  <e p="EquipmentGrades.cs" t="Include" />
+                  <e p="EquipmentItem.cs" t="Include" />
+                  <e p="EquipmentItems" t="Include" />
+                  <e p="EquipmentsShopContent.cs" t="Include" />
+                  <e p="EquipmentTypes.cs" t="Include" />
+                  <e p="HelmetItem.cs" t="Include" />
+                  <e p="NecklaceItem.cs" t="Include" />
+                  <e p="RingItem.cs" t="Include" />
+                  <e p="WeaponItem.cs" t="Include" />
+                </e>
+                <e p="Shop.cs" t="Include" />
+                <e p="ShopCategoryButton.cs" t="Include" />
+                <e p="ShopItem.cs" t="Include" />
+                <e p="ShopItemView.cs" t="Include" />
+                <e p="ShopItemViewFactory.cs" t="Include" />
+                <e p="ShopPanel.cs" t="Include" />
+              </e>
               <e p="ValueView.cs" t="Include" />
+              <e p="Wallet" t="Include">
+                <e p="Wallet.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Stas" t="Include">
@@ -35,8 +57,11 @@
             <e p="Scenes" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Enemy" t="Include">
+                <e p="AncientWarriorMover.cs" t="Include" />
                 <e p="Enemy.cs" t="Include" />
                 <e p="EnemyMover.cs" t="Include" />
+                <e p="GoblinMover.cs" t="Include" />
+                <e p="SceletonMover.cs" t="Include" />
               </e>
               <e p="PlayerAutoAim.cs" t="Include" />
               <e p="PlayerFollower.cs" t="Include" />
@@ -49,19 +74,7 @@
           <e p="Equipment_Inventory" t="Include">
             <e p="_backup" t="Include" />
           </e>
-          <e p="Magical artifacts icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
           <e p="RPG Armor icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
-          <e p="RPG Belt icons" t="Include">
             <e p="PNG" t="Include">
               <e p="background" t="Include" />
               <e p="without background" t="Include" />
@@ -79,18 +92,6 @@
               <e p="without background" t="Include" />
             </e>
           </e>
-          <e p="RPG Glove icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
-          <e p="RPG Greaves icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
           <e p="RPG Helmet icons" t="Include">
             <e p="PNG" t="Include">
               <e p="background" t="Include" />
@@ -103,12 +104,6 @@
               <e p="without background" t="Include" />
             </e>
           </e>
-          <e p="RPG Shield icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
           <e p="RPG Staff Icons" t="Include">
             <e p="PNG" t="Include">
               <e p="background" t="Include" />
@@ -116,12 +111,6 @@
             </e>
           </e>
           <e p="RPG Swords icons" t="Include">
-            <e p="PNG" t="Include">
-              <e p="background" t="Include" />
-              <e p="without background" t="Include" />
-            </e>
-          </e>
-          <e p="Treasure chests icons" t="Include">
             <e p="PNG" t="Include">
               <e p="background" t="Include" />
               <e p="without background" t="Include" />
