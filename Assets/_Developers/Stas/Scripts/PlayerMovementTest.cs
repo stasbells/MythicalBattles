@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MythicalBattles
 {
@@ -20,6 +21,8 @@ namespace MythicalBattles
         private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
 
+        public UnityAction Shooting;
+
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
@@ -40,6 +43,11 @@ namespace MythicalBattles
             _controls.Player.Disable();
         }
 
+        private void Start()
+        {
+            Shooting.Invoke();
+        }
+
         private void Update()
         {
             _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
@@ -52,6 +60,8 @@ namespace MythicalBattles
             if (_moveDirection.sqrMagnitude < 0.1f)
             {
                 _animator.SetBool(_isMove, false);
+               
+
                 return;
             }
 
