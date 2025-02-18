@@ -1,17 +1,16 @@
 using System;
 using Newtonsoft.Json;
-using UnityEngine;
 
 namespace MythicalBattles
 {
     public class PlayerData
     {
-        private EquipmentItem _selectedWeapon;
-        private EquipmentItem _selectedArmor;
-        private EquipmentItem _selectedHelmet;
-        private EquipmentItem _selectedBoots;
-        private EquipmentItem _selectedNecklace;
-        private EquipmentItem _selectedRing;
+        private WeaponItem _selectedWeapon;
+        private ArmorItem _selectedArmor;
+        private HelmetItem _selectedHelmet;
+        private BootsItem _selectedBoots;
+        private NecklaceItem _selectedNecklace;
+        private RingItem _selectedRing;
 
         private int _money;
         
@@ -21,9 +20,9 @@ namespace MythicalBattles
         }
 
         [JsonConstructor]
-        public PlayerData(int money, EquipmentItem selectedWeapon, EquipmentItem selectedArmor,
-            EquipmentItem selectedHelmet, EquipmentItem selectedBoots, EquipmentItem selectedNecklace,
-            EquipmentItem selectedRing)
+        public PlayerData(int money, WeaponItem selectedWeapon, ArmorItem selectedArmor,
+            HelmetItem selectedHelmet, BootsItem selectedBoots, NecklaceItem selectedNecklace,
+            RingItem selectedRing)
         {
             _money = money;
             _selectedWeapon = selectedWeapon;

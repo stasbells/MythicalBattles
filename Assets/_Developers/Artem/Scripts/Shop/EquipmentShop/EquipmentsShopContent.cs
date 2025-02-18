@@ -19,7 +19,10 @@ namespace MythicalBattles
         {
             return _weaponItems.Cast<EquipmentItem>()
                 .Concat(_armorItems.Cast<EquipmentItem>())
-                .Concat(_helmetItems.Cast<EquipmentItem>());
+                .Concat(_helmetItems.Cast<EquipmentItem>())
+                .Concat(_bootsItems.Cast<EquipmentItem>())
+                .Concat(_necklaceItems.Cast<EquipmentItem>())
+                .Concat(_ringItems.Cast<EquipmentItem>());
         }
 
         private void OnValidate()
