@@ -13,16 +13,17 @@ namespace MythicalBattles
 
         public void Show(IEnumerable<ShopItem> items)
         {
+            Clear();
+            
             foreach (ShopItem item in items)
             {
                 ShopItemView spawnedItem = _shopItemViewFactory.Get(item, _itemsParent);
 
                 spawnedItem.Clicked += OnItemViewClick;
                 
-                spawnedItem.UnSelect();
-                spawnedItem.UnHighLight();
+                //spawnedItem.UnHighLight();
                 
-                //проверить открыт скин и выбран ли он
+                //проверить открыт скин и выбран ли он. Тут нужно получить инфу из сохранений
                 
                 _shopItems.Add(spawnedItem);
             }

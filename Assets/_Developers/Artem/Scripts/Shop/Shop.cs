@@ -6,7 +6,7 @@ namespace MythicalBattles
     public class Shop : MonoBehaviour
     {
         [SerializeField] private EquipmentsShopContent _contentItems;
-        [SerializeField] private ShopCategoryButton _equipmentItemButton;
+        [SerializeField] private ShopTestButton _equipmentItemButton;
         [SerializeField] private ShopPanel _shopPanel;
 
         private void OnEnable() => _equipmentItemButton.Clicked += OnEquipmentButtonClick;

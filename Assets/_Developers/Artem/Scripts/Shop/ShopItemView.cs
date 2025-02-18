@@ -23,12 +23,16 @@ namespace MythicalBattles
         
         public ShopItem Item { get; private set; }
         public bool IsLock { get; private set; }
+        
+        public bool IsSelected { get; private set; }
         public int Price => Item.Price;
 
         public GameObject Model => Item.Model;
 
         public void Initialize(ShopItem item)
         {
+            //тут надо как-то учитывать куплен ли уже этот предмет
+            
             _backgroundImage.sprite = item.BackgroundImage;
             _contentImage.sprite = item.ItemImage;
             Item = item;
@@ -58,12 +62,19 @@ namespace MythicalBattles
 
         public void Select()
         {
+            IsSelected = true;
             _selectedImage.gameObject.SetActive(true);
+            _priceView.Hide();
             
             //дописать применение характеристик позже
         }
         
-        public void UnSelect() => _selectedImage.gameObject.SetActive(false);
+        public void Unselect()
+        {
+            IsSelected = false;
+            _selectedImage.gameObject.SetActive(false);
+        }
+        
         public void HighLight() => _currentBackgroundImage.sprite = _highlightBackground;
         public void UnHighLight() => _currentBackgroundImage.sprite = _backgroundImage.sprite;
         

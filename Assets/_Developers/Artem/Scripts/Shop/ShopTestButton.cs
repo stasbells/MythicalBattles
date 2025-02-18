@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MythicalBattles
 {
-    public class ShopCategoryButton : MonoBehaviour
+    public class ShopTestButton : MonoBehaviour
     {
         public event Action Clicked;
 

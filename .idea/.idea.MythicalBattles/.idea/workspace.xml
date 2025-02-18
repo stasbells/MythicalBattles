@@ -34,69 +34,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adcb9322-e8f4-4441-8a85-a28170c6bacf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonArmor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonArmor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonBoots.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonBoots.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonBow.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonBow.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonNecklace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonNecklace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonRing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/CommonRing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicArmor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicArmor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicBoots.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicBoots.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicBow.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicBow.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicNecklace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicNecklace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicRing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/EpicRing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryArmor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryArmor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryBoots.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryBoots.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryBow.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryBow.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryNecklace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryNecklace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryRing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/LegendaryRing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareArmor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareArmor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareBoots.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareBoots.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareBow.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareBow.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareNecklace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareNecklace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareRing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/RareRing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleArmor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleArmor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleBoots.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleBoots.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleBow.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleBow.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleHelmet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleHelmet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleNecklace.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleNecklace.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleRing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItems/SimpleRing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentsShopContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentsShopContent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentShopContent.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentShopContent.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentTypes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentTypes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopCategoryButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopCategoryButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +61,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ValueView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/ProjectInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/ArmorItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/WeaponItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/IPersistentData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -154,6 +108,12 @@
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/RingItem.cs" />
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" />
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentsShopContent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/ProjectInstaller.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" />
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" />
       </list>
     </option>
@@ -198,7 +158,7 @@
       <updated>1739260482786</updated>
       <workItem from="1739260492613" duration="16008000" />
       <workItem from="1739432807985" duration="1872000" />
-      <workItem from="1739797549907" duration="13034000" />
+      <workItem from="1739797549907" duration="16201000" />
     </task>
     <servers />
   </component>
@@ -224,9 +184,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="601" y="114" key="RiderGenerateDialog/0.0.1536.824/1920.-78.1920.1040@0.0.1536.824" timestamp="1739800875789" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1739805571369">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1739906939255">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.-78.1920.1040@0.0.1536.824" timestamp="1739805571369" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.-78.1920.1040@0.0.1536.824" timestamp="1739906939255" />
   </component>
 </project>

@@ -16,7 +16,7 @@ namespace MythicalBattles
         
         public PlayerData()
         {
-    
+            //ОСТАНОВИЛСЯ В ВИДЕО НА 29:30
         }
 
         [JsonConstructor]

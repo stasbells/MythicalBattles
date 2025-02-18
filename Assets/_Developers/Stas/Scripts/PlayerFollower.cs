@@ -33,7 +33,7 @@ namespace MythicalBattles
 
         private void Follow()
         {
-            Vector3 targetPosition = new(_transform.position.x, _transform.position.y, _player.position.z + _offset);
+            Vector3 targetPosition = new Vector3(_transform.position.x, _transform.position.y, _player.position.z + _offset);
             Vector3 smoothedPosition = Vector3.Lerp(_transform.position, targetPosition, _smoothSpeed * Time.deltaTime);
 
             _transform.position = smoothedPosition;

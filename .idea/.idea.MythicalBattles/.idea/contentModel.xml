@@ -30,18 +30,17 @@
                   <e p="EquipmentItem.cs" t="Include" />
                   <e p="EquipmentItems" t="Include" />
                   <e p="EquipmentsShopContent.cs" t="Include" />
-                  <e p="EquipmentTypes.cs" t="Include" />
                   <e p="HelmetItem.cs" t="Include" />
                   <e p="NecklaceItem.cs" t="Include" />
                   <e p="RingItem.cs" t="Include" />
                   <e p="WeaponItem.cs" t="Include" />
                 </e>
                 <e p="Shop.cs" t="Include" />
-                <e p="ShopCategoryButton.cs" t="Include" />
                 <e p="ShopItem.cs" t="Include" />
                 <e p="ShopItemView.cs" t="Include" />
                 <e p="ShopItemViewFactory.cs" t="Include" />
                 <e p="ShopPanel.cs" t="Include" />
+                <e p="ShopTestButton.cs" t="Include" />
               </e>
               <e p="ValueView.cs" t="Include" />
               <e p="Wallet" t="Include">
@@ -252,6 +251,9 @@
         </e>
         <e p="MythicalBattles" t="Include">
           <e p="Scenes" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="ProjectInstaller.cs" t="Include" />
         </e>
         <e p="Synty" t="Include">
           <e p="AnimationBaseLocomotion" t="Include">
