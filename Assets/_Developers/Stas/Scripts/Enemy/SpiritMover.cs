@@ -4,7 +4,9 @@ namespace MythicalBattles
 {
     public class SpiritMover : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
+        private readonly int IsAttack = Animator.StringToHash("isAttack");
+        private readonly int IsDead = Animator.StringToHash("isDead");
+        private readonly int DefaultLayer = 0;
 
         [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
@@ -19,6 +21,7 @@ namespace MythicalBattles
         private Transform _transform;
         private Animator _animator;
         private Vector3 _randomDirection;
+        private CapsuleCollider _capsuleCollider;
 
         private float _moveTimer;
         private float _stopTimer;
@@ -27,12 +30,21 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
+            if(_animator.GetBool(IsDead) == true)
+            {
+                gameObject.layer = DefaultLayer;
+                _capsuleCollider.enabled = false;
+
+                return;
+            }
+
             if (_isMoving)
                 MoveRandomly();
             else
@@ -80,7 +92,7 @@ namespace MythicalBattles
 
         private void Attack()
         {
-            _animator.SetBool(_isAttack, true);
+            _animator.SetBool(IsAttack, true);
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -103,7 +115,7 @@ namespace MythicalBattles
                 -transform.right
             };
 
-            return directions[(Random.Range(0, directions.Length - 1))].normalized;
+            return directions[Random.Range(0, directions.Length - 1)].normalized;
         }
 
         private void RotateTowards(Vector3 direction)
@@ -114,7 +126,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(IsAttack, false);
 
             RotateTowards(direction);
 

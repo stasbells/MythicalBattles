@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac4908878e1b204e95a3110149ea6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimRadius: 8
+  _aimRadius: 12
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 8

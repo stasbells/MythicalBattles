@@ -5,13 +5,13 @@ namespace MythicalBattles
 {
     public class ObjectPool : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private Projectile _prefab;
         [SerializeField] private int _itemsCount;
 
-        private List<GameObject> _items;
+        private List<Projectile> _items;
 
         public int CurrentItemIndex { get; private set; } = 0;
-        public IReadOnlyList<GameObject> Items => _items;
+        public IReadOnlyList<Projectile> Items => _items;
 
         private void Awake()
         {
@@ -19,28 +19,30 @@ namespace MythicalBattles
                 Initialize();
         }
 
-        public GameObject GetItem()
+        public Projectile GetItem()
         {
-            Debug.Log(_items.Find(item => item.activeSelf == false));
+            var item = _items.Find(item => item.gameObject.activeSelf == false);
+            item.gameObject.SetActive(true);
 
-            return _items.Find(item => item.activeSelf == false);
+            return item;
         }
 
-        public void ReturnItem(GameObject Item)
+        public void ReturnItem(Projectile item)
         {
-            Item.SetActive(false);
-            _items.Add(Item);
+            item.gameObject.SetActive(false);
+            item.transform.SetParent(transform, false);
         }
 
         private void Initialize()
         {
-            _items = new List<GameObject>();
+            _items = new List<Projectile>();
 
             for (int i = 0; i < _itemsCount; i++)
             {
                 var item = Instantiate(_prefab);
 
-                item.SetActive(false);
+                item.SetPool(this);
+                item.gameObject.SetActive(false);
                 item.transform.SetParent(transform, false);
 
                 _items.Add(item);

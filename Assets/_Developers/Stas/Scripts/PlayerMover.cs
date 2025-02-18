@@ -4,10 +4,11 @@ using UnityEngine.Events;
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator), typeof(Transform), typeof(CharacterController))]
-    public class PlayerMovementTest : MonoBehaviour
+    public class PlayerMover : MonoBehaviour
     {
-        private readonly int _isMove = Animator.StringToHash("Move");
-        private readonly int _isShoot = Animator.StringToHash("Shoot");
+        private readonly int IsMove = Animator.StringToHash("isMove");
+        private readonly int IsShoot = Animator.StringToHash("isShoot");
+        private readonly int IsAim = Animator.StringToHash("isAim");
 
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
@@ -21,15 +22,11 @@ namespace MythicalBattles
         private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
 
-        public UnityAction Shooting;
-
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
-
-            _animator.SetBool(_isShoot, false);
         }
 
         private void OnEnable()
@@ -43,30 +40,30 @@ namespace MythicalBattles
             _controls.Player.Disable();
         }
 
-        private void Start()
-        {
-            Shooting.Invoke();
-        }
-
         private void Update()
         {
-            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
-
             Move();
+        }
+
+        private void SetMovingState(bool value)
+        {
+            _animator.SetBool(IsMove, value);
+            _animator.SetBool(IsShoot, _animator.GetBool(IsAim));
         }
 
         private void Move()
         {
+            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+
             if (_moveDirection.sqrMagnitude < 0.1f)
             {
-                _animator.SetBool(_isMove, false);
-               
+                SetMovingState(false);
 
                 return;
             }
 
-            if (_animator.GetBool(_isMove) == false)
-                _animator.SetBool(_isMove, true);
+            if (_animator.GetBool(IsMove) == false)
+                SetMovingState(true);
 
             _currentInputVector = Vector2.SmoothDamp(_currentInputVector, _moveDirection, ref _smoothInputVelocity, _smoothInputSpeed);
 
