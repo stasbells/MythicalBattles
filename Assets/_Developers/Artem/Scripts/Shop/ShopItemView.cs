@@ -31,7 +31,7 @@ namespace MythicalBattles
 
         public void Initialize(ShopItem item)
         {
-            //тут надо как-то учитывать куплен ли уже этот предмет
+            //тут надо как-то проверять в сохранениях куплен ли уже этот предмет
             
             _backgroundImage.sprite = item.BackgroundImage;
             _contentImage.sprite = item.ItemImage;
