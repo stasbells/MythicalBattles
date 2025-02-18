@@ -59,7 +59,10 @@ namespace MythicalBattles
                     _randomDirection = GetFreeRandomDirection();
                 }
 
-                Move();
+                if (_randomDirection == Vector3.zero)
+                    _randomDirection = GetFreeRandomDirection();
+
+                MoveTo(_randomDirection);
             }
         }
 
@@ -109,13 +112,13 @@ namespace MythicalBattles
             return (_player.position - _transform.position).normalized;
         }
 
-        private void Move()
+        private void MoveTo(Vector3 direction)
         {
             _animator.SetBool(_isAttack, false);
 
-            RotateTowards(_randomDirection);
+            RotateTowards(direction);
 
-            _transform.position += _moveSpeed * Time.deltaTime * _randomDirection;
+            _transform.position += Time.deltaTime * _moveSpeed * direction;
         }
 
         private bool IsObstacleIn(Vector3 direction)

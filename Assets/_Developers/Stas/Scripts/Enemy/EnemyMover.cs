@@ -11,12 +11,11 @@ namespace MythicalBattles
 
         [SerializeField] private Transform _player;
         [SerializeField] private float _attackRange = 2.0f;
-        [SerializeField] private int _attackDamage = 10;
         [SerializeField] private float _attackCooldown = 2.0f;
 
         private Transform _transform;
         private Animator _animator;
-        private float _lastAttackTime = 0f;
+        private float _attackTimer;
 
         private void Awake()
         {
@@ -26,40 +25,36 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_player == null)
-            {
-                Debug.LogWarning("Player reference is not set in EnemyMover script.");
-                return;
-            }
-
             float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
 
-            if (distanceToPlayer <= _attackRange)
+            if (distanceToPlayer <= _attackRange || _attackTimer > 0f)
             {
-                if (Time.time - _lastAttackTime >= _attackCooldown)
+                if (_attackTimer >= _attackCooldown)
                 {
+                    _attackTimer = 0f;
+                }
+                else
+                {
+                    _attackTimer += Time.deltaTime;
                     Attack();
-                    _lastAttackTime = Time.time;
                 }
             }
             else
             {
                 MoveTowardsPlayer();
             }
-
-            RotateTowardsPlayer();
         }
 
         protected virtual void Attack()
         {
             _animator.SetBool(_isAttack, true);
-
-            Debug.Log("Enemy attacks player for " + _attackDamage + " damage!");
         }
 
         protected virtual void MoveTowardsPlayer()
         {
             _animator.SetBool(_isAttack, false);
+
+            RotateTowardsPlayer();
 
             _transform.position += MoveSpeed * Time.deltaTime * GetDirection();
         }

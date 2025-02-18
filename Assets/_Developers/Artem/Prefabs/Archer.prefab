@@ -568,6 +568,37 @@ Transform:
   - {fileID: 1614802605847095754}
   m_Father: {fileID: 2428130530035431342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1623905779080677536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6423800405325361614}
+  m_Layer: 7
+  m_Name: ArrowSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6423800405325361614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623905779080677536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4603895787959383515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656442928179595114
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +866,7 @@ GameObject:
   - component: {fileID: 4241141189904327345}
   - component: {fileID: 1110657346221700707}
   - component: {fileID: 3061964522186876054}
+  - component: {fileID: 5734712686632927319}
   - component: {fileID: 5378286481559482326}
   - component: {fileID: 3627261585845974446}
   m_Layer: 0
@@ -860,6 +892,7 @@ Transform:
   - {fileID: 2679119024925258274}
   - {fileID: 2408284696253134665}
   - {fileID: 3349248709079899326}
+  - {fileID: 6423800405325361614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4241141189904327345
@@ -914,6 +947,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 8
   _smoothInputSpeed: 0.12
+--- !u!114 &5734712686632927319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2152971030917394324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd81ee8f471a1a749a562547ed28bfb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool: {fileID: 0}
+  _shootPoint: {fileID: 6423800405325361614}
+  _movement: {fileID: 0}
+  _shootSpeed: 1
+  _rateOfFire: 1
 --- !u!136 &5378286481559482326
 CapsuleCollider:
   m_ObjectHideFlags: 0
