@@ -73,8 +73,9 @@ namespace MythicalBattles
             float rotationAngle = Mathf.Atan2(_currentInputVector.x, _currentInputVector.y) * Mathf.Rad2Deg;
             _transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
 
-            Vector3 move = new(_moveDirection.x, 0, _moveDirection.y);
+            Vector3 move = new Vector3(_moveDirection.x, 0, _moveDirection.y);
             _controller.Move(_moveSpeed * Time.deltaTime * move);
+            
         }
     }
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -32,12 +35,21 @@
   <component name="ChangeListManager">
     <list default="true" id="adcb9322-e8f4-4441-8a85-a28170c6bacf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MythicalBattles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/EquipmentsShopContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/EquipmentsShopContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/ShopItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/ShopItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Stas/Scenes/StasTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Stas/Scenes/StasTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentShopContent.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentShopContent.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentTypes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentTypes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopCategoryButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopCategoryButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +61,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ValueView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ShopItemViewFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ShopPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ShopCategoryButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/ProjectInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/ArmorItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/WeaponItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/IPersistentData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/BootsItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/HelmetItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/IDataProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/RingItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/NecklaceItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Wallet/Wallet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/DataLocalProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/IntValueView.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -74,6 +93,28 @@
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/EquipmentsShopContent.cs" />
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop.cs" />
         <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/ShopCategoryButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/EquipmentItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/IPersistentData.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PersistentData.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/IDataProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/DataLocalProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Wallet/Wallet.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/WeaponItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/HelmetItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/ArmorItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/BootsItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/NecklaceItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/RingItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/Shop.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/EquipmentShop/EquipmentsShopContent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/ProjectInstaller.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Shop/ShopTestButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerMovementTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Stas/Scripts/PlayerFollower.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Developers/Artem/Scripts/Data/PlayerData.cs" />
       </list>
     </option>
   </component>
@@ -116,7 +157,8 @@
       <option name="presentableId" value="Default" />
       <updated>1739260482786</updated>
       <workItem from="1739260492613" duration="16008000" />
-      <workItem from="1739432807985" duration="652000" />
+      <workItem from="1739432807985" duration="1872000" />
+      <workItem from="1739797549907" duration="16201000" />
     </task>
     <servers />
   </component>
@@ -136,5 +178,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="601" y="114" key="RiderGenerateDialog" timestamp="1739800875789">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="601" y="114" key="RiderGenerateDialog/0.0.1536.824/1920.-78.1920.1040@0.0.1536.824" timestamp="1739800875789" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1739906939255">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.-78.1920.1040@0.0.1536.824" timestamp="1739906939255" />
   </component>
 </project>
