@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class Wallet : MonoBehaviour
+    public class Wallet
     {
         public event Action<int> CoinsChanged;
 

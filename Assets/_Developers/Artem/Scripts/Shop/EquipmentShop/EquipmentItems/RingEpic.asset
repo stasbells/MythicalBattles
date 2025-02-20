@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RingEpic
   m_EditorClassIdentifier: 
   _model: {fileID: 0}
-  _backgroundImage: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _price: 0
-  _equipmentGrade: 0
+  _backgroundImage: {fileID: 21300000, guid: 10d23572713d041c596abf5c00be11dc, type: 3}
+  _itemImage: {fileID: 21300000, guid: e6670ac55451852469e73809fb7cde32, type: 3}
+  _price: 300
+  _equipmentGrade: 3

@@ -23,7 +23,6 @@ namespace MythicalBattles
         
         public ShopItem Item { get; private set; }
         public bool IsLock { get; private set; }
-        
         public bool IsSelected { get; private set; }
         public int Price => Item.Price;
 
@@ -31,14 +30,10 @@ namespace MythicalBattles
 
         public void Initialize(ShopItem item)
         {
-            //тут надо как-то учитывать куплен ли уже этот предмет
-            
             _backgroundImage.sprite = item.BackgroundImage;
             _contentImage.sprite = item.ItemImage;
             Item = item;
-            
-            _priceView.Show(Price);
-            
+
             _currentBackgroundImage = GetComponent<Image>();
             
             _currentBackgroundImage.sprite = _backgroundImage.sprite;
@@ -50,22 +45,20 @@ namespace MythicalBattles
         {
             IsLock = true;
             ChangeLockVisibility(IsLock);
-            _priceView.Show(Price);
         }
         
         public void UnLock()
         {
             IsLock = false;
             ChangeLockVisibility(IsLock);
-            _priceView.Hide();
         }
 
         public void Select()
         {
             IsSelected = true;
             _selectedImage.gameObject.SetActive(true);
-            _priceView.Hide();
-            
+            HidePrice();
+
             //дописать применение характеристик позже
         }
         
@@ -73,6 +66,16 @@ namespace MythicalBattles
         {
             IsSelected = false;
             _selectedImage.gameObject.SetActive(false);
+        }
+
+        public void ShowPrice()
+        {
+            _priceView.Show(Price);
+        }
+        
+        public void HidePrice()
+        {
+            _priceView.Hide();
         }
         
         public void HighLight() => _currentBackgroundImage.sprite = _highlightBackground;

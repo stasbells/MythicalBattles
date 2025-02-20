@@ -24,15 +24,20 @@
               <e p="PlayerMovement.cs" t="Include" />
               <e p="Shop" t="Include">
                 <e p="EquipmentShop" t="Include">
+                  <e p="AllTypesSelectedItemGrade.cs" t="Include" />
                   <e p="ArmorItem.cs" t="Include" />
                   <e p="BootsItem.cs" t="Include" />
                   <e p="EquipmentGrades.cs" t="Include" />
                   <e p="EquipmentItem.cs" t="Include" />
                   <e p="EquipmentItems" t="Include" />
+                  <e p="EquipmentItemsTypes.cs" t="Include" />
+                  <e p="EquipmentItemsUnlocker.cs" t="Include" />
                   <e p="EquipmentsShopContent.cs" t="Include" />
                   <e p="HelmetItem.cs" t="Include" />
+                  <e p="IShopItemVisitor.cs" t="Include" />
                   <e p="NecklaceItem.cs" t="Include" />
                   <e p="RingItem.cs" t="Include" />
+                  <e p="ShopBootstrap.cs" t="Include" />
                   <e p="WeaponItem.cs" t="Include" />
                 </e>
                 <e p="Shop.cs" t="Include" />
@@ -55,17 +60,23 @@
             <e p="Prefabs" t="Include" />
             <e p="Scenes" t="Include" />
             <e p="Scripts" t="Include">
+              <e p="Arrow.cs" t="Include" />
               <e p="Enemy" t="Include">
                 <e p="AncientWarriorMover.cs" t="Include" />
                 <e p="Enemy.cs" t="Include" />
                 <e p="EnemyMover.cs" t="Include" />
                 <e p="GoblinMover.cs" t="Include" />
                 <e p="SceletonMover.cs" t="Include" />
+                <e p="SpiritMover.cs" t="Include" />
+              </e>
+              <e p="ObjectPool" t="Include">
+                <e p="ObjectPool.cs" t="Include" />
               </e>
               <e p="PlayerAutoAim.cs" t="Include" />
               <e p="PlayerFollower.cs" t="Include" />
               <e p="PlayerMoveController.cs" t="Include" />
               <e p="PlayerMovementTest.cs" t="Include" />
+              <e p="PlayerShooter.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -554,6 +565,42 @@
               <e p="Misc" t="Include">
                 <e p="ExtraTiles" t="Include" />
               </e>
+            </e>
+          </e>
+          <e p="PolygonDungeonRealms" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Alternates" t="Include" />
+              <e p="Misc" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="Characters" t="Include">
+                <e p="Attachments" t="Include" />
+                <e p="BR_Attachments" t="Include" />
+              </e>
+              <e p="Collision" t="Include">
+                <e p="Materials" t="Include" />
+              </e>
+              <e p="Materials" t="Include" />
+            </e>
+            <e p="Prefabs" t="Include">
+              <e p="Buildings" t="Include" />
+              <e p="Characters" t="Include">
+                <e p="Attachments" t="Include" />
+                <e p="BR_Attachmnets" t="Include" />
+              </e>
+              <e p="Environments" t="Include" />
+              <e p="FX" t="Include">
+                <e p="Misc" t="Include" />
+              </e>
+              <e p="Generic" t="Include" />
+              <e p="Props" t="Include" />
+              <e p="Runes" t="Include" />
+              <e p="Vehicles" t="Include" />
+              <e p="Weapons" t="Include" />
+            </e>
+            <e p="Scenes" t="Include" />
+            <e p="Textures" t="Include">
+              <e p="Misc" t="Include" />
             </e>
           </e>
           <e p="PolygonElvenRealm" t="Include">

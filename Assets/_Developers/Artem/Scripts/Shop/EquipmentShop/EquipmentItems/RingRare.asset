@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RingRare
   m_EditorClassIdentifier: 
   _model: {fileID: 0}
-  _backgroundImage: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _price: 0
-  _equipmentGrade: 0
+  _backgroundImage: {fileID: 21300000, guid: b38b1974a788bec499b7329f0631f2b9, type: 3}
+  _itemImage: {fileID: 21300000, guid: 9cd2ef475d8f1c543bfbdb481fe538ee, type: 3}
+  _price: 200
+  _equipmentGrade: 2
