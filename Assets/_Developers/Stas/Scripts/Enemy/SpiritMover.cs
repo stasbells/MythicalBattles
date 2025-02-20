@@ -4,9 +4,9 @@ namespace MythicalBattles
 {
     public class SpiritMover : MonoBehaviour
     {
-        private readonly int IsAttack = Animator.StringToHash("isAttack");
-        private readonly int IsDead = Animator.StringToHash("isDead");
-        private readonly int DefaultLayer = 0;
+        private readonly int _isAttack = Animator.StringToHash("isAttack");
+        private readonly int _isDead = Animator.StringToHash("isDead");
+        private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
@@ -37,9 +37,9 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if(_animator.GetBool(IsDead) == true)
+            if(_animator.GetBool(_isDead) == true)
             {
-                gameObject.layer = DefaultLayer;
+                gameObject.layer = _defaultLayer;
                 _capsuleCollider.enabled = false;
 
                 return;
@@ -92,7 +92,7 @@ namespace MythicalBattles
 
         private void Attack()
         {
-            _animator.SetBool(IsAttack, true);
+            _animator.SetBool(_isAttack, true);
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -126,7 +126,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(IsAttack, false);
+            _animator.SetBool(_isAttack, false);
 
             RotateTowards(direction);
 

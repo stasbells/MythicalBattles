@@ -22,15 +22,14 @@ namespace MythicalBattles
         public Projectile GetItem()
         {
             var item = _items.Find(item => item.gameObject.activeSelf == false);
-            item.gameObject.SetActive(true);
 
             return item;
         }
 
         public void ReturnItem(Projectile item)
         {
+            item.gameObject.transform.position = transform.position;
             item.gameObject.SetActive(false);
-            item.transform.SetParent(transform, false);
         }
 
         private void Initialize()
@@ -39,11 +38,10 @@ namespace MythicalBattles
 
             for (int i = 0; i < _itemsCount; i++)
             {
-                var item = Instantiate(_prefab);
+                var item = Instantiate(_prefab, transform);
 
                 item.SetPool(this);
                 item.gameObject.SetActive(false);
-                item.transform.SetParent(transform, false);
 
                 _items.Add(item);
             }

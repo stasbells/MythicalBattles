@@ -1,26 +1,25 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator), typeof(Transform), typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour
     {
-        private readonly int IsMove = Animator.StringToHash("isMove");
-        private readonly int IsShoot = Animator.StringToHash("isShoot");
-        private readonly int IsAim = Animator.StringToHash("isAim");
+        private readonly int _isMove = Animator.StringToHash("isMove");
+        private readonly int _isShoot = Animator.StringToHash("isShoot");
 
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
 
+        protected CharacterController _controller;
         private Controls _controls;
         private Animator _animator;
         private Transform _transform;
-        protected CharacterController _controller;
 
         private Vector2 _moveDirection;
         private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
+        private float _restTimer = 0f;
 
         private void Awake()
         {
@@ -47,8 +46,8 @@ namespace MythicalBattles
 
         private void SetMovingState(bool value)
         {
-            _animator.SetBool(IsMove, value);
-            _animator.SetBool(IsShoot, _animator.GetBool(IsAim));
+            _animator.SetBool(_isMove, value);
+            _animator.SetBool(_isShoot, !value);
         }
 
         private void Move()
@@ -62,7 +61,7 @@ namespace MythicalBattles
                 return;
             }
 
-            if (_animator.GetBool(IsMove) == false)
+            if (_animator.GetBool(_isMove) == false)
                 SetMovingState(true);
 
             _currentInputVector = Vector2.SmoothDamp(_currentInputVector, _moveDirection, ref _smoothInputVelocity, _smoothInputSpeed);

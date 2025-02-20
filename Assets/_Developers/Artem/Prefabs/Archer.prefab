@@ -928,11 +928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac4908878e1b204e95a3110149ea6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimRadius: 12
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   _rotationSpeed: 500
+  _aimRadius: 12
 --- !u!114 &3061964522186876054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd81ee8f471a1a749a562547ed28bfb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pool: {fileID: 0}
+  _arrowsPool: {fileID: 0}
+  _ParticlePool: {fileID: 0}
   _shootPoint: {fileID: 6423800405325361614}
   _movement: {fileID: 0}
   _shootSpeed: 1

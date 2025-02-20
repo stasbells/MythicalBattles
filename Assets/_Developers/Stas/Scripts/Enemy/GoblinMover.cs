@@ -5,9 +5,9 @@ namespace MythicalBattles
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class GoblinMover : MonoBehaviour
     {
-        private readonly int IsAttack = Animator.StringToHash("isAttack");
-        private readonly int IsDead = Animator.StringToHash("isDead");
-        private readonly int DefaultLayer = 0;
+        private readonly int _isAttack = Animator.StringToHash("isAttack");
+        private readonly int _isDead = Animator.StringToHash("isDead");
+        private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
@@ -39,9 +39,9 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(IsDead) == true)
+            if (_animator.GetBool(_isDead) == true)
             {
-                gameObject.layer = DefaultLayer;
+                gameObject.layer = _defaultLayer;
                 _capsuleCollider.enabled = false;
 
                 return;
@@ -68,7 +68,7 @@ namespace MythicalBattles
             }
             else
             {
-                MoveTo(GetDirectionsToPlayer());
+                MoveTo(GetDirectionToPlayer());
             }
         }
 
@@ -99,16 +99,16 @@ namespace MythicalBattles
 
         private void Attack()
         {
-            _animator.SetBool(IsAttack, true);
+            _animator.SetBool(_isAttack, true);
 
-            RotateTowards(GetDirectionsToPlayer());
+            RotateTowards(GetDirectionToPlayer());
         }
 
         private Vector3 GetFreeRandomDirection()
         {
             Vector3 direction = GetRandomDirection();
 
-            while (IsObstacleIn(direction))
+            while (TryFindObstacleIn(direction))
                 direction = GetRandomDirection();
 
             return direction;
@@ -125,21 +125,21 @@ namespace MythicalBattles
             _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
 
-        private Vector3 GetDirectionsToPlayer()
+        private Vector3 GetDirectionToPlayer()
         {
             return (_player.position - _transform.position).normalized;
         }
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(IsAttack, false);
+            _animator.SetBool(_isAttack, false);
 
             _transform.position += _moveSpeed * Time.deltaTime * direction;
 
             RotateTowards(direction);
         }
 
-        private bool IsObstacleIn(Vector3 direction)
+        private bool TryFindObstacleIn(Vector3 direction)
         {
             if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, _obstacleLayer))
             {

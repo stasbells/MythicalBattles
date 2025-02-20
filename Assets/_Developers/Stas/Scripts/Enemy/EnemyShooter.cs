@@ -3,18 +3,16 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class PlayerShooter : MonoBehaviour
+    public class EnemyShooter : MonoBehaviour
     {
-        private readonly int _isShoot = Animator.StringToHash("isShoot");
-        private readonly int _isAim = Animator.StringToHash("isAim");
+        private readonly int _isAttack = Animator.StringToHash("isAttack");
+        private readonly int _isDead = Animator.StringToHash("isDead");
 
-        [SerializeField] private ObjectPool _arrowsPool;
         [SerializeField] private ObjectPool _particlePool;
         [SerializeField] private Transform _shootPoint;
-        [SerializeField] private PlayerMover _movement;
 
         [SerializeField] private float _shootSpeed = 1f;
-        [SerializeField] private float _rateOfFire = 1f;
+        [SerializeField] private float _rateOfFire = 3f;
 
         private Animator _animator;
         private Coroutine _shooter;
@@ -25,16 +23,19 @@ namespace MythicalBattles
         {
             _animator = GetComponent<Animator>();
             _sleep = new WaitForSeconds(_rateOfFire);
-            _animator.SetBool(_isShoot, false);
+            _animator.SetBool(_isAttack, false);
         }
 
         private void Update()
         {
-            if (_animator.GetBool(_isShoot) && _animator.GetBool(_isAim))
+            if (_animator.GetBool(_isDead))
+                return;
+
+            if (_animator.GetBool(_isAttack))
             {
                 _restTimer += Time.deltaTime;
 
-                if (_restTimer >= 0.3f)
+                if (_restTimer >= 0.6f)
                     OnShoot();
             }
             else if (_shooter != null)
@@ -62,14 +63,12 @@ namespace MythicalBattles
 
         private void Shoot()
         {
-            Arrow arrow = (Arrow)_arrowsPool.GetItem();
-            ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
+            EnemyProjectile particle = (EnemyProjectile)_particlePool.GetItem();
 
-            arrow.gameObject.SetActive(true);
-            arrow.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
-            arrow.SetParticle(particle);
+            particle.gameObject.SetActive(true);
+            particle.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
 
-            Rigidbody rigidbody = arrow.GetComponent<Rigidbody>();
+            Rigidbody rigidbody = particle.GetComponent<Rigidbody>();
             rigidbody.velocity = _shootPoint.forward * _shootSpeed;
         }
     }

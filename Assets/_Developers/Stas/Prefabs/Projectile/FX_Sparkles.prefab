@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4406529902471110}
+  - component: {fileID: 8247565070340739521}
   - component: {fileID: 198078226072370262}
   - component: {fileID: 199776928502730230}
-  m_Layer: 0
-  m_Name: FX_Sparkles_Trail_01
+  m_Layer: 8
+  m_Name: FX_Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,12 +28,24 @@ Transform:
   m_GameObject: {fileID: 1346485204940934}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2384, y: 0, z: -1.2106}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8247565070340739521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346485204940934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daedb92e2dc7c104aad58b9ae900717a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198078226072370262
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -43,7 +56,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 1
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}

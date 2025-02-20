@@ -5,19 +5,19 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator))]
     public class PlayerAutoAim : MonoBehaviour
     {
-        private readonly int IsAim = Animator.StringToHash("isAim");
+        private readonly int _isAim = Animator.StringToHash("isAim");
 
-        [SerializeField] private float _aimRadius;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private float _rotationSpeed = 5f;
+        [SerializeField] private float _aimRadius;
 
-        private float _rotationToTarget;
-
-        private Transform _transform;
+        private Collider[] _hitColliders;
+        private Animator _animator;
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
-        private Animator _animator;
-        private Collider[] _hitColliders;
+        private Transform _transform;
+
+        private float _rotationToTarget;
 
         private void Awake()
         {
@@ -67,13 +67,13 @@ namespace MythicalBattles
 
         private void TryShoot()
         {
-            _animator.SetBool(IsAim, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
+            _animator.SetBool(_isAim, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
         }
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_transform.position, _aimRadius);
+            Gizmos.DrawWireSphere(transform.position, _aimRadius);
         }
     }
 }

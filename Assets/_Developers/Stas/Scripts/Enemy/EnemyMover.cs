@@ -5,11 +5,11 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform))]
     public abstract class EnemyMover : MonoBehaviour
     {
-        [SerializeField] protected float MoveSpeed = 3.0f;
-
         private readonly int _isAttack = Animator.StringToHash("isAttack");
         private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
+
+        [SerializeField] protected float _moveSpeed = 3.0f;
 
         [SerializeField] private Transform _player;
         [SerializeField] private float _attackRange = 2.0f;
@@ -68,7 +68,7 @@ namespace MythicalBattles
 
             RotateTowardsPlayer();
 
-            _transform.position += MoveSpeed * Time.deltaTime * GetDirection();
+            _transform.position += _moveSpeed * Time.deltaTime * GetDirection();
         }
 
         private void RotateTowardsPlayer()
