@@ -4,20 +4,18 @@ namespace MythicalBattles
 {
     public class Arrow : Projectile
     {
-        private readonly int _playerLayer = 7;
-
         private ParticleEffect _effect;
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer != _playerLayer)
+            if (_effect != null)
             {
-                _effect.gameObject.GetComponent<ParticleSystem>().Stop();
-                _effect.gameObject.transform.parent = null;
+                _effect.GetComponent<ParticleSystem>().Stop();
+                _effect.transform.parent = null;
                 _effect = null;
-
-                _pool.ReturnItem(this);
             }
+
+            _pool.ReturnItem(this);
         }
 
         public void SetParticle(ParticleEffect effect)

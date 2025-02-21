@@ -3,27 +3,39 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class EnemyShooter : MonoBehaviour
+    abstract public class EnemyShooter : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
-        private readonly int _isDead = Animator.StringToHash("isDead");
+        protected readonly int _isAttack = Animator.StringToHash("isAttack");
+        protected readonly int _isDead = Animator.StringToHash("isDead");
 
-        [SerializeField] private ObjectPool _particlePool;
-        [SerializeField] private Transform _shootPoint;
+        [SerializeField] protected ObjectPool _projectilePool;
+        [SerializeField] protected ObjectPool _particlePool;
+        [SerializeField] protected Transform _shootPoint;
+        [SerializeField] protected ParticleSystem _prefire;
+        [SerializeField] protected ParticleSystem _afterfire;
 
-        [SerializeField] private float _shootSpeed = 1f;
+        [SerializeField] protected float _shootSpeed = 1f;
         [SerializeField] private float _rateOfFire = 3f;
+        [SerializeField] private float _shootDelay = 0.6f;
 
-        private Animator _animator;
+        protected Transform _transform;
+        protected Animator _animator;
         private Coroutine _shooter;
         private WaitForSeconds _sleep;
         private float _restTimer = 0f;
 
         private void Awake()
         {
+            if (_prefire != null)
+            {
+                _prefire.Stop();
+                _afterfire.Stop();
+            }
+
+            _transform = transform;
             _animator = GetComponent<Animator>();
-            _sleep = new WaitForSeconds(_rateOfFire);
             _animator.SetBool(_isAttack, false);
+            _sleep = new WaitForSeconds(_rateOfFire);
         }
 
         private void Update()
@@ -35,7 +47,13 @@ namespace MythicalBattles
             {
                 _restTimer += Time.deltaTime;
 
-                if (_restTimer >= 0.6f)
+                if (_prefire != null && _prefire.isStopped)
+                {
+                    _prefire.Play();
+                    _afterfire.Play();
+                }
+
+                if (_restTimer >= _shootDelay)
                     OnShoot();
             }
             else if (_shooter != null)
@@ -46,14 +64,11 @@ namespace MythicalBattles
             }
         }
 
-        private void OnShoot()
-        {
-            _shooter ??= StartCoroutine(AutoShoot());
-        }
+        protected virtual void Shoot() { }
 
-        public IEnumerator AutoShoot()
+        private IEnumerator AutoShoot()
         {
-            while (true)
+            while (!_animator.GetBool(_isDead))
             {
                 Shoot();
 
@@ -61,15 +76,6 @@ namespace MythicalBattles
             }
         }
 
-        private void Shoot()
-        {
-            EnemyProjectile particle = (EnemyProjectile)_particlePool.GetItem();
-
-            particle.gameObject.SetActive(true);
-            particle.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
-
-            Rigidbody rigidbody = particle.GetComponent<Rigidbody>();
-            rigidbody.velocity = _shootPoint.forward * _shootSpeed;
-        }
+        private void OnShoot() => _shooter ??= StartCoroutine(AutoShoot());
     }
 }

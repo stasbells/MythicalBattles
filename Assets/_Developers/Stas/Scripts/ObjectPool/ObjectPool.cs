@@ -7,6 +7,7 @@ namespace MythicalBattles
     {
         [SerializeField] private Projectile _prefab;
         [SerializeField] private int _itemsCount;
+        [SerializeField] private int _projectileLayer;
 
         private List<Projectile> _items;
 
@@ -41,6 +42,7 @@ namespace MythicalBattles
                 var item = Instantiate(_prefab, transform);
 
                 item.SetPool(this);
+                item.gameObject.layer = _projectileLayer;
                 item.gameObject.SetActive(false);
 
                 _items.Add(item);

@@ -11,7 +11,6 @@ namespace MythicalBattles
         [SerializeField] private ObjectPool _arrowsPool;
         [SerializeField] private ObjectPool _particlePool;
         [SerializeField] private Transform _shootPoint;
-        [SerializeField] private PlayerMover _movement;
 
         [SerializeField] private float _shootSpeed = 1f;
         [SerializeField] private float _rateOfFire = 1f;

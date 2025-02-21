@@ -19,7 +19,6 @@ namespace MythicalBattles
         private Vector2 _moveDirection;
         private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
-        private float _restTimer = 0f;
 
         private void Awake()
         {
