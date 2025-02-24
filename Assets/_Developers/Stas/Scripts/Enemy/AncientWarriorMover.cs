@@ -6,6 +6,8 @@ namespace MythicalBattles
     public class AncientWarriorMover : MonoBehaviour
     {
         private readonly int _isAttack = Animator.StringToHash("isAttack");
+        private readonly int _isDead = Animator.StringToHash("isDead");
+        private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
@@ -20,6 +22,7 @@ namespace MythicalBattles
         private Transform _transform;
         private Animator _animator;
         private Vector3 _randomDirection;
+        private CapsuleCollider _capsuleCollider;
 
         private float _moveTimer;
         private float _stopTimer;
@@ -28,16 +31,25 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
+            if (_animator.GetBool(_isDead) == true)
+            {
+                gameObject.layer = _defaultLayer;
+                _capsuleCollider.enabled = false;
+
+                return;
+            }
+
             if (_isMoving)
                 MoveRandomly();
             else
-                StopAndShoot();
+                Shoot();
         }
 
         private void MoveRandomly()
@@ -66,7 +78,7 @@ namespace MythicalBattles
             }
         }
 
-        private void StopAndShoot()
+        private void Shoot()
         {
             _stopTimer += Time.deltaTime;
 
@@ -81,16 +93,15 @@ namespace MythicalBattles
 
         private void Attack()
         {
+            RotateTowards(GetDirectionToPlayer());
             _animator.SetBool(_isAttack, true);
-
-            RotateTowards(GetDirectionsToPlayer());
         }
 
         private Vector3 GetFreeRandomDirection()
         {
             Vector3 direction = GetRandomDirection();
 
-            while (IsObstacleIn(direction))
+            while (TryFindObstacleIn(direction))
                 direction = GetRandomDirection();
 
             return direction;
@@ -107,7 +118,7 @@ namespace MythicalBattles
             _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
 
-        private Vector3 GetDirectionsToPlayer()
+        private Vector3 GetDirectionToPlayer()
         {
             return (_player.position - _transform.position).normalized;
         }
@@ -121,7 +132,7 @@ namespace MythicalBattles
             _transform.position += Time.deltaTime * _moveSpeed * direction;
         }
 
-        private bool IsObstacleIn(Vector3 direction)
+        private bool TryFindObstacleIn(Vector3 direction)
         {
             if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, _obstacleLayer))
             {

@@ -5,37 +5,49 @@ namespace MythicalBattles
 {
     public class PlayerShooter : MonoBehaviour
     {
-        [SerializeField] private ObjectPool _pool;
+        private readonly int _isMove = Animator.StringToHash("isMove");
+        //private readonly int _isShoot = Animator.StringToHash("isShoot");
+        private readonly int _isAim = Animator.StringToHash("isAim");
+
+        [SerializeField] private ObjectPool _arrowsPool;
+        [SerializeField] private ObjectPool _particlePool;
         [SerializeField] private Transform _shootPoint;
-        [SerializeField] private PlayerMovementTest _movement;
 
         [SerializeField] private float _shootSpeed = 1f;
         [SerializeField] private float _rateOfFire = 1f;
 
+        private Animator _animator;
         private Coroutine _shooter;
         private WaitForSeconds _sleep;
+        private float _restTimer = 0f;
 
-        private void Start()
+        private void Awake()
         {
+            _animator = GetComponent<Animator>();
             _sleep = new WaitForSeconds(_rateOfFire);
+            _animator.SetBool(_isAim, false);
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            _movement.Shooting += OnShoot;
-        }
+            if (!_animator.GetBool(_isMove) && _animator.GetBool(_isAim))
+            {
+                _restTimer += Time.deltaTime;
 
-        private void OnDisable()
-        {
-            _movement.Shooting -= OnShoot;
+                if (_restTimer >= 0.3f)
+                    OnShoot();
+            }
+            else if (_shooter != null)
+            {
+                StopCoroutine(_shooter);
+                _shooter = null;
+                _restTimer = 0f;
+            }
         }
 
         private void OnShoot()
         {
-            if (_shooter != null)
-                StopCoroutine(_shooter);
-
-            _shooter = StartCoroutine(AutoShoot());
+            _shooter ??= StartCoroutine(AutoShoot());
         }
 
         public IEnumerator AutoShoot()
@@ -46,15 +58,16 @@ namespace MythicalBattles
 
                 yield return _sleep;
             }
-
         }
 
         private void Shoot()
         {
-            var arrow = _pool.GetItem();
+            Arrow arrow = (Arrow)_arrowsPool.GetItem();
+            ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
 
+            arrow.gameObject.SetActive(true);
             arrow.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
-            arrow.SetActive(true);
+            arrow.SetParticle(particle);
 
             Rigidbody rigidbody = arrow.GetComponent<Rigidbody>();
             rigidbody.velocity = _shootPoint.forward * _shootSpeed;
