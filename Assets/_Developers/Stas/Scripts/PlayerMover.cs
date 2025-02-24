@@ -6,12 +6,15 @@ namespace MythicalBattles
     public class PlayerMover : MonoBehaviour
     {
         private readonly int _isMove = Animator.StringToHash("isMove");
-        private readonly int _isShoot = Animator.StringToHash("isShoot");
+        //private readonly int _isShoot = Animator.StringToHash("isShoot");
+        private readonly int _isDead = Animator.StringToHash("isDead");
+        private readonly int _defaultLayer = 0;
 
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
 
         protected CharacterController _controller;
+        private CapsuleCollider _capsuleCollider;
         private Controls _controls;
         private Animator _animator;
         private Transform _transform;
@@ -23,6 +26,7 @@ namespace MythicalBattles
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
         }
@@ -40,13 +44,21 @@ namespace MythicalBattles
 
         private void Update()
         {
+            if (_animator.GetBool(_isDead) == true)
+            {
+                gameObject.layer = _defaultLayer;
+                _capsuleCollider.enabled = false;
+
+                return;
+            }
+
             Move();
         }
 
         private void SetMovingState(bool value)
         {
             _animator.SetBool(_isMove, value);
-            _animator.SetBool(_isShoot, !value);
+            //_animator.SetBool(_isShoot, !value);
         }
 
         private void Move()

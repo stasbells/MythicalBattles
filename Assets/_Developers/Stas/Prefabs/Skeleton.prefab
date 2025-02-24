@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 3570379304240420412}
   - component: {fileID: 8962337161973997395}
   - component: {fileID: 4985248093915631573}
+  - component: {fileID: 8685236053578986041}
   - component: {fileID: 7160146574445672139}
   - component: {fileID: 6887080056222959762}
   - component: {fileID: 1229125760942934957}
@@ -680,6 +681,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8685236053578986041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703131478790005849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0038510a326acb94cbc45c9a65ad6d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 100
 --- !u!114 &7160146574445672139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,10 +706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f41750f1762554c96436e8fb70064c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _moveSpeed: 2.5
+  _damage: 0
+  _player: {fileID: 0}
   _attackRange: 1.7
-  _attackDamage: 10
   _attackCooldown: 1
 --- !u!136 &6887080056222959762
 CapsuleCollider:

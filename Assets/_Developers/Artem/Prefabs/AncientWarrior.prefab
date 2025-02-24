@@ -369,6 +369,8 @@ GameObject:
   - component: {fileID: 7108774379072329100}
   - component: {fileID: 2238734437193767042}
   - component: {fileID: 2755791877097384291}
+  - component: {fileID: 399885055124820911}
+  - component: {fileID: 5497386600346862572}
   - component: {fileID: 3732544168456419976}
   - component: {fileID: 7489759233889146171}
   - component: {fileID: 7780274270582815095}
@@ -430,6 +432,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &399885055124820911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556532935942178190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0038510a326acb94cbc45c9a65ad6d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 0
+--- !u!114 &5497386600346862572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556532935942178190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6969786fe48844294e9eff0c53038b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePool: {fileID: 0}
+  _particlePool: {fileID: 0}
+  _shootPoint: {fileID: 7462337520997259198}
+  _prefire: {fileID: 0}
+  _afterfire: {fileID: 0}
+  _shootSpeed: 17
+  _rateOfFire: 3
+  _shootDelay: 0.6
 --- !u!114 &3732544168456419976
 MonoBehaviour:
   m_ObjectHideFlags: 0

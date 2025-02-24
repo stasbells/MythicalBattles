@@ -864,6 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4603895787959383515}
   - component: {fileID: 4241141189904327345}
+  - component: {fileID: 6701318475996909686}
   - component: {fileID: 1110657346221700707}
   - component: {fileID: 3061964522186876054}
   - component: {fileID: 5734712686632927319}
@@ -916,6 +917,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6701318475996909686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2152971030917394324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0038510a326acb94cbc45c9a65ad6d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 100
 --- !u!114 &1110657346221700707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,9 +974,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowsPool: {fileID: 0}
-  _ParticlePool: {fileID: 0}
+  _particlePool: {fileID: 0}
   _shootPoint: {fileID: 6423800405325361614}
-  _movement: {fileID: 0}
   _shootSpeed: 1
   _rateOfFire: 1
 --- !u!136 &5378286481559482326

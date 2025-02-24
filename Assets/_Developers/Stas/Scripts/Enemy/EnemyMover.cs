@@ -10,6 +10,7 @@ namespace MythicalBattles
         private readonly int _defaultLayer = 0;
 
         [SerializeField] protected float _moveSpeed = 3.0f;
+        [SerializeField] private int _damage;
 
         [SerializeField] private Transform _player;
         [SerializeField] private float _attackRange = 2.0f;
@@ -37,19 +38,17 @@ namespace MythicalBattles
                 return;
             }
 
+            _attackTimer += Time.deltaTime;
+
             float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
 
-            if (distanceToPlayer <= _attackRange || _attackTimer > 0f)
+            if (distanceToPlayer <= _attackRange)
             {
                 if (_attackTimer >= _attackCooldown)
                 {
                     _attackTimer = 0f;
-                }
-                else
-                {
-                    _attackTimer += Time.deltaTime;
                     Attack();
-                }
+                }                        
             }
             else
             {
@@ -60,6 +59,8 @@ namespace MythicalBattles
         protected virtual void Attack()
         {
             _animator.SetBool(_isAttack, true);
+
+            _player.GetComponent<Health>().TakeDamage(_damage);
         }
 
         protected virtual void MoveTowardsPlayer()
