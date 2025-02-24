@@ -6,6 +6,8 @@ namespace MythicalBattles
     {
         private ParticleEffect _effect;
 
+        public Rigidbody Rigidbody { get; internal set; }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (_effect != null)

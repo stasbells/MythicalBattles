@@ -26,6 +26,14 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            foreach (var item in _projectilePool.Items)
+            {
+                var arrow = item as Arrow;
+
+                if (arrow != null)
+                    arrow.Rigidbody = arrow.GetComponent<Rigidbody>();
+            }
+
             if (_prefire != null)
             {
                 _prefire.Stop();
