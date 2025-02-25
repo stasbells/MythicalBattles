@@ -57,17 +57,21 @@
             <e p="Animations" t="Include" />
             <e p="Materials" t="Include" />
             <e p="Models" t="Include" />
-            <e p="Prefabs" t="Include" />
+            <e p="Prefabs" t="Include">
+              <e p="Projectile" t="Include" />
+            </e>
             <e p="Scenes" t="Include" />
             <e p="Scripts" t="Include">
-              <e p="Arrow.cs" t="Include" />
               <e p="Enemy" t="Include">
                 <e p="AncientWarriorMover.cs" t="Include" />
+                <e p="AncientWarriorShooter.cs" t="Include" />
                 <e p="Enemy.cs" t="Include" />
                 <e p="EnemyMover.cs" t="Include" />
+                <e p="EnemyShooter.cs" t="Include" />
                 <e p="GoblinMover.cs" t="Include" />
                 <e p="SceletonMover.cs" t="Include" />
                 <e p="SpiritMover.cs" t="Include" />
+                <e p="SpiritShooter.cs" t="Include" />
               </e>
               <e p="ObjectPool" t="Include">
                 <e p="ObjectPool.cs" t="Include" />
@@ -75,8 +79,15 @@
               <e p="PlayerAutoAim.cs" t="Include" />
               <e p="PlayerFollower.cs" t="Include" />
               <e p="PlayerMoveController.cs" t="Include" />
-              <e p="PlayerMovementTest.cs" t="Include" />
+              <e p="PlayerMover.cs" t="Include" />
               <e p="PlayerShooter.cs" t="Include" />
+              <e p="Projectiles" t="Include">
+                <e p="Arrow.cs" t="Include" />
+                <e p="EnemyProjectile.cs" t="Include" />
+                <e p="Health.cs" t="Include" />
+                <e p="ParticleEffect.cs" t="Include" />
+                <e p="Projectile.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
