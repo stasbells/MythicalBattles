@@ -19,11 +19,12 @@ namespace MythicalBattles
         [SerializeField] private float _attackCooldown = 2f;
         [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private int _damage;
 
         private Transform _transform;
         private Animator _animator;
-        private Vector3 _randomDirection;
         private CapsuleCollider _capsuleCollider;
+        private Vector3 _randomDirection;
 
         private float _moveTimer;
         private float _attackTimer;
@@ -59,7 +60,7 @@ namespace MythicalBattles
                 else
                 {
                     _attackTimer += Time.deltaTime;
-                    Attack();
+                    _animator.SetBool(_isAttack, true);
                 }
             }
             else if (_isMovingAway)
@@ -97,11 +98,9 @@ namespace MythicalBattles
             }
         }
 
-        private void Attack()
+        public void Attack()
         {
-            _animator.SetBool(_isAttack, true);
-
-            RotateTowards(GetDirectionToPlayer());
+            _player.GetComponent<Health>().TakeDamage(_damage);
         }
 
         private Vector3 GetFreeRandomDirection()

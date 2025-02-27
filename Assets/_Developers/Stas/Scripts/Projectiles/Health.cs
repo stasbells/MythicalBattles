@@ -17,6 +17,8 @@ namespace MythicalBattles
         public float MaxHealthValue => _maxHealthValue;
 
         public event UnityAction<float> HealthValueChanged;
+        public event UnityAction<float> Damaged;
+        public event UnityAction<float> Healed;
 
         public void Awake()
         {
@@ -28,11 +30,13 @@ namespace MythicalBattles
         public void TakeDamage(float damage)
         {
             ChangeHealthValue(_currentHealth - damage);
+            Damaged?.Invoke(damage);
         }
 
         public void Heal(float health)
         {
             ChangeHealthValue(_currentHealth + health);
+            Healed?.Invoke(health);
         }
 
         private void Die()
