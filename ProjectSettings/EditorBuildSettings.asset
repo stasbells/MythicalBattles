@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Developers/Stas/Scenes/StasTestScene.unity
     guid: 582fc38fbbc8dc940bfa12474d3c59b8
+  - enabled: 1
+    path: Assets/_Developers/Artem/Scenes/ArtemTestScene.unity
+    guid: 90c1ada36cf3e3a4997130a26c7f7686
   m_configObjects: {}

@@ -1,3 +1,4 @@
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -6,8 +7,8 @@ namespace MythicalBattles
     {
         [SerializeField] private Shop _shop;
 
-        private IDataProvider _dataProvider;
-        private IPersistentData _persistentData;
+        [Inject] private IDataProvider _dataProvider;
+        [Inject] private IPersistentData _persistentData;
 
         private Wallet _wallet;
 
@@ -22,9 +23,6 @@ namespace MythicalBattles
 
         private void InitializeData()
         {
-            _persistentData = new PersistentData();
-            _dataProvider = new DataLocalProvider(_persistentData);
-
             LoadDataorUnit();
         }
 

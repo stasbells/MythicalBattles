@@ -31,7 +31,6 @@ namespace MythicalBattles
         
         private void OnEquipmentButtonClick()
         {
-            Debug.Log("Работает");
             _shopPanel.Show(_contentItems.GetEquipmentItems().Cast<ShopItem>());
         }
     }

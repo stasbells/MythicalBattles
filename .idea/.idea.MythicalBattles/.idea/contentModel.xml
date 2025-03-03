@@ -277,7 +277,9 @@
         <e p="MythicalBattles" t="Include">
           <e p="Scenes" t="Include" />
         </e>
-        <e p="Resources" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="ProjectInstaller.cs" t="Include" />
+        </e>
         <e p="Synty" t="Include">
           <e p="AnimationBaseLocomotion" t="Include">
             <e p="Animations" t="Include">
