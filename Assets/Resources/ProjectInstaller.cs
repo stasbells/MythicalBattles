@@ -9,6 +9,8 @@ namespace MythicalBattles
         
         public void InstallBindings(ContainerBuilder builder)
         {
+            builder.AddSingleton("Hello");
+            
             //сюда будем добавлять наши сервисы
         }
     }

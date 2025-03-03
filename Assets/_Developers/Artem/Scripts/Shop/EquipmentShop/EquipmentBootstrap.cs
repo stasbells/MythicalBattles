@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class ShopBootstrap : MonoBehaviour
+    public class EquipmentBootstrap : MonoBehaviour
     {
         [SerializeField] private Shop _shop;
 
