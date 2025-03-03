@@ -6,7 +6,7 @@ namespace MythicalBattles
     public class PlayerMover : MonoBehaviour
     {
         private readonly int _isMove = Animator.StringToHash("isMove");
-        //private readonly int _isShoot = Animator.StringToHash("isShoot");
+        private readonly int _isShoot = Animator.StringToHash("isShoot");
         private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
@@ -46,8 +46,7 @@ namespace MythicalBattles
         {
             if (_animator.GetBool(_isDead) == true)
             {
-                gameObject.layer = _defaultLayer;
-                _capsuleCollider.enabled = false;
+                Die();
 
                 return;
             }
@@ -58,7 +57,6 @@ namespace MythicalBattles
         private void SetMovingState(bool value)
         {
             _animator.SetBool(_isMove, value);
-            //_animator.SetBool(_isShoot, !value);
         }
 
         private void Move()
@@ -82,7 +80,14 @@ namespace MythicalBattles
 
             Vector3 move = new Vector3(_moveDirection.x, 0, _moveDirection.y);
             _controller.Move(_moveSpeed * Time.deltaTime * move);
-            
+        }
+
+        private void Die()
+        {
+            _animator.SetBool(_isMove, false);
+            _animator.SetBool(_isShoot, false);
+            _capsuleCollider.enabled = false;
+            gameObject.layer = _defaultLayer;
         }
     }
 }
