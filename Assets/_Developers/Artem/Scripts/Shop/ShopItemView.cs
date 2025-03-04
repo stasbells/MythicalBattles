@@ -9,8 +9,6 @@ namespace MythicalBattles
     public class ShopItemView : MonoBehaviour, IPointerClickHandler
     {
         public event Action<ShopItemView> Clicked;
-        
-        [SerializeField] private Sprite _highlightBackground;
 
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _lockImage;
@@ -24,8 +22,8 @@ namespace MythicalBattles
         public ShopItem Item { get; private set; }
         public bool IsLock { get; private set; }
         public bool IsSelected { get; private set; }
+        public bool IsAvailableToBuy { get; private set; }
         public int Price => Item.Price;
-
         public GameObject Model => Item.Model;
 
         public void Initialize(ShopItem item)
@@ -70,17 +68,16 @@ namespace MythicalBattles
 
         public void ShowPrice()
         {
+            IsAvailableToBuy = true;
             _priceView.Show(Price);
         }
         
         public void HidePrice()
         {
+            IsAvailableToBuy = false;
             _priceView.Hide();
         }
-        
-        public void HighLight() => _currentBackgroundImage.sprite = _highlightBackground;
-        public void UnHighLight() => _currentBackgroundImage.sprite = _backgroundImage.sprite;
-        
+
         private void ChangeLockVisibility(bool visibility)
         {
             _lockImage.gameObject.SetActive(visibility);

@@ -8,10 +8,10 @@ namespace MythicalBattles
     public class PlayerData
     {
         private int _money;
-        
+
         public PlayerData(IEnumerable<EquipmentItem> items)
         {
-            _money = 0;
+            _money = 10000;
 
             var equipmentItems = items.ToList();
             
@@ -56,35 +56,42 @@ namespace MythicalBattles
         public NecklaceItem SelectedNecklace { get; private set; }
         public RingItem SelectedRing { get; private set; }
 
-
+        public event Action SelectedItemChanged; 
+        
         public void SelectWeapon(WeaponItem weapon)
         {
             SelectedWeapon = weapon;
+            SelectedItemChanged?.Invoke();
         }
         
         public void SelectArmor(ArmorItem armor)
         {
             SelectedArmor = armor;
+            SelectedItemChanged?.Invoke();
         }
         
         public void SelectHelmet(HelmetItem helmet)
         {
             SelectedHelmet = helmet;
+            SelectedItemChanged?.Invoke();
         }
         
         public void SelectBoots(BootsItem boots)
         {
             SelectedBoots = boots;
+            SelectedItemChanged?.Invoke();
         }
         
         public void SelectNecklace(NecklaceItem necklace)
         {
             SelectedNecklace = necklace;
+            SelectedItemChanged?.Invoke();
         }
         
         public void SelectRing(RingItem ring)
         {
             SelectedRing = ring;
+            SelectedItemChanged?.Invoke();
         }
 
         public void AddMoney(int money)

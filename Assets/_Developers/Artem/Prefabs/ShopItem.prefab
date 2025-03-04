@@ -87,6 +87,9 @@ GameObject:
   - component: {fileID: 358945132409393830}
   - component: {fileID: 4719484231385316583}
   - component: {fileID: 828455301213426810}
+  - component: {fileID: -4713131849363861056}
+  - component: {fileID: 3487832472398547846}
+  - component: {fileID: -1349210787600265993}
   m_Layer: 5
   m_Name: ShopItem
   m_TagString: Untagged
@@ -167,12 +170,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b2e2f8bdd72fd4c839cbaec7ecffb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlightBackground: {fileID: 21300000, guid: 5bfc9b2559fa4574bb3fa3ab76915787, type: 3}
   _contentImage: {fileID: 3349794493033873232}
   _lockImage: {fileID: 8869421277143130609}
   _backgroundImage: {fileID: 4719484231385316583}
   _selectedImage: {fileID: 2180376475367533525}
   _priceView: {fileID: 6644500842370349427}
+--- !u!114 &-4713131849363861056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535416912739911397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a168653481e21442b0af01c4a87278e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationDuration: 0.5
+  hoverColor: {r: 1, g: 0.9, b: 0.5, a: 1}
+--- !u!114 &3487832472398547846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535416912739911397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1e2d976166f5249a0f6d95ccf804b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationDuration: 0.5
+  _scaleMultiplier: 1.1
+--- !u!114 &-1349210787600265993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535416912739911397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b372c7ae29c0a094e8742f432bf0e20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2680920639059498325
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -17,6 +18,13 @@ namespace MythicalBattles
         private void OnEnable()
         {
             ShowEquipmentItems();
+
+            _persistentData.PlayerData.SelectedItemChanged += OnSelectedItemChange;
+        }
+
+        private void OnDisable()
+        {
+            _persistentData.PlayerData.SelectedItemChanged -= OnSelectedItemChange;
         }
 
         private void ShowEquipmentItems()
@@ -41,6 +49,9 @@ namespace MythicalBattles
             itemView.SetImages(item.ItemImage, item.BackgroundImage);
         }
         
-        
+        private void OnSelectedItemChange()
+        {
+            ShowEquipmentItems();
+        }
     }
 }

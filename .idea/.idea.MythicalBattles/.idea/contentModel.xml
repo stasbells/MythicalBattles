@@ -4,7 +4,9 @@
     <e p="C:\Users\Artem\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Artem\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_MythicalBattles.1510338620.00" t="ExcludeRecursive" />
     <e p="C:\Users\Artem\Documents\MythicalBattles" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Developers" t="Include">
@@ -21,13 +23,15 @@
                 <e p="PersistentData.cs" t="Include" />
                 <e p="PlayerData.cs" t="Include" />
               </e>
+              <e p="HoverColorAnimation.cs" t="Include" />
+              <e p="HoverScaleAnimation.cs" t="Include" />
               <e p="IntValueView.cs" t="Include" />
               <e p="InventoryItemView.cs" t="Include" />
               <e p="InventoryView.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
               <e p="Shop" t="Include">
                 <e p="EquipmentShop" t="Include">
-                  <e p="AllTypesSelectedItemGrade.cs" t="Include" />
+                  <e p="AllTypesSelectedItemsGrade.cs" t="Include" />
                   <e p="ArmorItem.cs" t="Include" />
                   <e p="BootsItem.cs" t="Include" />
                   <e p="EquipmentBootstrap.cs" t="Include" />
@@ -43,6 +47,8 @@
                   <e p="RingItem.cs" t="Include" />
                   <e p="WeaponItem.cs" t="Include" />
                 </e>
+                <e p="ItemPurchase.cs" t="Include" />
+                <e p="ItemSelector.cs" t="Include" />
                 <e p="Shop.cs" t="Include" />
                 <e p="ShopItem.cs" t="Include" />
                 <e p="ShopItemView.cs" t="Include" />
@@ -52,7 +58,9 @@
               </e>
               <e p="ValueView.cs" t="Include" />
               <e p="Wallet" t="Include">
+                <e p="IWallet.cs" t="Include" />
                 <e p="Wallet.cs" t="Include" />
+                <e p="WalletView.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -276,6 +284,26 @@
         </e>
         <e p="MythicalBattles" t="Include">
           <e p="Scenes" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Demigiant" t="Include">
+            <e p="DOTween" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Imgs" t="Include" />
+              </e>
+              <e p="Modules" t="Include">
+                <e p="DOTweenModuleAudio.cs" t="Include" />
+                <e p="DOTweenModuleEPOOutline.cs" t="Include" />
+                <e p="DOTweenModulePhysics.cs" t="Include" />
+                <e p="DOTweenModulePhysics2D.cs" t="Include" />
+                <e p="DOTweenModuleSprite.cs" t="Include" />
+                <e p="DOTweenModuleUI.cs" t="Include" />
+                <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+                <e p="DOTweenModuleUtils.cs" t="Include" />
+              </e>
+              <e p="Readme.txt" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Resources" t="Include">
           <e p="ProjectInstaller.cs" t="Include" />

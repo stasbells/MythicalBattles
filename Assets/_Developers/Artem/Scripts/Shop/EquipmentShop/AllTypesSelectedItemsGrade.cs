@@ -1,14 +1,16 @@
 namespace MythicalBattles
 {
-    public class AllTypesSelectedItemGrade : IShopItemVisitor
+    public class AllTypesSelectedItemsGrade : IShopItemVisitor
     {
         private IPersistentData _persistentData;
         private EquipmentGrades _selectedGrade;
         
-        public  AllTypesSelectedItemGrade(IPersistentData persistentData) => _persistentData = persistentData;
+        public  AllTypesSelectedItemsGrade(IPersistentData persistentData) => _persistentData = persistentData;
 
-        public EquipmentGrades GetGrade()
+        public EquipmentGrades GetGrade(ShopItem shopItem)
         {
+            Visit(shopItem);
+            
             return _selectedGrade;
         }
         

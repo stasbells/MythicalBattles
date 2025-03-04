@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -8,20 +9,24 @@ namespace MythicalBattles
     {
         [SerializeField] private Transform _itemsParent;
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
+
+        [Inject] private IPersistentData _persistentData;
         
-        private EquipmentItemsTypes _equipmentItemsTypes;
-        private AllTypesSelectedItemGrade _allTypesSelectedItemGrade;
-        private List<ShopItemView> _shopItems = new List<ShopItemView>();
+        private EquipmentItemsTypes _equipmentItemsTypes = new EquipmentItemsTypes();
+        private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
+        private List<ShopItemView> _shopItemViews = new List<ShopItemView>();
+        private IEnumerable<ShopItem> _shopItems;
         public event Action<ShopItemView> ItemViewClicked;
 
-        public void Initialize(AllTypesSelectedItemGrade allTypesSelectedItemGrade)
+        private void Awake()
         {
-            _equipmentItemsTypes = new EquipmentItemsTypes();
-            _allTypesSelectedItemGrade = allTypesSelectedItemGrade;
+            _allTypesSelectedItemsGrade = new AllTypesSelectedItemsGrade(_persistentData);
         }
-        
+
         public void Show(IEnumerable<ShopItem> items)
         {
+            _shopItems = items;
+            
             Clear();
 
             var typeIndices = new Dictionary<Type, (int selectedIndex, int currentIndex)>();
@@ -44,9 +49,7 @@ namespace MythicalBattles
 
                 var (selectedIndex, currentIndex) = typeIndices[itemType];
 
-                _allTypesSelectedItemGrade.Visit(item);
-
-                EquipmentGrades selectedGrade = _allTypesSelectedItemGrade.GetGrade();
+                EquipmentGrades selectedGrade = _allTypesSelectedItemsGrade.GetGrade(item);
 
                 if (selectedGrade == ((dynamic) item).EquipmentGrade)
                 {
@@ -77,33 +80,31 @@ namespace MythicalBattles
 
                 typeIndices[itemType] = (selectedIndex, currentIndex);
                 
-                _shopItems.Add(itemView);
+                _shopItemViews.Add(itemView);
             }
+            
+            Canvas.ForceUpdateCanvases();
         }
 
         private void Clear()
         {
-            foreach (ShopItemView item in _shopItems)
+            foreach (ShopItemView item in _shopItemViews)
             {
                 item.Clicked -= OnItemViewClick;
                 Destroy(item.gameObject);
             }
 
-            _shopItems.Clear();
+            _shopItemViews.Clear();
         }
 
         private void OnItemViewClick(ShopItemView itemView)
         {
-            Highlight(itemView);
             ItemViewClicked?.Invoke(itemView);
-        }
-
-        private void Highlight(ShopItemView shopItemView)
-        {
-            foreach (var itemView in _shopItems)
-                itemView.UnHighLight();
             
-            shopItemView.HighLight();
+            //тут вставить открытие окна описания элемента, а весь функционал ниже перенести в это окно
+
+            if (itemView.IsAvailableToBuy)
+                Show(_shopItems);
         }
     }
 }

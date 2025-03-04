@@ -7,9 +7,7 @@ namespace MythicalBattles
 {
     public class InventoryItemView : MonoBehaviour
     {
-        public event Action< InventoryItemView> Clicked;
-        
-        [SerializeField] private Sprite _highlightBackground;
+        public event Action<InventoryItemView> Clicked;
 
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _backgroundImage;
@@ -23,8 +21,5 @@ namespace MythicalBattles
         }
         
         public void OnPointerClick(PointerEventData eventData) => Clicked?.Invoke(this);
-
-        public void HighLight() => _currentBackgroundImage.sprite = _highlightBackground;
-        public void UnHighLight() => _currentBackgroundImage.sprite = _backgroundImage.sprite;
     }
 }
