@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class GoblinMover : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
-        private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
@@ -19,11 +17,12 @@ namespace MythicalBattles
         [SerializeField] private float _attackCooldown = 2f;
         [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private int _damage;
 
         private Transform _transform;
         private Animator _animator;
-        private Vector3 _randomDirection;
         private CapsuleCollider _capsuleCollider;
+        private Vector3 _randomDirection;
 
         private float _moveTimer;
         private float _attackTimer;
@@ -39,7 +38,7 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead) == true)
+            if (_animator.GetBool(Constants.IsDead))
             {
                 gameObject.layer = _defaultLayer;
                 _capsuleCollider.enabled = false;
@@ -59,7 +58,7 @@ namespace MythicalBattles
                 else
                 {
                     _attackTimer += Time.deltaTime;
-                    Attack();
+                    _animator.SetBool(Constants.IsAttack, true);
                 }
             }
             else if (_isMovingAway)
@@ -97,11 +96,9 @@ namespace MythicalBattles
             }
         }
 
-        private void Attack()
+        public void Attack()
         {
-            _animator.SetBool(_isAttack, true);
-
-            RotateTowards(GetDirectionToPlayer());
+            _player.GetComponent<Health>().TakeDamage(_damage);
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -132,7 +129,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(Constants.IsAttack, false);
 
             _transform.position += _moveSpeed * Time.deltaTime * direction;
 

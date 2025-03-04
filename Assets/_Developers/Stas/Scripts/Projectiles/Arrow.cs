@@ -15,7 +15,7 @@ namespace MythicalBattles
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _enemyLayer)
+            if (collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _enemyLayer)
                 collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
 
             if (_effect != null)

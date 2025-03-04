@@ -1,12 +1,12 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAutoAim : MonoBehaviour
     {
-        private readonly int _isAim = Animator.StringToHash("isAim");
-
+        [SerializeField] AimMarker _aimMarker;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private float _rotationSpeed = 5f;
         [SerializeField] private float _aimRadius;
@@ -16,21 +16,31 @@ namespace MythicalBattles
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
         private Transform _transform;
+        private Transform _aimMarkerTransform;
+        private Vector3 _aimMarkerScale;
 
         private float _rotationToTarget;
 
         private void Awake()
         {
-            _transform = transform;
             _animator = GetComponent<Animator>();
+            _aimMarkerTransform = _aimMarker.GetComponent<Transform>();
+            _aimMarkerScale = _aimMarkerTransform.localScale;
+            _aimMarker.gameObject.SetActive(false);
+            _transform = transform;
         }
 
         private void Update()
         {
+            if (_animator.GetBool(Constants.IsDead))
+                return;
+
             FindNearestEnemy();
 
-            if (_targetEnemy != null)
+            if (_targetEnemy)
                 TurnToTargetEnemy();
+            else
+                SetActiveTargetMarker(false);
 
             TryShoot();
         }
@@ -40,16 +50,17 @@ namespace MythicalBattles
             float closestDistance = Mathf.Infinity;
             _nearestEnemy = null;
 
-            _hitColliders = Physics.OverlapSphere(_transform.position, _aimRadius, _enemyLayer);
+            _hitColliders = new Collider[10];
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _aimRadius, _hitColliders, _enemyLayer);
 
-            foreach (var hitCollider in _hitColliders)
+            for (int i = 0; i < hitCount; i++)
             {
-                float distance = Vector3.Distance(_transform.position, hitCollider.transform.position);
+                float distance = Vector3.Distance(_transform.position, _hitColliders[i].transform.position);
 
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
-                    _nearestEnemy = hitCollider.transform;
+                    _nearestEnemy = _hitColliders[i].transform;
                 }
             }
 
@@ -63,17 +74,35 @@ namespace MythicalBattles
 
             _transform.rotation = Quaternion.RotateTowards(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
             _rotationToTarget = _transform.rotation.y - lookRotation.y;
+
+            MarkTarget();
         }
 
         private void TryShoot()
         {
-            _animator.SetBool(_isAim, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
+            _animator.SetBool(Constants.IsAim, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
         }
 
-        private void OnDrawGizmosSelected()
+        private void MarkTarget()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _aimRadius);
+            if (_aimMarker.transform.parent != _targetEnemy.transform)
+            {
+                _aimMarker.transform.parent = _targetEnemy.transform;
+                _aimMarker.transform.position = _targetEnemy.position;
+
+                _aimMarker.transform.localScale = Vector3.zero;
+                _aimMarker.transform.DOScale(_aimMarkerScale, 0.2f);
+            }
+
+            SetActiveTargetMarker(true);
+        }
+
+        private void SetActiveTargetMarker(bool isActive)
+        {
+            if (!isActive)
+                _aimMarker.transform.parent = _transform;
+
+            _aimMarker.gameObject.SetActive(isActive);
         }
     }
 }

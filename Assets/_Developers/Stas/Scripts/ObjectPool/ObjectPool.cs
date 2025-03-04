@@ -22,9 +22,7 @@ namespace MythicalBattles
 
         public Projectile GetItem()
         {
-            var item = _items.Find(item => item.gameObject.activeSelf == false);
-
-            return item;
+            return _items.Find(item => item.gameObject.activeSelf == false);
         }
 
         public void ReturnItem(Projectile item)

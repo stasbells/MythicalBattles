@@ -5,9 +5,6 @@ namespace MythicalBattles
 {
     abstract public class EnemyShooter : MonoBehaviour
     {
-        protected readonly int _isAttack = Animator.StringToHash("isAttack");
-        protected readonly int _isDead = Animator.StringToHash("isDead");
-
         [SerializeField] protected ObjectPool _projectilePool;
         [SerializeField] protected ObjectPool _particlePool;
         [SerializeField] protected Transform _shootPoint;
@@ -26,13 +23,7 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            foreach (var item in _projectilePool.Items)
-            {
-                var arrow = item as Arrow;
-
-                if (arrow != null)
-                    arrow.Rigidbody = arrow.GetComponent<Rigidbody>();
-            }
+            CachedComponent();
 
             if (_prefire != null)
             {
@@ -42,16 +33,16 @@ namespace MythicalBattles
 
             _transform = transform;
             _animator = GetComponent<Animator>();
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(Constants.IsAttack, false);
             _sleep = new WaitForSeconds(_rateOfFire);
         }
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead))
+            if (_animator.GetBool(Constants.IsDead))
                 return;
 
-            if (_animator.GetBool(_isAttack))
+            if (_animator.GetBool(Constants.IsAttack))
             {
                 _restTimer += Time.deltaTime;
 
@@ -72,11 +63,22 @@ namespace MythicalBattles
             }
         }
 
+        public void CachedComponent()
+        {
+            foreach (var item in _projectilePool.Items)
+            {
+                var arrow = item as Arrow;
+
+                if (arrow != null)
+                    arrow.Rigidbody = arrow.GetComponent<Rigidbody>();
+            }
+        }
+
         protected virtual void Shoot() { }
 
         private IEnumerator AutoShoot()
         {
-            while (!_animator.GetBool(_isDead))
+            while (!_animator.GetBool(Constants.IsDead))
             {
                 Shoot();
 

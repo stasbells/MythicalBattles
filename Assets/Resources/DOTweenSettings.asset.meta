@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 327ec14dc8ebcd046b915bbd57798f5c
+=======
+guid: d688528b281547743bab14a1af157185
+>>>>>>> feature/healthBar
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
