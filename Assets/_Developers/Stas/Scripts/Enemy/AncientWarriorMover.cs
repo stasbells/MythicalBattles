@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class AncientWarriorMover : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
-        private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
@@ -21,8 +19,8 @@ namespace MythicalBattles
 
         private Transform _transform;
         private Animator _animator;
-        private Vector3 _randomDirection;
         private CapsuleCollider _capsuleCollider;
+        private Vector3 _randomDirection;
 
         private float _moveTimer;
         private float _stopTimer;
@@ -38,7 +36,7 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead) == true)
+            if (_animator.GetBool(Constants.IsDead))
             {
                 gameObject.layer = _defaultLayer;
                 _capsuleCollider.enabled = false;
@@ -94,7 +92,7 @@ namespace MythicalBattles
         private void Attack()
         {
             RotateTowards(GetDirectionToPlayer());
-            _animator.SetBool(_isAttack, true);
+            _animator.SetBool(Constants.IsAttack, true);
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -125,7 +123,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(Constants.IsAttack, false);
 
             RotateTowards(direction);
 

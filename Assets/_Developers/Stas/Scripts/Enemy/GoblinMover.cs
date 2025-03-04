@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class GoblinMover : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
-        private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
         [SerializeField] private Transform _player;
@@ -40,7 +38,7 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead) == true)
+            if (_animator.GetBool(Constants.IsDead))
             {
                 gameObject.layer = _defaultLayer;
                 _capsuleCollider.enabled = false;
@@ -60,7 +58,7 @@ namespace MythicalBattles
                 else
                 {
                     _attackTimer += Time.deltaTime;
-                    _animator.SetBool(_isAttack, true);
+                    _animator.SetBool(Constants.IsAttack, true);
                 }
             }
             else if (_isMovingAway)
@@ -131,7 +129,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(Constants.IsAttack, false);
 
             _transform.position += _moveSpeed * Time.deltaTime * direction;
 

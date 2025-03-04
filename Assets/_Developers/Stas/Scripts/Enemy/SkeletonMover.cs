@@ -5,16 +5,13 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform))]
     public class SkeletonMover : MonoBehaviour
     {
-        private readonly int _isAttack = Animator.StringToHash("isAttack");
-        private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
         [SerializeField] protected float _moveSpeed = 3.0f;
         [SerializeField] private int _damage;
 
         [SerializeField] private Transform _player;
-        [SerializeField] private float _attackRange = 2.0f;
-        [SerializeField] private float _attackCooldown = 2.0f;
+        [SerializeField] private float _attackDistance = 2.0f;
 
         private Transform _transform;
         private Animator _animator;
@@ -29,34 +26,47 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead) == true)
+            if (_animator.GetBool(Constants.IsDead))
             {
-                gameObject.layer = _defaultLayer;
-                _capsuleCollider.enabled = false;
+                Die();
 
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
-
-            if (distanceToPlayer <= _attackRange)
-                _animator.SetBool(_isAttack, true);
+            if (GetDistanceToPlayer() <= _attackDistance)
+                Attack();
             else
                 MoveTowardsPlayer();
         }
 
-        public void Attack()
+        public void Damage()
         {
             _player.GetComponent<Health>().TakeDamage(_damage);
+        }
+
+        private void Attack()
+        {
+            _animator.SetBool(Constants.IsAttack, true);
+        }
+
+        private void Die()
+        {
+            gameObject.layer = _defaultLayer;
+            _capsuleCollider.enabled = false;
         }
 
         private void MoveTowardsPlayer()
         {
             RotateTowardsPlayer();
 
-            _animator.SetBool(_isAttack, false);
+            _animator.SetBool(Constants.IsAttack, false);
 
             _transform.position += _moveSpeed * Time.deltaTime * GetDirection();
+        }
+
+        private float GetDistanceToPlayer()
+        {
+            return Vector3.Distance(_transform.position, _player.position);
         }
 
         private void RotateTowardsPlayer()

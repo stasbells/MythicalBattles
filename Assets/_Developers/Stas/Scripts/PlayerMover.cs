@@ -5,9 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform), typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour
     {
-        private readonly int _isMove = Animator.StringToHash("isMove");
-        private readonly int _isShoot = Animator.StringToHash("isShoot");
-        private readonly int _isDead = Animator.StringToHash("isDead");
         private readonly int _defaultLayer = 0;
 
         [SerializeField] private float _moveSpeed = 1.0f;
@@ -44,7 +41,7 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if (_animator.GetBool(_isDead) == true)
+            if (_animator.GetBool(Constants.IsDead))
             {
                 Die();
 
@@ -56,7 +53,7 @@ namespace MythicalBattles
 
         private void SetMovingState(bool value)
         {
-            _animator.SetBool(_isMove, value);
+            _animator.SetBool(Constants.IsMove, value);
         }
 
         private void Move()
@@ -70,7 +67,7 @@ namespace MythicalBattles
                 return;
             }
 
-            if (_animator.GetBool(_isMove) == false)
+            if (!_animator.GetBool(Constants.IsMove))
                 SetMovingState(true);
 
             _currentInputVector = Vector2.SmoothDamp(_currentInputVector, _moveDirection, ref _smoothInputVelocity, _smoothInputSpeed);
@@ -78,14 +75,14 @@ namespace MythicalBattles
             float rotationAngle = Mathf.Atan2(_currentInputVector.x, _currentInputVector.y) * Mathf.Rad2Deg;
             _transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
 
-            Vector3 move = new Vector3(_moveDirection.x, 0, _moveDirection.y);
+            Vector3 move = new(_moveDirection.x, 0, _moveDirection.y);
             _controller.Move(_moveSpeed * Time.deltaTime * move);
         }
 
         private void Die()
         {
-            _animator.SetBool(_isMove, false);
-            _animator.SetBool(_isShoot, false);
+            _animator.SetBool(Constants.IsMove, false);
+            _animator.SetBool(Constants.IsShoot, false);
             _capsuleCollider.enabled = false;
             gameObject.layer = _defaultLayer;
         }

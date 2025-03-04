@@ -5,7 +5,7 @@ namespace MythicalBattles
 {
     public class PlayerFollower : MonoBehaviour
     {
-        [SerializeField] private Transform _player;
+        [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _smoothSpeed = 0.125f;
         [SerializeField] private float _trackingStartDistance = 5f;
         [SerializeField] private float _offsetZ = -10f;
@@ -16,38 +16,34 @@ namespace MythicalBattles
         private void Awake()
         {
             _transform = GetComponent<Transform>();
+        }
 
+        private void Start()
+        {
             SetStartPosition();
         }
 
         void LateUpdate()
         {
-            if (_player == null)
-            {
-                Debug.LogWarning("Target is not assigned for the camera to follow");
-                return;
-            }
+            //if (GetCurrentDistance() > _trackingStartDistance)
 
-            if (GetCurrenеDistance() > _trackingStartDistance)
-                Follow();
+            Follow();
         }
 
         private void Follow()
         {
-            Vector3 targetPosition = new Vector3(_player.position.x + _offsetX, _transform.position.y, _player.position.z + _offsetZ);
-            Vector3 smoothedPosition = Vector3.Lerp(_transform.position, targetPosition, _smoothSpeed * Time.deltaTime);
-
-            _transform.position = smoothedPosition;
+            Vector3 targetPosition = new(_playerTransform.position.x + _offsetX, _transform.position.y, _playerTransform.position.z + _offsetZ);
+            _transform.position = Vector3.Lerp(_transform.position, targetPosition, _smoothSpeed * Time.deltaTime);
         }
 
         private void SetStartPosition()
         {
-            _transform.position = new Vector3(_transform.position.x, _transform.position.y, _player.position.z + _offsetZ);
+            _transform.position = new Vector3(_playerTransform.position.x + _offsetX, _transform.position.y, _playerTransform.position.z + _offsetZ);
         }
 
-        private float GetCurrenеDistance()
+        private float GetCurrentDistance()
         {
-            return Math.Abs(_player.position.z + _offsetZ - _transform.position.z);
+            return Math.Abs(_playerTransform.position.z + _offsetZ - _transform.position.z);
         }
     }
 }

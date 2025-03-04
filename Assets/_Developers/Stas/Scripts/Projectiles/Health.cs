@@ -7,7 +7,6 @@ namespace MythicalBattles
     public class Health : MonoBehaviour
     {
         private const float MinHealthValue = 0;
-        private readonly int _isDead = Animator.StringToHash("isDead");
 
         [SerializeField] private float _maxHealthValue;
 
@@ -41,7 +40,7 @@ namespace MythicalBattles
 
         private void Die()
         {
-            _animator.SetBool(_isDead, true);
+            _animator.SetBool(Constants.IsDead, true);
         }
 
         private void ChangeHealthValue(float healthValue)
