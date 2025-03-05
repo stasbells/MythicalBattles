@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class GoblinMover : MonoBehaviour
     {
-        private readonly int _defaultLayer = 0;
-
         [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
 
@@ -40,7 +38,7 @@ namespace MythicalBattles
         {
             if (_animator.GetBool(Constants.IsDead))
             {
-                gameObject.layer = _defaultLayer;
+                gameObject.layer = Constants.DefaultLayer;
                 _capsuleCollider.enabled = false;
 
                 return;

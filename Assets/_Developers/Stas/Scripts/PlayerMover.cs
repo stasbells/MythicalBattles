@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform), typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour
     {
-        private readonly int _defaultLayer = 0;
-
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
 
@@ -84,7 +82,7 @@ namespace MythicalBattles
             _animator.SetBool(Constants.IsMove, false);
             _animator.SetBool(Constants.IsShoot, false);
             _capsuleCollider.enabled = false;
-            gameObject.layer = _defaultLayer;
+            gameObject.layer = Constants.DefaultLayer;
         }
     }
 }

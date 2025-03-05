@@ -5,8 +5,6 @@ namespace MythicalBattles
     [RequireComponent(typeof(Animator), typeof(Transform))]
     public class SkeletonMover : MonoBehaviour
     {
-        private readonly int _defaultLayer = 0;
-
         [SerializeField] protected float _moveSpeed = 3.0f;
         [SerializeField] private int _damage;
 
@@ -51,7 +49,7 @@ namespace MythicalBattles
 
         private void Die()
         {
-            gameObject.layer = _defaultLayer;
+            gameObject.layer = Constants.DefaultLayer;
             _capsuleCollider.enabled = false;
         }
 

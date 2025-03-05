@@ -5,10 +5,6 @@ namespace MythicalBattles
 {
     public class PlayerShooter : MonoBehaviour
     {
-        private readonly int _isMove = Animator.StringToHash("isMove");
-        //private readonly int _isShoot = Animator.StringToHash("isShoot");
-        private readonly int _isAim = Animator.StringToHash("isAim");
-
         [SerializeField] private ObjectPool _arrowsPool;
         [SerializeField] private ObjectPool _particlePool;
         [SerializeField] private Transform _shootPoint;
@@ -25,12 +21,12 @@ namespace MythicalBattles
         {
             _animator = GetComponent<Animator>();
             _sleep = new WaitForSeconds(_rateOfFire);
-            _animator.SetBool(_isAim, false);
+            _animator.SetBool(Constants.IsAim, false);
         }
 
         private void Update()
         {
-            if (!_animator.GetBool(_isMove) && _animator.GetBool(_isAim))
+            if (!_animator.GetBool(Constants.IsMove) && _animator.GetBool(Constants.IsAim))
             {
                 _restTimer += Time.deltaTime;
 

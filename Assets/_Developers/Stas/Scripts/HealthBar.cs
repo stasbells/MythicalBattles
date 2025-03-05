@@ -12,8 +12,9 @@ namespace MythicalBattles
         [SerializeField] private Image _healthBar;
         [SerializeField] private Image _smoothHealthBar;
         [SerializeField] private Health _health;
-        [SerializeField] private float _recoveryRate;
         [SerializeField] private DamageNumber _damageNumber;
+        [SerializeField] private float _recoveryRate;
+        [SerializeField] private float _healthBarScale = 0.3f;
 
         private Camera _camera;
         private Transform _transform;
@@ -31,7 +32,7 @@ namespace MythicalBattles
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _rotation = _camera.transform.rotation.eulerAngles;
-            _scale = _transform.localScale * 0.3f;
+            _scale = _transform.localScale * _healthBarScale;
             _canvasGroup.alpha = 0f;
         }
 
