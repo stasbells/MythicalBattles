@@ -5,6 +5,7 @@ namespace MythicalBattles
 {
     public class PlayerShooter : MonoBehaviour
     {
+
         [SerializeField] private ObjectPool _arrowsPool;
         [SerializeField] private ObjectPool _particlePool;
         [SerializeField] private Transform _shootPoint;

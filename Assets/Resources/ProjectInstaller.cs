@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectInstaller : MonoBehaviour, IInstaller
 {
+
     private IDataProvider _dataProvider;
     private IPersistentData _persistentData;
     
