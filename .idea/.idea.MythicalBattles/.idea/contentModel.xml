@@ -66,24 +66,33 @@
           </e>
           <e p="Stas" t="Include">
             <e p="Animations" t="Include" />
+            <e p="Fonts" t="Include">
+              <e p="RUS" t="Include" />
+            </e>
             <e p="Materials" t="Include" />
             <e p="Models" t="Include" />
             <e p="Prefabs" t="Include">
               <e p="Projectile" t="Include" />
             </e>
-            <e p="Scenes" t="Include" />
+            <e p="Scenes" t="Include">
+              <e p="Level" t="Include" />
+            </e>
             <e p="Scripts" t="Include">
+              <e p="AimMarker.cs" t="Include" />
+              <e p="Constants" t="Include">
+                <e p="Constants.cs" t="Include" />
+              </e>
               <e p="Enemy" t="Include">
                 <e p="AncientWarriorMover.cs" t="Include" />
                 <e p="AncientWarriorShooter.cs" t="Include" />
                 <e p="Enemy.cs" t="Include" />
-                <e p="EnemyMover.cs" t="Include" />
                 <e p="EnemyShooter.cs" t="Include" />
                 <e p="GoblinMover.cs" t="Include" />
-                <e p="SceletonMover.cs" t="Include" />
+                <e p="SkeletonMover.cs" t="Include" />
                 <e p="SpiritMover.cs" t="Include" />
                 <e p="SpiritShooter.cs" t="Include" />
               </e>
+              <e p="HealthBar.cs" t="Include" />
               <e p="ObjectPool" t="Include">
                 <e p="ObjectPool.cs" t="Include" />
               </e>
@@ -99,6 +108,121 @@
                 <e p="ParticleEffect.cs" t="Include" />
                 <e p="Projectile.cs" t="Include" />
               </e>
+            </e>
+            <e p="Sprites" t="Include" />
+          </e>
+        </e>
+        <e p="DamageNumbersPro" t="Include">
+          <e p="DamageNumbersPro.asmdef" t="Include" />
+          <e p="Demo" t="Include">
+            <e p="Materials" t="Include">
+              <e p="HDRP" t="Include" />
+              <e p="Standard" t="Include" />
+              <e p="URP" t="Include" />
+            </e>
+            <e p="PostProcessing" t="Include" />
+            <e p="Readme.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="DNP_2DDemo.cs" t="Include" />
+              <e p="DNP_Camera.cs" t="Include" />
+              <e p="DNP_Crosshair.cs" t="Include" />
+              <e p="DNP_CubeHighlight.cs" t="Include" />
+              <e p="DNP_CubeSpawner.cs" t="Include" />
+              <e p="DNP_CursorHint.cs" t="Include" />
+              <e p="DNP_DemoManager.cs" t="Include" />
+              <e p="DNP_Enemy.cs" t="Include" />
+              <e p="DNP_FallingCube.cs" t="Include" />
+              <e p="DNP_GUI.cs" t="Include" />
+              <e p="DNP_InputHandler.cs" t="Include" />
+              <e p="DNP_Player.cs" t="Include" />
+              <e p="DNP_PrefabSettings.cs" t="Include" />
+              <e p="DNP_SineFadeText.cs" t="Include" />
+              <e p="DNP_UIArea.cs" t="Include" />
+              <e p="DNP_UIMove.cs" t="Include" />
+              <e p="DNP_VillagerSpawner.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="Darkness.shader" t="Include" />
+            </e>
+            <e p="Textures" t="Include">
+              <e p="2D" t="Include" />
+              <e p="3D" t="Include" />
+              <e p="Sprites" t="Include">
+                <e p="Ellen" t="Include">
+                  <e p="Hurt" t="Include" />
+                  <e p="Idle" t="Include" />
+                  <e p="Jump" t="Include" />
+                  <e p="Run" t="Include" />
+                </e>
+                <e p="Other" t="Include" />
+              </e>
+            </e>
+            <e p="Villager" t="Include">
+              <e p="Animations" t="Include" />
+              <e p="Materials" t="Include" />
+              <e p="Materials HDRP" t="Include" />
+              <e p="Materials URP" t="Include" />
+              <e p="Textures" t="Include" />
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="Resources" t="Include">
+              <e p="DNP" t="Include">
+                <e p="Behaviour" t="Include" />
+                <e p="Fade In" t="Include" />
+                <e p="Fade Out" t="Include" />
+                <e p="Style" t="Include">
+                  <e p="Basic" t="Include" />
+                  <e p="Blood" t="Include" />
+                  <e p="Cool" t="Include" />
+                  <e p="Fire" t="Include" />
+                  <e p="Neon" t="Include" />
+                  <e p="Pixel" t="Include" />
+                  <e p="Saw" t="Include" />
+                  <e p="Smear" t="Include" />
+                </e>
+                <e p="Textures" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Fonts" t="Include" />
+          <e p="Materials" t="Include">
+            <e p="Basic" t="Include" />
+            <e p="Bloody" t="Include" />
+            <e p="Cool" t="Include" />
+            <e p="Fire" t="Include" />
+            <e p="Neon" t="Include" />
+            <e p="Pixel" t="Include" />
+            <e p="Saw" t="Include" />
+            <e p="Smear" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="DamageNumberGUI.cs" t="Include" />
+            <e p="DamageNumberMesh.cs" t="Include" />
+            <e p="Internal" t="Include">
+              <e p="DamageNumber.cs" t="Include" />
+              <e p="DNPPreset.cs" t="Include" />
+              <e p="DNPUpdater.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DamageNumberEditor.cs" t="Include" />
+                <e p="DNPEditorInternal.cs" t="Include" />
+                <e p="DNPPresetEditor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Settings" t="Include">
+              <e p="CollisionSettings.cs" t="Include" />
+              <e p="ColorByNumberSettings.cs" t="Include" />
+              <e p="CombinationSettings.cs" t="Include" />
+              <e p="DestructionSettings.cs" t="Include" />
+              <e p="DigitSettings.cs" t="Include" />
+              <e p="DistanceScalingSettings.cs" t="Include" />
+              <e p="FollowSettings.cs" t="Include" />
+              <e p="LerpSettings.cs" t="Include" />
+              <e p="PushSettings.cs" t="Include" />
+              <e p="ScaleByNumberSettings.cs" t="Include" />
+              <e p="ShakeSettings.cs" t="Include" />
+              <e p="TextSettings.cs" t="Include" />
+              <e p="VelocitySettings.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -1037,6 +1161,7 @@
           </e>
         </e>
       </e>
+      <e p="DamageNumbersPro.csproj" t="IncludeRecursive" />
       <e p="MythicalBattles.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

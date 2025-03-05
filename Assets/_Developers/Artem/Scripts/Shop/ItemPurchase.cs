@@ -12,13 +12,17 @@ namespace MythicalBattles
         private ShopItemView _itemView;
         private ItemSelector _itemSelector;
 
-        private void Awake()
+        private void Construct()
         {
             _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
             _wallet = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IWallet>();
-            
             _itemSelector = new ItemSelector(_persistentData);
             _itemView = GetComponent<ShopItemView>();
+        }
+        
+        private void Awake()
+        {
+            Construct();
         }
 
         private void OnEnable()
