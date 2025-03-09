@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0726cac08a0ac5c44ac0820bc201ce0b, type: 3}
   m_Name: BootsLegendary
   m_EditorClassIdentifier: 
-  _model: {fileID: 0}
+  _model: {fileID: 2535416912739911397, guid: 4d555e2999e99a14fb096fa7e18de545, type: 3}
   _backgroundImage: {fileID: 21300000, guid: 13a70c4335836f24cbf84472a513498c, type: 3}
   _itemImage: {fileID: 21300000, guid: 27aef045374172c449316a83d1d39559, type: 3}
   _price: 400

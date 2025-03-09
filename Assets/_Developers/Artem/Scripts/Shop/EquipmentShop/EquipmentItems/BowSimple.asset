@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf5bdf241af00742a39efacde79dcb3, type: 3}
   m_Name: BowSimple
   m_EditorClassIdentifier: 
-  _model: {fileID: 0}
+  _model: {fileID: 2535416912739911397, guid: 4d555e2999e99a14fb096fa7e18de545, type: 3}
   _backgroundImage: {fileID: 21300000, guid: dd77367546bf4433dbbb2317a935df54, type: 3}
   _itemImage: {fileID: 21300000, guid: 05849c87da719544a9a9de29c03e59a1, type: 3}
   _price: 0

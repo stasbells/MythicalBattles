@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectInstaller : MonoBehaviour, IInstaller
 {
-
     private IDataProvider _dataProvider;
     private IPersistentData _persistentData;
     
@@ -15,3 +14,4 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         builder.AddSingleton(typeof(Wallet), typeof(IWallet));
     }
 }
+

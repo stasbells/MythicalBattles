@@ -13,6 +13,7 @@
           <e p="Artem" t="Include">
             <e p="Animators" t="Include" />
             <e p="Models" t="Include" />
+            <e p="Particles" t="Include" />
             <e p="Prefabs" t="Include" />
             <e p="Scenes" t="Include" />
             <e p="Scripts" t="Include">
@@ -408,6 +409,43 @@
         </e>
         <e p="MythicalBattles" t="Include">
           <e p="Scenes" t="Include" />
+        </e>
+        <e p="Piloto Studio" t="Include">
+          <e p="Animations" t="Include">
+            <e p="TrailAnims" t="Include" />
+          </e>
+          <e p="Cute Hovering Companions" t="Include">
+            <e p="Animations" t="Include" />
+            <e p="Companions" t="Include" />
+            <e p="Prefabs" t="Include" />
+            <e p="Readme.txt" t="Include" />
+            <e p="Upgrades" t="Include" />
+          </e>
+          <e p="Materials" t="Include">
+            <e p="Arcane" t="Include" />
+            <e p="Fire" t="Include" />
+            <e p="Nature &amp; Fairy" t="Include" />
+            <e p="Shared" t="Include" />
+            <e p="Trails" t="Include" />
+            <e p="Void &amp; Universe" t="Include" />
+            <e p="Water" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="Orbs" t="Include">
+              <e p="Models" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="ParticleShowcase.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="Functions" t="Include" />
+            <e p="ToonyShader" t="Include">
+              <e p="Toony Prop.shader" t="Include" />
+            </e>
+            <e p="UberFX.shader" t="Include" />
+          </e>
+          <e p="Textures" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="Demigiant" t="Include">
