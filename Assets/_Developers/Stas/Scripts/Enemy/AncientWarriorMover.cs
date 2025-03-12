@@ -6,7 +6,6 @@ namespace MythicalBattles
     public class AncientWarriorMover : MonoBehaviour
     {
         [SerializeField] private Transform _player;
-        [SerializeField] private LayerMask _obstacleLayer;
 
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _moveDuration = 2f;
@@ -36,7 +35,7 @@ namespace MythicalBattles
         {
             if (_animator.GetBool(Constants.IsDead))
             {
-                gameObject.layer = Constants.DefaultLayer;
+                gameObject.layer = Constants.LayerDefault;
                 _capsuleCollider.enabled = false;
 
                 return;
@@ -130,7 +129,7 @@ namespace MythicalBattles
 
         private bool TryFindObstacleIn(Vector3 direction)
         {
-            if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, _obstacleLayer))
+            if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, Constants.MaskLayerObstacles))
             {
                 Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.red, 1f);
 

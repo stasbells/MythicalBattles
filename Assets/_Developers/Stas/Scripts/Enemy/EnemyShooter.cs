@@ -12,8 +12,8 @@ namespace MythicalBattles
         [SerializeField] protected ParticleSystem _afterfire;
 
         [SerializeField] protected float _shootSpeed = 1f;
-        [SerializeField] private float _rateOfFire = 3f;
-        [SerializeField] private float _shootDelay = 0.6f;
+        [SerializeField] private float _rateOfFire;
+        [SerializeField] private float _shootDelay = 2f;
 
         protected Transform _transform;
         protected Animator _animator;
@@ -23,8 +23,6 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            CachedComponent();
-
             if (_prefire != null)
             {
                 _prefire.Stop();
@@ -35,6 +33,11 @@ namespace MythicalBattles
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
             _sleep = new WaitForSeconds(_rateOfFire);
+        }
+
+        private void Start()
+        {
+            //CachedComponent();
         }
 
         private void Update()

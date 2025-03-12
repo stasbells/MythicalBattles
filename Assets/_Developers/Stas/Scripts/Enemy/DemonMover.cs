@@ -1,28 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SpiritMover : MonoBehaviour
+    public class DemonMover : MonoBehaviour
     {
         [SerializeField] private Transform _player;
-        [SerializeField] private LayerMask _obstacleLayer;
 
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _moveDuration = 2f;
         [SerializeField] private float _directionChangeInterval = 0.5f;
         [SerializeField] private float _raycastDistance = 1f;
-        [SerializeField] private float _stopDuration = 1f;
+        [SerializeField] private float _attackCooldown = 2f;
+        [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private int _damage;
 
         private Transform _transform;
         private Animator _animator;
-        private Vector3 _randomDirection;
         private CapsuleCollider _capsuleCollider;
+        private Vector3 _randomDirection;
 
         private float _moveTimer;
-        private float _stopTimer;
+        private float _attackTimer;
         private float _directionChangeTimer;
-        private bool _isMoving = true;
+        private bool _isMovingAway = false;
 
         private void Awake()
         {
@@ -33,7 +36,7 @@ namespace MythicalBattles
 
         private void Update()
         {
-            if(_animator.GetBool(Constants.IsDead))
+            if (_animator.GetBool(Constants.IsDead))
             {
                 gameObject.layer = Constants.LayerDefault;
                 _capsuleCollider.enabled = false;
@@ -41,10 +44,29 @@ namespace MythicalBattles
                 return;
             }
 
-            if (_isMoving)
+            float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
+
+            if (distanceToPlayer <= _attackRange && !_isMovingAway)
+            {
+                if (_attackTimer >= _attackCooldown)
+                {
+                    _attackTimer = 0f;
+                    _isMovingAway = true;
+                }
+                else
+                {
+                    _attackTimer += Time.deltaTime;
+                    _animator.SetBool(Constants.IsAttack, true);
+                }
+            }
+            else if (_isMovingAway)
+            {
                 MoveRandomly();
+            }
             else
-                Shoot();
+            {
+                MoveTo(GetDirectionToPlayer());
+            }
         }
 
         private void MoveRandomly()
@@ -55,8 +77,7 @@ namespace MythicalBattles
             if (_moveTimer >= _moveDuration)
             {
                 _moveTimer = 0f;
-                _stopTimer = 0f;
-                _isMoving = false;
+                _isMovingAway = false;
             }
             else
             {
@@ -73,29 +94,16 @@ namespace MythicalBattles
             }
         }
 
-        private void Shoot()
+        public void Attack()
         {
-            _stopTimer += Time.deltaTime;
-
-            if (_stopTimer >= _stopDuration)
-            {
-                _isMoving = true;
-                _moveTimer = 0f;
-            }
-
-            Attack();
-        }
-
-        private void Attack()
-        {
-            _animator.SetBool(Constants.IsAttack, true);
+            _player.GetComponent<Health>().TakeDamage(_damage);
         }
 
         private Vector3 GetFreeRandomDirection()
         {
             Vector3 direction = GetRandomDirection();
 
-            while (IsObstacleIn(direction))
+            while (TryFindObstacleIn(direction))
                 direction = GetRandomDirection();
 
             return direction;
@@ -103,15 +111,7 @@ namespace MythicalBattles
 
         private Vector3 GetRandomDirection()
         {
-            Vector3[] directions =
-            {
-                transform.forward,
-                -transform.forward,
-                transform.right,
-                -transform.right
-            };
-
-            return directions[Random.Range(0, directions.Length - 1)].normalized;
+            return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
         }
 
         private void RotateTowards(Vector3 direction)
@@ -120,16 +120,21 @@ namespace MythicalBattles
             _transform.rotation = Quaternion.Slerp(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
 
+        private Vector3 GetDirectionToPlayer()
+        {
+            return (_player.position - _transform.position).normalized;
+        }
+
         private void MoveTo(Vector3 direction)
         {
             _animator.SetBool(Constants.IsAttack, false);
 
-            RotateTowards(direction);
+            _transform.position += _moveSpeed * Time.deltaTime * direction;
 
-            _transform.position += Time.deltaTime * _moveSpeed * direction;
+            RotateTowards(direction);
         }
 
-        private bool IsObstacleIn(Vector3 direction)
+        private bool TryFindObstacleIn(Vector3 direction)
         {
             if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, Constants.MaskLayerObstacles))
             {

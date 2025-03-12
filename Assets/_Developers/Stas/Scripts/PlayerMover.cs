@@ -82,7 +82,7 @@ namespace MythicalBattles
             _animator.SetBool(Constants.IsMove, false);
             _animator.SetBool(Constants.IsShoot, false);
             _capsuleCollider.enabled = false;
-            gameObject.layer = Constants.DefaultLayer;
+            gameObject.layer = Constants.LayerDefault;
         }
     }
 }
