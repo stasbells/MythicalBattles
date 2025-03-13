@@ -22,12 +22,17 @@ namespace MythicalBattles
 
         public Projectile GetItem()
         {
-            return _items.Find(item => item.gameObject.activeSelf == false);
+            var item = _items.Find(item => item.gameObject.activeSelf == false);
+
+            item.gameObject.transform.parent = null;
+
+            return item;
         }
 
         public void ReturnItem(Projectile item)
         {
             item.gameObject.transform.position = transform.position;
+            item.gameObject.transform.parent = transform;
             item.gameObject.SetActive(false);
         }
 

@@ -6,21 +6,16 @@ namespace MythicalBattles
     {
         private Transform _transform;
 
+        public Transform Transform => _transform;
+
         private void Awake()
         {
             _transform = transform;
         }
 
-        private void Update()
+        private void OnParticleSystemStopped()
         {
-            if (_transform.parent == null)
-                _transform.parent = _pool.transform;
-        }
-
-        private void OnDisable()
-        {
-            if (_transform.parent == null)
-                _pool.ReturnItem(this);
+            _pool.ReturnItem(this);
         }
     }
 }

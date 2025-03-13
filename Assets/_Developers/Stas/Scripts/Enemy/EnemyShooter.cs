@@ -24,10 +24,10 @@ namespace MythicalBattles
         private void Awake()
         {
             if (_prefire != null)
-            {
                 _prefire.Stop();
+
+            if (_afterfire != null)
                 _afterfire.Stop();
-            }
 
             _transform = transform;
             _animator = GetComponent<Animator>();
@@ -50,10 +50,10 @@ namespace MythicalBattles
                 _restTimer += Time.deltaTime;
 
                 if (_prefire != null && _prefire.isStopped)
-                {
                     _prefire.Play();
+
+                if (_afterfire != null && _afterfire.isStopped)
                     _afterfire.Play();
-                }
 
                 if (_restTimer >= _shootDelay)
                     OnShoot();

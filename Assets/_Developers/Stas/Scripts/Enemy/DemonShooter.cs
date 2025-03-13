@@ -1,49 +1,74 @@
 using UnityEngine;
 using System.Collections;
 using Reflex.Attributes;
+using DG.Tweening;
 
 namespace MythicalBattles
 {
     public class DemonShooter : EnemyShooter
     {
-        [SerializeField] private float _radius = 0.5f;
-        [SerializeField] private float _maxDistance = 10f;
+        private const int ProjectileCount = 5;
+
+        [SerializeField] private float _rate = 2f;
+        [SerializeField] private ParticleSystem _spawnPlaceMarker;
 
         [Inject] private ISpawnPointGenerator _spawnPointGenerator;
 
-        private int _projectileCount = 5;
+        Vector3[] _spawnPoints = new Vector3[ProjectileCount];
+
+        WaitForSeconds _sleep;
+        Camera _camera;
+
+        private void Start()
+        {
+            _sleep = new WaitForSeconds(_rate);
+            _camera = Camera.main;
+        }
 
         protected override void Shoot()
         {
-            for (int i = 0; i < _projectileCount; i++)
-            {
-                ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
+            GetSpawnPoints();
 
-                particle.gameObject.SetActive(true);
-                particle.transform.position = _spawnPointGenerator.GetRandomPointOutsideRadius();
-            }
-
-            //StartCoroutine(OnSoot());
+            StartCoroutine(SpawnProjecttilesCoroutine());
         }
 
-        private IEnumerator OnSoot()
+        private void GetSpawnPoints()
         {
-            float distanceTraveled = 0f;
-            Vector3 direction = -transform.up;
+            for (int i = 0; i < ProjectileCount; i++)
+                _spawnPoints[i] = _spawnPointGenerator.GetRandomPointOutsideRadius();
+        }
 
-            while (distanceTraveled < _maxDistance)
+        private void SpawnPlaceMarkers()
+        {
+            for (int i = 0; i < ProjectileCount; i++)
             {
-                if (Physics.SphereCast(transform.position, _radius, direction, out RaycastHit hit, _shootSpeed * Time.deltaTime, Constants.LayerPlayer))
-                {
-                    Debug.Log(hit.collider.gameObject);
-                    yield break;
-                }
-
-                distanceTraveled += _shootSpeed * Time.deltaTime;
-                transform.position += direction * _shootSpeed * Time.deltaTime;
-
-                yield return null;
+                ParticleEffect particle = (ParticleEffect)_projectilePool.GetItem();
+                particle.gameObject.SetActive(true);
+                particle.gameObject.transform.parent = null;
+                particle.Transform.position = _spawnPoints[i];
             }
+        }
+
+        private void SpawnProjecttiles()
+        {
+            for (int i = 0; i < ProjectileCount; i++)
+            {
+                ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
+                particle.gameObject.SetActive(true);
+                particle.gameObject.transform.parent = null;
+                particle.Transform.position = _spawnPoints[i];
+            }
+
+            _camera.transform.DOShakePosition(0.5f, 0.5f, 15, 90, false, true);
+        }
+
+        private IEnumerator SpawnProjecttilesCoroutine()
+        {
+            SpawnPlaceMarkers();
+
+            yield return _sleep;
+
+            SpawnProjecttiles();
         }
     }
 }

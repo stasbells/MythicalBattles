@@ -20,18 +20,13 @@ namespace MythicalBattles
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == Constants.LayerPlayer)
-            {
-                Debug.Log(other);
                 OnShoot(other);
-            }
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.layer == Constants.LayerPlayer)
-            {
                 StopCoroutine(_damager);
-            }
         }
 
         private void OnShoot(Collider other)
