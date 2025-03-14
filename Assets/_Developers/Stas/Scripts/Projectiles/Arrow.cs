@@ -9,12 +9,11 @@ namespace MythicalBattles
         [field: SerializeField] public int Damage { get; private set; }
 
         public Rigidbody Rigidbody { get; internal set; }
-        public Transform Transform { get; internal set; }
 
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
-            Transform = GetComponent<Transform>();
+            _transform = GetComponent<Transform>();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -24,8 +23,8 @@ namespace MythicalBattles
 
             if (_effect != null)
             {
-                _effect.GetComponent<ParticleSystem>().Stop();
-                _effect.transform.parent = null;
+                _effect.ParticleSystem.Stop();
+                _effect.Transform.parent = null;
                 _effect = null;
             }
 
@@ -35,8 +34,8 @@ namespace MythicalBattles
         public void SetParticle(ParticleEffect effect)
         {
             _effect = effect;
-            _effect.gameObject.transform.position = transform.position;
-            _effect.transform.parent = transform;
+            _effect.Transform.position = Transform.position;
+            _effect.Transform.parent = Transform;
             _effect.gameObject.SetActive(true);
         }
     }

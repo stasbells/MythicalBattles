@@ -4,13 +4,12 @@ namespace MythicalBattles
 {
     public class ParticleEffect : Projectile
     {
-        private Transform _transform;
-
-        public Transform Transform => _transform;
+        public ParticleSystem ParticleSystem { get; internal set; }
 
         private void Awake()
         {
             _transform = transform;
+            ParticleSystem = GetComponent<ParticleSystem>();
         }
 
         private void OnParticleSystemStopped()

@@ -80,7 +80,7 @@ namespace MythicalBattles
         private void Die()
         {
             _animator.SetBool(Constants.IsMove, false);
-            _animator.SetBool(Constants.IsShoot, false);
+            _animator.SetBool(Constants.IsAttack, false);
             _capsuleCollider.enabled = false;
             gameObject.layer = Constants.LayerDefault;
         }

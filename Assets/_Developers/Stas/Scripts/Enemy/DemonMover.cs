@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -16,6 +14,7 @@ namespace MythicalBattles
         [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private float _rotationSpeed = 10f;
         [SerializeField] private int _damage;
+        [SerializeField] ParticleSystem _effect;
 
         private Transform _transform;
         private Animator _animator;
@@ -29,6 +28,7 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            _effect.Stop();
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
@@ -46,26 +46,32 @@ namespace MythicalBattles
 
             float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
 
-            if (distanceToPlayer <= _attackRange && !_isMovingAway)
+            if (distanceToPlayer <= _attackRange && !_isMovingAway || _animator.GetBool(Constants.IsShoot))
             {
                 if (_attackTimer >= _attackCooldown)
                 {
+                    _effect.Stop();
                     _attackTimer = 0f;
                     _isMovingAway = true;
+                    _animator.SetBool(Constants.IsShoot, false);
                 }
                 else
                 {
                     _attackTimer += Time.deltaTime;
-                    _animator.SetBool(Constants.IsAttack, true);
+                    _animator.SetBool(Constants.IsShoot, true);
                 }
             }
             else if (_isMovingAway)
             {
                 MoveRandomly();
             }
-            else
+            else if (!_animator.GetBool(Constants.IsAttack))
             {
                 MoveTo(GetDirectionToPlayer());
+            }
+            else
+            {
+                RotateTowards(GetDirectionToPlayer());
             }
         }
 
@@ -78,6 +84,8 @@ namespace MythicalBattles
             {
                 _moveTimer = 0f;
                 _isMovingAway = false;
+                _animator.SetBool(Constants.IsAttack, true);
+                _animator.SetBool(Constants.IsMove, false);
             }
             else
             {
@@ -97,6 +105,11 @@ namespace MythicalBattles
         public void Attack()
         {
             _player.GetComponent<Health>().TakeDamage(_damage);
+        }
+
+        public void AttackEffect()
+        {
+            _effect.Play();
         }
 
         private Vector3 GetFreeRandomDirection()
@@ -127,6 +140,7 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
+            _animator.SetBool(Constants.IsShoot, false);
             _animator.SetBool(Constants.IsAttack, false);
 
             _transform.position += _moveSpeed * Time.deltaTime * direction;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SpiritShooter : EnemyShooter
+    public class SpiritShooter : Shooter
     {
         private readonly int _projectileCount = 8;
         private readonly int _rotateAngle = 45;
@@ -17,12 +17,12 @@ namespace MythicalBattles
             for (int i = 0; i < _projectileCount; i++)
             {
                 Arrow arrow = (Arrow)_projectilePool.GetItem();
-                ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
+                ParticleEffect particle = (ParticleEffect)_effectPool.GetItem();
 
                 _shootPoint.rotation = Quaternion.Euler(rotate);
 
                 arrow.gameObject.SetActive(true);
-                arrow.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
+                arrow.Transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
                 arrow.SetParticle(particle);
 
                 arrow.Rigidbody.velocity = _shootPoint.forward * _shootSpeed;
