@@ -117,12 +117,14 @@ MonoBehaviour:
     maxX: 0.4
     minY: 0.5
     maxY: 1
+    randomFlip: 0
   enableVelocity: 0
   velocitySettings:
     minX: -1
     maxX: 1
     minY: 4
     maxY: 5
+    randomFlip: 0
     dragX: 0.1
     dragY: 1
     gravity: 3

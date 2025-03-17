@@ -42,7 +42,7 @@ namespace MythicalBattles
             _canvasGroup.alpha = 0f;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             _transform.rotation = Quaternion.Euler(_rotation);
         }

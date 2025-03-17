@@ -11,7 +11,6 @@ namespace MythicalBattles
 
         [SerializeField] private float _attackDelay = 2f;
         [SerializeField] private float _afterAttackDelay = 1f;
-        //[SerializeField] private float _delay = 0.5f;
         [SerializeField] private ParticleSystem _spawnPlaceMarker;
 
         [Inject] private ISpawnPointGenerator _spawnPointGenerator;

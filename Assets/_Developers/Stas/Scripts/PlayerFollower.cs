@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+
 
 namespace MythicalBattles
 {
@@ -7,7 +7,6 @@ namespace MythicalBattles
     {
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _smoothSpeed = 0.125f;
-        //[SerializeField] private float _trackingStartDistance = 5f;
         [SerializeField] private float _offsetZ = -10f;
         [SerializeField] private float _offsetX = -10f;
 
@@ -23,10 +22,8 @@ namespace MythicalBattles
             SetStartPosition();
         }
 
-        void LateUpdate()
+        private void LateUpdate()
         {
-            //if (GetCurrentDistance() > _trackingStartDistance)
-
             Follow();
         }
 
@@ -39,11 +36,6 @@ namespace MythicalBattles
         private void SetStartPosition()
         {
             _transform.position = new Vector3(_playerTransform.position.x + _offsetX, _transform.position.y, _playerTransform.position.z + _offsetZ);
-        }
-
-        private float GetCurrentDistance()
-        {
-            return Math.Abs(_playerTransform.position.z + _offsetZ - _transform.position.z);
         }
     }
 }

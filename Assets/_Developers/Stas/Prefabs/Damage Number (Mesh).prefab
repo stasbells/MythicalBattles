@@ -393,7 +393,7 @@ MonoBehaviour:
   renderThroughWalls: 0
   consistentScreenSize: 0
   distanceScalingSettings:
-    baseDistance: 15
+    baseDistance: 10
     closeDistance: 5
     farDistance: 50
     closeScale: 2
@@ -526,7 +526,7 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     fromNumber: 1
-    toNumber: 10
+    toNumber: 30
   durationFadeIn: 0.05
   enableOffsetFadeIn: 0
   offsetFadeIn: {x: 0.5, y: 0}
@@ -796,9 +796,9 @@ MonoBehaviour:
   pushSettings:
     radius: 3
     pushOffset: 1
-  updateDelay: 0.0125
-  enablePooling: 0
-  poolSize: 50
+  updateDelay: 0.00606
+  enablePooling: 1
+  poolSize: 30
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &6477897333197387791
 SortingGroup:
