@@ -4535,7 +4535,7 @@ PrefabInstance:
       objectReference: {fileID: 1561311709}
     - target: {fileID: 5734712686632927319, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5734712686632927319, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: _ParticlePool

@@ -9,7 +9,8 @@ namespace MythicalBattles
     {
         private const int ProjectileCount = 5;
 
-        [SerializeField] private float _rate = 2f;
+        [SerializeField] private float _attackDelay = 2f;
+        [SerializeField] private float _afterAttackDelay = 1f;
         //[SerializeField] private float _delay = 0.5f;
         [SerializeField] private ParticleSystem _spawnPlaceMarker;
 
@@ -17,14 +18,14 @@ namespace MythicalBattles
 
         private Vector3[] _spawnPoints = new Vector3[ProjectileCount];
 
-        private WaitForSeconds _sleep;
-        private WaitForSeconds _delay;
+        private WaitForSeconds _projectilesSpawnDelay;
+        private WaitForSeconds _animationDelay;
         private Transform _cameraTransform;
 
         private void Start()
         {
-            _sleep = new WaitForSeconds(_rate);
-            _delay = new WaitForSeconds(1f);
+            _projectilesSpawnDelay = new WaitForSeconds(_attackDelay);
+            _animationDelay = new WaitForSeconds(_afterAttackDelay);
             _cameraTransform = Camera.main.transform;
         }
 
@@ -32,7 +33,7 @@ namespace MythicalBattles
         {
             GetSpawnPoints();
 
-            StartCoroutine(SpawnProjecttilesCoroutine());
+            StartCoroutine(UltimateAttack());
         }
 
         private void GetSpawnPoints()
@@ -65,15 +66,15 @@ namespace MythicalBattles
             _cameraTransform.DOShakePosition(0.5f, 0.5f, 15, 90, false, true);
         }
 
-        private IEnumerator SpawnProjecttilesCoroutine()
+        private IEnumerator UltimateAttack()
         {
             SpawnPlaceMarkers();
 
-            yield return _sleep;
+            yield return _projectilesSpawnDelay;
 
             SpawnProjecttiles();
 
-            yield return _delay;
+            yield return _animationDelay;
 
             _animator.SetBool(Constants.IsMove, true);
             _animator.SetBool(Constants.IsAttack, false);
