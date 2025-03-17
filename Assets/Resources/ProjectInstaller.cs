@@ -9,6 +9,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
     
     public void InstallBindings(ContainerBuilder builder)
     {
+        builder.AddSingleton(typeof(PlayerStats), typeof(IPlayerStats));
         builder.AddSingleton(typeof(PersistentData), typeof(IPersistentData));
         builder.AddSingleton(typeof(DataLocalProvider), typeof(IDataProvider));
         builder.AddSingleton(typeof(Wallet), typeof(IWallet));

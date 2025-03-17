@@ -49,13 +49,13 @@ namespace MythicalBattles
         private void OnEnable()
         {
             _health.HealthValueChanged += ChangeValue;
-            _health.Damaged += ViewHealth—hange;
+            _health.Damaged += ViewHealth–°hange;
         }
 
         private void OnDisable()
         {
             _health.HealthValueChanged -= ChangeValue;
-            _health.Damaged -= ViewHealth—hange;
+            _health.Damaged -= ViewHealth–°hange;
         }
 
         private void ChangeValue(float healthValue)
@@ -87,7 +87,7 @@ namespace MythicalBattles
             }
         }
 
-        private void ViewHealth—hange(float value)
+        private void ViewHealth–°hange(float value)
         {
             _damageNumber.Spawn(_rectTransform.position, value, _transform);
         }

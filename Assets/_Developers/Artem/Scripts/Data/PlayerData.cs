@@ -14,24 +14,30 @@ namespace MythicalBattles
             _money = 10000;
 
             var equipmentItems = items.ToList();
-            
+
             SelectedWeapon = equipmentItems.OfType<WeaponItem>()
                 .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedArmor =  equipmentItems.OfType<ArmorItem>()
+
+            SelectedArmor = equipmentItems.OfType<ArmorItem>()
+                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+
+            SelectedHelmet = equipmentItems.OfType<HelmetItem>()
+                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+
+            SelectedBoots = equipmentItems.OfType<BootsItem>()
+                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+
+            SelectedNecklace = equipmentItems.OfType<NecklaceItem>()
+                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+
+            SelectedRing = equipmentItems.OfType<RingItem>()
                 .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
             
-            SelectedHelmet =  equipmentItems.OfType<HelmetItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedBoots =  equipmentItems.OfType<BootsItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedNecklace =  equipmentItems.OfType<NecklaceItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedRing =  equipmentItems.OfType<RingItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+            List<EquipmentItem> selectedItems = new List<EquipmentItem>
+                {SelectedWeapon, SelectedArmor, SelectedHelmet, SelectedBoots, SelectedNecklace, SelectedRing};
+
+            foreach (EquipmentItem item in selectedItems)
+                item.ApplyStats();
         }
 
         [JsonConstructor]
@@ -46,6 +52,12 @@ namespace MythicalBattles
             SelectedBoots = selectedSelectedBoots;
             SelectedNecklace = selectedNecklace;
             SelectedRing = selectedSelectedRing;
+
+            List<EquipmentItem> items = new List<EquipmentItem>
+                {SelectedWeapon, SelectedArmor, SelectedHelmet, SelectedBoots, SelectedNecklace, SelectedRing};
+
+            foreach (EquipmentItem item in items)
+                item.ApplyStats();
         }
 
         public int Money => _money;
@@ -56,58 +68,63 @@ namespace MythicalBattles
         public NecklaceItem SelectedNecklace { get; private set; }
         public RingItem SelectedRing { get; private set; }
 
-        public event Action SelectedItemChanged; 
-        
+        public event Action SelectedItemChanged;
+
         public void SelectWeapon(WeaponItem weapon)
         {
-            SelectedWeapon = weapon;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedWeapon, weapon);
         }
-        
+
         public void SelectArmor(ArmorItem armor)
         {
-            SelectedArmor = armor;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedArmor, armor);
         }
-        
+
         public void SelectHelmet(HelmetItem helmet)
         {
-            SelectedHelmet = helmet;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedHelmet, helmet);
         }
-        
+
         public void SelectBoots(BootsItem boots)
         {
-            SelectedBoots = boots;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedBoots, boots);
         }
-        
+
         public void SelectNecklace(NecklaceItem necklace)
         {
-            SelectedNecklace = necklace;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedNecklace, necklace);
         }
-        
+
         public void SelectRing(RingItem ring)
         {
-            SelectedRing = ring;
-            SelectedItemChanged?.Invoke();
+            ChangeSelectedItem(SelectedRing, ring);
         }
 
         public void AddMoney(int money)
         {
-            if(money < 0)
+            if (money < 0)
                 throw new ArgumentOutOfRangeException(nameof(money));
-            
+
             _money += money;
         }
-        
+
         public void SpendMoney(int money)
         {
-            if(money < 0 || money > _money)
+            if (money < 0 || money > _money)
                 throw new ArgumentOutOfRangeException(nameof(money));
-            
+
             _money -= money;
+        }
+
+        private void ChangeSelectedItem(EquipmentItem currentItem, EquipmentItem newItem)
+        {
+            currentItem.CancelStats();
+
+            currentItem = newItem;
+            
+            currentItem.ApplyStats();
+            
+            SelectedItemChanged?.Invoke();
         }
     }
 }
