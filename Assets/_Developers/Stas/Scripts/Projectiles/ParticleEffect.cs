@@ -4,23 +4,17 @@ namespace MythicalBattles
 {
     public class ParticleEffect : Projectile
     {
-        private Transform _transform;
+        public ParticleSystem ParticleSystem { get; internal set; }
 
         private void Awake()
         {
             _transform = transform;
+            ParticleSystem = GetComponent<ParticleSystem>();
         }
 
-        private void Update()
+        private void OnParticleSystemStopped()
         {
-            if (_transform.parent == null)
-                _transform.parent = _pool.transform;
-        }
-
-        private void OnDisable()
-        {
-            if (_transform.parent == null)
-                _pool.ReturnItem(this);
+            _pool.ReturnItem(this);
         }
     }
 }

@@ -1,14 +1,14 @@
 namespace MythicalBattles
 {
-    public class AncientWarriorShooter : EnemyShooter
+    public class AncientWarriorShooter : Shooter
     {
         protected override void Shoot()
         {
             Arrow arrow = (Arrow)_projectilePool.GetItem();
-            ParticleEffect particle = (ParticleEffect)_particlePool.GetItem();
+            ParticleEffect particle = (ParticleEffect)_effectPool.GetItem();
 
             arrow.gameObject.SetActive(true);
-            arrow.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
+            arrow.Transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
             arrow.SetParticle(particle);
 
             arrow.Rigidbody.velocity = _shootPoint.forward * _shootSpeed;

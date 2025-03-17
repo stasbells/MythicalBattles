@@ -7,7 +7,6 @@ namespace MythicalBattles
     public class PlayerAutoAim : MonoBehaviour
     {
         [SerializeField] AimMarker _aimMarker;
-        [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private float _rotationSpeed = 5f;
         [SerializeField] private float _aimRadius;
 
@@ -51,7 +50,7 @@ namespace MythicalBattles
             _nearestEnemy = null;
 
             _hitColliders = new Collider[10];
-            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _aimRadius, _hitColliders, _enemyLayer);
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _aimRadius, _hitColliders, Constants.MaskLayerEnemy);
 
             for (int i = 0; i < hitCount; i++)
             {
@@ -80,7 +79,7 @@ namespace MythicalBattles
 
         private void TryShoot()
         {
-            _animator.SetBool(Constants.IsAim, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
+            _animator.SetBool(Constants.IsAttack, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
         }
 
         private void MarkTarget()

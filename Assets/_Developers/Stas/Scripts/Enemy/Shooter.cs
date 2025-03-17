@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    abstract public class EnemyShooter : MonoBehaviour
+    abstract public class Shooter : MonoBehaviour
     {
         [SerializeField] protected ObjectPool _projectilePool;
-        [SerializeField] protected ObjectPool _particlePool;
+        [SerializeField] protected ObjectPool _effectPool;
         [SerializeField] protected Transform _shootPoint;
         [SerializeField] protected ParticleSystem _prefire;
         [SerializeField] protected ParticleSystem _afterfire;
 
         [SerializeField] protected float _shootSpeed = 1f;
-        [SerializeField] private float _rateOfFire = 3f;
-        [SerializeField] private float _shootDelay = 0.6f;
+        [SerializeField] private float _rateOfFire = 1f;
+        [SerializeField] private float _shootDelay = 0.3f;
 
         protected Transform _transform;
         protected Animator _animator;
@@ -23,13 +23,11 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            CachedComponent();
-
             if (_prefire != null)
-            {
                 _prefire.Stop();
+
+            if (_afterfire != null)
                 _afterfire.Stop();
-            }
 
             _transform = transform;
             _animator = GetComponent<Animator>();
@@ -42,15 +40,15 @@ namespace MythicalBattles
             if (_animator.GetBool(Constants.IsDead))
                 return;
 
-            if (_animator.GetBool(Constants.IsAttack))
+            if (!_animator.GetBool(Constants.IsMove) && _animator.GetBool(Constants.IsAttack))
             {
                 _restTimer += Time.deltaTime;
 
                 if (_prefire != null && _prefire.isStopped)
-                {
                     _prefire.Play();
+
+                if (_afterfire != null && _afterfire.isStopped)
                     _afterfire.Play();
-                }
 
                 if (_restTimer >= _shootDelay)
                     OnShoot();
@@ -60,17 +58,6 @@ namespace MythicalBattles
                 StopCoroutine(_shooter);
                 _shooter = null;
                 _restTimer = 0f;
-            }
-        }
-
-        public void CachedComponent()
-        {
-            foreach (var item in _projectilePool.Items)
-            {
-                var arrow = item as Arrow;
-
-                if (arrow != null)
-                    arrow.Rigidbody = arrow.GetComponent<Rigidbody>();
             }
         }
 

@@ -49,7 +49,7 @@ namespace MythicalBattles
 
         private void Die()
         {
-            gameObject.layer = Constants.DefaultLayer;
+            gameObject.layer = Constants.LayerDefault;
             _capsuleCollider.enabled = false;
         }
 

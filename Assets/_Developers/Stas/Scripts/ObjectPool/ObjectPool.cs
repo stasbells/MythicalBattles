@@ -10,24 +10,32 @@ namespace MythicalBattles
         [SerializeField] private int _projectileLayer;
 
         private List<Projectile> _items;
+        private Transform _transform;
 
         public int CurrentItemIndex { get; private set; } = 0;
         public IReadOnlyList<Projectile> Items => _items;
 
         private void Awake()
         {
+            _transform = GetComponent<Transform>();
+
             if (_items == null)
                 Initialize();
         }
 
         public Projectile GetItem()
         {
-            return _items.Find(item => item.gameObject.activeSelf == false);
+            var item = _items.Find(item => item.gameObject.activeSelf == false);
+
+            item.Transform.parent = null;
+
+            return item;
         }
 
         public void ReturnItem(Projectile item)
         {
-            item.gameObject.transform.position = transform.position;
+            item.Transform.position = _transform.position;
+            item.Transform.parent = _transform;
             item.gameObject.SetActive(false);
         }
 
@@ -37,7 +45,7 @@ namespace MythicalBattles
 
             for (int i = 0; i < _itemsCount; i++)
             {
-                var item = Instantiate(_prefab, transform);
+                var item = Instantiate(_prefab, _transform);
 
                 item.SetPool(this);
                 item.gameObject.layer = _projectileLayer;

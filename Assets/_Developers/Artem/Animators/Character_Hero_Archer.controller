@@ -12,7 +12,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isMove
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: isAim
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1275514307704073438}
@@ -172,7 +172,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isAim
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isMove
@@ -234,25 +234,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isShoot
+    m_Controller: {fileID: 0}
+  - m_Name: isAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isAim
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -358,7 +352,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isMove
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isAim
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2980054066313995685}
@@ -386,7 +380,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isMove
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isAim
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2980054066313995685}
