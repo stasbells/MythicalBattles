@@ -94,7 +94,14 @@
             <e p="Materials" t="Include" />
             <e p="Models" t="Include" />
             <e p="Prefabs" t="Include">
-              <e p="Projectile" t="Include" />
+              <e p="Levels" t="Include" />
+              <e p="Projectile" t="Include">
+                <e p="Archer" t="Include" />
+                <e p="Demon" t="Include" />
+                <e p="Spirit" t="Include" />
+                <e p="Warrior" t="Include" />
+              </e>
+              <e p="Reserv" t="Include" />
             </e>
             <e p="Scenes" t="Include">
               <e p="Level" t="Include" />
@@ -107,14 +114,19 @@
               <e p="Enemy" t="Include">
                 <e p="AncientWarriorMover.cs" t="Include" />
                 <e p="AncientWarriorShooter.cs" t="Include" />
+                <e p="DemonMover.cs" t="Include" />
+                <e p="DemonShooter.cs" t="Include" />
                 <e p="Enemy.cs" t="Include" />
                 <e p="EnemyShooter.cs" t="Include" />
+                <e p="EnemySimpleShooter.cs" t="Include" />
                 <e p="GoblinMover.cs" t="Include" />
+                <e p="Shooter.cs" t="Include" />
                 <e p="SkeletonMover.cs" t="Include" />
                 <e p="SpiritMover.cs" t="Include" />
                 <e p="SpiritShooter.cs" t="Include" />
               </e>
               <e p="HealthBar.cs" t="Include" />
+              <e p="ISpawnPointGenerator.cs" t="Include" />
               <e p="ObjectPool" t="Include">
                 <e p="ObjectPool.cs" t="Include" />
               </e>
@@ -125,11 +137,14 @@
               <e p="PlayerShooter.cs" t="Include" />
               <e p="Projectiles" t="Include">
                 <e p="Arrow.cs" t="Include" />
+                <e p="Arrow1.cs" t="Include" />
                 <e p="EnemyProjectile.cs" t="Include" />
                 <e p="Health.cs" t="Include" />
                 <e p="ParticleEffect.cs" t="Include" />
                 <e p="Projectile.cs" t="Include" />
               </e>
+              <e p="SpawnPointGenerator.cs" t="Include" />
+              <e p="UltimateDamager.cs" t="Include" />
             </e>
             <e p="Sprites" t="Include" />
           </e>
@@ -490,6 +505,144 @@
         </e>
         <e p="Resources" t="Include">
           <e p="ProjectInstaller.cs" t="Include" />
+        </e>
+        <e p="StylizedProjectilePack1" t="Include">
+          <e p="Materials" t="Include">
+            <e p="Bullet" t="Include" />
+            <e p="decal" t="Include" />
+            <e p="electricity" t="Include" />
+            <e p="Fire" t="Include" />
+            <e p="Generic" t="Include" />
+            <e p="Laser" t="Include" />
+            <e p="Plasma" t="Include" />
+            <e p="smoke" t="Include" />
+            <e p="sparks" t="Include" />
+          </e>
+          <e p="Models" t="Include" />
+          <e p="Prefabs" t="Include">
+            <e p="Bullet" t="Include">
+              <e p="Bullet_BlazingRed" t="Include">
+                <e p="Bullet_Big_BlazingRed" t="Include" />
+                <e p="Bullet_Medium_BlazingRed" t="Include" />
+                <e p="Bullet_Small_BlazingRed" t="Include" />
+              </e>
+              <e p="Bullet_DemonPurple" t="Include">
+                <e p="Bullet_Big_DemonPurple" t="Include" />
+                <e p="Bullet_Medium_DemonPurple" t="Include" />
+                <e p="Bullet_Small_DemonPurple" t="Include" />
+              </e>
+              <e p="Bullet_GoldFire" t="Include">
+                <e p="Bullet_Big_GoldFire" t="Include" />
+                <e p="Bullet_Medium_GoldFire" t="Include" />
+                <e p="Bullet_Small_Goldfire" t="Include" />
+              </e>
+              <e p="Bullet_GoldFire_Template" t="Include">
+                <e p="Bullet_Big_GoldFire_Template" t="Include" />
+                <e p="Bullet_Medium_GoldFire_Template" t="Include" />
+                <e p="Bullet_Small_Goldfire_Template" t="Include" />
+              </e>
+              <e p="Bullet_SilverFlare" t="Include">
+                <e p="Bullet_Big_SilverFlare" t="Include" />
+                <e p="Bullet_Medium_SilverFlare" t="Include" />
+                <e p="Bullet_Small_SilverFlare" t="Include" />
+              </e>
+              <e p="Bullet_VenomGreen" t="Include">
+                <e p="Bullet_Big_VenomGreen" t="Include" />
+                <e p="Bullet_Medium_VenomGreen" t="Include" />
+                <e p="Bullet_Small_VenomGreen" t="Include" />
+              </e>
+              <e p="shells" t="Include" />
+            </e>
+            <e p="Laser" t="Include">
+              <e p="Laser_Blue" t="Include">
+                <e p="Laser_Big_Blue" t="Include" />
+                <e p="Laser_Medium_Blue" t="Include" />
+                <e p="Laser_Small_Blue" t="Include" />
+              </e>
+              <e p="Laser_Green" t="Include">
+                <e p="Laser_Big_Green" t="Include" />
+                <e p="Laser_Medium_Green" t="Include" />
+                <e p="Laser_Small_Green" t="Include" />
+              </e>
+              <e p="Laser_Orange" t="Include">
+                <e p="Laser_Big_Orange" t="Include" />
+                <e p="Laser_Medium_Orange" t="Include" />
+                <e p="Laser_Small_Orange" t="Include" />
+              </e>
+              <e p="Laser_Purple" t="Include">
+                <e p="Laser_Big_Purple" t="Include" />
+                <e p="Laser_Medium_Purple" t="Include" />
+                <e p="Laser_Small_Purple" t="Include" />
+              </e>
+              <e p="Laser_Red" t="Include">
+                <e p="Laser_Big_Red" t="Include" />
+                <e p="Laser_Medium_Red" t="Include" />
+                <e p="Laser_Small_Red" t="Include" />
+              </e>
+              <e p="Laser_Red_Template" t="Include">
+                <e p="Laser_Big_Red_Template" t="Include" />
+                <e p="Laser_Medium_Red_Template" t="Include" />
+                <e p="Laser_Small_Red_Template" t="Include" />
+              </e>
+            </e>
+            <e p="Plasma" t="Include">
+              <e p="Plasma_LightBlue" t="Include">
+                <e p="Plasma_Big_LightBlue" t="Include" />
+                <e p="Plasma_Medium_LightBlue" t="Include" />
+                <e p="Plasma_Small_LightBlue" t="Include" />
+              </e>
+              <e p="Plasma_LightBlue_Template" t="Include">
+                <e p="Plasma_Big_LightBlue_Template" t="Include" />
+                <e p="Plasma_Medium_LightBlue_Template" t="Include" />
+                <e p="Plasma_Small_LightBlue_Template" t="Include" />
+              </e>
+              <e p="Plasma_OceanBlue" t="Include">
+                <e p="Plasma_Big_OceanBlue" t="Include" />
+                <e p="Plasma_Medium_OceanBlue" t="Include" />
+                <e p="Plasma_Small_OceanBlue" t="Include" />
+              </e>
+              <e p="Plasma_PoisonGreen" t="Include">
+                <e p="Plasma_Big_PoisonGreen" t="Include" />
+                <e p="Plasma_Medium_PoisonGreen" t="Include" />
+                <e p="Plasma_Small_PoisonGreen" t="Include" />
+              </e>
+              <e p="Plasma_PurpleHaze" t="Include">
+                <e p="Plasma_Big_PurpleHaze" t="Include" />
+                <e p="Plasma_Medium_PurpleHaze" t="Include" />
+                <e p="Plasma_Small_PurpleHaze" t="Include" />
+              </e>
+              <e p="Plasma_RagingRed" t="Include">
+                <e p="Plasma_Big_RagingRed" t="Include" />
+                <e p="Plasma_Medium_RagingRed" t="Include" />
+                <e p="Plasma_Small_RagingRed" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Scenes" t="Include">
+            <e p="stylizedProjectilePack" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="destroyMe.cs" t="Include" />
+            <e p="instantiateEffectCaller.cs" t="Include" />
+            <e p="particleColorChanger.cs" t="Include" />
+          </e>
+          <e p="shader" t="Include">
+            <e p="Mobile-Particle-Add-ZTestAlways.shader" t="Include" />
+            <e p="Mobile-Particle-AlphaBlended-ZTestAlways.shader" t="Include" />
+          </e>
+          <e p="Textures" t="Include" />
+          <e p="Tips &amp; Documentations.txt" t="Include" />
+          <e p="WebDemo" t="Include">
+            <e p="Animators" t="Include" />
+            <e p="example_scene_environment" t="Include" />
+            <e p="font" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="CameraShake.cs" t="Include" />
+              <e p="ExplodingProjectile.cs" t="Include" />
+              <e p="Projectile.cs" t="Include" />
+              <e p="projectileActor.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Synty" t="Include">
           <e p="AnimationBaseLocomotion" t="Include">
@@ -1008,36 +1161,6 @@
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
             <e p="EmojiOne.json" t="Include" />
-          </e>
-        </e>
-        <e p="Vefects" t="Include">
-          <e p="Trails VFX" t="Include">
-            <e p="_ Read Me" t="Include" />
-            <e p="Scene" t="Include">
-              <e p="Materials" t="Include" />
-              <e p="Meshes" t="Include" />
-              <e p="PostProcessing" t="Include" />
-              <e p="Scenes" t="Include">
-                <e p="VFX_Scene_Outdoors_Profiles" t="Include" />
-              </e>
-              <e p="Textures" t="Include" />
-            </e>
-            <e p="Scripts" t="Include">
-              <e p="Demo_FreeCam.cs" t="Include" />
-              <e p="Demo_TurningAround.cs" t="Include" />
-            </e>
-            <e p="Sounds" t="Include">
-              <e p="WAV" t="Include" />
-            </e>
-            <e p="VFX" t="Include">
-              <e p="Materials" t="Include" />
-              <e p="Particles" t="Include" />
-              <e p="Shaders" t="Include">
-                <e p="SH_Vefects_VFX_AdvTrail.shader" t="Include" />
-                <e p="SH_Vefects_VFX_Distortion.shader" t="Include" />
-              </e>
-              <e p="Textures" t="Include" />
-            </e>
           </e>
         </e>
         <e p="VirtualButtonsForUnity" t="Include">
