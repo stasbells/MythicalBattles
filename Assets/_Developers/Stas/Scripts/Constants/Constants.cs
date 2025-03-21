@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace MythicalBattles
 {
     public static class Constants
     {
+        public static readonly float MoveControllerRotationAngle = 45f;
+
         public static readonly float SpawnPointXPlus = 5.7f;
         public static readonly float SpawnPointXMinus = -6.7f;
         public static readonly float SpawnPointZPlus = 4.5f;

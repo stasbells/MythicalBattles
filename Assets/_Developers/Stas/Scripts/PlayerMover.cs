@@ -17,7 +17,7 @@ namespace MythicalBattles
         private Vector2 _moveDirection;
         private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
-
+        private Vector2 _rotateInput = new Vector2(0.7f, 0.7f);
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
@@ -57,6 +57,7 @@ namespace MythicalBattles
         private void Move()
         {
             _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+            _moveDirection = Quaternion.AngleAxis(Constants.MoveControllerRotationAngle, Vector3.forward) * _moveDirection;
 
             if (_moveDirection.sqrMagnitude < 0.1f)
             {
@@ -76,7 +77,6 @@ namespace MythicalBattles
             Vector3 move = new(_moveDirection.x, 0, _moveDirection.y);
             _controller.Move(_moveSpeed * Time.deltaTime * move);
         }
-
         private void Die()
         {
             _animator.SetBool(Constants.IsMove, false);

@@ -33,6 +33,8 @@ namespace MythicalBattles
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
             _sleep = new WaitForSeconds(_rateOfFire);
+
+            OnAwake();
         }
 
         private void Update()
@@ -63,6 +65,10 @@ namespace MythicalBattles
 
         protected virtual void Shoot() { }
 
+        protected virtual void OnAwake() { }
+
+        private void OnShoot() => _shooter ??= StartCoroutine(AutoShoot());
+
         private IEnumerator AutoShoot()
         {
             while (!_animator.GetBool(Constants.IsDead))
@@ -72,7 +78,5 @@ namespace MythicalBattles
                 yield return _sleep;
             }
         }
-
-        private void OnShoot() => _shooter ??= StartCoroutine(AutoShoot());
     }
 }
