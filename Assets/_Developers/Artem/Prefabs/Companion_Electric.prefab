@@ -4893,6 +4893,7 @@ GameObject:
   - component: {fileID: 1441817874310890254}
   - component: {fileID: 3633067412378119612}
   - component: {fileID: -6302398095096322436}
+  - component: {fileID: -6740034273117163248}
   m_Layer: 0
   m_Name: Companion_Electric
   m_TagString: Untagged
@@ -4951,6 +4952,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoothTime: 0.1
   _maxSpeed: 8
+--- !u!114 &-6740034273117163248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045586851445543467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7131c9008dfb192459a4f117e1053141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _rotationSpeed: 500
+  _aimRadius: 15
 --- !u!1 &5569136376497707794
 GameObject:
   m_ObjectHideFlags: 0
