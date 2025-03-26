@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,45 +10,54 @@ namespace MythicalBattles
         private const int InitMaxHealth = 100;
         private const int InitDamage = 100;
         private const int InitAttackSpeed = 100;
+
+        public event Action<float> MaxHealthChanged;
+        public event Action<float> DamageChanged;
+        public event Action<float> AttackSpeedChanged;
         
-        public int MaxHealth { get; private set; }
-        public int Damage { get; private set; }
-        public int AttackSpeed { get; private set; }
+        public float MaxHealth { get; private set; }
+        public float Damage { get; private set; }
+        public float AttackSpeed { get; private set; }
 
         public PlayerStats()
         {
             ResetStats();
         }
         
-        public void IncreaseMaxHealth(int health)
+        public void IncreaseMaxHealth(float health)
         {
             MaxHealth += health;
+            MaxHealthChanged?.Invoke(MaxHealth);
         }
 
-        public void DecreaseMaxHealth(int health)
+        public void DecreaseMaxHealth(float health)
         {
             MaxHealth -= health;
+            MaxHealthChanged?.Invoke(MaxHealth);
         }
 
-        public void IncreaseDamage(int damage)
+        public void IncreaseDamage(float damage)
         {
             Damage += damage;
-            Debug.Log(Damage);
+            DamageChanged?.Invoke(Damage);
         }
 
-        public void DecreaseDamage(int damage)
+        public void DecreaseDamage(float damage)
         {
             Damage -= damage;
+            DamageChanged?.Invoke(Damage);
         }
 
-        public void IncreaseAttackSpeed(int attackSpeed)
+        public void IncreaseAttackSpeed(float attackSpeed)
         {
             AttackSpeed += attackSpeed;
+            AttackSpeedChanged?.Invoke(AttackSpeed);
         }
 
-        public void DecreaseAttackSpeed(int attackSpeed)
+        public void DecreaseAttackSpeed(float attackSpeed)
         {
             AttackSpeed -= attackSpeed;
+            AttackSpeedChanged?.Invoke(AttackSpeed);
         }
 
         public void ResetStats()

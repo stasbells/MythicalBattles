@@ -6,12 +6,15 @@ namespace MythicalBattles
 {
     public interface IPlayerStats
     {
-        public void IncreaseMaxHealth(int health);
-        public void DecreaseMaxHealth(int health);
-        public void IncreaseDamage(int damage);
-        public void DecreaseDamage(int damage);
-        public void IncreaseAttackSpeed(int attackSpeed);
-        public void DecreaseAttackSpeed(int attackSpeed);
+        public float MaxHealth { get; }
+        public float Damage { get; }
+        public float AttackSpeed { get; }
+        public void IncreaseMaxHealth(float health);
+        public void DecreaseMaxHealth(float health);
+        public void IncreaseDamage(float damage);
+        public void DecreaseDamage(float damage);
+        public void IncreaseAttackSpeed(float attackSpeed);
+        public void DecreaseAttackSpeed(float attackSpeed);
         public void ResetStats();
     }
 }
