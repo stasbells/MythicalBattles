@@ -77,6 +77,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6056111210815628943}
     m_Modifications:
+    - target: {fileID: 1772662100155600306, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772662100155600306, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 3212732661843502437, guid: 768146189b400f6488747164d4d16bb6, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_CompanionFire
@@ -120,6 +128,22 @@ PrefabInstance:
     - target: {fileID: 3943345056296295861, guid: 768146189b400f6488747164d4d16bb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467633257371575131, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467633257371575131, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012981792204473404, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012981792204473404, guid: 768146189b400f6488747164d4d16bb6, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

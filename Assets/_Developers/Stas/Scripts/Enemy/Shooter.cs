@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    abstract public class Shooter : MonoBehaviour
+    public abstract class Shooter : MonoBehaviour
     {
         [SerializeField] protected ObjectPool _projectilePool;
         [SerializeField] protected ObjectPool _effectPool;

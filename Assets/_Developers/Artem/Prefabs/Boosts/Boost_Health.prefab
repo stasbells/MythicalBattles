@@ -64,6 +64,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 572872094292586375}
     m_Modifications:
+    - target: {fileID: 5475459540592753884, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475459540592753884, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5622995632065468819, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_Heart
@@ -107,6 +115,14 @@ PrefabInstance:
     - target: {fileID: 6827941156330445954, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682816119548572181, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682816119548572181, guid: a8652bc095a10a1479fda55619bd1489, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -16,8 +17,10 @@ namespace MythicalBattles
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
         private Transform _transform;
-
         private float _rotationToTarget;
+
+        public event Action EnemyFound;
+        public event Action EnemyMissed;
 
         private void Awake()
         {
@@ -34,8 +37,8 @@ namespace MythicalBattles
                 TurnToTargetEnemy();
             else
                 TurnToSpotRotation();
-
-            TryShoot();
+            
+            AdjustAnimation();
         }
 
         private void FindNearestEnemy()
@@ -62,7 +65,7 @@ namespace MythicalBattles
 
         private void TurnToTargetEnemy()
         {
-            Vector3 direction = (_targetEnemy.position - _transform.position);
+            Vector3 direction = _targetEnemy.position - _transform.position;
 
             Turn(direction);
         }
@@ -86,9 +89,26 @@ namespace MythicalBattles
             _rotationToTarget = _transform.rotation.y - lookRotation.y;
         }
 
-        private void TryShoot()
+        private void AdjustAnimation()
         {
-            _animator.SetBool("IsAim", _targetEnemy != null);
+            if (_targetEnemy)
+            {
+                if (_animator.GetBool("IsAttack")) 
+                    return;
+                
+                EnemyFound?.Invoke();
+                    
+                _animator.SetBool("IsAttack", true);
+            }
+            else
+            {
+                if (_animator.GetBool("IsAttack") == false) 
+                    return;
+                
+                EnemyMissed?.Invoke();
+                    
+                _animator.SetBool("IsAttack", false);
+            }
         }
     }
 }
