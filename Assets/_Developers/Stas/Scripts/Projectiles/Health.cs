@@ -15,7 +15,8 @@ namespace MythicalBattles
 
         public float MaxHealthValue => _maxHealthValue;
 
-        public event UnityAction<float> HealthValueChanged;
+        public event UnityAction<float> CurrentHealthValueChanged;
+        public event UnityAction<float> MaxHealthValueChanged;
         public event UnityAction<float> Damaged;
         public event UnityAction<float> Healed;
 
@@ -23,7 +24,7 @@ namespace MythicalBattles
         {
             _animator = GetComponent<Animator>();
             _currentHealth = _maxHealthValue;
-            HealthValueChanged?.Invoke(CalculateHealthValue());
+            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
         }
    
         public void TakeDamage(float damage)
@@ -38,6 +39,19 @@ namespace MythicalBattles
             Healed?.Invoke(health);
         }
 
+        protected void ChangeMaxHealthValue(float maxHealth)
+        {
+            _maxHealthValue = maxHealth;
+            
+            MaxHealthValueChanged?.Invoke(_maxHealthValue);
+            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
+        }
+
+        private float CalculateHealthValue()
+        {
+            return _currentHealth / _maxHealthValue;
+        }
+        
         private void Die()
         {
             _animator.SetBool(Constants.IsDead, true);
@@ -47,15 +61,10 @@ namespace MythicalBattles
         {
             _currentHealth = Math.Clamp(healthValue, MinHealthValue, _maxHealthValue);
 
-            HealthValueChanged?.Invoke(CalculateHealthValue());
+            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
 
             if (_currentHealth <= MinHealthValue)
                 Die();
-        }
-
-        private float CalculateHealthValue()
-        {
-            return _currentHealth / _maxHealthValue;
         }
     }
 }
