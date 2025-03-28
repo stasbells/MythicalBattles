@@ -24,6 +24,8 @@ namespace MythicalBattles
 
         private Vector3 _rotation;
         private Vector3 _scale;
+        private float _initialMaxHealth;
+        private float _initialScaleX;
 
         private void Awake()
         {
@@ -34,7 +36,12 @@ namespace MythicalBattles
             _health = GetComponentInParent<Health>();
             _rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
+            _initialScaleX = _transform.localScale.x;
             _canvasGroup.alpha = 0f;
+            _initialMaxHealth = _health.MaxHealthValue;
+
+            Debug.Log(_scale);
+            Debug.Log(_initialMaxHealth);
         }
 
         private void Start()
@@ -49,25 +56,40 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            _health.HealthValueChanged += ChangeValue;
+            _health.CurrentHealthValueChanged += OnCurrentHealthChanged;
+            _health.MaxHealthValueChanged += OnUpdateMaxHealth;
             _health.Damaged += ViewHealthChange;
         }
 
         private void OnDisable()
         {
-            _health.HealthValueChanged -= ChangeValue;
+            _health.CurrentHealthValueChanged -= OnCurrentHealthChanged;
+            _health.MaxHealthValueChanged -= OnUpdateMaxHealth;
             _health.Damaged -= ViewHealthChange;
         }
 
-        private void ChangeValue(float healthValue)
+        private void OnCurrentHealthChanged(float healthValue)
         {
-            OnChangeValue(healthValue);
+            ChangeValue(healthValue);
 
             _transform.DOPunchScale(_scale, 0.5f, 15, 5f);
             _canvasGroup.alpha = healthValue > 0 ? 1f : 0f;
         }
 
-        private void OnChangeValue(float healthValue)
+        private void OnUpdateMaxHealth(float newMaxHealth)
+        {
+            float scaleFactor = newMaxHealth / _initialMaxHealth;
+
+            _rectTransform.localScale = new Vector3(
+                _initialScaleX * scaleFactor,
+                _rectTransform.localScale.y,
+                _rectTransform.localScale.z
+            );
+
+            Debug.Log(_transform.localScale);
+        }
+
+        private void ChangeValue(float healthValue)
         {
             _healthBar.fillAmount = healthValue;
 
@@ -79,7 +101,7 @@ namespace MythicalBattles
 
         private IEnumerator ChangeValueTo(float healthValue)
         {
-            while (_smoothHealthBar.fillAmount != healthValue)
+            while (Mathf.Approximately(_smoothHealthBar.fillAmount, healthValue) == false)
             {
                 _smoothHealthBar.fillAmount = Mathf.MoveTowards
                     (_smoothHealthBar.fillAmount, healthValue, _recoveryRate * Time.deltaTime);

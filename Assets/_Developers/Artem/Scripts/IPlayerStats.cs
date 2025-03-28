@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace MythicalBattles
         public float MaxHealth { get; }
         public float Damage { get; }
         public float AttackSpeed { get; }
+        public event Action<float> MaxHealthChanged;
+        public event Action<float> DamageChanged;
+        public event Action<float> AttackSpeedChanged;
         public void IncreaseMaxHealth(float health);
         public void DecreaseMaxHealth(float health);
         public void IncreaseDamage(float damage);

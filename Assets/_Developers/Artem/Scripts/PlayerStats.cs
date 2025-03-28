@@ -10,14 +10,14 @@ namespace MythicalBattles
         private const int InitMaxHealth = 100;
         private const int InitDamage = 100;
         private const int InitAttackSpeed = 100;
-
-        public event Action<float> MaxHealthChanged;
-        public event Action<float> DamageChanged;
-        public event Action<float> AttackSpeedChanged;
         
         public float MaxHealth { get; private set; }
         public float Damage { get; private set; }
         public float AttackSpeed { get; private set; }
+        
+        public event Action<float> MaxHealthChanged;
+        public event Action<float> DamageChanged;
+        public event Action<float> AttackSpeedChanged;
 
         public PlayerStats()
         {
