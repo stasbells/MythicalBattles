@@ -13,13 +13,19 @@ namespace MythicalBattles
         [SerializeField] private float _afterAttackDelay = 1f;
         [SerializeField] private ParticleSystem _spawnPlaceMarker;
 
-        [Inject] private ISpawnPointGenerator _spawnPointGenerator;
+        private ISpawnPointGenerator _spawnPointGenerator;
 
         private Vector3[] _spawnPoints = new Vector3[ProjectileCount];
 
         private WaitForSeconds _projectilesSpawnDelay;
         private WaitForSeconds _animationDelay;
         private Transform _cameraTransform;
+
+        [Inject]
+        private void Construct(ISpawnPointGenerator spawnPointGenerator)
+        {
+            _spawnPointGenerator = spawnPointGenerator;
+        }
 
         private void Start()
         {

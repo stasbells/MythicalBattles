@@ -25,7 +25,7 @@ namespace MythicalBattles
                 arrow.Transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
                 arrow.SetParticle(particle);
 
-                arrow.Rigidbody.velocity = _shootPoint.forward * _shootSpeed;
+                arrow.Rigidbody.velocity = _shootPoint.forward * _arrowVelcity;
 
                 rotate.y += _rotateAngle;
             }

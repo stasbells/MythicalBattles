@@ -32177,7 +32177,7 @@ ParticleSystem:
       properties: 4
       emitProbability: 1
     - serializedVersion: 3
-      emitter: {fileID: 0}
+      emitter: {fileID: 3219459603312554353}
       type: 0
       properties: 4
       emitProbability: 1

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class EnemySimpleShooter : Shooter
+    public class SimpleShooter : Shooter
     {
         [SerializeField] private ParticleSystem _prefab;
 

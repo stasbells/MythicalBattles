@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class Arrow1 : Projectile
+    public class SimpleArrow : Projectile
     {
         [field: SerializeField] public int Damage { get; private set; }
 

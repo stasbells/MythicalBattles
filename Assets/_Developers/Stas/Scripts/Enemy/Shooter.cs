@@ -11,7 +11,7 @@ namespace MythicalBattles
         [SerializeField] protected ParticleSystem _prefire;
         [SerializeField] protected ParticleSystem _afterfire;
 
-        [SerializeField] protected float _shootSpeed = 1f;
+        [SerializeField] protected float _arrowVelcity = 1f;
         [SerializeField] private float _rateOfFire = 1f;
         [SerializeField] private float _shootDelay = 0.3f;
 

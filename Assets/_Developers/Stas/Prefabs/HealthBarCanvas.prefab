@@ -238,9 +238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 3822231783507288534}
   _smoothHealthBar: {fileID: 8745262158548000080}
-  _health: {fileID: 0}
-  _recoveryRate: 0.3
   _damageNumber: {fileID: 1869058827713599941, guid: 81a38aa2a7dc66442a38ed333dca6f10, type: 3}
+  _recoveryRate: 0.3
+  _healthBarScale: 0.3
 --- !u!1 &6521516316520942850
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 0
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
