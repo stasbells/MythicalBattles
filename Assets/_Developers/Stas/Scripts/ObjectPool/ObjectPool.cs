@@ -5,15 +5,15 @@ namespace MythicalBattles
 {
     public class ObjectPool : MonoBehaviour
     {
-        [SerializeField] private Projectile _prefab;
+        [SerializeField] private ReturnableProjectile _prefab;
         [SerializeField] private int _itemsCount;
         [SerializeField] private int _projectileLayer;
 
-        private List<Projectile> _items;
+        private List<ReturnableProjectile> _items;
         private Transform _transform;
 
         public int CurrentItemIndex { get; private set; } = 0;
-        public IReadOnlyList<Projectile> Items => _items;
+        public IReadOnlyList<ReturnableProjectile> Items => _items;
 
         private void Awake()
         {
@@ -23,7 +23,7 @@ namespace MythicalBattles
                 Initialize();
         }
 
-        public Projectile GetItem()
+        public ReturnableProjectile GetItem()
         {
             var item = _items.Find(item => item.gameObject.activeSelf == false);
 
@@ -32,7 +32,7 @@ namespace MythicalBattles
             return item;
         }
 
-        public void ReturnItem(Projectile item)
+        public void ReturnItem(ReturnableProjectile item)
         {
             item.Transform.position = _transform.position;
             item.Transform.parent = _transform;
@@ -41,7 +41,7 @@ namespace MythicalBattles
 
         private void Initialize()
         {
-            _items = new List<Projectile>();
+            _items = new List<ReturnableProjectile>();
 
             for (int i = 0; i < _itemsCount; i++)
             {

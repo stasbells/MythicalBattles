@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class EnemyProjectile : Projectile
+    public class EnemyProjectile : ReturnableProjectile
     {
         private void OnCollisionEnter(Collision collision)
         {

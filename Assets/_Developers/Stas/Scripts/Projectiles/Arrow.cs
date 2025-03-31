@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class Arrow : Projectile
+    public class Arrow : ReturnableProjectile
     {
         private ParticleEffect _effect;
 

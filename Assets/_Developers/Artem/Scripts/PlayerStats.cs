@@ -4,7 +4,7 @@ namespace MythicalBattles
 {
     public class PlayerStats : IPlayerStats
     {
-        private const int InitMaxHealth = 100;
+        private const int InitMaxHealth = 10000;
         private const int InitDamage = 100;
         private const int InitAttackSpeed = 100;
         

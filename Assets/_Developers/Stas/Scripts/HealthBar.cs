@@ -26,6 +26,7 @@ namespace MythicalBattles
         private Vector3 _scale;
         private float _initialMaxHealth;
         private float _initialScaleX;
+        private Vector3 _initialLocalScale;
 
         private void Awake()
         {
@@ -34,6 +35,7 @@ namespace MythicalBattles
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _health = GetComponentInParent<Health>();
+            _initialLocalScale = _transform.localScale;
             _rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
             _initialScaleX = _transform.localScale.x;
@@ -72,19 +74,21 @@ namespace MythicalBattles
         {
             ChangeValue(healthValue);
 
-            _transform.DOPunchScale(_scale, 0.5f, 15, 5f);
-            _canvasGroup.alpha = healthValue > 0 ? 1f : 0f;
+            AnimateBarChanging(healthValue);
         }
 
         private void OnUpdateMaxHealth(float newMaxHealth)
         {
             float scaleFactor = newMaxHealth / _initialMaxHealth;
+            float newScaleX = _initialScaleX * scaleFactor;
+
+            _initialLocalScale.x = newScaleX;
 
             _rectTransform.localScale = new Vector3(
-                _initialScaleX * scaleFactor,
+                newScaleX,
                 _rectTransform.localScale.y,
                 _rectTransform.localScale.z
-            );
+            ); 
 
             Debug.Log(_transform.localScale);
         }
@@ -113,6 +117,16 @@ namespace MythicalBattles
         private void ViewHealthChange(float value)
         {
             _damageNumber.Spawn(_rectTransform.position, value, _transform);
+        }
+
+        private void AnimateBarChanging(float healthValue)
+        {
+            _transform.DOPunchScale(_scale, 0.5f, 15, 5f).OnComplete(() =>
+            {
+                _transform.localScale = _initialLocalScale;
+            });
+
+            _canvasGroup.alpha = healthValue > 0 ? 1f : 0f;
         }
     }
 }

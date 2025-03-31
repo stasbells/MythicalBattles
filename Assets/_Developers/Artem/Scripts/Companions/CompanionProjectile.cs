@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class CompanionProjectile : Projectile
+    public class CompanionProjectile : ReturnableProjectile
     {
         [field: SerializeField] public int Damage { get; private set; }
 
