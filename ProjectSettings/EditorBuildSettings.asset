@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Developers/Stas/Scenes/UIDemo.unity
+    path: Assets/Resources/Scenes/Boot.unity
+    guid: 66553fff49ab4104f9fd6f169afba8ae
+  - enabled: 1
+    path: Assets/_Developers/Stas/Scenes/MainMenu.unity
     guid: 123cc750dc1c8734f97ac51f6ac45055
   - enabled: 1
     path: Assets/_Developers/Stas/Scenes/Level.unity

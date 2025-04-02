@@ -5,6 +5,10 @@ namespace MythicalBattles
 {
     public static class Constants
     {
+        public const string Boot = "Boot";
+        public const string MainMenu = "MainMenu";
+        public const string Gameplay = "Gameplay";
+
         public static readonly float MoveControllerRotationAngle = 45f;
 
         public static readonly float SpawnPointXPlus = 5.7f;
