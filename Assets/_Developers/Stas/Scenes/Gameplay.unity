@@ -256,10 +256,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470374797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fed0c2cbb68cb8479c20ce81118e68e, type: 3}
+  m_Script: {fileID: 11500000, guid: f948aebc6e29c3d449f3be2bcf58269e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneUIRootPrefab: {fileID: 7239287354694032234, guid: a68ec31f0d8d70246bf674a40b1040fc, type: 3}
+  _sceneUIRootPrefab: {fileID: 7075134386982004059, guid: 0d8283ce97ecf4f4bbd08188922d424c, type: 3}
 --- !u!1 &1583398493
 GameObject:
   m_ObjectHideFlags: 0
