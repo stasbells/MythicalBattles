@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Developers/Artem/Scenes/Level Artem.unity
     guid: 9b7beca6194c6594eb8b88ca0a800dff
+  - enabled: 1
+    path: Assets/_Developers/Artem/Scenes/ArtemTestScene.unity
+    guid: 90c1ada36cf3e3a4997130a26c7f7686
   m_configObjects: {}

@@ -65,9 +65,11 @@ namespace MythicalBattles
 
         private void TurnToTargetEnemy()
         {
-            Vector3 direction = _targetEnemy.position - _transform.position;
+            Vector3 directionToEnemyPosition = _targetEnemy.position - _transform.position;
+            
+            Vector3 newDirection = new Vector3(directionToEnemyPosition.x, 0, directionToEnemyPosition.z);
 
-            Turn(direction);
+            Turn(newDirection);
         }
 
         private void TurnToSpotRotation()
@@ -75,9 +77,9 @@ namespace MythicalBattles
             if (_companion.Spot == null)
                 return;
             
-            Vector3 direction = _companion.Spot.forward;
+            Vector3 newDirection = _companion.Spot.forward;
             
-            Turn(direction);
+            Turn(newDirection);
         }
 
         private void Turn(Vector3 direction)

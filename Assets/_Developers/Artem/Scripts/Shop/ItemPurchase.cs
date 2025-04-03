@@ -9,6 +9,7 @@ namespace MythicalBattles
     {
         private IWallet _wallet;
         private IPersistentData _persistentData;
+        private IDataProvider _dataProvider;
         private ShopItemView _itemView;
         private ItemSelector _itemSelector;
 
@@ -16,6 +17,7 @@ namespace MythicalBattles
         {
             _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
             _wallet = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IWallet>();
+            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
             _itemSelector = new ItemSelector(_persistentData);
             _itemView = GetComponent<ShopItemView>();
         }
@@ -47,6 +49,8 @@ namespace MythicalBattles
                 _wallet.Spend(itemView.Price);
                 
                 _itemSelector.Visit(itemView.Item);
+                
+                _dataProvider.Save();
             }
         }
         

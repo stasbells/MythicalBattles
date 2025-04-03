@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MythicalBattles
 {
@@ -11,11 +8,11 @@ namespace MythicalBattles
         [SerializeField] private Sprite _backgroundImage;
         [SerializeField] private Sprite _itemImage;
         [SerializeField, Range(0,10000)] private int _price;
-
+        
+        public string ItemID => this.name;
         public GameObject Model => _model;
         public Sprite ItemImage => _itemImage;
         public Sprite BackgroundImage => _backgroundImage;
         public int Price => _price;
-
     }
 }

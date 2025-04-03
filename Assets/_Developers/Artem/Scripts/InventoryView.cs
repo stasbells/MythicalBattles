@@ -29,12 +29,12 @@ namespace MythicalBattles
 
         private void ShowEquipmentItems()
         {
-            EquipmentItem weapon = _persistentData.PlayerData.SelectedWeapon;
-            EquipmentItem armor = _persistentData.PlayerData.SelectedArmor;
-            EquipmentItem helmet = _persistentData.PlayerData.SelectedHelmet;
-            EquipmentItem boots = _persistentData.PlayerData.SelectedBoots;
-            EquipmentItem necklace = _persistentData.PlayerData.SelectedNecklace;
-            EquipmentItem ring = _persistentData.PlayerData.SelectedRing;
+            EquipmentItem weapon = _persistentData.PlayerData.GetSelectedWeapon();
+            EquipmentItem armor = _persistentData.PlayerData.GetSelectedArmor();
+            EquipmentItem helmet = _persistentData.PlayerData.GetSelectedHelmet();
+            EquipmentItem boots = _persistentData.PlayerData.GetSelectedBoots();
+            EquipmentItem necklace = _persistentData.PlayerData.GetSelectedNecklace();
+            EquipmentItem ring = _persistentData.PlayerData.GetSelectedRing();
             
             ViewItem(_weaponView, weapon);
             ViewItem(_armorView, armor);
