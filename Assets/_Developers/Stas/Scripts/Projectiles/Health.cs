@@ -42,7 +42,7 @@ namespace MythicalBattles
         protected void ChangeMaxHealthValue(float maxHealth)
         {
             _maxHealthValue = maxHealth;
-            
+
             MaxHealthValueChanged?.Invoke(_maxHealthValue);
             CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
         }

@@ -13,6 +13,7 @@ namespace MythicalBattles
         public event Action<float> MaxHealthChanged;
         public event Action<float> DamageChanged;
         public event Action<float> AttackSpeedChanged;
+        public void UpdatePlayerData(PlayerData playerData);
         public void IncreaseMaxHealth(float health);
         public void DecreaseMaxHealth(float health);
         public void IncreaseDamage(float damage);
@@ -20,5 +21,6 @@ namespace MythicalBattles
         public void IncreaseAttackSpeed(float attackSpeed);
         public void DecreaseAttackSpeed(float attackSpeed);
         public void ResetStats();
+        public void Dispose();
     }
 }

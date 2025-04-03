@@ -14,18 +14,58 @@ namespace MythicalBattles
         [SerializeField] private List<BootsItem> _bootsItems;
         [SerializeField] private List<NecklaceItem> _necklaceItems;
         [SerializeField] private List<RingItem> _ringItems;
+        
+        private Dictionary<string, ShopItem> _itemsRegistry;
 
-        public IEnumerable<EquipmentItem> GetEquipmentItems()
+        public void InitializeRegistry()
         {
-            return _weaponItems.Cast<EquipmentItem>()
-                .Concat(_armorItems.Cast<EquipmentItem>())
-                .Concat(_helmetItems.Cast<EquipmentItem>())
-                .Concat(_bootsItems.Cast<EquipmentItem>())
-                .Concat(_necklaceItems.Cast<EquipmentItem>())
-                .Concat(_ringItems.Cast<EquipmentItem>());
+            CheckGradesDuplicates();
+            
+            _itemsRegistry = new Dictionary<string, ShopItem>();
+        
+            foreach(ShopItem item in GetItems())
+            {
+                if(_itemsRegistry.ContainsKey(item.ItemID))
+                {
+                    Debug.LogError($"Duplicate ID found: {item.ItemID}");
+                    continue;
+                }
+            
+                _itemsRegistry.Add(item.ItemID, item);
+            }
+        }
+        
+        public T GetItem<T>(string itemID) where T : ShopItem
+        {
+            if (string.IsNullOrEmpty(itemID))
+            {
+                Debug.LogError("ItemID cannot be null or empty!");
+                return null;
+            }
+            
+            if(_itemsRegistry.TryGetValue(itemID, out ShopItem item))
+            {
+                if(item is T typedItem)
+                    return typedItem;
+            
+                Debug.LogError($"Type mismatch for item {itemID}");
+            }
+
+            Debug.LogWarning($"Item not found: {itemID}");
+            return null;
         }
 
-        private void OnValidate()
+        public IEnumerable<ShopItem> GetItems()
+        {
+            return _weaponItems.Cast<ShopItem>()
+                .Concat(_armorItems.Cast<ShopItem>())
+                .Concat(_helmetItems.Cast<ShopItem>())
+                .Concat(_bootsItems.Cast<ShopItem>())
+                .Concat(_necklaceItems.Cast<ShopItem>())
+                .Concat(_ringItems.Cast<ShopItem>());
+        }
+
+        private void CheckGradesDuplicates()
         {
             CheckForDuplicates(_weaponItems);
             CheckForDuplicates(_armorItems);

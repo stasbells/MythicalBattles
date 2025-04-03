@@ -41,9 +41,6 @@ namespace MythicalBattles
             _initialScaleX = _transform.localScale.x;
             _canvasGroup.alpha = 0f;
             _initialMaxHealth = _health.MaxHealthValue;
-
-            Debug.Log(_scale);
-            Debug.Log(_initialMaxHealth);
         }
 
         private void Start()

@@ -1,113 +1,159 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace MythicalBattles
 {
+    [Serializable]
     public class PlayerData
     {
-        private int _money;
-
-        public PlayerData(IEnumerable<EquipmentItem> items)
+        private const int InitMoney = 10000;
+        
+        [JsonIgnore] private EquipmentsShopContent _shopContent;
+        
+        public PlayerData()
         {
-            _money = 10000;
+            Money = InitMoney;
 
-            var equipmentItems = items.ToList();
-            
-            SelectedWeapon = equipmentItems.OfType<WeaponItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedArmor =  equipmentItems.OfType<ArmorItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedHelmet =  equipmentItems.OfType<HelmetItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedBoots =  equipmentItems.OfType<BootsItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedNecklace =  equipmentItems.OfType<NecklaceItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
-            
-            SelectedRing =  equipmentItems.OfType<RingItem>()
-                .FirstOrDefault(item => item.EquipmentGrade == EquipmentGrades.Simple);
+            SelectedWeaponID = DefaultItemsID.Weapon;
+
+            SelectedArmorID = DefaultItemsID.Armor;
+
+            SelectedHelmetID = DefaultItemsID.Helmet;
+
+            SelectedBootsID = DefaultItemsID.Boots;
+
+            SelectedNecklaceID = DefaultItemsID.Necklace;
+
+            SelectedRingID = DefaultItemsID.Ring;
         }
 
         [JsonConstructor]
-        public PlayerData(int money, WeaponItem selectedSelectedWeapon, ArmorItem selectedArmor,
-            HelmetItem selectedSelectedHelmet, BootsItem selectedSelectedBoots, NecklaceItem selectedNecklace,
-            RingItem selectedSelectedRing)
+        public PlayerData(int money, string selectedWeaponID, string selectedArmorID, string selectedHelmetID,
+            string selectedBootsID, string selectedNecklaceID, string selectedRingID)
         {
-            _money = money;
-            SelectedWeapon = selectedSelectedWeapon;
-            SelectedArmor = selectedArmor;
-            SelectedHelmet = selectedSelectedHelmet;
-            SelectedBoots = selectedSelectedBoots;
-            SelectedNecklace = selectedNecklace;
-            SelectedRing = selectedSelectedRing;
+            Money = money;
+            SelectedWeaponID = selectedWeaponID;
+            SelectedArmorID = selectedArmorID;
+            SelectedHelmetID = selectedHelmetID;
+            SelectedBootsID = selectedBootsID;
+            SelectedNecklaceID = selectedNecklaceID;
+            SelectedRingID = selectedRingID;
         }
 
-        public int Money => _money;
-        public ArmorItem SelectedArmor { get; private set; }
-        public WeaponItem SelectedWeapon { get; private set; }
-        public HelmetItem SelectedHelmet { get; private set; }
-        public BootsItem SelectedBoots { get; private set; }
-        public NecklaceItem SelectedNecklace { get; private set; }
-        public RingItem SelectedRing { get; private set; }
+        public int Money { get; private set; }
+        public string SelectedWeaponID { get; private set; }
+        public string SelectedArmorID { get; private set; }
+        public string SelectedHelmetID { get; private set; }
+        public string SelectedBootsID { get; private set; }
+        public string SelectedNecklaceID { get; private set; }
+        public string SelectedRingID { get; private set; }
 
-        public event Action SelectedItemChanged; 
-        
+        public event Action SelectedItemChanged;
+
+        public void Initialize(EquipmentsShopContent shopContent)
+        {
+            _shopContent = shopContent;
+        }
+
+        public WeaponItem GetSelectedWeapon()
+        {
+            return _shopContent.GetItem<WeaponItem>(SelectedWeaponID);
+        }
+
+        public ArmorItem GetSelectedArmor()
+        {
+            return _shopContent.GetItem<ArmorItem>(SelectedArmorID);
+        }
+
+        public HelmetItem GetSelectedHelmet()
+        {
+            return _shopContent.GetItem<HelmetItem>(SelectedHelmetID);
+        }
+
+        public BootsItem GetSelectedBoots()
+        {
+            return _shopContent.GetItem<BootsItem>(SelectedBootsID);
+        }
+
+        public NecklaceItem GetSelectedNecklace()
+        {
+            return _shopContent.GetItem<NecklaceItem>(SelectedNecklaceID);
+        }
+
+        public RingItem GetSelectedRing()
+        {
+            return _shopContent.GetItem<RingItem>(SelectedRingID);
+        }
+
         public void SelectWeapon(WeaponItem weapon)
         {
-            SelectedWeapon = weapon;
+            SelectedWeaponID = weapon.ItemID;
             SelectedItemChanged?.Invoke();
         }
-        
+
         public void SelectArmor(ArmorItem armor)
         {
-            SelectedArmor = armor;
+            SelectedArmorID = armor.ItemID;
             SelectedItemChanged?.Invoke();
         }
-        
+
         public void SelectHelmet(HelmetItem helmet)
         {
-            SelectedHelmet = helmet;
+            SelectedHelmetID = helmet.ItemID;
             SelectedItemChanged?.Invoke();
         }
-        
+
         public void SelectBoots(BootsItem boots)
         {
-            SelectedBoots = boots;
+            SelectedBootsID = boots.ItemID;
             SelectedItemChanged?.Invoke();
         }
-        
+
         public void SelectNecklace(NecklaceItem necklace)
         {
-            SelectedNecklace = necklace;
+            SelectedNecklaceID = necklace.ItemID;
             SelectedItemChanged?.Invoke();
         }
-        
+
         public void SelectRing(RingItem ring)
         {
-            SelectedRing = ring;
+            SelectedRingID = ring.ItemID;
             SelectedItemChanged?.Invoke();
         }
 
         public void AddMoney(int money)
         {
-            if(money < 0)
+            if (money < 0)
                 throw new ArgumentOutOfRangeException(nameof(money));
-            
-            _money += money;
+
+            Money += money;
         }
-        
+
         public void SpendMoney(int money)
         {
-            if(money < 0 || money > _money)
+            if (money < 0 || money > Money)
                 throw new ArgumentOutOfRangeException(nameof(money));
+
+            Money -= money;
+        }
+
+        public void Reset()
+        {
+            Money = InitMoney;
+
+            SelectedWeaponID = DefaultItemsID.Weapon;
+
+            SelectedArmorID = DefaultItemsID.Armor;
+
+            SelectedHelmetID = DefaultItemsID.Helmet;
+
+            SelectedBootsID = DefaultItemsID.Boots;
+
+            SelectedNecklaceID = DefaultItemsID.Necklace;
+
+            SelectedRingID = DefaultItemsID.Ring;
             
-            _money -= money;
+            SelectedItemChanged?.Invoke();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -11,9 +12,11 @@ namespace MythicalBattles
 
         private IPersistentData _persistentData;
 
+        public event Action DataReseted;
+
         public DataLocalProvider(IPersistentData persistentData) => _persistentData = persistentData;
 
-        private string SavePath => Application.persistentDataPath;
+        private string SavePath => "C:/Users/Artem/Documents/MythicalBattles/Data";
         private string FullPath => Path.Combine(SavePath, $"{FileName}{SaveFileExtension}");
         
         public void Save()
@@ -29,10 +32,30 @@ namespace MythicalBattles
             if (IsDataAlreadyExist() == false)
                 return false;
 
-            _persistentData.PlayerData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(FullPath));
+            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(FullPath));
+
+            _persistentData.PlayerData = new PlayerData(  
+                
+                money: savedData.Money,
+                selectedWeaponID: savedData.SelectedWeaponID,
+                selectedArmorID: savedData.SelectedArmorID,
+                selectedHelmetID: savedData.SelectedHelmetID,
+                selectedBootsID: savedData.SelectedBootsID,
+                selectedNecklaceID: savedData.SelectedNecklaceID,
+                selectedRingID: savedData.SelectedRingID);
+            
             return true;
         }
 
-        private bool IsDataAlreadyExist() => File.Exists(FullPath);
+        public void ResetData()
+        {
+            _persistentData.PlayerData.Reset();
+            
+            Save();
+            
+            DataReseted?.Invoke();
+        }
+
+        public bool IsDataAlreadyExist() => File.Exists(FullPath);
     }
 }

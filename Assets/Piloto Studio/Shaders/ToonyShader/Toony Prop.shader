@@ -50,6 +50,7 @@ Shader "Piloto Studio/Toony Prop"
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile_instancing
+			#pragma multi_compile_fog
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
 			#include "AutoLight.cginc"

@@ -18,32 +18,32 @@ namespace MythicalBattles
 
         public void Visit(WeaponItem weaponItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedWeapon.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedWeapon().EquipmentGrade;
         }
 
         public void Visit(ArmorItem armorItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedArmor.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedArmor().EquipmentGrade;
         }
 
         public void Visit(HelmetItem helmetItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedHelmet.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedHelmet().EquipmentGrade;
         }
 
         public void Visit(BootsItem bootsItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedBoots.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedBoots().EquipmentGrade;
         }
 
         public void Visit(NecklaceItem necklaceItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedNecklace.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedNecklace().EquipmentGrade;
         }
 
         public void Visit(RingItem ringItem)
         {
-            _selectedGrade = _persistentData.PlayerData.SelectedRing.EquipmentGrade;
+            _selectedGrade = _persistentData.PlayerData.GetSelectedRing().EquipmentGrade;
         }
     }
 }
