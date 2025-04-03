@@ -1,7 +1,7 @@
 {
-  "Money": 10000,
-  "SelectedWeaponID": "BowSimple",
-  "SelectedArmorID": "ArmorSimple",
+  "Money": 9800,
+  "SelectedWeaponID": "BowCommon",
+  "SelectedArmorID": "ArmorCommon",
   "SelectedHelmetID": "HelmetSimple",
   "SelectedBootsID": "BootsSimple",
   "SelectedNecklaceID": "NecklaceSimple",
