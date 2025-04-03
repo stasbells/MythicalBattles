@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 1271770969}
   - component: {fileID: 1271770968}
   m_Layer: 0
-  m_Name: Camera Follower
+  m_Name: CameraSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
