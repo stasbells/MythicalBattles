@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
-    class GameEntryPoint
+    public class GameEntryPoint
     {
         private static GameEntryPoint _instance;
         private Corutines _corutines;
@@ -37,32 +38,62 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 #endif
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Constants.MainMenu)
+            if (sceneName == Scenes.GAMEPLAY)
             {
                 _corutines.StartCoroutine(LoadAndStartGameplay());
                 return;
             }
 
-            if (sceneName != Constants.Boot)
+            if (sceneName == Scenes.MAIN_MENU)
+            {
+                _corutines.StartCoroutine(LoadAndStartMainMenu());
+                return;
+            }
+
+            if (sceneName != Scenes.BOOT)
                 return;
 
             _corutines.StartCoroutine(LoadAndStartGameplay());
+        }
+
+        private IEnumerator LoadAndStartMainMenu()
+        {
+            _uiRoot.ShowLoadingScreen();
+
+            yield return LoadScene(Scenes.BOOT);
+            yield return LoadScene(Scenes.MAIN_MENU);
+
+            yield return new WaitForSeconds(1.0f);
+
+            var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
+            sceneEntryPoint.Run(_uiRoot);
+
+            sceneEntryPoint.GoToGameplaySceneRequested += () =>
+            {
+                _corutines.StartCoroutine(LoadAndStartGameplay());
+            };
+
+            _uiRoot.HideLoadingScreen();
         }
 
         private IEnumerator LoadAndStartGameplay()
         {
             _uiRoot.ShowLoadingScreen();
 
-            yield return LoadScene(Constants.Boot);
-            yield return LoadScene(Constants.MainMenu);
+            yield return LoadScene(Scenes.BOOT);
+            yield return LoadScene(Scenes.GAMEPLAY);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
 
-            var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
-            sceneEntryPoint.Run();
+            var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
+            sceneEntryPoint.Run(_uiRoot);
+
+            sceneEntryPoint.GoToMainMenuSceneRequested += () =>
+            {
+                _corutines.StartCoroutine(LoadAndStartMainMenu());
+            };
 
             _uiRoot.HideLoadingScreen();
-
         }
 
         private IEnumerator LoadScene(string sceneName)

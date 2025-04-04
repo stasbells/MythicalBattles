@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MythicalBattles
 {
@@ -15,10 +14,10 @@ namespace MythicalBattles
 
         public float MaxHealthValue => _maxHealthValue;
 
-        public event UnityAction<float> CurrentHealthValueChanged;
-        public event UnityAction<float> MaxHealthValueChanged;
-        public event UnityAction<float> Damaged;
-        public event UnityAction<float> Healed;
+        public event Action<float> CurrentHealthValueChanged;
+        public event Action<float> MaxHealthValueChanged;
+        public event Action<float> Damaged;
+        public event Action<float> Healed;
 
         public void Awake()
         {
