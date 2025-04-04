@@ -8,7 +8,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
-    class GameEntryPoint
+    public class GameEntryPoint
     {
         private static GameEntryPoint _instance;
         private Corutines _corutines;
@@ -63,7 +63,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.MAIN_MENU);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
 
             var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             sceneEntryPoint.Run(_uiRoot);
@@ -83,7 +83,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.GAMEPLAY);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
 
             var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
             sceneEntryPoint.Run(_uiRoot);
