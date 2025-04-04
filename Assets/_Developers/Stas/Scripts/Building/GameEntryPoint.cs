@@ -23,12 +23,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
         private GameEntryPoint()
         {
-            _corutines = new GameObject("[CORUTINES]").AddComponent<Corutines>();
-            Object.DontDestroyOnLoad(_corutines.gameObject);
+            //_corutines = new GameObject("[CORUTINES]").AddComponent<Corutines>();
+            //Object.DontDestroyOnLoad(_corutines.gameObject);
 
-            var prefabUIRoot = Resources.Load<UIRootView>("Prefabs/UI/UIRoot");
-            _uiRoot = Object.Instantiate(prefabUIRoot);
-            Object.DontDestroyOnLoad(_uiRoot.gameObject);
+            //var prefabUIRoot = Resources.Load<UIRootView>("Prefabs/UI/UIRoot");
+            //_uiRoot = Object.Instantiate(prefabUIRoot);
+            //Object.DontDestroyOnLoad(_uiRoot.gameObject);
         }
 
         private void RunGame()

@@ -15,7 +15,10 @@ namespace MythicalBattles
 
         public void Release()
         {
-            Destroy(_companion.gameObject);
+            if (_companion == null)
+                return;
+
+            Destroy(_companion?.gameObject);
             
             _companion = null;
         }

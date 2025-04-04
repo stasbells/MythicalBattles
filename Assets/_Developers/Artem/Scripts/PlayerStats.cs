@@ -93,11 +93,7 @@ namespace MythicalBattles
             Damage += _playerData.GetSelectedWeapon().AdditionalDamage;
             Damage += _playerData.GetSelectedNecklace().AdditionalDamage;
             AttackSpeed += _playerData.GetSelectedBoots().AdditionalAttackSpeed;
-            AttackSpeed += _playerData.GetSelectedRing().AdditionalAttackSpeed;
-            
-            Debug.Log(MaxHealth);
-            Debug.Log(Damage);
-            Debug.Log(AttackSpeed);
+            AttackSpeed += _playerData.GetSelectedRing().AdditionalAttackSpeed;       
         }
     }
 }

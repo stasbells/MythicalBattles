@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using DamageNumbersPro;
+using R3;
 
 namespace MythicalBattles
 {
@@ -22,11 +23,13 @@ namespace MythicalBattles
         private CanvasGroup _canvasGroup;
         private Coroutine _changeValueJob;
 
+        private Vector3 _initialLocalScale;
         private Vector3 _rotation;
         private Vector3 _scale;
         private float _initialMaxHealth;
         private float _initialScaleX;
-        private Vector3 _initialLocalScale;
+
+        private readonly CompositeDisposable _disposable = new();
 
         private void Awake()
         {
@@ -39,8 +42,8 @@ namespace MythicalBattles
             _rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
             _initialScaleX = _transform.localScale.x;
-            _canvasGroup.alpha = 0f;
             _initialMaxHealth = _health.MaxHealthValue;
+            _canvasGroup.alpha = 0f;
         }
 
         private void Start()
@@ -55,16 +58,22 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            _health.CurrentHealthValueChanged += OnCurrentHealthChanged;
-            _health.MaxHealthValueChanged += OnUpdateMaxHealth;
-            _health.Damaged += ViewHealthChange;
+            //_health.CurrentHealthValueChanged += OnCurrentHealthChanged;
+            //_health.MaxHealthValueChanged += OnUpdateMaxHealth;
+            //_health.Damaged += ViewHealthChange;
+
+            _health.HealthValueChanged.Subscribe(value => OnCurrentHealthChanged(value)).AddTo(_disposable);
+            _health.MaxHealthValueChanged.Subscribe(value => OnUpdateMaxHealth(value)).AddTo(_disposable);
+            _health.DamageValueChanged.Subscribe(value => ViewHealthChange(value)).AddTo(_disposable);
         }
 
         private void OnDisable()
         {
-            _health.CurrentHealthValueChanged -= OnCurrentHealthChanged;
-            _health.MaxHealthValueChanged -= OnUpdateMaxHealth;
-            _health.Damaged -= ViewHealthChange;
+            //_health.CurrentHealthValueChanged -= OnCurrentHealthChanged;
+            //_health.MaxHealthValueChanged -= OnUpdateMaxHealth;
+            //_health.Damaged -= ViewHealthChange;
+
+            _disposable?.Dispose();
         }
 
         private void OnCurrentHealthChanged(float healthValue)
