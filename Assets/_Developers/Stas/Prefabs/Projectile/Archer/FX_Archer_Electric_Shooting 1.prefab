@@ -27616,21 +27616,6 @@ ParticleSystem:
     enabled: 1
     subEmitters:
     - serializedVersion: 3
-      emitter: {fileID: 9052668665177049711}
-      type: 0
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 2990677346462405809}
-      type: 0
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
-      emitter: {fileID: 385456521542566067}
-      type: 1
-      properties: 4
-      emitProbability: 1
-    - serializedVersion: 3
       emitter: {fileID: 782443547392111654}
       type: 1
       properties: 4
@@ -27641,12 +27626,27 @@ ParticleSystem:
       properties: 4
       emitProbability: 1
     - serializedVersion: 3
+      emitter: {fileID: 0}
+      type: 1
+      properties: 4
+      emitProbability: 1
+    - serializedVersion: 3
       emitter: {fileID: 2279517731972489607}
       type: 0
       properties: 4
       emitProbability: 1
     - serializedVersion: 3
+      emitter: {fileID: 3219459603312554353}
+      type: 0
+      properties: 4
+      emitProbability: 1
+    - serializedVersion: 3
       emitter: {fileID: 2990677346462405809}
+      type: 0
+      properties: 4
+      emitProbability: 1
+    - serializedVersion: 3
+      emitter: {fileID: 9052668665177049711}
       type: 0
       properties: 4
       emitProbability: 1

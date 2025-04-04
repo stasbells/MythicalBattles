@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -8,7 +8,9 @@ namespace MythicalBattles
     {
         [field: SerializeField] public int Damage { get; private set; }
 
-        private List<ParticleSystem> _particleSystems;
+        [SerializeField] private float _returnToPoolDelay;
+        [SerializeField] private List<ParticleSystem> _baseEffects;
+        [SerializeField] private List<ParticleSystem> _collisionEffects;
 
         public Rigidbody Rigidbody { get; private set; }
 
@@ -16,15 +18,11 @@ namespace MythicalBattles
         {
             _transform = transform;
             Rigidbody = GetComponent<Rigidbody>();
-            _particleSystems = GetComponentsInChildren<ParticleSystem>().ToList();
         }
 
         private void OnEnable()
         {
-            foreach (ParticleSystem particleSystem in _particleSystems)
-            {
-                particleSystem.Play();
-            }
+            PlayEffects(_baseEffects);
         }
 
         private void OnTriggerEnter(Collider otherCollider)
@@ -32,11 +30,37 @@ namespace MythicalBattles
             if (otherCollider.gameObject.layer == Constants.LayerEnemy)
                 otherCollider.gameObject.GetComponent<Health>().TakeDamage(Damage);
 
-            foreach (ParticleSystem particleSystem in _particleSystems)
+            StopEffects(_baseEffects);
+            
+            PlayEffects(_collisionEffects);
+
+            StartCoroutine(ReturnToPoolAfterDelay());
+        }
+
+        private void PlayEffects(IEnumerable<ParticleSystem> effects)
+        {
+            foreach (ParticleSystem particleSystem in effects)
+            {
+                particleSystem.gameObject.SetActive(true);
+                particleSystem.Play();
+            }
+        }
+        
+        private void StopEffects(IEnumerable<ParticleSystem> effects)
+        {
+            foreach (ParticleSystem particleSystem in effects)
             {
                 particleSystem.Stop();
+                particleSystem.gameObject.SetActive(false);
             }
+        }
 
+        private IEnumerator ReturnToPoolAfterDelay()
+        {
+            yield return new WaitForSeconds(_returnToPoolDelay);
+            
+            StopEffects(_collisionEffects);
+            
             _pool.ReturnItem(this);
         }
     }

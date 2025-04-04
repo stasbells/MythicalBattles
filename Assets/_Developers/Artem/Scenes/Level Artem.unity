@@ -998,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 964204302342432847, guid: 1534f49f9d3edad40b64027e6d740f78, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1236,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 751588228693213616, guid: 911cb87bba0983947bc695a1b7eb5ce1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6474540454082709152, guid: 911cb87bba0983947bc695a1b7eb5ce1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2578,7 +2578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517477319322059478, guid: 46d3ceed40bc02746a43c0d576a0ff12, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128347605888644894, guid: 46d3ceed40bc02746a43c0d576a0ff12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448717580541957492, guid: 479161468a726134a91b9679bc0aed88, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4631,7 +4631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 751588228693213616, guid: 911cb87bba0983947bc695a1b7eb5ce1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6474540454082709152, guid: 911cb87bba0983947bc695a1b7eb5ce1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4784,7 +4784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2246235352009161969, guid: 83695ef3239a25647803af0facc7a774, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6056111210815628943, guid: 83695ef3239a25647803af0facc7a774, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21942,8 +21942,6 @@ MonoBehaviour:
   ProjectilePool: {fileID: 0}
   EffectPool: {fileID: 0}
   ShootPoint: {fileID: 6423800406314453012}
-  Prefire: {fileID: 0}
-  Afterfire: {fileID: 0}
   ArrowVelocity: 1
   _initRateOfFire: 1
   _shootDelay: 0.3

@@ -16,12 +16,12 @@ namespace MythicalBattles
         
         public void OpenArtemScene()
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
         
         public void OpenStasScene()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
 
         public void ResetItems()
