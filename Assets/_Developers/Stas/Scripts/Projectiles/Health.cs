@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using R3;
 
 namespace MythicalBattles
 {
@@ -10,47 +11,63 @@ namespace MythicalBattles
         [SerializeField] private float _maxHealthValue;
 
         private Animator _animator;
-        private float _currentHealth;
+        //private float _currentHealth;
+        private readonly ReactiveProperty<float> _currentHealth = new();
+        private readonly ReactiveProperty<float> _maxHealth = new();
+        private readonly ReactiveProperty<float> _damage = new();
+        private readonly ReactiveProperty<float> _heal = new();
 
-        public float MaxHealthValue => _maxHealthValue;
+        public float MaxHealthValue => _maxHealth.Value;
+        public Observable<float> HealthValueChanged => _currentHealth;
+        public Observable<float> MaxHealthValueChanged => _maxHealth;
+        public Observable<float> DamageValueChanged => _damage;
 
-        public event Action<float> CurrentHealthValueChanged;
-        public event Action<float> MaxHealthValueChanged;
-        public event Action<float> Damaged;
-        public event Action<float> Healed;
+        //public event Action<float> CurrentHealthValueChanged;
+        //public event Action<float> MaxHealthValueChanged;
+        //public event Action<float> Damaged;
+        //public event Action<float> Healed;
 
         public void Awake()
         {
             _animator = GetComponent<Animator>();
-            _currentHealth = _maxHealthValue;
-            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
+
+            _maxHealth.OnNext(_maxHealthValue);
+            //_currentHealth = _maxHealthValue;
+            _currentHealth.OnNext(_maxHealth.Value);
+            //CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
         }
-   
+
         public void TakeDamage(float damage)
         {
-            ChangeHealthValue(_currentHealth - damage);
-            Damaged?.Invoke(damage);
+            _damage.OnNext(damage);
+            //ChangeHealthValue(_currentHealth - damage);
+            ChangeHealthValue(_currentHealth.Value - _damage.Value);
+            //Damaged?.Invoke(damage);
         }
 
         public void Heal(float health)
         {
-            ChangeHealthValue(_currentHealth + health);
-            Healed?.Invoke(health);
+            _heal.OnNext(health);
+            //ChangeHealthValue(_currentHealth + health);
+            ChangeHealthValue(_currentHealth.Value + _heal.Value);
+            //Healed?.Invoke(health);
         }
 
         protected void ChangeMaxHealthValue(float maxHealth)
         {
-            _maxHealthValue = maxHealth;
+            //_maxHealthValue = maxHealth;
+            _maxHealth.OnNext(maxHealth);
 
-            MaxHealthValueChanged?.Invoke(_maxHealthValue);
-            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
+            //MaxHealthValueChanged?.Invoke(_maxHealthValue);
+            //CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
         }
 
         private float CalculateHealthValue()
         {
-            return _currentHealth / _maxHealthValue;
+            //return _currentHealth / _maxHealthValue;
+            return _currentHealth.Value / _maxHealth.Value;
         }
-        
+
         private void Die()
         {
             _animator.SetBool(Constants.IsDead, true);
@@ -58,11 +75,13 @@ namespace MythicalBattles
 
         private void ChangeHealthValue(float healthValue)
         {
-            _currentHealth = Math.Clamp(healthValue, MinHealthValue, _maxHealthValue);
+            //_currentHealth = Math.Clamp(healthValue, MinHealthValue, _maxHealthValue);
+            _currentHealth.OnNext(Math.Clamp(healthValue, MinHealthValue, _maxHealth.Value));
 
-            CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
+            //CurrentHealthValueChanged?.Invoke(CalculateHealthValue());
 
-            if (_currentHealth <= MinHealthValue)
+            //if (_currentHealth <= MinHealthValue)
+            if (_currentHealth.Value <= MinHealthValue)
                 Die();
         }
     }
