@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +6,7 @@ namespace MythicalBattles
 {
     public class AttackSpeedBoost : Boost
     {
-        [SerializeField] private int _additionalAttackSpeed;
+        [SerializeField] private float _additionalAttackSpeed;
 
         private IPlayerStats _playerStats;
 

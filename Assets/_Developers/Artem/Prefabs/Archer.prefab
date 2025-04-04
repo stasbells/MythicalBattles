@@ -977,13 +977,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593159b9166c90c418fc193c0156e0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePool: {fileID: 0}
-  _effectPool: {fileID: 0}
-  _shootPoint: {fileID: 6423800405325361614}
-  _prefire: {fileID: 0}
-  _afterfire: {fileID: 0}
-  _arrowVelcity: 1
-  _rateOfFire: 0.5
+  ProjectilePool: {fileID: 0}
+  EffectPool: {fileID: 0}
+  ShootPoint: {fileID: 6423800405325361614}
+  Prefire: {fileID: 0}
+  Afterfire: {fileID: 0}
+  ArrowVelocity: 1
+  _initRateOfFire: 1
   _shootDelay: 0.3
   _prefab: {fileID: 2651084798854190789, guid: 747e3324ff395ff4d985ae4c674c56a9, type: 3}
 --- !u!136 &5378286481559482326
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9dbcd02df8b93488e30af2cf208083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6372463842321586431, guid: 17a64ec97b0a698478a6f86675e4b4a2, type: 3}
+  _prefab: {fileID: 0}
   _itemsCount: 15
   _projectileLayer: 8
 --- !u!1 &6295909494235489837

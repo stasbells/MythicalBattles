@@ -51,7 +51,7 @@ namespace MythicalBattles
         {
             for (int i = 0; i < ProjectileCount; i++)
             {
-                ParticleEffect particle = (ParticleEffect)_projectilePool.GetItem();
+                ParticleEffect particle = (ParticleEffect)ProjectilePool.GetItem();
                 particle.gameObject.SetActive(true);
                 particle.Transform.parent = null;
                 particle.Transform.position = _spawnPoints[i];
@@ -62,7 +62,7 @@ namespace MythicalBattles
         {
             for (int i = 0; i < ProjectileCount; i++)
             {
-                ParticleEffect particle = (ParticleEffect)_effectPool.GetItem();
+                ParticleEffect particle = (ParticleEffect)EffectPool.GetItem();
                 particle.gameObject.SetActive(true);
                 particle.Transform.parent = null;
                 particle.Transform.position = _spawnPoints[i];

@@ -1,4 +1,6 @@
 using Reflex.Attributes;
+using Reflex.Extensions;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {

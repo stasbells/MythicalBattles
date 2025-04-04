@@ -5,34 +5,27 @@ namespace MythicalBattles
 {
     public abstract class Shooter : MonoBehaviour
     {
-        [SerializeField] protected ObjectPool _projectilePool;
-        [SerializeField] protected ObjectPool _effectPool;
-        [SerializeField] protected Transform _shootPoint;
-        [SerializeField] protected ParticleSystem _prefire;
-        [SerializeField] protected ParticleSystem _afterfire;
+        [SerializeField] protected ObjectPool ProjectilePool;
+        [SerializeField] protected ObjectPool EffectPool;
+        [SerializeField] protected Transform ShootPoint;
+        //[SerializeField] protected ParticleSystem Prefire;
+        //[SerializeField] protected ParticleSystem Afterfire;
 
-        [SerializeField] protected float _arrowVelcity = 1f;
-        [SerializeField] private float _rateOfFire = 1f;
+        [SerializeField] protected float ArrowVelocity = 1f;
+        [SerializeField] private float _initRateOfFire = 1f;
         [SerializeField] private float _shootDelay = 0.3f;
 
         protected Transform _transform;
         protected Animator _animator;
         private Coroutine _shooter;
-        private WaitForSeconds _sleep;
+        private float _rateOfFire;
         private float _restTimer = 0f;
 
         private void Awake()
         {
-            if (_prefire != null)
-                _prefire.Stop();
-
-            if (_afterfire != null)
-                _afterfire.Stop();
-
             _transform = transform;
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
-            _sleep = new WaitForSeconds(_rateOfFire);
 
             OnAwake();
         }
@@ -46,12 +39,6 @@ namespace MythicalBattles
             {
                 _restTimer += Time.deltaTime;
 
-                if (_prefire != null && _prefire.isStopped)
-                    _prefire.Play();
-
-                if (_afterfire != null && _afterfire.isStopped)
-                    _afterfire.Play();
-
                 if (_restTimer >= _shootDelay)
                     OnShoot();
             }
@@ -63,9 +50,17 @@ namespace MythicalBattles
             }
         }
 
+        protected void ChangeAttackSpeed(float attackSpeedFactor)
+        {
+            _rateOfFire = _initRateOfFire / attackSpeedFactor;
+        }
+
         protected virtual void Shoot() { }
 
-        protected virtual void OnAwake() { }
+        protected virtual void OnAwake()
+        {
+            _rateOfFire = _initRateOfFire;
+        }
 
         private void OnShoot() => _shooter ??= StartCoroutine(AutoShoot());
 
@@ -75,7 +70,7 @@ namespace MythicalBattles
             {
                 Shoot();
 
-                yield return _sleep;
+                yield return new WaitForSeconds(_rateOfFire);
             }
         }
     }

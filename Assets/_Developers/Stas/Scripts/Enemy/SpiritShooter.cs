@@ -16,16 +16,16 @@ namespace MythicalBattles
 
             for (int i = 0; i < _projectileCount; i++)
             {
-                Arrow arrow = (Arrow)_projectilePool.GetItem();
-                ParticleEffect particle = (ParticleEffect)_effectPool.GetItem();
+                Arrow arrow = (Arrow)ProjectilePool.GetItem();
+                ParticleEffect particle = (ParticleEffect)EffectPool.GetItem();
 
-                _shootPoint.rotation = Quaternion.Euler(rotate);
+                ShootPoint.rotation = Quaternion.Euler(rotate);
 
                 arrow.gameObject.SetActive(true);
-                arrow.Transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
+                arrow.Transform.SetPositionAndRotation(ShootPoint.position, ShootPoint.rotation);
                 arrow.SetParticle(particle);
 
-                arrow.Rigidbody.velocity = _shootPoint.forward * _arrowVelcity;
+                arrow.Rigidbody.velocity = ShootPoint.forward * ArrowVelocity;
 
                 rotate.y += _rotateAngle;
             }

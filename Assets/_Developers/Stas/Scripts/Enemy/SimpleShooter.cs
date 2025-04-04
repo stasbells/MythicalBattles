@@ -15,8 +15,10 @@ namespace MythicalBattles
 
         protected override void OnAwake()
         {
-            _particle = Instantiate(_prefab, _shootPoint.position, _shootPoint.rotation);
-            _particle.transform.SetParent(_shootPoint);
+            base.OnAwake();
+            
+            _particle = Instantiate(_prefab, ShootPoint.position, ShootPoint.rotation);
+            _particle.transform.SetParent(ShootPoint);
             _particle.Stop();
         }
     }
