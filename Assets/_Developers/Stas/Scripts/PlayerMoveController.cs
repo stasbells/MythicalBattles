@@ -25,8 +25,8 @@ namespace MythicalBattles
                 _playerVelocity.y = 0f;
 
             Vector2 movement = PlayerInput.Player.Move.ReadValue<Vector2>();
-            Vector3 move = new Vector3(movement.x, 0, movement.y);
-            Controller.Move(move * Time.deltaTime * _playerSpeed);
+            Vector3 move = new(movement.x, 0, movement.y);
+            Controller.Move(_playerSpeed * Time.deltaTime * move);
 
             if (move != Vector3.zero)
                 gameObject.transform.forward = move;

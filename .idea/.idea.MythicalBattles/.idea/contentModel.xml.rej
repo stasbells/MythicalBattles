@@ -1,0 +1,38 @@
+diff a/.idea/.idea.MythicalBattles/.idea/contentModel.xml b/.idea/.idea.MythicalBattles/.idea/contentModel.xml	(rejected hunks)
+@@ -66,24 +66,33 @@
+           </e>
+           <e p="Stas" t="Include">
+             <e p="Animations" t="Include" />
++            <e p="Fonts" t="Include">
++              <e p="RUS" t="Include" />
++            </e>
+             <e p="Materials" t="Include" />
+             <e p="Models" t="Include" />
+             <e p="Prefabs" t="Include">
+               <e p="Projectile" t="Include" />
+             </e>
+-            <e p="Scenes" t="Include" />
++            <e p="Scenes" t="Include">
++              <e p="Level" t="Include" />
++            </e>
+             <e p="Scripts" t="Include">
++              <e p="AimMarker.cs" t="Include" />
++              <e p="Constants" t="Include">
++                <e p="Constants.cs" t="Include" />
++              </e>
+               <e p="Enemy" t="Include">
+                 <e p="AncientWarriorMover.cs" t="Include" />
+                 <e p="AncientWarriorShooter.cs" t="Include" />
+                 <e p="Enemy.cs" t="Include" />
+-                <e p="EnemyMover.cs" t="Include" />
+                 <e p="EnemyShooter.cs" t="Include" />
+                 <e p="GoblinMover.cs" t="Include" />
+-                <e p="SceletonMover.cs" t="Include" />
++                <e p="SkeletonMover.cs" t="Include" />
+                 <e p="SpiritMover.cs" t="Include" />
+                 <e p="SpiritShooter.cs" t="Include" />
+               </e>
++              <e p="HealthBar.cs" t="Include" />
+               <e p="ObjectPool" t="Include">
+                 <e p="ObjectPool.cs" t="Include" />
+               </e>

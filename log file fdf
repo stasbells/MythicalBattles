@@ -1,0 +1,454 @@
+[33mcommit c7e0d8361c324729480d7aa69c06a447d9aa47f5[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Mar 5 11:59:31 2025 +0300
+
+    Scripts Editing
+
+[33mcommit 534d120efddd34a7ca5f17f791e1046a5fcd6ed5[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Mar 4 20:52:13 2025 +0300
+
+    fix
+
+[33mcommit 48285f2bce4d999234aae794028625a9e3f7b071[m
+Merge: 2113fd07 4f32b555
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Mar 4 20:37:38 2025 +0300
+
+    Merge branch 'feature/healthBar' into develop
+    
+    # Conflicts:
+    #       Assets/Plugins.meta
+    #       Assets/Plugins/Demigiant.meta
+    #       Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png.meta
+    #       Assets/Resources/DOTweenSettings.asset.meta
+    #       Assets/_Developers/Stas/Scenes/StasTestScene.unity
+    #       ProjectSettings/EditorBuildSettings.asset
+
+[33mcommit 4f32b555707f2e88496df59c163d6d7ab37057fc[m[33m ([m[1;31morigin/feature/healthBar[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Mar 4 20:27:58 2025 +0300
+
+    Script Adjusting
+
+[33mcommit 2113fd07ab503beda79d4f720939bfddfc10b41d[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Mar 4 16:26:10 2025 +0300
+
+    Add Dotween, add items Purchase
+
+[33mcommit 0ea8e9107a7eca1b7a77a21f34d98a6643a1f308[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Mar 3 22:49:01 2025 +0300
+
+    Enemy Marker AIM & Level Interior
+
+[33mcommit b8f1ae4eef64c94eab38fc0cfbf47db08b915352[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Mar 3 19:04:19 2025 +0300
+
+    fix reflex
+
+[33mcommit ff0fcb38f1ec6f75416ee22a0081d5bb3077aff1[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Mar 3 16:27:48 2025 +0300
+
+    fix
+
+[33mcommit df08c181a69a99446716a7c8df1c188ec2ba8fd8[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Mar 3 16:25:17 2025 +0300
+
+    fix
+
+[33mcommit f14189730060a3ff1b29b09afd57270385975231[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Mar 3 16:24:42 2025 +0300
+
+    Add InventoryView
+
+[33mcommit 6fb2a47affc67a2c2fa488b90998688683d1a593[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 27 22:34:20 2025 +0300
+
+    Add Damage Numbers
+
+[33mcommit 299d2c9704c12359ffd830e9db28e48c472d6cf3[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Feb 26 21:38:12 2025 +0300
+
+    Add DOTween pak
+
+[33mcommit 6a641eb2e957ddee65d8822b5ede78e3f5e2d21d[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 25 22:29:54 2025 +0300
+
+    healthBar adjusting
+
+[33mcommit 92a93571449f01e0f8a99269d38f54ba120f98b5[m
+Merge: ba40f5cb 231b0f25
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 25 11:53:17 2025 +0300
+
+    Merge branch 'develop' of https://github.com/stasbells/MythicalBattles into develop
+
+[33mcommit ba40f5cb59b784f508330d01e84d42c80cee7d0c[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 25 11:52:02 2025 +0300
+
+    change Shop UI Window
+
+[33mcommit 231b0f25ecfabb8e083da4a3670c05ea18179c7b[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 25 11:27:33 2025 +0300
+
+    fix 2.0
+
+[33mcommit a5ff74c7afb886f0b777101b08e79ac8ef761a3e[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 25 10:52:11 2025 +0300
+
+    fix
+
+[33mcommit 527ce8ad7546d10007d31b3bff38ebefd20b7957[m
+Merge: 6dc832d5 1ab3816f
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Feb 24 20:26:36 2025 +0300
+
+    Merge branch 'feature/creating_Shooting_Mechanics' into develop
+    
+    # Conflicts:
+    #       .idea/.idea.MythicalBattles/.idea/contentModel.xml
+    #       .idea/.idea.MythicalBattles/.idea/indexLayout.xml
+    #       .idea/.idea.MythicalBattles/.idea/workspace.xml
+    #       Assets/_Developers/Stas/Scenes/StasTestScene.unity
+
+[33mcommit 1ab3816fa99adc11cd7c82a7d70bb4a0be2c544c[m[33m ([m[1;31morigin/feature/creating_Shooting_Mechanics[m[33m, [m[1;31morigin/Fix[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Feb 24 20:15:42 2025 +0300
+
+    finishComit
+
+[33mcommit 9b81fdeb4cce80fdfbd62cc79665d83fe8de6299[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Feb 24 11:55:57 2025 +0300
+
+    scripts_Optimisation
+
+[33mcommit be8a9d139d4aec9b9f94f421e7e4bcdebb50d496[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Fri Feb 21 20:05:10 2025 +0300
+
+    reating_Spiit_Shooter_Script
+
+[33mcommit 0429ae197c8603c5373e71a49a89bcf0bccece69[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 20 21:59:02 2025 +0300
+
+    add_Player_Shooter_Script
+
+[33mcommit 6dc832d5c15c0ae348c2c9614c255daa32e4cf32[m
+Merge: 5804a3c7 bc551372
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 20 18:45:50 2025 +0300
+
+    Merge branch 'develop' of https://github.com/stasbells/MythicalBattles into develop
+    
+    # Conflicts:
+    #       .idea/.idea.MythicalBattles/.idea/workspace.xml
+    #       Assets/_Developers/Artem/Scripts/Shop/ShopItemView.cs
+
+[33mcommit 5804a3c718a937f2d4d16c753328525879133bf8[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 20 18:31:02 2025 +0300
+
+    Fix Items View in Shop
+
+[33mcommit bc55137298de646994c574e5a69bda212ee44d1a[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 18 22:39:26 2025 +0300
+
+    init branch
+
+[33mcommit 56b97151b7a4a6dc461c9d5de8b68a6cd7de999c[m
+Merge: bbdb53bf 47b6706f
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 18 22:34:55 2025 +0300
+
+    Merge branch 'feature/Shop_Data_Saving' into develop
+
+[33mcommit 47b6706fe6ff1c7702902b9a31b3aae31a3cee6a[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 18 22:34:15 2025 +0300
+
+    fixing
+
+[33mcommit 0bb9d06c68261363ec81c20c96ee9af96682ed20[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 18 22:33:42 2025 +0300
+
+    Add Reflex and Newtonsoft Json
+
+[33mcommit 0098ff9d03349612fa607b5243aed9b16986ea31[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 18 22:01:44 2025 +0300
+
+    creating_ObjectPool_And_Projectile_Scripts
+
+[33mcommit 41cc7fd10e7d6e06f36081dbe2c17020231d9f6a[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 18 20:13:19 2025 +0300
+
+    Change Items
+
+[33mcommit bbdb53bf5613798cfc84bc34b7ca0aeab101e500[m
+Merge: e7c776f9 a7884a52
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 18 12:53:02 2025 +0300
+
+    Merge branch 'feature/createEnemy' into develop
+
+[33mcommit a7884a523fd2148d3c065456cb924ff3f225e362[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 18 12:52:10 2025 +0300
+
+    fixing
+
+[33mcommit 8b72427b3870843be3071c6412708012a8217324[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Feb 17 19:14:18 2025 +0300
+
+    add Scripts
+
+[33mcommit 1bfb40811ca8189f10131c6a58f6f4f335f1e940[m[33m ([m[1;31morigin/feature/createEnemy[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 13 18:47:48 2025 +0300
+
+    fixing
+
+[33mcommit e7c776f98381d28870ccfee4bcd1cce4a43407e0[m
+Merge: d5388269 ce4f49ef
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 13 12:37:14 2025 +0300
+
+    Merge branch 'feature/Items_for_Shop' into develop
+
+[33mcommit d53882692046d7d6b4374e8afc2da22156af5b29[m
+Merge: 3737370f 45157208
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 13 12:14:16 2025 +0300
+
+    Merge branch 'feature/enemyСontroller' into develop
+
+[33mcommit 451572082b13f863e6b5ef267334440bc2aac49e[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 13 12:13:27 2025 +0300
+
+    merge
+
+[33mcommit ce4f49efcaf87e43ef32cd4b64d850e97f9af278[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 13 11:22:36 2025 +0300
+
+    Add Shop Item View Factory and Shop Content
+
+[33mcommit 499ff58a749790eac1a84c94fb1b29126315c265[m[33m ([m[1;31morigin/feature/enemyСontroller[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Feb 12 17:59:42 2025 +0300
+
+    finishMoverScripts
+
+[33mcommit 1488ee2ebd4465f9bec8e5d0409b5f3f15239841[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Wed Feb 12 09:59:33 2025 +0300
+
+    add Shop Item View
+
+[33mcommit 3737370f9503d7dfa0296ee326856ef5848fd6a9[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 11 21:31:00 2025 +0300
+
+    fixing
+
+[33mcommit 308a51c379c4ea3b7944dfdff59aaa10be130b4c[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Tue Feb 11 13:08:35 2025 +0300
+
+    Adding Assets, creating Shop Content
+
+[33mcommit 685888c2f0d96745d476a4681060296876589c3c[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Feb 10 19:39:36 2025 +0300
+
+    moverScriptAdjusting
+
+[33mcommit bcb6daa6195872043507b7b226579448313c70eb[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Feb 10 13:15:14 2025 +0300
+
+    fixing
+
+[33mcommit a2ff6eb4043ffc56a750a8c3b8a06ada4fb45349[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Mon Feb 10 13:12:00 2025 +0300
+
+    Add sprites for Items
+
+[33mcommit 2d911e0c1ce14ade99e01c5f96ff7e0f9403e9fd[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 22:26:45 2025 +0300
+
+    fixing
+
+[33mcommit 4b37761bd46164f69a3a5915d8336a4845a75262[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 20:23:12 2025 +0300
+
+    levelBuild
+
+[33mcommit 691e1b902e52af0d1094a354e0776c370b5fea65[m
+Merge: 2f22e8f8 f036cb63
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 19:21:09 2025 +0300
+
+    Merge branch 'feature/enemyAnimatorController' into develop
+
+[33mcommit f036cb63a561e3f97076dc6b9ef097366c70ffd2[m[33m ([m[1;31morigin/feature/enemyAnimatorController[m[33m)[m
+Merge: 6a56024c 2f22e8f8
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 18:46:44 2025 +0300
+
+    Merge remote-tracking branch 'origin/develop' into feature/enemyAnimatorController
+
+[33mcommit 6a56024c3f0a363fef9ae410f71c001042cdfcb4[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 18:42:02 2025 +0300
+
+    fixing
+
+[33mcommit 2f22e8f84332a850f37553926cbbdf392ae91f38[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 6 18:08:04 2025 +0300
+
+    Add Ancient Warrior
+
+[33mcommit f410061cd20f075deb8eccd53149aa9593afe75e[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 17:40:21 2025 +0300
+
+    enemyMoveController
+
+[33mcommit abc24b2e5a3bacf0eb8c7d6f6fc3f23823fb564e[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 17:19:11 2025 +0300
+
+    enemyAnimatorController
+
+[33mcommit e80b3147017a13ec6f43355cea195c84d6d2709a[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Feb 6 12:52:37 2025 +0300
+
+    fixing
+
+[33mcommit d65bcf63017a70b412c27463acbe6e07a63a48fa[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Thu Feb 6 11:31:16 2025 +0300
+
+    Add quiver and Death animation
+
+[33mcommit adc96a9d0b422d848861ce4ed9aa057b48b7e94d[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Feb 5 18:03:49 2025 +0300
+
+    aimSystemIntegrate
+
+[33mcommit 4c6cda0c049eab59c24305b155ac0cfecc2a3e02[m
+Merge: 9eeafbd2 37062a20
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Feb 5 15:26:33 2025 +0300
+
+    Merge remote-tracking branch 'origin/develop' into develop
+
+[33mcommit 37062a208758cad2704aeb5ceba3ef8552b1b097[m
+Author: Artem Simonov <artem.ulm@gmail.com>
+Date:   Wed Feb 5 15:09:34 2025 +0300
+
+    Hero animations
+
+[33mcommit 9eeafbd21ca41406687b2dded973d1a87b576a16[m[33m ([m[1;31morigin/feature/stasCreateAimScript[m[33m)[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 4 17:14:22 2025 +0300
+
+    fixing
+
+[33mcommit 9c007c3fde14b156651b9162451a2a918890b9be[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Tue Feb 4 13:54:32 2025 +0300
+
+    script created
+
+[33mcommit 782866e4e9999edcf4a426db74c8344edc74b367[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 4d7e827b a07de6d3
+Author: Stanislav <96056165+stasbells@users.noreply.github.com>
+Date:   Tue Feb 4 11:45:21 2025 +0300
+
+    Merge pull request #2 from stasbells/feature/stas/testScene
+    
+    Feature/stas/test scene
+
+[33mcommit a07de6d3183079737768a767f9191df0c993e6b7[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Mon Feb 3 20:02:34 2025 +0300
+
+    fixing
+
+[33mcommit 4d1b1767ffa7ed29ed816fa7aa7e6e15f039a569[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Sat Feb 1 13:24:21 2025 +0300
+
+    fixing
+
+[33mcommit 71e1e660ee122e47f903c0a765a8f08d588e07c2[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Fri Jan 31 18:38:32 2025 +0300
+
+    fixing
+
+[33mcommit 4d7e827b436a355feb6e25669e35006b90a4e811[m
+Merge: a5f03229 9c8984e8
+Author: Stanislav <96056165+stasbells@users.noreply.github.com>
+Date:   Fri Jan 31 16:05:17 2025 +0300
+
+    Merge pull request #1 from stasbells/feature/stas/addingThirdPartyAssets
+    
+    added assets
+
+[33mcommit 9c8984e8b0f2bdc5debd08bfd9a583acb37c4919[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Fri Jan 31 15:59:42 2025 +0300
+
+    added assets
+
+[33mcommit a5f032291a4138c8df5a6ef2158611b30cd8e1d0[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Thu Jan 30 16:21:31 2025 +0300
+
+    Initial Project Setup
+
+[33mcommit 78a3b37ddda2f57665b31d2a956453a8f9b52656[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Jan 29 21:18:30 2025 +0300
+
+    Removing the script
+
+[33mcommit 4329af995e11103e143bf5b44c28d5dd263f49b8[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Jan 29 21:12:56 2025 +0300
+
+    ProjectCreation
+
+[33mcommit edff0a6d5bef01cf082bfbb6336ca8d9d5fb52ba[m
+Author: Stanislav <stasbells@mail.ru>
+Date:   Wed Jan 29 20:50:23 2025 +0300
+
+    Initial commit
