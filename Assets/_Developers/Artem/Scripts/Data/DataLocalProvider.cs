@@ -16,7 +16,7 @@ namespace MythicalBattles
 
         public DataLocalProvider(IPersistentData persistentData) => _persistentData = persistentData;
 
-        private string SavePath => "C:/Users/Artem/Documents/MythicalBattles/Data";
+        private string SavePath => Application.persistentDataPath;
         private string FullPath => Path.Combine(SavePath, $"{FileName}{SaveFileExtension}");
         
         public void Save()
