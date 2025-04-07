@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using DamageNumbersPro;
 using R3;
+using System;
 
 namespace MythicalBattles
 {
@@ -30,6 +31,8 @@ namespace MythicalBattles
         private float _initialScaleX;
 
         private readonly CompositeDisposable _disposable = new();
+
+        private readonly IDisposable disposable;
 
         private void Awake()
         {
@@ -94,7 +97,7 @@ namespace MythicalBattles
                 newScaleX,
                 _rectTransform.localScale.y,
                 _rectTransform.localScale.z
-            ); 
+            );
 
             Debug.Log(_transform.localScale);
         }

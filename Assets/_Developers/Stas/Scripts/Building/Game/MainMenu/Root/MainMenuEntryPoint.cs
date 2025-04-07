@@ -2,6 +2,7 @@
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using UnityEngine;
 using System;
+using Reflex.Core;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
 {
@@ -11,9 +12,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
 
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 
-        public void Run(UIRootView uiRoot)
+        public void Run(Container mainMenuContainer)
         {
             var uiScene = Instantiate(_sceneUIRootPrefab);
+            var uiRoot = mainMenuContainer.Resolve<UIRootView>();
             uiRoot.AttachSceneUI(uiScene.gameObject);
 
             uiScene.GoToGameplayButtonClicked += () =>

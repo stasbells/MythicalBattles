@@ -5,14 +5,17 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using Reflex.Core;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
     public class GameEntryPoint
     {
         private static GameEntryPoint _instance;
-        private Corutines _corutines;
-        private UIRootView _uiRoot;
+        private readonly Corutines _corutines;
+        private readonly UIRootView _uiRoot;
+        private readonly ContainerBuilder _rootContainer = new();
+        private Container _cachedSceneContainer;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void AutostartGame()
@@ -23,12 +26,15 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
         private GameEntryPoint()
         {
-            //_corutines = new GameObject("[CORUTINES]").AddComponent<Corutines>();
-            //Object.DontDestroyOnLoad(_corutines.gameObject);
+            _corutines = new GameObject("[CORUTINES]").AddComponent<Corutines>();
+            Object.DontDestroyOnLoad(_corutines.gameObject);
 
-            //var prefabUIRoot = Resources.Load<UIRootView>("Prefabs/UI/UIRoot");
-            //_uiRoot = Object.Instantiate(prefabUIRoot);
-            //Object.DontDestroyOnLoad(_uiRoot.gameObject);
+            var prefabUIRoot = Resources.Load<UIRootView>("Prefabs/UI/UIRoot");
+            _uiRoot = Object.Instantiate(prefabUIRoot);
+            Object.DontDestroyOnLoad(_uiRoot.gameObject);
+
+            _rootContainer.AddSingleton(_uiRoot);
+            _rootContainer.AddTransient(typeof(SpawnPointGenerator), typeof(ISpawnPointGenerator));
         }
 
         private void RunGame()
@@ -59,6 +65,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         private IEnumerator LoadAndStartMainMenu()
         {
             _uiRoot.ShowLoadingScreen();
+            _cachedSceneContainer?.Dispose();
 
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.MAIN_MENU);
@@ -66,7 +73,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             yield return new WaitForSeconds(1.0f);
 
             var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
-            sceneEntryPoint.Run(_uiRoot);
+
+            var mainMenuContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
+
+            sceneEntryPoint.Run(mainMenuContainer);
 
             sceneEntryPoint.GoToGameplaySceneRequested += () =>
             {
@@ -79,6 +89,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         private IEnumerator LoadAndStartGameplay()
         {
             _uiRoot.ShowLoadingScreen();
+            _cachedSceneContainer?.Dispose();
 
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(Scenes.GAMEPLAY);
@@ -86,7 +97,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             yield return new WaitForSeconds(1.0f);
 
             var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
-            sceneEntryPoint.Run(_uiRoot);
+
+            var gameplayContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
+
+            sceneEntryPoint.Run(gameplayContainer);
 
             sceneEntryPoint.GoToMainMenuSceneRequested += () =>
             {
