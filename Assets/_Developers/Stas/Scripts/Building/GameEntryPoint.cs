@@ -6,6 +6,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using Reflex.Core;
+using R3;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
@@ -59,7 +60,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             if (sceneName != Scenes.BOOT)
                 return;
 
-            _corutines.StartCoroutine(LoadAndStartGameplay());
+            _corutines.StartCoroutine(LoadAndStartMainMenu());
         }
 
         private IEnumerator LoadAndStartMainMenu()
@@ -76,12 +77,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
             var mainMenuContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
 
-            sceneEntryPoint.Run(mainMenuContainer);
-
-            sceneEntryPoint.GoToGameplaySceneRequested += () =>
+            sceneEntryPoint.Run(mainMenuContainer).Subscribe(_ =>
             {
                 _corutines.StartCoroutine(LoadAndStartGameplay());
-            };
+            });
 
             _uiRoot.HideLoadingScreen();
         }
@@ -100,12 +99,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
             var gameplayContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
 
-            sceneEntryPoint.Run(gameplayContainer);
-
-            sceneEntryPoint.GoToMainMenuSceneRequested += () =>
+            sceneEntryPoint.Run(gameplayContainer).Subscribe(_ =>
             {
                 _corutines.StartCoroutine(LoadAndStartMainMenu());
-            };
+            });
 
             _uiRoot.HideLoadingScreen();
         }

@@ -15,7 +15,7 @@ namespace MythicalBattles
 
         private ISpawnPointGenerator _spawnPointGenerator;
 
-        private Vector3[] _spawnPoints = new Vector3[ProjectileCount];
+        private readonly Vector3[] _spawnPoints = new Vector3[ProjectileCount];
 
         private WaitForSeconds _projectilesSpawnDelay;
         private WaitForSeconds _animationDelay;

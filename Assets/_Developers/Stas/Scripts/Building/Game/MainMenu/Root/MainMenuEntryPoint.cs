@@ -1,27 +1,26 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using UnityEngine;
-using System;
 using Reflex.Core;
+using R3;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
 {
     class MainMenuEntryPoint : MonoBehaviour
     {
-        public event Action GoToGameplaySceneRequested;
-
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 
-        public void Run(Container mainMenuContainer)
+        public Observable<Unit> Run(Container mainMenuContainer)
         {
             var uiScene = Instantiate(_sceneUIRootPrefab);
+
             var uiRoot = mainMenuContainer.Resolve<UIRootView>();
             uiRoot.AttachSceneUI(uiScene.gameObject);
 
-            uiScene.GoToGameplayButtonClicked += () =>
-            {
-                GoToGameplaySceneRequested?.Invoke();
-            };
+            var exitSceneSignal = new Subject<Unit>();
+            uiScene.Bind(exitSceneSignal);
+
+            return exitSceneSignal.AsObservable();
         }
     }
 }

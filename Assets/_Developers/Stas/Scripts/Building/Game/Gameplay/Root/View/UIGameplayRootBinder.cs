@@ -1,15 +1,21 @@
 ﻿using System;
 using UnityEngine;
+using R3;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
 {
-    class UIGameplayRootBinder : MonoBehaviour
+    public class UIGameplayRootBinder : MonoBehaviour
     {
-        public event Action GoToMainMenuButtonClicked;
+        private Subject<Unit> _exitSceneSignal;
 
         public void HandleGoToMainMenuButtonClicked()
         {
-            GoToMainMenuButtonClicked?.Invoke();
+            _exitSceneSignal?.OnNext(Unit.Default);
+        }
+
+        public void Bind(Subject<Unit> exitSceneSignal)
+        {
+            _exitSceneSignal = exitSceneSignal;
         }
     }
 }

@@ -27,6 +27,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
             ClearSceneUI();
 
             sceneUI.transform.SetParent(_sceneUIContainer, false);
+            sceneUI.GetComponentInChildren<VirtualJoystick>()?
+                .SetCanvas(GetComponentInChildren<Canvas>());
         }
 
         private void ClearSceneUI()

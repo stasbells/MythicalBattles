@@ -10,7 +10,7 @@ namespace MythicalBattles
         [SerializeField] private float _rotationSpeed = 5f;
         [SerializeField] private float _aimRadius;
 
-        private Collider[] _hitColliders;
+        private Collider[] _hitColliders = new Collider[10];
         private Animator _animator;
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
@@ -49,7 +49,6 @@ namespace MythicalBattles
             float closestDistance = Mathf.Infinity;
             _nearestEnemy = null;
 
-            _hitColliders = new Collider[10];
             int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _aimRadius, _hitColliders, Constants.MaskLayerEnemy);
 
             for (int i = 0; i < hitCount; i++)

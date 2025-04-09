@@ -124,7 +124,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7239287354694032234}
         m_TargetAssemblyTypeName: MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View.UIMainMenuRootBinder,
           Assembly-CSharp
-        m_MethodName: HandleGoToGameplayButtonClicked
+        m_MethodName: HandleGoToMainMenuButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
