@@ -7,6 +7,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using Reflex.Core;
 using R3;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
@@ -15,6 +16,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         private static GameEntryPoint _instance;
         private readonly Corutines _corutines;
         private readonly UIRootView _uiRoot;
+        private readonly WorldGameplayRootView _worldGameplayRoot;
         private readonly ContainerBuilder _rootContainer = new();
         private Container _cachedSceneContainer;
 
@@ -34,7 +36,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             _uiRoot = Object.Instantiate(prefabUIRoot);
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
 
+            var prefabWorldGamplayRoot = Resources.Load<WorldGameplayRootView>("Prefabs/UI/WorldGameplayRoot");
+            _worldGameplayRoot = Object.Instantiate(prefabWorldGamplayRoot);
+            Object.DontDestroyOnLoad(_worldGameplayRoot.gameObject);
+
             _rootContainer.AddSingleton(_uiRoot);
+            _rootContainer.AddSingleton(_worldGameplayRoot);
             _rootContainer.AddTransient(typeof(SpawnPointGenerator), typeof(ISpawnPointGenerator));
         }
 

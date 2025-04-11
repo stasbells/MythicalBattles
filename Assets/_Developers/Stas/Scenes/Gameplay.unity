@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8789738611341214791, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28
@@ -240,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 1703131478790005849, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2610733052885619531, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
       propertyPath: _player
       value: 
@@ -305,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1039496787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneUIRootPrefab: {fileID: 7075134386982004059, guid: 0d8283ce97ecf4f4bbd08188922d424c, type: 3}
+  _worldGameplayRootPrefab: {fileID: -5197121416315249198, guid: eba807cab836b5242a83263dcc9757ff, type: 3}
 --- !u!4 &1039496788
 Transform:
   m_ObjectHideFlags: 0
@@ -345,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 2211564899198745197, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: m_Name
       value: YandexGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211564899198745197, guid: caf9732433f4dc044845763962493607, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: m_LocalPosition.x
@@ -456,6 +469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spirit
       objectReference: {fileID: 0}
+    - target: {fileID: 8395176564760867790, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9208304568749861236, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.62
@@ -531,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5863105753833881016, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491445400696874754, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -594,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 2152971030917394324, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4603895787959383515, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.48
@@ -633,6 +654,10 @@ PrefabInstance:
     - target: {fileID: 4603895787959383515, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586221075023628227, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
+      propertyPath: _maxHealthValue
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5902355024631107464, guid: c55ce9f00671cd84e9350909767f5941, type: 3}
       propertyPath: m_Camera
@@ -792,6 +817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost_CompanionElectric
       objectReference: {fileID: 0}
+    - target: {fileID: 964204302342432847, guid: 1534f49f9d3edad40b64027e6d740f78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -819,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 1556532935942178190, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
       propertyPath: m_Name
       value: AncientWarrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556532935942178190, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3732544168456419976, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
       propertyPath: _player
@@ -895,6 +928,10 @@ PrefabInstance:
     - target: {fileID: 76530411595035232, guid: eba807cab836b5242a83263dcc9757ff, type: 3}
       propertyPath: m_Name
       value: Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 76530411595035232, guid: eba807cab836b5242a83263dcc9757ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116614803802700141, guid: eba807cab836b5242a83263dcc9757ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1050,9 +1087,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1039496788}
+  - {fileID: 383911202}
   - {fileID: 1271770969}
   - {fileID: 1498873761586212941}
-  - {fileID: 383911202}
   - {fileID: 1234060089}
   - {fileID: 1561311706}
   - {fileID: 1328737869}
