@@ -2,15 +2,21 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SimpleShooter : Shooter
+    public class SimpleShooter : Shooter, IDamageDealComponent
     {
         [SerializeField] private ParticleSystem _prefab;
 
         private ParticleSystem _particle;
+        private SimpleProjectile _projectile;
 
-        protected override void Shoot()
+        public void ApplyWaveDamageMultiplier(float multiplier)
         {
-            _particle.Play();
+            SetProjectileDamage(Damage * multiplier);
+        }
+
+        public void CancelWaveDamageMultiplier()
+        {
+            SetProjectileDamage(Damage);
         }
 
         protected override void OnAwake()
@@ -18,8 +24,27 @@ namespace MythicalBattles
             base.OnAwake();
             
             _particle = Instantiate(_prefab, ShootPoint.position, ShootPoint.rotation);
+            
             _particle.transform.SetParent(ShootPoint);
+            
             _particle.Stop();
+            
+            _particle.TryGetComponent(out SimpleProjectile projectile);
+
+            _projectile = projectile;
+            
+            SetProjectileDamage(Damage);
+            
+        }
+
+        protected override void Shoot()
+        {
+            _particle.Play();
+        }
+        
+        protected void SetProjectileDamage(float damage)
+        {
+            _projectile.SetDamage(damage);
         }
     }
 }

@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MythicalBattles
 {
     public class SpiritMover : MonoBehaviour
     {
-        [SerializeField] private Transform _player;
         [SerializeField] private LayerMask _obstacleLayer;
 
         [SerializeField] private float _moveSpeed = 1f;
@@ -13,8 +14,10 @@ namespace MythicalBattles
         [SerializeField] private float _raycastDistance = 1f;
         [SerializeField] private float _stopDuration = 1f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private float _playerSearchRadius = 50f;
 
         private Transform _transform;
+        private Transform _player;
         private Animator _animator;
         private Vector3 _randomDirection;
         private CapsuleCollider _capsuleCollider;
@@ -29,6 +32,18 @@ namespace MythicalBattles
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
+        }
+        
+        private void Start()
+        {
+            if(TryFindPlayer() == false)
+                throw new InvalidOperationException();
+        }
+        
+        private void OnEnable()
+        {
+            gameObject.layer = Constants.LayerEnemy;
+            _capsuleCollider.enabled = true;
         }
 
         private void Update()
@@ -45,6 +60,20 @@ namespace MythicalBattles
                 MoveRandomly();
             else
                 Shoot();
+        }
+        
+        private bool TryFindPlayer()
+        {
+            Collider[] colliders = new Collider[1];
+            
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _playerSearchRadius, colliders, Constants.MaskLayerPlayer);
+
+            if (hitCount == 0)
+                return false;
+            
+            _player = colliders[0].transform;
+
+            return true;
         }
 
         private void MoveRandomly()

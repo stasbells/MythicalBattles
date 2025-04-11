@@ -4,17 +4,17 @@ namespace MythicalBattles
 {
     public class SimpleProjectile : MonoBehaviour
     {
-        [field: SerializeField] public float Damage { get; private set; }
+        private float _damage;
 
         private void OnParticleCollision(GameObject other)
         {
             if (other.layer == Constants.LayerPlayer || other.layer == Constants.LayerEnemy)
-                other.GetComponent<Health>().TakeDamage(Damage);
+                other.GetComponent<Health>().TakeDamage(_damage);
         }
 
-        protected void ChangeDamage(float damage)
+        public void SetDamage(float damage)
         {
-            Damage = damage;
+            _damage = damage;
         }
     }
 }

@@ -1,20 +1,22 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Transform), typeof(Animator))]
     public class AncientWarriorMover : MonoBehaviour
     {
-        [SerializeField] private Transform _player;
-
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _moveDuration = 2f;
         [SerializeField] private float _directionChangeInterval = 0.5f;
         [SerializeField] private float _raycastDistance = 1f;
         [SerializeField] private float _stopDuration = 1f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private float _playerSearchRadius = 50f;
 
         private Transform _transform;
+        private Transform _player;
         private Animator _animator;
         private CapsuleCollider _capsuleCollider;
         private Vector3 _randomDirection;
@@ -29,6 +31,18 @@ namespace MythicalBattles
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
+        }
+        
+        private void OnEnable()
+        {
+            gameObject.layer = Constants.LayerEnemy;
+            _capsuleCollider.enabled = true;
+        }
+        
+        private void Start()
+        {
+            if(TryFindPlayer() == false)
+                throw new InvalidOperationException();
         }
 
         private void Update()
@@ -45,6 +59,20 @@ namespace MythicalBattles
                 MoveRandomly();
             else
                 Shoot();
+        }
+        
+        private bool TryFindPlayer()
+        {
+            Collider[] colliders = new Collider[1];
+            
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _playerSearchRadius, colliders, Constants.MaskLayerPlayer);
+
+            if (hitCount == 0)
+                return false;
+            
+            _player = colliders[0].transform;
+
+            return true;
         }
 
         private void MoveRandomly()

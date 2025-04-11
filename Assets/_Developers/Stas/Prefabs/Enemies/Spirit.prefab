@@ -1935,6 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _originalPrefab: {fileID: 8395176564760867790}
 --- !u!114 &8492765951684893017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,7 +1948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0038510a326acb94cbc45c9a65ad6d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealthValue: 20000
+  _initMaxHealthValue: 100
 --- !u!114 &2310055971245182895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,7 +1961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30336acaaa1e11d408993c01b54ce06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1970,6 +1970,7 @@ MonoBehaviour:
   _raycastDistance: 5
   _stopDuration: 2
   _rotationSpeed: 5
+  _playerSearchRadius: 50
 --- !u!114 &5993620104692598466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,9 +1986,8 @@ MonoBehaviour:
   ProjectilePool: {fileID: 0}
   EffectPool: {fileID: 0}
   ShootPoint: {fileID: 3667858939544100879}
-  Prefire: {fileID: 0}
-  Afterfire: {fileID: 0}
   ArrowVelocity: 1
+  Damage: 10
   _initRateOfFire: 1
   _shootDelay: 1.2
   _prefab: {fileID: 2651084798854190789, guid: 50b129f204b329143b6972af8aa2fa33, type: 3}
