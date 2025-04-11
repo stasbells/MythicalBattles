@@ -1,3 +1,4 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,12 +17,12 @@ namespace MythicalBattles
         
         public void OpenArtemScene()
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(Scenes.ARTEM_GAMEPLAY);
         }
         
         public void OpenStasScene()
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(Scenes.GAMEPLAY);
         }
 
         public void ResetItems()

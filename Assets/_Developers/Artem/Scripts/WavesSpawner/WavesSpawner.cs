@@ -140,11 +140,13 @@ namespace MythicalBattles
         {
             //СДЕЛАТЬ ПРОВЕРКУ ЧТО ЕСЛИ БОСС ТО return enemySpawnPoints.GetBossSpawnPointPosition();
             
-            int randomIndex = Random.Range(0, _currentAvailablePoints.Count);
+            //int randomIndex = Random.Range(0, _currentAvailablePoints.Count);
 
+            int randomIndex = 4;
+            
             Vector3 selectedPoint = _currentAvailablePoints[randomIndex];
             
-            _currentAvailablePoints.RemoveAt(randomIndex);
+            //_currentAvailablePoints.RemoveAt(randomIndex);
     
             return selectedPoint;
         }
