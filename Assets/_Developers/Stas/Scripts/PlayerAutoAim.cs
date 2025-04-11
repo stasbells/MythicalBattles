@@ -67,7 +67,7 @@ namespace MythicalBattles
 
         private void TurnToTargetEnemy()
         {
-            Vector3 direction = (_targetEnemy.position - _transform.position);
+            Vector3 direction = _targetEnemy.position - _transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
 
             _transform.rotation = Quaternion.RotateTowards(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);

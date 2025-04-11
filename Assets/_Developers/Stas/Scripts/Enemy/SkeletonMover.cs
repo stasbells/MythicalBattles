@@ -1,17 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator), typeof(Transform))]
-    public class SkeletonMover : MonoBehaviour
+    public class SkeletonMover : MonoBehaviour, IDamageDealComponent
     {
-        [SerializeField] protected float _moveSpeed = 3.0f;
-        [SerializeField] private int _damage;
-
-        [SerializeField] private Transform _player;
+        [SerializeField] private float _moveSpeed = 3.0f;
+        [SerializeField] private float _initDamage;
         [SerializeField] private float _attackDistance = 2.0f;
+        [SerializeField] private float _playerSearchRadius = 50f;
 
+        private float _damage;
         private Transform _transform;
+        private Transform _player;
         private Animator _animator;
         private CapsuleCollider _capsuleCollider;
 
@@ -20,6 +22,18 @@ namespace MythicalBattles
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
+        }
+
+        private void OnEnable()
+        {
+            gameObject.layer = Constants.LayerEnemy;
+            _capsuleCollider.enabled = true;
+        }
+
+        private void Start()
+        {
+            if(TryFindPlayer() == false)
+                throw new InvalidOperationException();
         }
 
         private void Update()
@@ -40,6 +54,20 @@ namespace MythicalBattles
         public void Damage()
         {
             _player.GetComponent<Health>().TakeDamage(_damage);
+        }
+        
+        private bool TryFindPlayer()
+        {
+            Collider[] colliders = new Collider[1];
+            
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _playerSearchRadius, colliders, Constants.MaskLayerPlayer);
+
+            if (hitCount == 0)
+                return false;
+            
+            _player = colliders[0].transform;
+
+            return true;
         }
 
         private void Attack()
@@ -76,6 +104,16 @@ namespace MythicalBattles
         private Vector3 GetDirection()
         {
             return (_player.position - _transform.position).normalized;
+        }
+        
+        public void ApplyWaveDamageMultiplier(float multiplier)
+        {
+            _damage = _initDamage * multiplier;
+        }
+
+        public void CancelWaveDamageMultiplier()
+        {
+            _damage = _initDamage;
         }
     }
 }

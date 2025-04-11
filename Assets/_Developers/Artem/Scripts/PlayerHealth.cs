@@ -12,13 +12,13 @@ namespace MythicalBattles
         private void Construct(IPlayerStats playerStats)
         {
             _playerStats = playerStats;
-            
-            ChangeMaxHealthValue(playerStats.MaxHealth);
         }
 
         private void OnEnable()
         {
             _playerStats.MaxHealthChanged += OnMaxHealthChanged;
+            
+            ChangeMaxHealthValue(_playerStats.MaxHealth);
         }
 
         private void OnDisable()

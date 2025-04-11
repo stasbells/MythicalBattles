@@ -1,11 +1,12 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MythicalBattles
 {
-    public class DemonMover : MonoBehaviour
+    public class DemonMover : MonoBehaviour, IDamageDealComponent
     {
-        [SerializeField] private Transform _player;
-
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _moveDuration = 2f;
         [SerializeField] private float _directionChangeInterval = 0.5f;
@@ -13,14 +14,17 @@ namespace MythicalBattles
         [SerializeField] private float _attackCooldown = 2f;
         [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private float _rotationSpeed = 10f;
-        [SerializeField] private int _damage;
+        [SerializeField] private float _initDamage;
+        [SerializeField] private float _playerSearchRadius = 50f;
         [SerializeField] ParticleSystem _effect;
-
+        
         private Transform _transform;
+        private Transform _player;
         private Animator _animator;
         private CapsuleCollider _capsuleCollider;
         private Vector3 _randomDirection;
 
+        private float _damage;
         private float _moveTimer;
         private float _attackTimer;
         private float _directionChangeTimer;
@@ -32,6 +36,18 @@ namespace MythicalBattles
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
+        }
+        
+        private void OnEnable()
+        {
+            gameObject.layer = Constants.LayerEnemy;
+            _capsuleCollider.enabled = true;
+        }
+
+        private void Start()
+        {
+            if(TryFindPlayer() == false)
+                throw new InvalidOperationException();
         }
 
         private void Update()
@@ -73,6 +89,20 @@ namespace MythicalBattles
             {
                 RotateTowards(GetDirectionToPlayer());
             }
+        }
+        
+        private bool TryFindPlayer()
+        {
+            Collider[] colliders = new Collider[1];
+            
+            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _playerSearchRadius, colliders, Constants.MaskLayerPlayer);
+
+            if (hitCount == 0)
+                return false;
+            
+            _player = colliders[0].transform;
+
+            return true;
         }
 
         private void MoveRandomly()
@@ -160,6 +190,16 @@ namespace MythicalBattles
             Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.green, 1f);
 
             return false;
+        }
+
+        public void ApplyWaveDamageMultiplier(float multiplier)
+        {
+            _damage = _initDamage * multiplier;
+        }
+
+        public void CancelWaveDamageMultiplier()
+        {
+            _damage = _initDamage;
         }
     }
 }

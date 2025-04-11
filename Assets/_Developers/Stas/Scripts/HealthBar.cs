@@ -58,25 +58,24 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            //_health.CurrentHealthValueChanged += OnCurrentHealthChanged;
+            _health.CurrentHealthPersentValueChanged += OnCurrentHealthPercentChanged;
             //_health.MaxHealthValueChanged += OnUpdateMaxHealth;
-            //_health.Damaged += ViewHealthChange;
+            _health.Damaged += ViewHealthChange;
 
-            _health.HealthValueChanged.Subscribe(value => OnCurrentHealthChanged(value)).AddTo(_disposable);
+            //_health.HealthValueChanged.Subscribe(value => OnCurrentHealthPercentChanged(value)).AddTo(_disposable);
             _health.MaxHealthValueChanged.Subscribe(value => OnUpdateMaxHealth(value)).AddTo(_disposable);
-            _health.DamageValueChanged.Subscribe(value => ViewHealthChange(value)).AddTo(_disposable);
         }
 
         private void OnDisable()
         {
-            //_health.CurrentHealthValueChanged -= OnCurrentHealthChanged;
+            _health.CurrentHealthPersentValueChanged -= OnCurrentHealthPercentChanged;
             //_health.MaxHealthValueChanged -= OnUpdateMaxHealth;
-            //_health.Damaged -= ViewHealthChange;
+            _health.Damaged -= ViewHealthChange;
 
             _disposable?.Dispose();
         }
 
-        private void OnCurrentHealthChanged(float healthValue)
+        private void OnCurrentHealthPercentChanged(float healthValue)
         {
             ChangeValue(healthValue);
 

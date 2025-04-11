@@ -682,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _originalPrefab: {fileID: 1703131478790005849}
 --- !u!114 &8685236053578986041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0038510a326acb94cbc45c9a65ad6d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealthValue: 100
+  _initMaxHealthValue: 100
 --- !u!114 &2610733052885619531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,9 +709,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
-  _damage: 10
-  _player: {fileID: 0}
+  _initDamage: 10
   _attackDistance: 2
+  _playerSearchRadius: 50
 --- !u!136 &6887080056222959762
 CapsuleCollider:
   m_ObjectHideFlags: 0
