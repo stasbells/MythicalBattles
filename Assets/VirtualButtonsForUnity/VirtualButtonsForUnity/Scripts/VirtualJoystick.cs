@@ -10,7 +10,6 @@ public enum VirtualJoystickType { Fixed, Floating }
 
 public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-
     [SerializeField] private RectTransform centerArea = null;
     [SerializeField] private RectTransform handle = null;
     [InputControl(layout = "Vector2")]
@@ -20,7 +19,7 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     protected VirtualJoystickType joystickType = VirtualJoystickType.Fixed;
     protected bool _hideOnPointerUp = false;
     protected bool _centralizeOnPointerUp = true;
-    private Canvas canvas;
+    private Canvas _canvas;
     protected RectTransform baseRect = null;
     protected OnScreenStick handleStickController = null;
     protected CanvasGroup bgCanvasGroup = null;
@@ -28,7 +27,7 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     protected virtual void Awake()
     {
-        canvas = GetComponentInParent<Canvas>();
+        //_canvas = GetComponentInParent<Canvas>();
         baseRect = GetComponent<RectTransform>();
         bgCanvasGroup = centerArea.GetComponent<CanvasGroup>();
         handleStickController = handle.gameObject.AddComponent<OnScreenStick>();
@@ -96,9 +95,14 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         handleStickController.OnPointerUp(constructedEventData);
     }
 
+    public void SetCanvas(Canvas canvas)
+    {
+        _canvas = canvas;
+    }
+
     protected Vector2 GetAnchoredPosition(Vector2 screenPosition)
     {
-        Camera cam = (canvas.renderMode == RenderMode.ScreenSpaceCamera) ? canvas.worldCamera : null;
+        Camera cam = (_canvas.renderMode == RenderMode.ScreenSpaceCamera) ? _canvas.worldCamera : null;
         Vector2 localPoint = Vector2.zero;
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint))
@@ -109,5 +113,4 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         return Vector2.zero;
     }
-
 }

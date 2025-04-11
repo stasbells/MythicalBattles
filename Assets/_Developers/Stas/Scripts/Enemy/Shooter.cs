@@ -17,6 +17,7 @@ namespace MythicalBattles
 
         protected Transform _transform;
         protected Animator _animator;
+
         private Coroutine _shooter;
         private float _rateOfFire;
         private float _restTimer = 0f;
@@ -26,7 +27,7 @@ namespace MythicalBattles
             _transform = transform;
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
-
+            
             OnAwake();
         }
 
@@ -53,6 +54,8 @@ namespace MythicalBattles
         protected void ChangeAttackSpeed(float attackSpeedFactor)
         {
             _rateOfFire = _initRateOfFire / attackSpeedFactor;
+
+            //_animator.SetFloat("shootSpeed", _rateOfFire);
         }
 
         protected virtual void Shoot() { }

@@ -30,7 +30,7 @@ namespace MythicalBattles
         private float _initialScaleX;
 
         private readonly CompositeDisposable _disposable = new();
-
+        
         private void Awake()
         {
             _camera = Camera.main;
@@ -94,7 +94,7 @@ namespace MythicalBattles
                 newScaleX,
                 _rectTransform.localScale.y,
                 _rectTransform.localScale.z
-            ); 
+            );
 
             Debug.Log(_transform.localScale);
         }

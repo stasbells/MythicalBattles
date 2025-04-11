@@ -21,6 +21,7 @@ namespace MythicalBattles
         public Observable<float> HealthValueChanged => _currentHealth;
         public Observable<float> MaxHealthValueChanged => _maxHealth;
         public Observable<float> DamageValueChanged => _damage;
+        public Observable<float> HealValueChanged => _heal;
 
         //public event Action<float> CurrentHealthValueChanged;
         //public event Action<float> MaxHealthValueChanged;
