@@ -17,9 +17,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
                 _screensContainer.OpenScreen(newScreenViewModel);
             }));
 
-            foreach (var opendPopup in viewModel.OpenedPopups)
+            foreach (var openedPopup in viewModel.OpenedPopups)
             {
-                _screensContainer.OpenPopup(opendPopup);
+                _screensContainer.OpenPopup(openedPopup);
             }
 
             _subscriptions.Add(viewModel.OpenedPopups.ObserveAdd().Subscribe(e =>

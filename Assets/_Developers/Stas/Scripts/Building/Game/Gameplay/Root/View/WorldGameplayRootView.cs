@@ -1,7 +1,4 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
 {
@@ -13,10 +10,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
         {
             ClearWorldGameplay();
 
-            var sceneName = SceneManager.GetActiveScene().name;
-
-            if (sceneName != Scenes.GAMEPLAY)
-                worldGameplay.transform.SetParent(_worldGamplayContainer, false);
+            worldGameplay.transform.SetParent(_worldGamplayContainer, false);
         }
 
         private void ClearWorldGameplay()

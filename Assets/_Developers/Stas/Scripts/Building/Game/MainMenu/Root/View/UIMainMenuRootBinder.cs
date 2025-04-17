@@ -1,6 +1,5 @@
-﻿using System;
+﻿using R3;
 using UnityEngine;
-using R3;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
 {

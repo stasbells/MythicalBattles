@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 namespace MythicalBattles
 {
     public static class Constants
     {
+        public const string ExitSceneRequest = nameof(ExitSceneRequest);
+
         public static readonly float MoveControllerRotationAngle = 45f;
 
         public static readonly float SpawnPointXPlus = 5.7f;

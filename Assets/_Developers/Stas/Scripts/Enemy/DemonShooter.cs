@@ -1,7 +1,7 @@
-using UnityEngine;
-using System.Collections;
-using Reflex.Attributes;
 using DG.Tweening;
+using Reflex.Attributes;
+using System.Collections;
+using UnityEngine;
 
 namespace MythicalBattles
 {

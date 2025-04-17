@@ -11,7 +11,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
         public ReadOnlyReactiveProperty<ScreenViewModel> OpenedScreen => _openedScreen;
         public IObservableCollection<ScreenViewModel> OpenedPopups => _openedPopups;
 
-        private readonly ReactiveProperty<ScreenViewModel> _openedScreen = new();
+        private readonly ReactiveProperty<ScreenViewModel> _openedScreen = new(null);
         private readonly ObservableList<ScreenViewModel> _openedPopups = new();
         private readonly Dictionary<ScreenViewModel, IDisposable> _popupSubscriptions = new();
 
@@ -39,7 +39,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 
         public void ClosePopup(ScreenViewModel popupViewModel)
         {
-            if (!_openedPopups.Contains(popupViewModel))
+            if (_openedPopups.Contains(popupViewModel))
             {
                 popupViewModel.Dispose();
                 _openedPopups.Remove(popupViewModel);
@@ -58,10 +58,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 
         public void CloseAllPopups()
         {
-            foreach (var openedPopupViewModel in _openedPopups)
-            {
-               ClosePopup(openedPopupViewModel);
-            }
+            foreach (var openedPopup in _openedPopups)
+                ClosePopup(openedPopup);
         }
     }
 }
