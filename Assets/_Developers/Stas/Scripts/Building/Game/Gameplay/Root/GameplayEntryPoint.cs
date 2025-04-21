@@ -1,9 +1,9 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using UnityEngine;
-using Reflex.Core;
-using R3;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+using R3;
+using Reflex.Core;
+using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
 {

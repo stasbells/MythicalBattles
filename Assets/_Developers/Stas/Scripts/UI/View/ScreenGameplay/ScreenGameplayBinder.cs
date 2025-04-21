@@ -11,19 +11,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 
         private void OnEnable()
         {
-            _goToMainMenuButton.onClick.AddListener(OnGoToMenuButtonClicked);
+            _goToMainMenuButton.onClick.AddListener(OnGoToMainMenuButtonClicked);
             _popupAButton.onClick.AddListener(OnPopupAButtonClicked);
             _popupBButton.onClick.AddListener(OnPopupBButtonClicked);
         }
 
         private void OnDisable()
         {
-            _goToMainMenuButton.onClick.RemoveListener(OnGoToMenuButtonClicked);
+            _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
             _popupAButton.onClick.RemoveListener(OnPopupAButtonClicked);
             _popupBButton.onClick.RemoveListener(OnPopupBButtonClicked);
         }
 
-        private void OnGoToMenuButtonClicked()
+        private void OnGoToMainMenuButtonClicked()
         {
             ViewModel.RequestGoToMainMenu();
         }

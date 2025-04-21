@@ -1,7 +1,7 @@
 ﻿using ObservableCollections;
-using System.Collections.Generic;
 using R3;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
