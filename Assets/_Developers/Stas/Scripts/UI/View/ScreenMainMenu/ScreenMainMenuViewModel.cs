@@ -15,9 +15,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
             _exitSceneRequest = exitSceneRequest;
         }
 
-        public void RequestGoToGameplay()
+        public void RequestGoToSceneGameplay()
         {
             _exitSceneRequest.OnNext(Unit.Default);
+        }
+
+        public void RequestGoToScreenMainMenu()
+        {
+            _uiManager.OpenScreenMainMenu();
+        }
+
+        internal void RequestGoToScreenSettings()
+        {
+            _uiManager.OpenScreenSettings();
         }
     }
 }

@@ -6,21 +6,29 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 {
     public class ScreenMainMenuBinder : ScreenBinder<ScreenMainMenuViewModel>
     {
-        [SerializeField] private Button _goToGameplayButton;
+        [SerializeField] private Button _goToSceneGameplayButton;
+        [SerializeField] private Button _goToScreenSettingsButton;
 
         private void OnEnable()
         {
-            _goToGameplayButton.onClick.AddListener(OnGoToGameplayButtonClicked);
+            _goToSceneGameplayButton.onClick.AddListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenSettingsButton.onClick.AddListener(OnGoToScreenSettingsButtonClicked);
         }
 
         private void OnDisable()
         {
-            _goToGameplayButton.onClick.RemoveListener(OnGoToGameplayButtonClicked);
+            _goToSceneGameplayButton.onClick.RemoveListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenSettingsButton.onClick.RemoveListener(OnGoToScreenSettingsButtonClicked);
         }
 
-        private void OnGoToGameplayButtonClicked()
+        private void OnGoToSceneGameplayButtonClicked()
         {
-            ViewModel.RequestGoToGameplay();
+            ViewModel.RequestGoToSceneGameplay();
+        }
+
+        private void OnGoToScreenSettingsButtonClicked()
+        {
+            ViewModel.RequestGoToScreenSettings();
         }
     }
 }
