@@ -4,11 +4,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 {
     public abstract class UIManager
     {
-        protected readonly ContainerBuilder _builder;
+        protected readonly ContainerBuilder Container;
 
-        protected UIManager(ContainerBuilder builder)
+        protected UIManager(ContainerBuilder container)
         {
-            _builder = builder;
+            Container = container;
         }
     }
 }

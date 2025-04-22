@@ -1,23 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
-using Reflex.Core;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using R3;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
+using Reflex.Core;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
     public class GameEntryPoint
     {
         private static GameEntryPoint _instance;
+
         private readonly Corutines _corutines;
         private readonly UIRootView _uiRoot;
-        private readonly WorldGameplayRootView _worldGameplayRoot;
         private readonly ContainerBuilder _rootContainer = new();
+
         private Container _cachedSceneContainer;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -36,82 +36,77 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             _uiRoot = Object.Instantiate(prefabUIRoot);
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
 
-            var prefabWorldGamplayRoot = Resources.Load<WorldGameplayRootView>("Prefabs/UI/WorldGameplayRoot");
-            _worldGameplayRoot = Object.Instantiate(prefabWorldGamplayRoot);
-            Object.DontDestroyOnLoad(_worldGameplayRoot.gameObject);
-
             _rootContainer.AddSingleton(_uiRoot);
-            _rootContainer.AddSingleton(_worldGameplayRoot);
-            _rootContainer.AddTransient(typeof(SpawnPointGenerator), typeof(ISpawnPointGenerator));
         }
 
         private void RunGame()
         {
 #if UNITY_EDITOR
             Debug.Log("Game started");
-#endif
+
             var sceneName = SceneManager.GetActiveScene().name;
 
             if (sceneName == Scenes.GAMEPLAY)
             {
-                _corutines.StartCoroutine(LoadAndStartGameplay());
+                _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
                 return;
             }
 
             if (sceneName == Scenes.MAIN_MENU)
             {
-                _corutines.StartCoroutine(LoadAndStartMainMenu());
+                _corutines.StartCoroutine(LoadAndStart(Scenes.MAIN_MENU));
                 return;
             }
 
             if (sceneName != Scenes.BOOT)
                 return;
-
-            _corutines.StartCoroutine(LoadAndStartMainMenu());
+#endif
+            _corutines.StartCoroutine(LoadAndStart(Scenes.MAIN_MENU));
         }
 
-        private IEnumerator LoadAndStartMainMenu()
+        private IEnumerator LoadAndStart(string sceneName)
         {
             _uiRoot.ShowLoadingScreen();
             _cachedSceneContainer?.Dispose();
 
             yield return LoadScene(Scenes.BOOT);
-            yield return LoadScene(Scenes.MAIN_MENU);
+            yield return LoadScene(sceneName);
 
             yield return new WaitForSeconds(1.0f);
 
-            var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
+            Object sceneEntryPoint = sceneName == Scenes.GAMEPLAY
+                ? Object.FindFirstObjectByType<GameplayEntryPoint>()
+                : Object.FindFirstObjectByType<MainMenuEntryPoint>();
 
-            var mainMenuContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
+            var gameplayContainer = _cachedSceneContainer = new ContainerBuilder()
+                .SetParent(_rootContainer.Build()).Build();
 
-            sceneEntryPoint.Run(mainMenuContainer).Subscribe(_ =>
-            {
-                _corutines.StartCoroutine(LoadAndStartGameplay());
-            });
+            RunScene(sceneEntryPoint);
 
             _uiRoot.HideLoadingScreen();
         }
 
-        private IEnumerator LoadAndStartGameplay()
+        private void RunScene(Object sceneEntryPoint)
         {
-            _uiRoot.ShowLoadingScreen();
-            _cachedSceneContainer?.Dispose();
-
-            yield return LoadScene(Scenes.BOOT);
-            yield return LoadScene(Scenes.GAMEPLAY);
-
-            yield return new WaitForSeconds(1.0f);
-
-            var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
-
-            var gameplayContainer = _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
-
-            sceneEntryPoint.Run(gameplayContainer).Subscribe(_ =>
+            if (sceneEntryPoint is GameplayEntryPoint gameplayEntryPoint)
             {
-                _corutines.StartCoroutine(LoadAndStartMainMenu());
-            });
+                gameplayEntryPoint.Run(_cachedSceneContainer).Subscribe(_ =>
+                {
+                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.GAMEPLAY)));
+                });
+            }
+            else if (sceneEntryPoint is MainMenuEntryPoint mainMenuEntryPoint)
+            {
+                mainMenuEntryPoint.Run(_cachedSceneContainer).Subscribe(_ =>
+                {
+                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.MAIN_MENU)));
+                });
+            }
+        }
 
-            _uiRoot.HideLoadingScreen();
+        private string GetSceneToLoad(string sceneName)
+        {
+            return sceneName == Scenes.GAMEPLAY ? Scenes.MAIN_MENU : Scenes.GAMEPLAY;
         }
 
         private IEnumerator LoadScene(string sceneName)

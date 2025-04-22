@@ -4,19 +4,21 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
 {
     public class WorldGameplayRootBinder : MonoBehaviour
     {
+        [SerializeField] private MapBinder _map;
+
+        private MapBinder _currentMap;
+
         public void Bind(WorldGameplayRootViewModel viewModel)
         {
-      
+            PlaceMap(viewModel.MapViewModel);
         }
 
-        public void CreateMap(MapViewModel mapViewModel)
+        private void PlaceMap(MapViewModel mapViewModel)
         {
-            
-        }
+            var mapBinder = Instantiate(_map, transform);
+            mapBinder.Bind(mapViewModel);
 
-        public void DestroyMap(MapViewModel mapViewModel)
-        {
-           
+            _currentMap = mapBinder;
         }
     }
 }

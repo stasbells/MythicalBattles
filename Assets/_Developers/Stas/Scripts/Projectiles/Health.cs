@@ -1,6 +1,6 @@
+using R3;
 using System;
 using UnityEngine;
-using R3;
 
 namespace MythicalBattles
 {
@@ -48,12 +48,12 @@ namespace MythicalBattles
         public void Reset()
         {
             _animator.SetBool(Constants.IsDead, false);
+            _isDead.OnNext(false);
             
             _maxHealth.OnNext(_initMaxHealthValue);
             
             _currentHealth = _maxHealth.Value;
 
-            _isDead.OnNext(false);
         }
 
         public void ApplyWaveMultiplier(float multiplier)
