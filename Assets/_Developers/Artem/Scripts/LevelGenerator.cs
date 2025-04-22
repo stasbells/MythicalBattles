@@ -30,11 +30,11 @@ namespace MythicalBattles
                 return;
             }
 
-            SpawnLevelInterior(currentLevel);
+            SpawnLevelDesign(currentLevel);
             InitializeWaveSpawner(currentLevel);
         }
         
-        private void SpawnLevelInterior(int levelIndex)
+        private void SpawnLevelDesign(int levelIndex)
         {
             var designPrefab = _levelConfigs[levelIndex].LevelDesignPrefab;
         
