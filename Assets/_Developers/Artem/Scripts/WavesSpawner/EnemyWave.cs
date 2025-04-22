@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    [CreateAssetMenu(fileName = "EnemyWave", menuName = "EnemyWave")]
+    [CreateAssetMenu(fileName = "EnemyWave", menuName = "EnemyWaves/EnemyWave")]
     public class EnemyWave : ScriptableObject
     {
         [SerializeField] private EnemyWaveConfig[] enemyConfigs;

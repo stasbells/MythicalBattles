@@ -34,6 +34,13 @@ namespace MythicalBattles
             ChangeAttackSpeed(_playerStats.AttackSpeed);
         }
 
+        protected override void InstantiateNewProjectileParticle()
+        {
+            base.InstantiateNewProjectileParticle();
+            
+            SetProjectileDamage(_playerStats.Damage);
+        }
+
         private void OnAttackSpeedChanged(float attackSpeed)
         {
             ChangeAttackSpeed(attackSpeed);

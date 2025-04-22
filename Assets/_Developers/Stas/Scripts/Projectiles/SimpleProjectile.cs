@@ -16,5 +16,10 @@ namespace MythicalBattles
         {
             _damage = damage;
         }
+
+        public float GetDamage()
+        {
+            return _damage;
+        }
     }
 }

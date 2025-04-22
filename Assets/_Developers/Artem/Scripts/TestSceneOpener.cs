@@ -8,15 +8,18 @@ namespace MythicalBattles
     public class TestSceneOpener : MonoBehaviour
     {
         private IDataProvider _dataProvider;
+        private ILevelSelectionService _levelSelection;
         
         [Inject]
-        private void Construct(IDataProvider dataProvider)
+        private void Construct(IDataProvider dataProvider, ILevelSelectionService levelSelection)
         {
             _dataProvider = dataProvider;
+            _levelSelection = levelSelection;
         }
         
         public void OpenArtemScene()
         {
+            _levelSelection.SelectLevel(0);
             SceneManager.LoadScene(Scenes.ARTEM_GAMEPLAY);
         }
         

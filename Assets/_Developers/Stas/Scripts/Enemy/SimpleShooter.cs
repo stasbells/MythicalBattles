@@ -4,11 +4,18 @@ namespace MythicalBattles
 {
     public class SimpleShooter : Shooter, IDamageDealComponent
     {
-        [SerializeField] private ParticleSystem _prefab;
+        [SerializeField] private ParticleSystem _projectilePrefab;
 
         private ParticleSystem _particle;
         private SimpleProjectile _projectile;
 
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+
+            InstantiateNewProjectileParticle();
+        }
+        
         public void ApplyWaveDamageMultiplier(float multiplier)
         {
             SetProjectileDamage(Damage * multiplier);
@@ -19,32 +26,39 @@ namespace MythicalBattles
             SetProjectileDamage(Damage);
         }
 
-        protected override void OnAwake()
+        public void SetProjectilePrefab(ParticleSystem projectilePrefab)
         {
-            base.OnAwake();
-            
-            _particle = Instantiate(_prefab, ShootPoint.position, ShootPoint.rotation);
-            
-            _particle.transform.SetParent(ShootPoint);
-            
-            _particle.Stop();
-            
-            _particle.TryGetComponent(out SimpleProjectile projectile);
+            _projectilePrefab = projectilePrefab;
 
-            _projectile = projectile;
-            
-            SetProjectileDamage(Damage);
-            
+            InstantiateNewProjectileParticle();
         }
 
         protected override void Shoot()
         {
             _particle.Play();
         }
-        
+
         protected void SetProjectileDamage(float damage)
         {
             _projectile.SetDamage(damage);
+        }
+
+        protected virtual void InstantiateNewProjectileParticle()
+        {
+            if (_particle != null)
+                Destroy(_particle);
+
+            _particle = Instantiate(_projectilePrefab, ShootPoint.position, ShootPoint.rotation);
+
+            _particle.transform.SetParent(ShootPoint);
+
+            _particle.Stop();
+
+            _particle.TryGetComponent(out SimpleProjectile projectile);
+
+            _projectile = projectile;
+
+            SetProjectileDamage(Damage);
         }
     }
 }

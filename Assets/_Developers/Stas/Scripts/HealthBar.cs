@@ -61,6 +61,7 @@ namespace MythicalBattles
             _health.CurrentHealthPersentValueChanged += OnCurrentHealthPercentChanged;
             //_health.MaxHealthValueChanged += OnUpdateMaxHealth;
             _health.Damaged += ViewHealthChange;
+            _health.Healed += ViewHealthChange;
 
             //_health.HealthValueChanged.Subscribe(value => OnCurrentHealthPercentChanged(value)).AddTo(_disposable);
             _health.MaxHealthValueChanged.Subscribe(value => OnUpdateMaxHealth(value)).AddTo(_disposable);
@@ -71,6 +72,7 @@ namespace MythicalBattles
             _health.CurrentHealthPersentValueChanged -= OnCurrentHealthPercentChanged;
             //_health.MaxHealthValueChanged -= OnUpdateMaxHealth;
             _health.Damaged -= ViewHealthChange;
+            _health.Healed -= ViewHealthChange;
 
             _disposable?.Dispose();
         }

@@ -434,7 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _originalPrefab: {fileID: 1556532935942178190}
 --- !u!114 &399885055124820911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +485,7 @@ MonoBehaviour:
   Damage: 10
   _initRateOfFire: 1
   _shootDelay: 0.3
-  _prefab: {fileID: 7822837374249201035, guid: dad939317fc9a024187181dfca1881a7, type: 3}
+  _projectilePrefab: {fileID: 7822837374249201035, guid: dad939317fc9a024187181dfca1881a7, type: 3}
 --- !u!136 &7489759233889146171
 CapsuleCollider:
   m_ObjectHideFlags: 0

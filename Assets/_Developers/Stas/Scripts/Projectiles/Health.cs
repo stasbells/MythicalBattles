@@ -18,10 +18,8 @@ namespace MythicalBattles
 
         public float MaxHealthValue => _maxHealth.Value;
         public Observable<float> MaxHealthValueChanged => _maxHealth;
-        public Observable<bool>  IsDead => _isDead;
-
+        public Observable<bool> IsDead => _isDead;
         public event Action<float> CurrentHealthPersentValueChanged;
-        //public event Action<float> MaxHealthValueChanged;
         public event Action<float> Damaged;
         public event Action<float> Healed;
 
@@ -29,13 +27,12 @@ namespace MythicalBattles
         {
             _animator = GetComponent<Animator>();
             _maxHealth.Value = _initMaxHealthValue;
-            _currentHealth = _maxHealth.Value;
-            
-            CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
         
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
+            _currentHealth = _maxHealth.Value;
+            
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
@@ -63,18 +60,23 @@ namespace MythicalBattles
             _currentHealth =_maxHealth.Value;
         }
         
-        public void Heal(float health)
+        public void Heal(float healAmount)
         {
-            ChangeHealthValue(_currentHealth + health);
-            Healed?.Invoke(health);
+            if(healAmount <= 0)
+                throw new InvalidOperationException();
+            
+            if(_currentHealth + healAmount > _maxHealth.Value)
+                ChangeHealthValue(_maxHealth.Value);
+            else
+                ChangeHealthValue(_currentHealth + healAmount);
+            
+            Healed?.Invoke(healAmount);
         }
 
         protected void ChangeMaxHealthValue(float maxHealth)
         {
-            //_maxHealthValue = maxHealth;
             _maxHealth.OnNext(maxHealth);
-
-            //MaxHealthValueChanged?.Invoke(_maxHealthValue);
+            
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 

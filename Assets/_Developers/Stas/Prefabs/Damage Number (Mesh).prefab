@@ -429,7 +429,7 @@ MonoBehaviour:
     - B
     suffixDigits: 030000000300000003000000
     maxDigits: 4
-  enableLeftText: 1
+  enableLeftText: 0
   leftText: '-'
   leftTextSettings:
     bold: 0

@@ -14,11 +14,13 @@ namespace MythicalBattles
             _playerStats = playerStats;
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
             _playerStats.MaxHealthChanged += OnMaxHealthChanged;
             
             ChangeMaxHealthValue(_playerStats.MaxHealth);
+            
+            base.OnEnable();
         }
 
         private void OnDisable()

@@ -1,31 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using R3;
 using UnityEngine;
-using UnityEngine.Profiling;
-using Random = UnityEngine.Random;
 
 namespace MythicalBattles
 {
     public class WavesSpawner : MonoBehaviour
     {
-        [SerializeField] private EnemyWave[] waves;
-        [SerializeField] private EnemySpawnPoints enemySpawnPoints;
-        [SerializeField] private float timeBetweenWaves = 5f;
-        [SerializeField] private float enemyDyingTime = 1f;
+        private const int HealDropEnemySerialNumber = 1;
+
+        [SerializeField] private EnemyWave[] _waves;
+        [SerializeField] private EnemySpawnPoints _enemySpawnPoints;
+        [SerializeField] private BoostsStorage _boostsStorage;
+        [SerializeField] private float _timeBetweenWaves = 5f;
+        [SerializeField] private float _enemyDyingTime = 1f;
+        [SerializeField] private float _healDropPercentChance = 30f;
 
         private Dictionary<GameObject, Queue<GameObject>> enemyPools = new Dictionary<GameObject, Queue<GameObject>>();
-        private List<Vector3> _currentAvailablePoints = new List<Vector3>();
-        private int currentWaveIndex = -1;
-        private int activeEnemiesCount;
-        private bool isSpawning;
+        private List<Vector3> _shuffledSpawnPoints = new List<Vector3>();
+        private int _currentWaveIndex = -1;
+        private int _activeEnemiesCount;
+        private bool _isSpawning;
+        private System.Random _random = new System.Random();
 
         private readonly CompositeDisposable _disposable = new ();
 
-        private void Start()
+        private void Awake()
         {
-            StartCoroutine(InitializePools());
+            InitializePools();
         }
 
         private void OnDisable()
@@ -33,12 +37,11 @@ namespace MythicalBattles
             _disposable?.Dispose();
         }
 
-        private IEnumerator InitializePools()
+        private void InitializePools()
         {
-            // Находим максимальное количество для каждого типа врага во всех волнах
             Dictionary<GameObject, int> maxCounts = new Dictionary<GameObject, int>();
 
-            foreach (EnemyWave wave in waves)
+            foreach (EnemyWave wave in _waves)
             {
                 foreach (EnemyWaveConfig config in wave.GetConfigs())
                 {
@@ -55,8 +58,7 @@ namespace MythicalBattles
                     }
                 }
             }
-
-            // Создаем пулы
+            
             foreach (var pair in maxCounts)
             {
                 Queue<GameObject> pool = new Queue<GameObject>();
@@ -75,8 +77,6 @@ namespace MythicalBattles
                         .AddTo(_disposable);
 
                     pool.Enqueue(enemyGameobject);
-
-                    yield return null;
                 }
 
                 enemyPools.Add(pair.Key, pool);
@@ -87,33 +87,32 @@ namespace MythicalBattles
 
         private void StartNextWave()
         {
-            if (currentWaveIndex >= waves.Length - 1)
+            if (_currentWaveIndex >= _waves.Length - 1)
             {
-                Debug.Log("All waves completed!");
+                Debug.Log("All _waves completed!");
                 return;
             }
 
-            currentWaveIndex++;
+            _currentWaveIndex++;
             StartCoroutine(SpawnWaveWithDelay());
         }
 
         private IEnumerator SpawnWaveWithDelay()
         {
-            if (currentWaveIndex > 0)
+            if (_currentWaveIndex > 0)
             {
-                yield return new WaitForSeconds(timeBetweenWaves);
+                yield return new WaitForSeconds(_timeBetweenWaves);
             }
 
-            SpawnWave(waves[currentWaveIndex]);
+            SpawnWave(_waves[_currentWaveIndex]);
         }
 
         private void SpawnWave(EnemyWave wave)
         {
-            activeEnemiesCount = 0;
+            _activeEnemiesCount = 0;
             
-            _currentAvailablePoints = new List<Vector3>(enemySpawnPoints.GetSpawnPointsPositions());
-
-            Profiler.BeginSample("WaveSpawn");
+            if (!(wave is BossWave))
+                ShuffleSpawnPoints();
             
             foreach (EnemyWaveConfig config in wave.GetConfigs())
             {
@@ -128,33 +127,49 @@ namespace MythicalBattles
                         enemyGameobject.TryGetComponent(out Enemy enemy);
                         enemy.ApplyWaveMultiplier(wave.PowerMultiplier);
                         
-                        activeEnemiesCount++;
+                        _activeEnemiesCount++;
                     }
                 }
             }
+        }
+
+        private void ShuffleSpawnPoints()
+        {
+            var spawnPoints = _enemySpawnPoints.GetSpawnPointsPositions().ToList();
+
+            int spawnPointsCount = spawnPoints.Count;
+
+            while (spawnPointsCount > 1) 
+            {
+                int randomIndex = _random.Next(spawnPointsCount--);
+                
+                Vector3 value = spawnPoints[randomIndex];
+                
+                spawnPoints[randomIndex] = spawnPoints[spawnPointsCount];
+                
+                spawnPoints[spawnPointsCount] = value;
+            }
             
-            Profiler.EndSample();
+            _shuffledSpawnPoints = spawnPoints;
         }
 
         private Vector3 GetSpawnPosition(EnemyWave wave, EnemyWaveConfig config)
         {
-            //СДЕЛАТЬ ПРОВЕРКУ ЧТО ЕСЛИ БОСС ТО return enemySpawnPoints.GetBossSpawnPointPosition();
+            if (wave is BossWave)
+                return _enemySpawnPoints.GetBossSpawnPointPosition();
             
-            //int randomIndex = Random.Range(0, _currentAvailablePoints.Count);
-
-            int randomIndex = 4;
+            if (_shuffledSpawnPoints.Count == 0)
+                throw new InvalidOperationException();
             
-            Vector3 selectedPoint = _currentAvailablePoints[randomIndex];
-            
-            //_currentAvailablePoints.RemoveAt(randomIndex);
-    
-            return selectedPoint;
+            Vector3 point = _shuffledSpawnPoints.FirstOrDefault();
+            _shuffledSpawnPoints.Remove(point);
+            return point;
         }
 
         private GameObject GetEnemyFromPool(GameObject prefab)
         {
             if (enemyPools[prefab].Count <= 0)
-                Debug.LogError($"Пул исчерпан: {prefab.name}");
+                throw new InvalidOperationException();
             
             return enemyPools[prefab].Dequeue();
         }
@@ -165,18 +180,32 @@ namespace MythicalBattles
             {
                 StartCoroutine(ReturnEnemyToPool(enemy));
 
-                activeEnemiesCount--;
+                _activeEnemiesCount--;
 
-                if (activeEnemiesCount <= 0)
+                if (_activeEnemiesCount == HealDropEnemySerialNumber)
+                    DropHealWithChance(enemy.transform.position);
+                
+                if (_activeEnemiesCount == 0)
                 {
+                    if (_currentWaveIndex < _waves.Length - 1)
+                        Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
+
                     StartNextWave();
                 }
             }
         }
 
+        private void DropHealWithChance(Vector3 position)
+        {
+            if (_random.Next(100) < _healDropPercentChance)
+            {
+                Instantiate(_boostsStorage.GetHealBoost(), position, Quaternion.identity);
+            }
+        }
+
         private IEnumerator ReturnEnemyToPool(GameObject enemyGameObject)
         {
-            yield return new WaitForSeconds(enemyDyingTime);
+            yield return new WaitForSeconds(_enemyDyingTime);
 
             enemyGameObject.SetActive(false);
             
