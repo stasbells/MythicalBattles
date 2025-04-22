@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3063818279901200008}
   - component: {fileID: 6506092770427038293}
+  - component: {fileID: -657537215812843234}
   m_Layer: 0
   m_Name: Boost_Electricity
   m_TagString: Untagged
@@ -56,6 +57,19 @@ CapsuleCollider:
   m_Height: 1.325311
   m_Direction: 1
   m_Center: {x: 0.039386928, y: 0.16265547, z: -0.04662645}
+--- !u!114 &-657537215812843234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832774541999751729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68240ee12c677b45879254d10b5c487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 2651084798854190789, guid: 747e3324ff395ff4d985ae4c674c56a9, type: 3}
 --- !u!1001 &7523531004113740918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666786060670903642, guid: 9f8a6c948760c7e4f9a21d1f24996813, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3666786060670903642, guid: 9f8a6c948760c7e4f9a21d1f24996813, type: 3}
       propertyPath: m_LocalPosition.z

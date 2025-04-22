@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,9 +20,9 @@ namespace MythicalBattles
         protected Transform _transform;
         protected Animator _animator;
 
-        private Coroutine _shooter;
+        private Coroutine _shootCoroutine;
         private float _rateOfFire;
-        private float _restTimer = 0f;
+        private float _restTimer;
 
         private void Awake()
         {
@@ -30,6 +31,11 @@ namespace MythicalBattles
             _animator.SetBool(Constants.IsAttack, false);
             
             OnAwake();
+        }
+
+        private void OnEnable()
+        {
+            _restTimer = 0f;
         }
 
         private void Update()
@@ -44,10 +50,10 @@ namespace MythicalBattles
                 if (_restTimer >= _shootDelay)
                     OnShoot();
             }
-            else if (_shooter != null)
+            else if (_shootCoroutine != null)
             {
-                StopCoroutine(_shooter);
-                _shooter = null;
+                StopCoroutine(_shootCoroutine);
+                _shootCoroutine = null;
                 _restTimer = 0f;
             }
         }
@@ -66,7 +72,7 @@ namespace MythicalBattles
             _rateOfFire = _initRateOfFire;
         }
 
-        private void OnShoot() => _shooter ??= StartCoroutine(AutoShoot());
+        private void OnShoot() => _shootCoroutine ??= StartCoroutine(AutoShoot());
 
         private IEnumerator AutoShoot()
         {

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3577025600714923552}
   - component: {fileID: 8942100038524391729}
+  - component: {fileID: 3196991114868705379}
   m_Layer: 0
   m_Name: Boost_Poison
   m_TagString: Untagged
@@ -56,6 +57,19 @@ CapsuleCollider:
   m_Height: 1.325311
   m_Direction: 1
   m_Center: {x: 0.039386928, y: 0.16265547, z: -0.04662645}
+--- !u!114 &3196991114868705379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316111299382164733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68240ee12c677b45879254d10b5c487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 2651084798854190789, guid: b56caf686fe1a8e42ae6c9b57181e95d, type: 3}
 --- !u!1001 &4273077400025727425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5884987381265272990, guid: 19033679954167649b71f63c41475603, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5884987381265272990, guid: 19033679954167649b71f63c41475603, type: 3}
       propertyPath: m_LocalPosition.z
