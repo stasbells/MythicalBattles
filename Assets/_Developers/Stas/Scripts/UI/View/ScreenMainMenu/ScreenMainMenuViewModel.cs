@@ -1,6 +1,7 @@
-﻿using R3;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
+using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 {
     public class ScreenMainMenuViewModel : ScreenViewModel
     {
@@ -28,6 +29,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
         internal void RequestGoToScreenSettings()
         {
             _uiManager.OpenScreenSettings();
+        }
+
+        internal void RequestGoToScreenShop()
+        {
+            _uiManager.OpenScreenShop();
+        }
+
+        internal void RequestGoToScreenLeaderboard()
+        {
+            _uiManager.OpenScreenLeaderboard();
         }
     }
 }
