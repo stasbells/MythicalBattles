@@ -15,6 +15,8 @@ namespace MythicalBattles
             if (other.TryGetComponent(out PlayerHealth playerHealth))
             {
                 _playerHealth = playerHealth;
+                
+                RememberPlayerTransform(playerHealth.transform);
             
                 Apply();
 

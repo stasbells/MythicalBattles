@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017270470042419303}
+  - component: {fileID: 3975373518499366908}
   - component: {fileID: 7822837374249201035}
   - component: {fileID: 5278367986971630144}
-  - component: {fileID: 3975373518499366908}
   m_Layer: 0
   m_Name: FX_Warrior_Fireball_Shooting 1
   m_TagString: Untagged
@@ -37,6 +37,18 @@ Transform:
   - {fileID: 930155098050440420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3975373518499366908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396510212989618083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &7822837374249201035
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4932,19 +4944,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3975373518499366908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396510212989618083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 10
 --- !u!1 &2488826698047874329
 GameObject:
   m_ObjectHideFlags: 0

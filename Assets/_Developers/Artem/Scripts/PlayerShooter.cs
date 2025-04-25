@@ -1,3 +1,4 @@
+using R3;
 using Reflex.Attributes;
 
 namespace MythicalBattles
@@ -6,23 +7,24 @@ namespace MythicalBattles
     {
         private IPlayerStats _playerStats;
         
+        private readonly CompositeDisposable _disposable = new();
+        
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
             _playerStats = playerStats;
-            Damage = _playerStats.Damage;
+            Damage = _playerStats.Damage.Value;
         }
 
         private void OnEnable()
         {
-            _playerStats.AttackSpeedChanged += OnAttackSpeedChanged;
-            _playerStats.DamageChanged += OnDamageChanged;
+            _playerStats.AttackSpeed.Subscribe(OnAttackSpeedChanged).AddTo(_disposable);
+            _playerStats.Damage.Subscribe(OnDamageChanged).AddTo(_disposable);
         }
 
         private void OnDisable()
         {
-            _playerStats.AttackSpeedChanged -= OnAttackSpeedChanged;
-            _playerStats.DamageChanged -= OnDamageChanged;
+            _disposable.Dispose();
         }
 
         protected override void OnAwake()
@@ -31,14 +33,14 @@ namespace MythicalBattles
             
             SetProjectileDamage(Damage);
             
-            ChangeAttackSpeed(_playerStats.AttackSpeed);
+            ChangeAttackSpeed(_playerStats.AttackSpeed.Value);
         }
 
         protected override void InstantiateNewProjectileParticle()
         {
             base.InstantiateNewProjectileParticle();
             
-            SetProjectileDamage(_playerStats.Damage);
+            SetProjectileDamage(_playerStats.Damage.Value);
         }
 
         private void OnAttackSpeedChanged(float attackSpeed)

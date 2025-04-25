@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class Arrow : ReturnableProjectile
+    public class Arrow : ReturnableToPoolProjectile
     {
         private ParticleEffect _effect;
 

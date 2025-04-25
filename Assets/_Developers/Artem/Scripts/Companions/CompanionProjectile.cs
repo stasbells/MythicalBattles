@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class CompanionProjectile : ReturnableProjectile
+    public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {
-        [field: SerializeField] public int Damage { get; private set; }
-
+        [SerializeField] private int _damage;
         [SerializeField] private float _returnToPoolDelay;
         [SerializeField] private List<ParticleSystem> _baseEffects;
         [SerializeField] private List<ParticleSystem> _collisionEffects;
@@ -28,7 +27,7 @@ namespace MythicalBattles
         private void OnTriggerEnter(Collider otherCollider)
         {
             if (otherCollider.gameObject.layer == Constants.LayerEnemy)
-                otherCollider.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                otherCollider.gameObject.GetComponent<Health>().TakeDamage(_damage);
 
             StopEffects(_baseEffects);
             
@@ -62,6 +61,11 @@ namespace MythicalBattles
             StopEffects(_collisionEffects);
             
             _pool.ReturnItem(this);
+        }
+
+        public float GetDamage()
+        {
+            return _damage;
         }
     }
 }

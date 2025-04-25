@@ -28277,9 +28277,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5982661755746715347}
+  - component: {fileID: 1066310188211020484}
+  - component: {fileID: -4049390794123948580}
   - component: {fileID: 2651084798854190789}
   - component: {fileID: 9168727674435199895}
-  - component: {fileID: 8548427704466973822}
   m_Layer: 0
   m_Name: FX_Archer_Fire_Shooting
   m_TagString: Untagged
@@ -28305,6 +28306,35 @@ Transform:
   - {fileID: 4002091819796797555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &1066310188211020484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355937244699757138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4049390794123948580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355937244699757138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d52f50ed3293a48a393a472d05c0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shareOfMainDamage: 0.1
+  _damageFullTime: 4
+  _damageTicksCount: 8
+  _damageNumbersColor: {r: 1, g: 0.10728225, b: 0, a: 1}
+  _damageType: 2
 --- !u!198 &2651084798854190789
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -33200,19 +33230,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8548427704466973822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6355937244699757138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 0
 --- !u!1 &6741016572563662560
 GameObject:
   m_ObjectHideFlags: 0

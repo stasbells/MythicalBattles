@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public abstract class ReturnableProjectile : MonoBehaviour
+    public abstract class ReturnableToPoolProjectile : MonoBehaviour
     {
         private protected ObjectPool _pool;
         private protected Transform _transform;

@@ -19,12 +19,22 @@ namespace MythicalBattles
         public GameObject GetRandomBoost()
         {
             var availableGroups = new List<IEnumerable<GameObject>>();
+            
+            var duplicatedStatsBoosts = _statsBoosts
+                .SelectMany(boost => new[] { boost, boost })
+                .ToArray();
+            
+            availableGroups.Add(duplicatedStatsBoosts);
 
             if (_isProjectileBoostAlreadyUsed == false)
-                availableGroups.Add(_projectileBoosts);
-
-            availableGroups.Add(_statsBoosts);
-
+            {
+                var duplicatedProjectileBoosts = _projectileBoosts
+                    .SelectMany(boost => new[] { boost, boost })
+                    .ToArray();
+                
+                availableGroups.Add(duplicatedProjectileBoosts);
+            }
+            
             var availableCompanions = _companionBoosts
                 .Where(companion => _usedCompanions.Contains(companion) == false)
                 .ToArray();

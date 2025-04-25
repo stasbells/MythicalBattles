@@ -19067,9 +19067,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5982661755746715347}
+  - component: {fileID: 7112339045043541309}
   - component: {fileID: 2651084798854190789}
   - component: {fileID: 9168727674435199895}
-  - component: {fileID: 7112339045043541309}
   m_Layer: 0
   m_Name: FX_Archer_Default_Shooting 1
   m_TagString: Untagged
@@ -19095,6 +19095,18 @@ Transform:
   - {fileID: 4002091819796797555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &7112339045043541309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355937244699757138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &2651084798854190789
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -23981,16 +23993,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &7112339045043541309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6355937244699757138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b91343dc1d4bd419e8b4adcf4855a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 0

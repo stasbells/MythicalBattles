@@ -7,98 +7,93 @@ namespace MythicalBattles
     public class Health : MonoBehaviour
     {
         private const float MinHealthValue = 0;
-
-        [SerializeField] private float _initMaxHealthValue;
         
-        private Animator _animator;
-        private float _currentHealth;
+        protected Animator Animator;
+        protected float CurrentHealth;
+        private Color _baseDamageNumberColor = Color.white;
     
-        private readonly ReactiveProperty<float> _maxHealth = new();
-        private readonly ReactiveProperty<bool> _isDead = new();
-
-        public float MaxHealthValue => _maxHealth.Value;
-        public Observable<float> MaxHealthValueChanged => _maxHealth;
-        public Observable<bool> IsDead => _isDead;
+        public readonly ReactiveProperty<float> MaxHealth = new();
+        public readonly ReactiveProperty<bool> IsDead = new();
+        
         public event Action<float> CurrentHealthPersentValueChanged;
-        public event Action<float> Damaged;
+        public event Action<float, Color> Damaged;
         public event Action<float> Healed;
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
-            _maxHealth.Value = _initMaxHealthValue;
+            OnAwakeBehaviour();
+            
+            Animator = GetComponent<Animator>();
         }
-        
-        protected virtual void OnEnable()
+
+        private void OnEnable()
         {
-            _currentHealth = _maxHealth.Value;
+            OnEnableBehaviour();
+            
+            CurrentHealth = MaxHealth.Value;
             
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
         public void TakeDamage(float damage)
         {
-            ChangeHealthValue(_currentHealth - damage);
-            Damaged?.Invoke(damage);
+            ChangeHealthValue(CurrentHealth - damage);
+            Damaged?.Invoke(damage, _baseDamageNumberColor);
         }
 
-        public void Reset()
+        public void TakeDamage(float damage, Color damageNumberColor)
         {
-            _animator.SetBool(Constants.IsDead, false);
-            _isDead.OnNext(false);
-            
-            _maxHealth.OnNext(_initMaxHealthValue);
-            
-            _currentHealth = _maxHealth.Value;
-
+            ChangeHealthValue(CurrentHealth - damage);
+            Damaged?.Invoke(damage, damageNumberColor);
         }
 
-        public void ApplyWaveMultiplier(float multiplier)
-        {
-            _maxHealth.OnNext(_initMaxHealthValue * multiplier);
-            
-            _currentHealth =_maxHealth.Value;
-        }
-        
         public void Heal(float healAmount)
         {
             if(healAmount <= 0)
                 throw new InvalidOperationException();
             
-            if(_currentHealth + healAmount > _maxHealth.Value)
-                ChangeHealthValue(_maxHealth.Value);
+            if(CurrentHealth + healAmount > MaxHealth.Value)
+                ChangeHealthValue(MaxHealth.Value);
             else
-                ChangeHealthValue(_currentHealth + healAmount);
+                ChangeHealthValue(CurrentHealth + healAmount);
             
             Healed?.Invoke(healAmount);
+        }
+        
+        protected virtual void OnAwakeBehaviour()
+        {
+        }
+        
+        protected virtual void OnEnableBehaviour()
+        {
         }
 
         protected void ChangeMaxHealthValue(float maxHealth)
         {
-            _maxHealth.OnNext(maxHealth);
+            MaxHealth.Value = maxHealth;
             
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
         private float CalculateHealthPercentValue()
         {
-            return _currentHealth / _maxHealth.Value;
+            return CurrentHealth / MaxHealth.Value;
         }
 
-        private void Die()
-        {
-            _animator.SetBool(Constants.IsDead, true);
-            _isDead.OnNext(true);
-        }
-        
         private void ChangeHealthValue(float healthValue)
         {
-            _currentHealth = Math.Clamp(healthValue, MinHealthValue, _maxHealth.Value);
+            CurrentHealth = Math.Clamp(healthValue, MinHealthValue, MaxHealth.Value);
             
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
             
-            if (_currentHealth <= MinHealthValue)
+            if (CurrentHealth <= MinHealthValue)
                 Die();
+        }
+        
+         private void Die()
+        {
+            Animator.SetBool(Constants.IsDead, true);
+            IsDead.Value = true;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MythicalBattles
         
         protected override void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerMover mover))
+            if (other.TryGetComponent(out PlayerMover player))
             {
                 CompanionSpawner companionSpawner = other.gameObject.GetComponentInChildren<CompanionSpawner>();
             
@@ -19,6 +19,8 @@ namespace MythicalBattles
                     throw new InvalidOperationException();
 
                 CompanionSpawner = companionSpawner;
+                
+                RememberPlayerTransform(player.transform);
             
                 Apply();
 

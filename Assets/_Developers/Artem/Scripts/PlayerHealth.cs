@@ -1,6 +1,5 @@
+using R3;
 using Reflex.Attributes;
-using Reflex.Extensions;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -8,24 +7,24 @@ namespace MythicalBattles
     {
         private IPlayerStats _playerStats;
         
+        private readonly CompositeDisposable _disposable = new();
+        
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
             _playerStats = playerStats;
         }
 
-        protected override void OnEnable()
+        protected override void OnEnableBehaviour()
         {
-            _playerStats.MaxHealthChanged += OnMaxHealthChanged;
+            _playerStats.MaxHealth.Subscribe(OnMaxHealthChanged).AddTo(_disposable);
             
-            ChangeMaxHealthValue(_playerStats.MaxHealth);
-            
-            base.OnEnable();
+            ChangeMaxHealthValue(_playerStats.MaxHealth.Value);
         }
 
         private void OnDisable()
         {
-            _playerStats.MaxHealthChanged -= OnMaxHealthChanged;
+            _disposable.Dispose();
         }
 
         private void OnMaxHealthChanged(float maxHealth)

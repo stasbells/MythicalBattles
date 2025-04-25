@@ -45,6 +45,9 @@ namespace MythicalBattles
             {
                 foreach (EnemyWaveConfig config in wave.GetConfigs())
                 {
+                    if(config.enemyPrefab == null)
+                        continue;
+                    
                     if (maxCounts.ContainsKey(config.enemyPrefab))
                     {
                         if (config.count + 1 > maxCounts[config.enemyPrefab])
@@ -57,8 +60,25 @@ namespace MythicalBattles
                         maxCounts.Add(config.enemyPrefab, config.count + 1);
                     }
                 }
+
+                if (wave is BossWave bossWave)
+                {
+                    EnemyWaveConfig bossConfig = bossWave.GetBossConfig();
+
+                    if (maxCounts.ContainsKey(bossConfig.enemyPrefab))
+                    {
+                        if (bossConfig.count + 1 > maxCounts[bossConfig.enemyPrefab])
+                        {
+                            maxCounts[bossConfig.enemyPrefab] = bossConfig.count + 1;
+                        }
+                    }
+                    else
+                    {
+                        maxCounts.Add(bossConfig.enemyPrefab, bossConfig.count + 1);
+                    }
+                }
             }
-            
+
             foreach (var pair in maxCounts)
             {
                 Queue<GameObject> pool = new Queue<GameObject>();
@@ -66,22 +86,22 @@ namespace MythicalBattles
                 for (int i = 0; i < pair.Value; i++)
                 {
                     GameObject enemyGameobject = Instantiate(pair.Key);
-                    
+
                     enemyGameobject.SetActive(false);
 
                     Enemy enemy = enemyGameobject.GetComponent<Enemy>();
-                    
+
                     enemy.Initialize(pair.Key);
-                    
-                    enemyGameobject.GetComponent<Health>().IsDead.Subscribe(value => OnEnemyDeadStateChanged(enemyGameobject, value))
-                        .AddTo(_disposable);
+
+                    enemyGameobject.GetComponent<Health>().IsDead
+                        .Subscribe(value => OnEnemyDeadStateChanged(value, enemyGameobject));
 
                     pool.Enqueue(enemyGameobject);
                 }
 
                 enemyPools.Add(pair.Key, pool);
             }
-            
+
             StartNextWave();
         }
 
@@ -111,9 +131,8 @@ namespace MythicalBattles
         {
             _activeEnemiesCount = 0;
             
-            if (!(wave is BossWave))
-                ShuffleSpawnPoints();
-            
+            ShuffleSpawnPoints();
+
             foreach (EnemyWaveConfig config in wave.GetConfigs())
             {
                 for (int i = 0; i < config.count; i++)
@@ -126,9 +145,26 @@ namespace MythicalBattles
                         enemyGameobject.SetActive(true);
                         enemyGameobject.TryGetComponent(out Enemy enemy);
                         enemy.ApplyWaveMultiplier(wave.PowerMultiplier);
-                        
+
                         _activeEnemiesCount++;
                     }
+                }
+            }
+            
+            if (wave is BossWave bossWave)
+            {
+                EnemyWaveConfig bossConfig = bossWave.GetBossConfig();
+
+                GameObject enemyGameobject = GetEnemyFromPool(bossConfig.enemyPrefab);
+
+                if (enemyGameobject != null)
+                {
+                    enemyGameobject.transform.position = _enemySpawnPoints.GetBossSpawnPointPosition();
+                    enemyGameobject.SetActive(true);
+                    enemyGameobject.TryGetComponent(out Enemy enemy);
+                    enemy.ApplyWaveMultiplier(wave.PowerMultiplier);
+
+                    _activeEnemiesCount++;
                 }
             }
         }
@@ -139,28 +175,25 @@ namespace MythicalBattles
 
             int spawnPointsCount = spawnPoints.Count;
 
-            while (spawnPointsCount > 1) 
+            while (spawnPointsCount > 1)
             {
                 int randomIndex = _random.Next(spawnPointsCount--);
-                
+
                 Vector3 value = spawnPoints[randomIndex];
-                
+
                 spawnPoints[randomIndex] = spawnPoints[spawnPointsCount];
-                
+
                 spawnPoints[spawnPointsCount] = value;
             }
-            
+
             _shuffledSpawnPoints = spawnPoints;
         }
 
         private Vector3 GetSpawnPosition(EnemyWave wave, EnemyWaveConfig config)
         {
-            if (wave is BossWave)
-                return _enemySpawnPoints.GetBossSpawnPointPosition();
-            
             if (_shuffledSpawnPoints.Count == 0)
                 throw new InvalidOperationException();
-            
+
             Vector3 point = _shuffledSpawnPoints.FirstOrDefault();
             _shuffledSpawnPoints.Remove(point);
             return point;
@@ -169,29 +202,47 @@ namespace MythicalBattles
         private GameObject GetEnemyFromPool(GameObject prefab)
         {
             if (enemyPools[prefab].Count <= 0)
-                throw new InvalidOperationException();
-            
+            {
+                GameObject enemyGameobject = Instantiate(prefab);
+                enemyGameobject.SetActive(false);
+        
+                if (enemyGameobject.TryGetComponent(out Enemy enemy))
+                {
+                    enemy.Initialize(prefab);
+                }
+                else
+                {
+                    Debug.LogError($"Enemy component missing on prefab: {prefab.name}");
+                }
+
+                enemyGameobject.GetComponent<Health>().IsDead
+                    .Subscribe(value => OnEnemyDeadStateChanged(value, enemyGameobject))
+                    .AddTo(_disposable);
+
+                enemyPools[prefab].Enqueue(enemyGameobject);
+            }
+
             return enemyPools[prefab].Dequeue();
         }
 
-        private void OnEnemyDeadStateChanged(GameObject enemy, bool isDead)
+        private void OnEnemyDeadStateChanged(bool isDead, GameObject enemy)
         {
-            if (isDead)
+            if (isDead == false)
+                return;
+
+            StartCoroutine(ReturnEnemyToPool(enemy));
+
+            _activeEnemiesCount--;
+
+            if (_activeEnemiesCount == HealDropEnemySerialNumber)
+                DropHealWithChance(enemy.transform.position);
+
+            if (_activeEnemiesCount == 0)
             {
-                StartCoroutine(ReturnEnemyToPool(enemy));
+                if (_currentWaveIndex < _waves.Length - 1)
+                    Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
 
-                _activeEnemiesCount--;
-
-                if (_activeEnemiesCount == HealDropEnemySerialNumber)
-                    DropHealWithChance(enemy.transform.position);
-                
-                if (_activeEnemiesCount == 0)
-                {
-                    if (_currentWaveIndex < _waves.Length - 1)
-                        Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
-
-                    StartNextWave();
-                }
+                StartNextWave();
             }
         }
 
@@ -207,12 +258,12 @@ namespace MythicalBattles
         {
             yield return new WaitForSeconds(_enemyDyingTime);
 
-            enemyGameObject.SetActive(false);
-            
             Enemy enemy = enemyGameObject.GetComponent<Enemy>();
-            
+
+            enemyGameObject.SetActive(false);
+
             enemy.CancelWaveMultiplier();
-            
+
             if (enemyPools.TryGetValue(enemy.Prefab, out var pool))
             {
                 pool.Enqueue(enemyGameObject);

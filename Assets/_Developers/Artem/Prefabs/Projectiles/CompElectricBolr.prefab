@@ -14228,7 +14228,6 @@ GameObject:
   - component: {fileID: 5982661755746715347}
   - component: {fileID: 2651084798854190789}
   - component: {fileID: 9168727674435199895}
-  - component: {fileID: -6216595582348005497}
   m_Layer: 0
   m_Name: CompElectricBolr
   m_TagString: Untagged
@@ -19145,19 +19144,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-6216595582348005497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6355937244699757138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 328e44f0db9669f459ab6b62880d8de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 10
 --- !u!1 &6390955407621954782
 GameObject:
   m_ObjectHideFlags: 0

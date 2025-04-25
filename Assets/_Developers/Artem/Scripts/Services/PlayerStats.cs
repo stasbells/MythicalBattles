@@ -1,5 +1,5 @@
 using System;
-using UnityEngine;
+using R3;
 
 namespace MythicalBattles
 {
@@ -10,14 +10,10 @@ namespace MythicalBattles
         private const int InitAttackSpeed = 1;
 
         private PlayerData _playerData;
-        
-        public float MaxHealth { get; private set; }
-        public float Damage { get; private set; }
-        public float AttackSpeed { get; private set; }
-        
-        public event Action<float> MaxHealthChanged;
-        public event Action<float> DamageChanged;
-        public event Action<float> AttackSpeedChanged;
+
+        public ReactiveProperty<float> MaxHealth { get; } = new ReactiveProperty<float>();
+        public ReactiveProperty<float> Damage { get; } = new ReactiveProperty<float>();
+        public ReactiveProperty<float> AttackSpeed { get; } = new ReactiveProperty<float>();
 
         public void UpdatePlayerData(PlayerData playerData)
         {
@@ -38,45 +34,39 @@ namespace MythicalBattles
         
         public void IncreaseMaxHealth(float health)
         {
-            MaxHealth += health;
-            MaxHealthChanged?.Invoke(MaxHealth);
+            MaxHealth.Value += health;
         }
 
         public void DecreaseMaxHealth(float health)
         {
-            MaxHealth -= health;
-            MaxHealthChanged?.Invoke(MaxHealth);
+            MaxHealth.Value -= health;
         }
 
         public void IncreaseDamage(float damage)
         {
-            Damage += damage;
-            DamageChanged?.Invoke(Damage);
+            Damage.Value += damage;
         }
 
         public void DecreaseDamage(float damage)
         {
-            Damage -= damage;
-            DamageChanged?.Invoke(Damage);
+            Damage.Value -= damage;
         }
 
         public void IncreaseAttackSpeed(float attackSpeed)
         {
-            AttackSpeed += attackSpeed;
-            AttackSpeedChanged?.Invoke(AttackSpeed);
+            AttackSpeed.Value += attackSpeed;
         }
 
         public void DecreaseAttackSpeed(float attackSpeed)
         {
-            AttackSpeed -= attackSpeed;
-            AttackSpeedChanged?.Invoke(AttackSpeed);
+            AttackSpeed.Value -= attackSpeed;
         }
 
         public void ResetStats()
         {
-            MaxHealth = InitMaxHealth;
-            Damage = InitDamage;
-            AttackSpeed = InitAttackSpeed;
+            MaxHealth.Value = InitMaxHealth;
+            Damage.Value = InitDamage;
+            AttackSpeed.Value = InitAttackSpeed;
 
             AcceptItemsStats();
         }
@@ -88,12 +78,12 @@ namespace MythicalBattles
 
         private void AcceptItemsStats()
         {
-            MaxHealth += _playerData.GetSelectedArmor().AdditionalHealth;
-            MaxHealth += _playerData.GetSelectedHelmet().AdditionalHealth;
-            Damage += _playerData.GetSelectedWeapon().AdditionalDamage;
-            Damage += _playerData.GetSelectedNecklace().AdditionalDamage;
-            AttackSpeed += _playerData.GetSelectedBoots().AdditionalAttackSpeed;
-            AttackSpeed += _playerData.GetSelectedRing().AdditionalAttackSpeed;       
+            MaxHealth.Value += _playerData.GetSelectedArmor().AdditionalHealth;
+            MaxHealth.Value += _playerData.GetSelectedHelmet().AdditionalHealth;
+            Damage.Value += _playerData.GetSelectedWeapon().AdditionalDamage;
+            Damage.Value += _playerData.GetSelectedNecklace().AdditionalDamage;
+            AttackSpeed.Value += _playerData.GetSelectedBoots().AdditionalAttackSpeed;
+            AttackSpeed.Value += _playerData.GetSelectedRing().AdditionalAttackSpeed;       
         }
     }
 }

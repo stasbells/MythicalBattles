@@ -13,6 +13,8 @@ namespace MythicalBattles
             if (other.TryGetComponent(out PlayerShooter playerShooter))
             {
                 _playerShooter = playerShooter;
+
+                RememberPlayerTransform(playerShooter.transform);
                 
                 Apply();
 

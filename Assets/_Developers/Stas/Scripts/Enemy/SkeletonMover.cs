@@ -22,6 +22,7 @@ namespace MythicalBattles
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
+            _damage = _initDamage;
         }
 
         private void OnEnable()
@@ -46,7 +47,7 @@ namespace MythicalBattles
             }
 
             if (GetDistanceToPlayer() <= _attackDistance)
-                Attack();
+                _animator.SetBool(Constants.IsAttack, true);
             else
                 MoveTowardsPlayer();
         }
@@ -72,7 +73,7 @@ namespace MythicalBattles
 
         private void Attack()
         {
-            _animator.SetBool(Constants.IsAttack, true);
+            _player.GetComponent<Health>().TakeDamage(_damage);
         }
 
         private void Die()

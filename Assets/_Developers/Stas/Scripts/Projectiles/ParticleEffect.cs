@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class ParticleEffect : ReturnableProjectile
+    public class ParticleEffect : ReturnableToPoolProjectile
     {
         public ParticleSystem ParticleSystem { get; internal set; }
 

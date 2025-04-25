@@ -1,15 +1,13 @@
 using System;
+using R3;
 
 namespace MythicalBattles
 {
     public interface IPlayerStats
     {
-        public float MaxHealth { get; }
-        public float Damage { get; }
-        public float AttackSpeed { get; }
-        public event Action<float> MaxHealthChanged;
-        public event Action<float> DamageChanged;
-        public event Action<float> AttackSpeedChanged;
+        public ReactiveProperty<float> MaxHealth { get; }
+        public ReactiveProperty<float> Damage { get; }
+        public ReactiveProperty<float> AttackSpeed { get; }
         public void UpdatePlayerData(PlayerData playerData);
         public void IncreaseMaxHealth(float health);
         public void DecreaseMaxHealth(float health);

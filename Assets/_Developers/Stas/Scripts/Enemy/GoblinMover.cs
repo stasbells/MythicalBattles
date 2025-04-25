@@ -54,8 +54,7 @@ namespace MythicalBattles
         {
             if (_animator.GetBool(Constants.IsDead))
             {
-                gameObject.layer = Constants.LayerDefault;
-                _capsuleCollider.enabled = false;
+                Die();
 
                 return;
             }
@@ -83,6 +82,12 @@ namespace MythicalBattles
             {
                 MoveTo(GetDirectionToPlayer());
             }
+        }
+        
+        private void Die()
+        {
+            gameObject.layer = Constants.LayerDefault;
+            _capsuleCollider.enabled = false;
         }
         
         private bool TryFindPlayer()

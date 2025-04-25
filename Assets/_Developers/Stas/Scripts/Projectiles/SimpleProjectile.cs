@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SimpleProjectile : MonoBehaviour
+    public class SimpleProjectile : MonoBehaviour, IGetDamage
     {
         private float _damage;
 

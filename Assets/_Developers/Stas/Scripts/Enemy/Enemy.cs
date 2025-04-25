@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(EnemyHealth))]
     public class Enemy : MonoBehaviour
     {
-        private Health _health;
+        private EnemyHealth _health;
         private IDamageDealComponent _damageDealComponent;
 
         public GameObject Prefab { get; private set; }
@@ -16,7 +16,7 @@ namespace MythicalBattles
         }
         private void Awake()
         {
-            _health = GetComponent<Health>();
+            _health = GetComponent<EnemyHealth>();
 
             if (TryGetComponent(out IDamageDealComponent damageDealComponent))
             {
