@@ -9,9 +9,6 @@ namespace MythicalBattles
         [SerializeField] protected ObjectPool ProjectilePool;
         [SerializeField] protected ObjectPool EffectPool;
         [SerializeField] protected Transform ShootPoint;
-        //[SerializeField] protected ParticleSystem Prefire;
-        //[SerializeField] protected ParticleSystem Afterfire;
-
         [SerializeField] protected float ArrowVelocity = 1f;
         [SerializeField] protected float Damage;
         [SerializeField] private float _initRateOfFire = 1f;
@@ -19,8 +16,8 @@ namespace MythicalBattles
 
         protected Transform _transform;
         protected Animator _animator;
-
         private Coroutine _shootCoroutine;
+        private float _shootSpeedAnimationMultiplier;
         private float _rateOfFire;
         private float _restTimer;
 
@@ -61,15 +58,19 @@ namespace MythicalBattles
         protected void ChangeAttackSpeed(float attackSpeedFactor)
         {
             _rateOfFire = _initRateOfFire / attackSpeedFactor;
-
-            //_animator.SetFloat("shootSpeed", _rateOfFire);
+            _shootSpeedAnimationMultiplier = 1 / _rateOfFire;
+            
+            _animator.SetFloat("shootSpeed", _shootSpeedAnimationMultiplier);
         }
 
         protected virtual void Shoot() { }
 
         protected virtual void OnAwake()
         {
-            _rateOfFire = _initRateOfFire;
+            _rateOfFire = _initRateOfFire; 
+            _shootSpeedAnimationMultiplier = 1 / _rateOfFire;;
+            
+            _animator.SetFloat("shootSpeed", _shootSpeedAnimationMultiplier);
         }
 
         private void OnShoot() => _shootCoroutine ??= StartCoroutine(AutoShoot());
