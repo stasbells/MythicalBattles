@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 5769913992529572455}
   - component: {fileID: 2056904125409483971}
   m_Layer: 3
-  m_Name: ProjectilePool
+  m_Name: EffectPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 4880688226804568227, guid: a57f6948aa354fd48984c7c67e9e571b, type: 3}
-  _itemsCount: 10
+  _itemsCount: 12
   _projectileLayer: 0
 --- !u!1 &3579881501901169771
 GameObject:
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 4356371125749086104}
   - component: {fileID: 7580349265740801852}
   m_Layer: 0
-  m_Name: EffectPool
+  m_Name: ProjectilePool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 7190874670704399238, guid: b2a523bf838807840bbbbdfcce26b7f2, type: 3}
-  _itemsCount: 10
+  _itemsCount: 12
   _projectileLayer: 9
 --- !u!1 &4186965085055121644
 GameObject:
@@ -1666,7 +1666,7 @@ GameObject:
   - component: {fileID: 1292108779451077425}
   - component: {fileID: 5668335556150871968}
   m_Layer: 3
-  m_Name: Demon
+  m_Name: EasyDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1753,13 +1753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1820828f242269345a88866009cead64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePool: {fileID: 0}
-  EffectPool: {fileID: 0}
-  ShootPoint: {fileID: 0}
-  ArrowVelocity: 1
-  Damage: 10
   _initRateOfFire: 1
   _shootDelay: 0.2
+  _projectileCount: 6
+  _projectilePool: {fileID: 7580349265740801852}
+  _effectPool: {fileID: 2056904125409483971}
   _attackDelay: 1
   _afterAttackDelay: 1
   _spawnPlaceMarker: {fileID: 4671946120772876947, guid: a57f6948aa354fd48984c7c67e9e571b, type: 3}
@@ -1775,14 +1773,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e602bc5b0df054d4da49f3e579ffd0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
-  _moveDuration: 2
-  _directionChangeInterval: 2
+  _initDamage: 30
+  _moveSpeed: 4
+  _playerFollowTime: 4
+  _randomMoveDuration: 2
+  _directionChangeInterval: 1
+  _attackRange: 1.5
   _raycastDistance: 7
-  _attackCooldown: 2
-  _attackRange: 3
   _rotationSpeed: 10
-  _initDamage: 20
   _playerSearchRadius: 50
   _effect: {fileID: 508872558992978560}
 --- !u!114 &3281316014478903760

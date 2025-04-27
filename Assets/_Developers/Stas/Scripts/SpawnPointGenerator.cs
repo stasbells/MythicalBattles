@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SpawnPointGenerator : ISpawnPointGenerator
+    public class SpawnPointGenerator
     {
         private float _unspawnRadius = 3f;
 
@@ -16,7 +16,7 @@ namespace MythicalBattles
             return spawnPoint;
         }
 
-        public Vector3 GetRandomPoint()
+        private Vector3 GetRandomPoint()
         {
             return new Vector3(Random.Range(Constants.SpawnPointXMinus, Constants.SpawnPointXPlus),
                 Constants.SpawnPointY, Random.Range(Constants.SpawnPointZMinus, Constants.SpawnPointZPlus));

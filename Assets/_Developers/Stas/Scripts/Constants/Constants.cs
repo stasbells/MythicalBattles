@@ -40,5 +40,7 @@ namespace MythicalBattles
         public static readonly int IsDead = Animator.StringToHash("isDead");
         public static readonly int IsAttack = Animator.StringToHash("isAttack");
         public static readonly int IsShoot = Animator.StringToHash("isShoot");
+        public static readonly int IsMeleeAttack = Animator.StringToHash("isMeleeAttack");
+        public static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
     }
 }

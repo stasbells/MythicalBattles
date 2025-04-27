@@ -6,15 +6,9 @@ namespace MythicalBattles
 {
     public abstract class Shooter : MonoBehaviour
     {
-        [SerializeField] protected ObjectPool ProjectilePool;
-        [SerializeField] protected ObjectPool EffectPool;
-        [SerializeField] protected Transform ShootPoint;
-        [SerializeField] protected float ArrowVelocity = 1f;
-        [SerializeField] protected float Damage;
         [SerializeField] private float _initRateOfFire = 1f;
         [SerializeField] private float _shootDelay = 0.3f;
-
-        protected Transform _transform;
+        
         protected Animator _animator;
         private Coroutine _shootCoroutine;
         private float _shootSpeedAnimationMultiplier;
@@ -23,7 +17,6 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            _transform = transform;
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
             
@@ -45,7 +38,7 @@ namespace MythicalBattles
                 _restTimer += Time.deltaTime;
 
                 if (_restTimer >= _shootDelay)
-                    OnShoot();
+                    StartShootCoroutine();
             }
             else if (_shootCoroutine != null)
             {
@@ -58,24 +51,33 @@ namespace MythicalBattles
         protected void ChangeAttackSpeed(float attackSpeedFactor)
         {
             _rateOfFire = _initRateOfFire / attackSpeedFactor;
-            _shootSpeedAnimationMultiplier = 1 / _rateOfFire;
             
-            _animator.SetFloat("shootSpeed", _shootSpeedAnimationMultiplier);
+            ApplyShootAnimationSpeed(_rateOfFire);
         }
 
         protected virtual void Shoot() { }
 
         protected virtual void OnAwake()
         {
-            _rateOfFire = _initRateOfFire; 
-            _shootSpeedAnimationMultiplier = 1 / _rateOfFire;;
+            _rateOfFire = _initRateOfFire;
+
+            ApplyShootAnimationSpeed(_rateOfFire);
+        }
+
+        private void ApplyShootAnimationSpeed(float rateOfFire)
+        {
+            _shootSpeedAnimationMultiplier = 1 / rateOfFire;;
             
             _animator.SetFloat("shootSpeed", _shootSpeedAnimationMultiplier);
         }
 
-        private void OnShoot() => _shootCoroutine ??= StartCoroutine(AutoShoot());
-
-        private IEnumerator AutoShoot()
+        private void StartShootCoroutine()
+        {
+            if(_shootCoroutine == null)
+                _shootCoroutine = StartCoroutine(ShootWithFrequency());
+        }
+        
+        private IEnumerator ShootWithFrequency()
         {
             while (!_animator.GetBool(Constants.IsDead))
             {

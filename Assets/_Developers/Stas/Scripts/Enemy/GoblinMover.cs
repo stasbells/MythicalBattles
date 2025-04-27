@@ -6,7 +6,7 @@ namespace MythicalBattles
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(Animator))]
-    public class GoblinMover : MonoBehaviour, IDamageDealComponent
+    public class GoblinMover : MonoBehaviour, IWaveDamageMultiplier
     {
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _moveDuration = 2f;
@@ -183,12 +183,12 @@ namespace MythicalBattles
             return false;
         }
 
-        public void ApplyWaveDamageMultiplier(float multiplier)
+        public void ApplyMultiplier(float multiplier)
         {
             _damage = _initDamage * multiplier;
         }
 
-        public void CancelWaveDamageMultiplier()
+        public void CancelMultiplier()
         {
             _damage = _initDamage;
         }

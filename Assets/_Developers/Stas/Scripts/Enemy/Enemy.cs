@@ -1,39 +1,48 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(EnemyHealth))]
+    [RequireComponent(typeof(IWaveDamageMultiplier))]
     public class Enemy : MonoBehaviour
     {
         private EnemyHealth _health;
-        private IDamageDealComponent _damageDealComponent;
-
+        private List<IWaveDamageMultiplier> _waveDamageMultipliers;
+        
         public GameObject Prefab { get; private set; }
 
-        public void Initialize(GameObject prefab)
-        {
-            Prefab = prefab;
-        }
         private void Awake()
         {
             _health = GetComponent<EnemyHealth>();
 
-            if (TryGetComponent(out IDamageDealComponent damageDealComponent))
-            {
-                _damageDealComponent = damageDealComponent;
-            }
-        }
-
-        public void ApplyWaveMultiplier(float multiplier)
-        {
-            _health.ApplyWaveMultiplier(multiplier);
-            _damageDealComponent.ApplyWaveDamageMultiplier(multiplier);
+            _waveDamageMultipliers = GetComponents<IWaveDamageMultiplier>().ToList();
         }
         
-        public void CancelWaveMultiplier()
+        public void Initialize(GameObject prefab)
+        {
+            Prefab = prefab;
+        }
+
+        public void ApplyWaveMultipliers(float multiplier)
+        {
+            _health.ApplyWaveMultiplier(multiplier);
+
+            foreach (IWaveDamageMultiplier damageMultiplier in _waveDamageMultipliers)
+            {
+                damageMultiplier.ApplyMultiplier(multiplier);
+            }
+        }
+        
+        public void CancelWaveMultipliers()
         {
             _health.Reset();
-            _damageDealComponent.CancelWaveDamageMultiplier();
+            
+            foreach (IWaveDamageMultiplier damageMultiplier in _waveDamageMultipliers)
+            {
+                damageMultiplier.CancelMultiplier();
+            }
         }
     }
 }

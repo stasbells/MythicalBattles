@@ -1,19 +1,22 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace MythicalBattles
 {
-    public class DemonMover : MonoBehaviour, IDamageDealComponent
+    public class DemonMover : MonoBehaviour, IWaveDamageMultiplier
     {
-        [SerializeField] private float _moveSpeed = 1f;
-        [SerializeField] private float _moveDuration = 2f;
-        [SerializeField] private float _directionChangeInterval = 0.5f;
-        [SerializeField] private float _raycastDistance = 1f;
-        [SerializeField] private float _attackCooldown = 2f;
+        private const float BaseMoveSpeed = 3f;
+        
+        [SerializeField] private float _initDamage = 30;
+        [SerializeField] private float _moveSpeed = 4f;
+        [SerializeField] private float _playerFollowTime = 4f;
+        [SerializeField] private float _randomMoveDuration = 2f;
+        [SerializeField] private float _directionChangeInterval = 1f;
         [SerializeField] private float _attackRange = 1.5f;
+        [SerializeField] private float _raycastDistance = 7f;
         [SerializeField] private float _rotationSpeed = 10f;
-        [SerializeField] private float _initDamage;
         [SerializeField] private float _playerSearchRadius = 50f;
         [SerializeField] ParticleSystem _effect;
         
@@ -22,13 +25,14 @@ namespace MythicalBattles
         private Animator _animator;
         private CapsuleCollider _capsuleCollider;
         private Vector3 _randomDirection;
-
+        private float _playerFollowTimer;
+        private float _moveAnimationSpeedMultiplier;
         private float _damage;
         private float _moveTimer;
         private float _attackTimer;
         private float _directionChangeTimer;
-        private bool _isMovingAway = false;
-
+        private bool _isMovingRandomly = false;
+        
         private void Awake()
         {
             _effect.Stop();
@@ -47,6 +51,8 @@ namespace MythicalBattles
         {
             if(TryFindPlayer() == false)
                 throw new InvalidOperationException();
+            
+            CorrectMoveAnimationSpeed();
         }
 
         private void Update()
@@ -58,36 +64,51 @@ namespace MythicalBattles
 
                 return;
             }
+            
+            if (_animator.GetBool(Constants.IsAttack) || _animator.GetBool(Constants.IsMeleeAttack)) 
+                return;
 
             float distanceToPlayer = Vector3.Distance(_transform.position, _player.position);
 
-            if (distanceToPlayer <= _attackRange && !_isMovingAway || _animator.GetBool(Constants.IsShoot))
+            if (distanceToPlayer <= _attackRange && _isMovingRandomly == false)
             {
-                if (_attackTimer >= _attackCooldown)
-                {
-                    _effect.Stop();
-                    _attackTimer = 0f;
-                    _isMovingAway = true;
-                    _animator.SetBool(Constants.IsShoot, false);
-                }
-                else
-                {
-                    _attackTimer += Time.deltaTime;
-                    _animator.SetBool(Constants.IsShoot, true);
-                }
+                AttackInMelee();
+                _playerFollowTimer = 0f;
             }
-            else if (_isMovingAway)
+            else if (_isMovingRandomly)
             {
                 MoveRandomly();
             }
-            else if (!_animator.GetBool(Constants.IsAttack))
-            {
-                MoveTo(GetDirectionToPlayer());
-            }
             else
             {
-                RotateTowards(GetDirectionToPlayer());
+                _effect.Stop();
+                
+                MoveTo(GetDirectionToPlayer());
+                    
+                _playerFollowTimer += Time.deltaTime;
+
+                if (_playerFollowTimer >= _playerFollowTime)
+                {
+                    _playerFollowTimer = 0f;
+                    CastSpell();
+                }
             }
+        }
+        
+        public void ApplyMultiplier(float multiplier)
+        {
+            _damage = _initDamage * multiplier;
+        }
+
+        public void CancelMultiplier()
+        {
+            _damage = _initDamage;
+        }
+
+        private void CorrectMoveAnimationSpeed()
+        {
+            _moveAnimationSpeedMultiplier = _moveSpeed / BaseMoveSpeed;
+            _animator.SetFloat(Constants.MoveSpeed, _moveAnimationSpeedMultiplier);
         }
         
         private bool TryFindPlayer()
@@ -103,18 +124,17 @@ namespace MythicalBattles
 
             return true;
         }
-
+        
         private void MoveRandomly()
         {
             _moveTimer += Time.deltaTime;
             _directionChangeTimer += Time.deltaTime;
 
-            if (_moveTimer >= _moveDuration)
+            if (_moveTimer >= _randomMoveDuration)
             {
                 _moveTimer = 0f;
-                _isMovingAway = false;
-                _animator.SetBool(Constants.IsAttack, true);
-                _animator.SetBool(Constants.IsMove, false);
+                _playerFollowTimer = 0f;
+                CastSpell();
             }
             else
             {
@@ -130,17 +150,7 @@ namespace MythicalBattles
                 MoveTo(_randomDirection);
             }
         }
-
-        public void Attack()
-        {
-            _player.GetComponent<Health>().TakeDamage(_damage);
-        }
-
-        public void AttackEffect()
-        {
-            _effect.Play();
-        }
-
+        
         private Vector3 GetFreeRandomDirection()
         {
             Vector3 direction = GetRandomDirection();
@@ -150,10 +160,34 @@ namespace MythicalBattles
 
             return direction;
         }
+        
+        private bool TryFindObstacleIn(Vector3 direction)
+        {
+            if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, Constants.MaskLayerObstacles))
+            {
+                Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.red, 1f);
 
+                return true;
+            }
+
+            Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.green, 1f);
+
+            return false;
+        }
+        
         private Vector3 GetRandomDirection()
         {
             return new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        }
+        
+        public void Attack()
+        {
+            _player.GetComponent<Health>().TakeDamage(_damage);
+        }
+
+        public void AttackEffect()
+        {
+            _effect.Play();
         }
 
         private void RotateTowards(Vector3 direction)
@@ -169,36 +203,23 @@ namespace MythicalBattles
 
         private void MoveTo(Vector3 direction)
         {
-            _animator.SetBool(Constants.IsShoot, false);
-            _animator.SetBool(Constants.IsAttack, false);
-
             _transform.position += _moveSpeed * Time.deltaTime * direction;
 
             RotateTowards(direction);
         }
 
-        private bool TryFindObstacleIn(Vector3 direction)
+        private void AttackInMelee()
         {
-            if (Physics.Raycast(_transform.position, direction, out _, _raycastDistance, Constants.MaskLayerObstacles))
-            {
-                Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.red, 1f);
-
-                return true;
-            }
-
-            Debug.DrawRay(_transform.position, direction * _raycastDistance, Color.green, 1f);
-
-            return false;
+            _animator.SetBool(Constants.IsMeleeAttack, true);
+            _animator.SetBool(Constants.IsMove, false);
         }
 
-        public void ApplyWaveDamageMultiplier(float multiplier)
+        private void CastSpell()
         {
-            _damage = _initDamage * multiplier;
-        }
-
-        public void CancelWaveDamageMultiplier()
-        {
-            _damage = _initDamage;
+            _animator.SetBool(Constants.IsAttack, true);
+            _animator.SetBool(Constants.IsMove, false);
+            
+            _isMovingRandomly = !_isMovingRandomly;
         }
     }
 }

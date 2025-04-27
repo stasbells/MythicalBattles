@@ -7,7 +7,7 @@ namespace MythicalBattles
     [RequireComponent(typeof(CompanionAutoAim))]
     public class CompanionShooter : MonoBehaviour
     {
-        [SerializeField] protected ObjectPool _projectilePool;
+        [SerializeField] protected ProjectilesObjectPool _projectilePool;
         [SerializeField] protected Transform _shootPoint;
 
         [SerializeField] protected float _projectileSpeed = 0.8f;

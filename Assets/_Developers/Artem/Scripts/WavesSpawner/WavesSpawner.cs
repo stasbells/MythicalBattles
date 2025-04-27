@@ -144,7 +144,7 @@ namespace MythicalBattles
                         enemyGameobject.transform.position = GetSpawnPosition(wave, config);
                         enemyGameobject.SetActive(true);
                         enemyGameobject.TryGetComponent(out Enemy enemy);
-                        enemy.ApplyWaveMultiplier(wave.PowerMultiplier);
+                        enemy.ApplyWaveMultipliers(wave.PowerMultiplier);
 
                         _activeEnemiesCount++;
                     }
@@ -162,7 +162,7 @@ namespace MythicalBattles
                     enemyGameobject.transform.position = _enemySpawnPoints.GetBossSpawnPointPosition();
                     enemyGameobject.SetActive(true);
                     enemyGameobject.TryGetComponent(out Enemy enemy);
-                    enemy.ApplyWaveMultiplier(wave.PowerMultiplier);
+                    enemy.ApplyWaveMultipliers(wave.PowerMultiplier);
 
                     _activeEnemiesCount++;
                 }
@@ -262,7 +262,7 @@ namespace MythicalBattles
 
             enemyGameObject.SetActive(false);
 
-            enemy.CancelWaveMultiplier();
+            enemy.CancelWaveMultipliers();
 
             if (enemyPools.TryGetValue(enemy.Prefab, out var pool))
             {

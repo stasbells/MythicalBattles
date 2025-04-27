@@ -14263,8 +14263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd5de79624ed474ba2dfaebe7c043e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 1
-  <DamageValue>k__BackingField: 30
+  _damagePeriod: 1
+  _initDamageValue: 10
 --- !u!114 &7190874670704399238
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,28 +2,20 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class SimpleShooter : Shooter, IDamageDealComponent
+    public class SimpleShooter : Shooter
     {
+        [SerializeField] protected Transform ShootPoint;
+        [SerializeField] protected float Damage;
         [SerializeField] private ParticleSystem _projectilePrefab;
-
+        
         private ParticleSystem _particle;
         private SimpleProjectile _projectile;
-
+        
         protected override void OnAwake()
         {
             base.OnAwake();
 
             InstantiateNewProjectileParticle();
-        }
-        
-        public void ApplyWaveDamageMultiplier(float multiplier)
-        {
-            SetProjectileDamage(Damage * multiplier);
-        }
-
-        public void CancelWaveDamageMultiplier()
-        {
-            SetProjectileDamage(Damage);
         }
 
         public void SetProjectilePrefab(ParticleSystem projectilePrefab)

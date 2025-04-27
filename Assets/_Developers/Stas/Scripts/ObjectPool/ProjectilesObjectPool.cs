@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public class ObjectPool : MonoBehaviour
+    public class ProjectilesObjectPool : MonoBehaviour
     {
         [SerializeField] private ReturnableToPoolProjectile _prefab;
         [SerializeField] private int _itemsCount;

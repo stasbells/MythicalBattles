@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator), typeof(Transform))]
-    public class SkeletonMover : MonoBehaviour, IDamageDealComponent
+    public class SkeletonMover : MonoBehaviour, IWaveDamageMultiplier
     {
         [SerializeField] private float _moveSpeed = 3.0f;
         [SerializeField] private float _initDamage;
@@ -107,12 +107,12 @@ namespace MythicalBattles
             return (_player.position - _transform.position).normalized;
         }
         
-        public void ApplyWaveDamageMultiplier(float multiplier)
+        public void ApplyMultiplier(float multiplier)
         {
             _damage = _initDamage * multiplier;
         }
 
-        public void CancelWaveDamageMultiplier()
+        public void CancelMultiplier()
         {
             _damage = _initDamage;
         }
