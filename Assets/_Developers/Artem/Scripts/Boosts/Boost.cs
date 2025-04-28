@@ -6,13 +6,13 @@ namespace MythicalBattles
     {
         [SerializeField] private ParticleSystem _boostTakingEffect;
 
-        private Transform _player;
+        protected Transform Player { get; private set; }
         
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerMover player))
             {
-                RememberPlayerTransform(player.transform);
+                RememberPlayer(player.transform);
                 
                 Apply();
 
@@ -22,12 +22,12 @@ namespace MythicalBattles
 
         private void OnDestroy()
         {
-            Instantiate(_boostTakingEffect, _player);
+            Instantiate(_boostTakingEffect, Player);
         }
 
-        protected void RememberPlayerTransform(Transform player)
+        protected void RememberPlayer(Transform player)
         {
-            _player = player.transform;
+            Player = player;
         }
 
         protected abstract void Apply();

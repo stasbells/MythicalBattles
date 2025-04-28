@@ -6,25 +6,31 @@ namespace MythicalBattles
     public class PlayerShooter : SimpleShooter
     {
         private IPlayerStats _playerStats;
-        
-        private readonly CompositeDisposable _disposable = new();
-        
+        private float _startDamage;
+        private float _startAttackSpeed;
+        private float _attackSpeed;
+
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
             _playerStats = playerStats;
-            Damage = _playerStats.Damage.Value;
+            _startDamage = _playerStats.Damage.Value;
+            _attackSpeed = _playerStats.AttackSpeed.Value;
+            Damage = _startDamage;
         }
-
-        private void OnEnable()
+        
+        public void IncreaseDamage(float damageMultiplier)
         {
-            _playerStats.AttackSpeed.Subscribe(OnAttackSpeedChanged).AddTo(_disposable);
-            _playerStats.Damage.Subscribe(OnDamageChanged).AddTo(_disposable);
+            Damage += _startDamage*damageMultiplier;
+            
+            SetProjectileDamage(Damage);
         }
-
-        private void OnDisable()
+        
+        public void IncreaseAttackSpeed(float attackSpeedFactor)
         {
-            _disposable.Dispose();
+            _attackSpeed += attackSpeedFactor;
+            
+            ChangeAttackSpeed(_attackSpeed);
         }
 
         protected override void OnAwake()
@@ -33,24 +39,14 @@ namespace MythicalBattles
             
             SetProjectileDamage(Damage);
             
-            ChangeAttackSpeed(_playerStats.AttackSpeed.Value);
+            ChangeAttackSpeed(_attackSpeed);
         }
 
         protected override void InstantiateNewProjectileParticle()
         {
             base.InstantiateNewProjectileParticle();
             
-            SetProjectileDamage(_playerStats.Damage.Value);
-        }
-
-        private void OnAttackSpeedChanged(float attackSpeed)
-        {
-            ChangeAttackSpeed(attackSpeed);
-        }
-        
-        private void OnDamageChanged(float damage)
-        {
-            SetProjectileDamage(damage);
+            SetProjectileDamage(Damage);
         }
     }
 }

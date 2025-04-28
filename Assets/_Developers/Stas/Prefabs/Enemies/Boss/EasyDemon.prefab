@@ -1773,15 +1773,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e602bc5b0df054d4da49f3e579ffd0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initDamage: 30
-  _moveSpeed: 4
+  MoveSpeed: 4
+  PlayerSearchRadius: 50
+  RotationSpeed: 10
+  InitDamage: 25
+  AttackDistance: 1.5
   _playerFollowTime: 4
-  _randomMoveDuration: 2
+  _durationOfRandomMove: 2
   _directionChangeInterval: 1
-  _attackRange: 1.5
   _raycastDistance: 7
-  _rotationSpeed: 10
-  _playerSearchRadius: 50
   _effect: {fileID: 508872558992978560}
 --- !u!114 &3281316014478903760
 MonoBehaviour:

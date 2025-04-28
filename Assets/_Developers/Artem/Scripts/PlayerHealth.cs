@@ -1,4 +1,3 @@
-using R3;
 using Reflex.Attributes;
 
 namespace MythicalBattles
@@ -6,30 +5,21 @@ namespace MythicalBattles
     public class PlayerHealth : Health
     {
         private IPlayerStats _playerStats;
-        
-        private readonly CompositeDisposable _disposable = new();
-        
+        private float _startMaxHealth;
+
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
             _playerStats = playerStats;
+            MaxHealth.Value = _playerStats.MaxHealth.Value;
+            _startMaxHealth = MaxHealth.Value;
         }
-
-        protected override void OnEnableBehaviour()
+        
+        public void IncreaseMaxHealth(float healthMultiplier)
         {
-            _playerStats.MaxHealth.Subscribe(OnMaxHealthChanged).AddTo(_disposable);
+             float newMaxHealth = _startMaxHealth * healthMultiplier + MaxHealth.Value;
             
-            ChangeMaxHealthValue(_playerStats.MaxHealth.Value);
-        }
-
-        private void OnDisable()
-        {
-            _disposable.Dispose();
-        }
-
-        private void OnMaxHealthChanged(float maxHealth)
-        {
-            ChangeMaxHealthValue(maxHealth);
+            ChangeMaxHealthValue(newMaxHealth);
         }
     }
 }

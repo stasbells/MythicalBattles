@@ -6,9 +6,9 @@ namespace MythicalBattles
     public class LevelConfig : ScriptableObject
     {
         [SerializeField] private GameObject _levelDesignPrefab;
-        [SerializeField] private WavesSpawner _waveSpawner;
+        [SerializeField] private GameObject _waveSpawner;
 
         public GameObject LevelDesignPrefab => _levelDesignPrefab;
-        public WavesSpawner WavesSpawner => _waveSpawner;
+        public GameObject WavesSpawner => _waveSpawner;
     }
 }

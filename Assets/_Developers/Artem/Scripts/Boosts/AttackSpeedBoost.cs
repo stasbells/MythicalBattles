@@ -1,20 +1,18 @@
-using Reflex.Extensions;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class AttackSpeedBoost : Boost
     {
-        [SerializeField] private float _additionalAttackSpeed;
-
-        private IPlayerStats _playerStats;
+        [SerializeField] private float _additionalAttackSpeed = 0.4f;
 
         protected override void Apply()
         {
-            _playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+            if(Player.TryGetComponent(out PlayerShooter shooter) == false)
+                throw new InvalidOperationException();
             
-            _playerStats.IncreaseAttackSpeed(_additionalAttackSpeed);
+            shooter.IncreaseAttackSpeed(_additionalAttackSpeed);
         }
     }
 }

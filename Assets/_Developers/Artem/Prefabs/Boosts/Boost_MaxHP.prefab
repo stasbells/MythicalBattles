@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boostTakingEffect: {fileID: 8280424322087289934, guid: 1a506942cae91ed4c97341811d3d3ef4, type: 3}
-  _additionalHealth: 30
+  _healthMultiplier: 0.3
 --- !u!1001 &3915002394233119835
 PrefabInstance:
   m_ObjectHideFlags: 0

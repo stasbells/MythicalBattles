@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class HealBoost : Boost
     {
-        [SerializeField] private int _healAmount;
-
+        [SerializeField] private float _healFactor = 0.4f;
+        
         private PlayerHealth _playerHealth;
         
         protected override void OnTriggerEnter(Collider other)
@@ -16,7 +18,7 @@ namespace MythicalBattles
             {
                 _playerHealth = playerHealth;
                 
-                RememberPlayerTransform(playerHealth.transform);
+                RememberPlayer(playerHealth.transform);
             
                 Apply();
 
@@ -26,7 +28,9 @@ namespace MythicalBattles
         
         protected override void Apply()
         {
-            _playerHealth.Heal(_healAmount);
+            float healAmount = Mathf.Round(_playerHealth.MaxHealth.Value * _healFactor);
+            
+            _playerHealth.Heal(healAmount);
         }
     }
 }

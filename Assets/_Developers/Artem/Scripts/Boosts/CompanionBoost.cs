@@ -20,7 +20,7 @@ namespace MythicalBattles
 
                 CompanionSpawner = companionSpawner;
                 
-                RememberPlayerTransform(player.transform);
+                RememberPlayer(player.transform);
             
                 Apply();
 

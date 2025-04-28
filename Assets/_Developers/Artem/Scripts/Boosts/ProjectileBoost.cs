@@ -14,7 +14,7 @@ namespace MythicalBattles
             {
                 _playerShooter = playerShooter;
 
-                RememberPlayerTransform(playerShooter.transform);
+                RememberPlayer(playerShooter.transform);
                 
                 Apply();
 

@@ -31,36 +31,6 @@ namespace MythicalBattles
         {
             _playerData.SelectedItemChanged -= OnInventoryItemChanged;
         }
-        
-        public void IncreaseMaxHealth(float health)
-        {
-            MaxHealth.Value += health;
-        }
-
-        public void DecreaseMaxHealth(float health)
-        {
-            MaxHealth.Value -= health;
-        }
-
-        public void IncreaseDamage(float damage)
-        {
-            Damage.Value += damage;
-        }
-
-        public void DecreaseDamage(float damage)
-        {
-            Damage.Value -= damage;
-        }
-
-        public void IncreaseAttackSpeed(float attackSpeed)
-        {
-            AttackSpeed.Value += attackSpeed;
-        }
-
-        public void DecreaseAttackSpeed(float attackSpeed)
-        {
-            AttackSpeed.Value -= attackSpeed;
-        }
 
         public void ResetStats()
         {

@@ -73,8 +73,7 @@ namespace MythicalBattles
 
         private void StartShootCoroutine()
         {
-            if(_shootCoroutine == null)
-                _shootCoroutine = StartCoroutine(ShootWithFrequency());
+            _shootCoroutine ??= StartCoroutine(ShootWithFrequency());
         }
         
         private IEnumerator ShootWithFrequency()

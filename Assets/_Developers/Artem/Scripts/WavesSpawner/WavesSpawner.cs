@@ -94,7 +94,7 @@ namespace MythicalBattles
                     enemy.Initialize(pair.Key);
 
                     enemyGameobject.GetComponent<Health>().IsDead
-                        .Subscribe(value => OnEnemyDeadStateChanged(value, enemyGameobject));
+                        .Subscribe(value => OnEnemyDeadStateChanged(value, enemyGameobject)).AddTo(_disposable);
 
                     pool.Enqueue(enemyGameobject);
                 }

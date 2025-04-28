@@ -17,11 +17,19 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+      propertyPath: MoveSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _moveSpeed
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _randomMoveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+      propertyPath: _durationOfRandomMove
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
