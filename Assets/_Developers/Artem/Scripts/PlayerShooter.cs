@@ -5,7 +5,6 @@ namespace MythicalBattles
 {
     public class PlayerShooter : SimpleShooter
     {
-        private IPlayerStats _playerStats;
         private float _startDamage;
         private float _startAttackSpeed;
         private float _attackSpeed;
@@ -13,9 +12,8 @@ namespace MythicalBattles
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
-            _playerStats = playerStats;
-            _startDamage = _playerStats.Damage.Value;
-            _attackSpeed = _playerStats.AttackSpeed.Value;
+            _startDamage = playerStats.Damage.Value;
+            _attackSpeed = playerStats.AttackSpeed.Value;
             Damage = _startDamage;
         }
         

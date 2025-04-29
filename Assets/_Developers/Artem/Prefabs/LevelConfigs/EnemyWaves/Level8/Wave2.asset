@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c477f0bc07bf444299556a7d69bd943, type: 3}
-  m_Name: BossWave1
+  m_Script: {fileID: 11500000, guid: 035fca7cfc1bef04b82fbccbb40fbb0b, type: 3}
+  m_Name: Wave2
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - enemyPrefab: {fileID: 8395176564760867790, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
-    count: 4
   - enemyPrefab: {fileID: 1556532935942178190, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
     count: 3
-  _powerMultiplier: 6
-  _bossConfig:
-    enemyPrefab: {fileID: 2493235739578443129, guid: 576e374570873d94ca7028abf4520084, type: 3}
-    count: 1
+  - enemyPrefab: {fileID: 8395176564760867790, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    count: 3
+  - enemyPrefab: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+    count: 2
+  _powerMultiplier: 5

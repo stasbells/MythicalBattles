@@ -44,8 +44,14 @@ namespace MythicalBattles
             if (Animator.GetBool(Constants.IsDead))
                 return;
 
-            if (Animator.GetBool(Constants.IsAttack) || Animator.GetBool(Constants.IsMeleeAttack))
+            if (Animator.GetBool(Constants.IsAttack))
                 return;
+
+            if (Animator.GetBool(Constants.IsMeleeAttack))
+            {
+                RotateTowards(GetDirectionToPlayer());
+                return;
+            }
 
             if (GetDistanceToPlayer() <= AttackDistance && _isMovingRandomly == false)
             {

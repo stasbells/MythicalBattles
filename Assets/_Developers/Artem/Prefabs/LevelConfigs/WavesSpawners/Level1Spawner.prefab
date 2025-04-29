@@ -564,16 +564,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - {fileID: 11400000, guid: 5e3aef6791f77e34b9ec82ee8c90ccb6, type: 2}
-  - {fileID: 11400000, guid: 3815121c03d853740a402b6384b0fe73, type: 2}
-  - {fileID: 11400000, guid: 051641e92ba635448935726386fd109c, type: 2}
-  - {fileID: 11400000, guid: 76c8b832c47ebd94caa352d7f8eec2f8, type: 2}
-  - {fileID: 11400000, guid: facaa97210b1d54438c36afb1f472d87, type: 2}
-  - {fileID: 11400000, guid: 0d22b716469b0fa49b7a133c685b71d6, type: 2}
-  - {fileID: 11400000, guid: 565a34f1db1a18447a67ccc0b996cdde, type: 2}
-  - {fileID: 11400000, guid: e3a9e0e49606338428bd91c5e8d8caed, type: 2}
-  - {fileID: 11400000, guid: 60c90f0c74debce4294b5becc9a62d73, type: 2}
-  - {fileID: 11400000, guid: da894cde65b61d84a9ba80419d4c3281, type: 2}
+  - {fileID: 11400000, guid: c21c1a1f9c3ff3a49b48836406c28b5c, type: 2}
+  - {fileID: 11400000, guid: 60bc1d3b1a05ac143babd8b0b93f1a21, type: 2}
+  - {fileID: 11400000, guid: 3170569861b9eb24098eef669a3471a7, type: 2}
+  - {fileID: 11400000, guid: 6819c33bb30f03f459b247478d94da2f, type: 2}
+  - {fileID: 11400000, guid: 332bdbd39d41ee3429cedc483bcab7f0, type: 2}
+  - {fileID: 11400000, guid: 4e4f228a131d88346870befb7ef2dfa9, type: 2}
+  - {fileID: 11400000, guid: 14ae8833126a12d4ebe85824ac042490, type: 2}
+  - {fileID: 11400000, guid: 05c37f42e13cf8248b9e3c9522d9e6f6, type: 2}
+  - {fileID: 11400000, guid: 014424203ef576b43a30a8d281fcd2d6, type: 2}
+  - {fileID: 11400000, guid: 46d007c77fcd0dd4db6ddd05674d2001, type: 2}
   _enemySpawnPoints: {fileID: 5258254612806474938}
   _boostsStorage: {fileID: 9130009972587618290}
   _timeBetweenWaves: 4

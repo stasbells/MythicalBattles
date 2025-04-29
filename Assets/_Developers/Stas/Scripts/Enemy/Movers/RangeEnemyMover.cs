@@ -35,7 +35,7 @@ namespace MythicalBattles
             
             float minMoveDuration = _moveDuration - MoveDurationDeviation;
             float maxMoveDuration = _moveDuration + MoveDurationDeviation;
-
+            
             _deviatedMoveDuration = Random.Range(minMoveDuration, maxMoveDuration);
         }
 

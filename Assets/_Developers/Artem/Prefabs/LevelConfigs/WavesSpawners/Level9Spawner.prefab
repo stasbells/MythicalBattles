@@ -564,7 +564,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - {fileID: 11400000, guid: f0b9ab1893cfd734db31ebf1af2abc90, type: 2}
   - {fileID: 11400000, guid: 02e60ed910858684c968706a753e5636, type: 2}
   - {fileID: 11400000, guid: 5444c83574c5553469ebc69e84147451, type: 2}
   - {fileID: 11400000, guid: f2e2df544410e63439ee1e4c6e368082, type: 2}
@@ -574,11 +573,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61fce09dd99bb0644a5d4c42b0044f6b, type: 2}
   - {fileID: 11400000, guid: cfb116bf4179c9e4db010d81361f5ab9, type: 2}
   - {fileID: 11400000, guid: d49628d7a748cdc4baf7f9e93a0c7b3c, type: 2}
+  - {fileID: 11400000, guid: f0b9ab1893cfd734db31ebf1af2abc90, type: 2}
   _enemySpawnPoints: {fileID: 5258254612806474938}
   _boostsStorage: {fileID: 9130009972587618290}
   _timeBetweenWaves: 4
   _enemyDyingTime: 2
-  _healDropPercentChance: 30
+  _healDropPercentChance: 40
 --- !u!1 &7588072954698977240
 GameObject:
   m_ObjectHideFlags: 0

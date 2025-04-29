@@ -8,10 +8,10 @@ namespace MythicalBattles
 
         public static readonly float MoveControllerRotationAngle = 45f;
 
-        public static readonly float SpawnPointXPlus = 5.7f;
-        public static readonly float SpawnPointXMinus = -6.7f;
-        public static readonly float SpawnPointZPlus = 4.5f;
-        public static readonly float SpawnPointZMinus = -15.7f;
+        public static readonly float SpawnPointXPlus = 11.5f;
+        public static readonly float SpawnPointXMinus = -11.5f;
+        public static readonly float SpawnPointZPlus = 6.5f;
+        public static readonly float SpawnPointZMinus = -26.5f;
         public static readonly float SpawnPointY = 8.0f;
 
         public static readonly int LayerDefault = LayerMask.NameToLayer("Default");

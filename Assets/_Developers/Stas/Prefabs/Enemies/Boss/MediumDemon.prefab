@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2056904125409483971, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _itemsCount
-      value: 16
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2435262434936199825, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _projectileCount
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: MoveSpeed
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7580349265740801852, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _itemsCount
-      value: 16
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

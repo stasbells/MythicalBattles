@@ -21,4 +21,4 @@ MonoBehaviour:
     count: 3
   - enemyPrefab: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
     count: 3
-  _powerMultiplier: 5
+  _powerMultiplier: 6

@@ -22,8 +22,6 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            //_dataProvider.ResetData();
-
             _shop.ItemsContent.InitializeRegistry();
             
             LoadOrInitPlayerData();

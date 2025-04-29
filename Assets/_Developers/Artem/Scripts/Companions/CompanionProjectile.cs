@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {
-        [SerializeField] private int _damage;
+        private const float DamagePart = 0.4f;
+        
         [SerializeField] private float _returnToPoolDelay;
         [SerializeField] private List<ParticleSystem> _baseEffects;
         [SerializeField] private List<ParticleSystem> _collisionEffects;
 
+        private float _damage;
+
         public Rigidbody Rigidbody { get; private set; }
 
+        private void Construct()
+        {
+            IPlayerStats playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+
+            _damage = playerStats.Damage.Value * DamagePart;
+        }
+        
         private void Awake()
         {
+            Construct();
+            
             _transform = transform;
+            
             Rigidbody = GetComponent<Rigidbody>();
         }
 
