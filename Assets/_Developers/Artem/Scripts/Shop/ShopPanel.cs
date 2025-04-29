@@ -1,7 +1,8 @@
+using Reflex.Extensions;
 using System;
 using System.Collections.Generic;
-using Reflex.Attributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -10,8 +11,10 @@ namespace MythicalBattles
         [SerializeField] private Transform _itemsParent;
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
 
-        [Inject] private IPersistentData _persistentData;
-        
+        //[Inject] private IPersistentData _persistentData;
+
+        private IPersistentData _persistentData;
+
         private EquipmentItemsTypes _equipmentItemsTypes = new EquipmentItemsTypes();
         private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
         private List<ShopItemView> _shopItemViews = new List<ShopItemView>();
@@ -20,6 +23,10 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+
             _allTypesSelectedItemsGrade = new AllTypesSelectedItemsGrade(_persistentData);
         }
 

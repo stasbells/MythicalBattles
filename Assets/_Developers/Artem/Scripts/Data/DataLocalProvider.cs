@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
+using YG;
 
 namespace MythicalBattles
 {
@@ -18,24 +19,42 @@ namespace MythicalBattles
 
         private string SavePath => Application.persistentDataPath;
         private string FullPath => Path.Combine(SavePath, $"{FileName}{SaveFileExtension}");
-        
+
         public void Save()
         {
-            File.WriteAllText(FullPath, JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
+            //File.WriteAllText(FullPath, JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
+            //{
+            //    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            //}));
+
+            string jsonSavedData = JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            }));
+            });
+
+            YandexGame.savesData.JsonSavedData = jsonSavedData;
+
+            YandexGame.SaveProgress();
         }
 
         public bool TryLoad()
         {
-            if (IsDataAlreadyExist() == false)
+            //if (IsDataAlreadyExist() == false)
+                //return false;
+
+            if (YandexGame.savesData.JsonSavedData == null)
                 return false;
 
-            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(FullPath));
+            //PlayerData savedData = JsonUtility.FromJson<PlayerData>(jsonSavedData);
 
-            _persistentData.PlayerData = new PlayerData(  
-                
+            string jsonSavedData = YandexGame.savesData.JsonSavedData;
+
+            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonSavedData);
+
+            Debug.Log($"SavedData: {jsonSavedData}");
+
+            _persistentData.PlayerData = new PlayerData(
+
                 money: savedData.Money,
                 selectedWeaponID: savedData.SelectedWeaponID,
                 selectedArmorID: savedData.SelectedArmorID,
@@ -43,19 +62,19 @@ namespace MythicalBattles
                 selectedBootsID: savedData.SelectedBootsID,
                 selectedNecklaceID: savedData.SelectedNecklaceID,
                 selectedRingID: savedData.SelectedRingID);
-            
+
             return true;
         }
 
         public void ResetData()
         {
             _persistentData.PlayerData.Reset();
-            
+
             Save();
-            
+
             DataReseted?.Invoke();
         }
 
-        public bool IsDataAlreadyExist() => File.Exists(FullPath);
+        public bool IsDataAlreadyExist() => File.Exists(YandexGame.savesData.JsonSavedData);
     }
 }

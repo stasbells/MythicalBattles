@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2365744405168420138}
-  - component: {fileID: 645009758724699172}
+  - component: {fileID: 1494762580575665782}
   m_Layer: 0
   m_Name: WorldRoot
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   - {fileID: 2691389548438774099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &645009758724699172
+--- !u!114 &1494762580575665782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8813409166152350553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e1a688ecc8540041be3eaa51c26c38c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fba09a35d4ab047b845bcb20d3debf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _worldGamplayContainer: {fileID: 2691389548438774099}
+  _map: {fileID: 4507067628226181277, guid: eba807cab836b5242a83263dcc9757ff, type: 3}

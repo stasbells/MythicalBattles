@@ -17,8 +17,8 @@ namespace YG
         public bool[] openLevels = new bool[3];
 
         // Ваши сохранения
-        
-        // ...
+
+        public string JsonSavedData;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

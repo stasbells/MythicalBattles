@@ -1,0 +1,14 @@
+{
+  "idSave": 74,
+  "isFirstSession": false,
+  "language": "ru",
+  "promptDone": false,
+  "money": 1,
+  "newPlayerName": "Hello!",
+  "openLevels": [
+    false,
+    true,
+    false
+  ],
+  "JsonSavedData": "{\r\n  \"Money\": 9000,\r\n  \"SelectedWeaponID\": \"BowCommon\",\r\n  \"SelectedArmorID\": \"ArmorCommon\",\r\n  \"SelectedHelmetID\": \"HelmetRare\",\r\n  \"SelectedBootsID\": \"BootsCommon\",\r\n  \"SelectedNecklaceID\": \"NecklaceCommon\",\r\n  \"SelectedRingID\": \"RingRare\"\r\n}"
+}

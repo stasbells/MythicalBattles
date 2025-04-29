@@ -1,6 +1,6 @@
-using System;
-using Reflex.Attributes;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -12,9 +12,18 @@ namespace MythicalBattles
         [SerializeField] private InventoryItemView _bootsView;
         [SerializeField] private InventoryItemView _necklaceView;
         [SerializeField] private InventoryItemView _ringView;
-        
-        [Inject] private IPersistentData _persistentData;
-        
+
+        //[Inject] private IPersistentData _persistentData;
+
+        private IPersistentData _persistentData;
+
+        private void Awake()
+        {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+        }
+
         private void OnEnable()
         {
             ShowEquipmentItems();

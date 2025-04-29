@@ -10,6 +10,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
     public class MainMenuUIManager : UIManager
     {
         private readonly Subject<Unit> _exitSceneRequest;
+
         public MainMenuUIManager(ContainerBuilder builder) : base(builder)
         {
             _exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
@@ -25,11 +26,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
             return viewModel;
         }
 
-        public ScreenSettingsViewModel OpenScreenSettings()
+        public ScreenShopViewModel OpenScreenShop()
         {
-            var viewModel = new ScreenSettingsViewModel(this);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+            var viewModel = new ScreenShopViewModel(this);
 
+            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
             UIRoot.OpenScreen(viewModel);
 
             return viewModel;
@@ -45,11 +46,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
             return viewModel;
         }
 
-        public ScreenShopViewModel OpenScreenShop()
+        public ScreenSettingsViewModel OpenScreenSettings()
         {
-            var viewModel = new ScreenShopViewModel(this);
-
+            var viewModel = new ScreenSettingsViewModel(this);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+
             UIRoot.OpenScreen(viewModel);
 
             return viewModel;
