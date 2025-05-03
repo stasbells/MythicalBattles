@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8e66682b5bf784898fdfd88f893f3e, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  _levelDesignPrefab: {fileID: 5171649854648822856, guid: 9490029c1c6b4a94fa938b7e78e2f679, type: 3}
-  _waveSpawner: {fileID: 7038811949709905118, guid: e82348ffce6e0204b8901db10bfdfb1c, type: 3}
+  <LevelDesignPrefab>k__BackingField: {fileID: 3474829525951973865, guid: 722c65cce2fb2ae4eb78a3f689907fa2, type: 3}
+  <WavesSpawner>k__BackingField: {fileID: 7038811949709905118, guid: c105af79043febe4f8c4a97b8e596e13, type: 3}
+  <BaseRewardMoney>k__BackingField: 3000

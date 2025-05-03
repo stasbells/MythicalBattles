@@ -1,0 +1,90 @@
+using System;
+using Reflex.Attributes;
+using UnityEngine;
+
+namespace MythicalBattles
+{
+    [RequireComponent(typeof(LevelEndAlgorithm))]
+    public class LevelGenerator : MonoBehaviour
+    {
+        [SerializeField] private LevelConfig[] _levelConfigs;
+    
+        private ILevelSelectionService _levelSelection;
+        private LevelEndAlgorithm _levelEndAlgorithm;
+        private WavesSpawner _spawner;
+        private int _currentLevelNumber;
+    
+        [Inject]
+        private void Construct(ILevelSelectionService levelSelection)
+        {
+            _levelSelection = levelSelection;
+        }
+        
+        private void Awake()
+        {
+            _levelEndAlgorithm = GetComponent<LevelEndAlgorithm>();
+            
+            InitializeLevel();
+        }
+
+        private void OnDisable()
+        {
+            if (_spawner != null)
+                _spawner.AllWavesCompleted -= OnAllWavesCompleted;
+        }
+
+        private void InitializeLevel()
+        {
+            _currentLevelNumber = _levelSelection.CurrentLevelNumber;
+        
+            if (_currentLevelNumber < 0 || _currentLevelNumber >= _levelConfigs.Length)
+            {
+                Debug.LogError($"Invalid level index: {_currentLevelNumber}");
+                return;
+            }
+
+            SpawnLevelDesign(_currentLevelNumber);
+            InitializeWaveSpawner(_currentLevelNumber);
+        }
+        
+        private void SpawnLevelDesign(int levelIndex)
+        {
+            var designPrefab = _levelConfigs[levelIndex - 1].LevelDesignPrefab;
+        
+            if (designPrefab == null)
+            {
+                Debug.LogError($"Interior prefab missing for level {levelIndex}");
+                return;
+            }
+
+            _ = Instantiate(designPrefab);
+        }
+
+        private void InitializeWaveSpawner(int levelIndex)
+        {
+            var spawnerPrefab = _levelConfigs[levelIndex - 1].WavesSpawner;
+        
+            if (spawnerPrefab == null)
+            {
+                Debug.LogError($"WaveSpawner missing for level {levelIndex}");
+                return;
+            }
+
+            GameObject spawnerObject = Instantiate(spawnerPrefab);
+
+            if(spawnerObject.TryGetComponent(out WavesSpawner spawner) == false)
+                throw new InvalidOperationException();
+
+            _spawner = spawner;
+            
+            _spawner.AllWavesCompleted += OnAllWavesCompleted;
+        }
+
+        private void OnAllWavesCompleted()
+        {
+            float currentLevelBaseReward = _levelConfigs[_currentLevelNumber - 1].BaseRewardMoney;
+            
+            StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward));
+        }
+    }
+}

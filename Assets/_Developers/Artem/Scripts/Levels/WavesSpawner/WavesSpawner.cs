@@ -27,6 +27,8 @@ namespace MythicalBattles
 
         private readonly CompositeDisposable _disposable = new ();
 
+        public event Action AllWavesCompleted;
+
         private void Awake()
         {
             InitializePools();
@@ -109,7 +111,7 @@ namespace MythicalBattles
         {
             if (_currentWaveIndex >= _waves.Length - 1)
             {
-                Debug.Log("All _waves completed!");
+                AllWavesCompleted?.Invoke();
                 return;
             }
 
