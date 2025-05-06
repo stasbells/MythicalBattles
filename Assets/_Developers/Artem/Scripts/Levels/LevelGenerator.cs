@@ -8,6 +8,9 @@ namespace MythicalBattles
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private LevelConfig[] _levelConfigs;
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private int _timeBetweenWaves = 6;
+        [SerializeField] private float _enemyDyingTime = 3f;
     
         private ILevelSelectionService _levelSelection;
         private LevelEndAlgorithm _levelEndAlgorithm;
@@ -37,7 +40,7 @@ namespace MythicalBattles
         {
             _currentLevelNumber = _levelSelection.CurrentLevelNumber;
         
-            if (_currentLevelNumber < 0 || _currentLevelNumber >= _levelConfigs.Length)
+            if (_currentLevelNumber < 0 || _currentLevelNumber > _levelConfigs.Length)
             {
                 Debug.LogError($"Invalid level index: {_currentLevelNumber}");
                 return;
@@ -74,9 +77,18 @@ namespace MythicalBattles
 
             if(spawnerObject.TryGetComponent(out WavesSpawner spawner) == false)
                 throw new InvalidOperationException();
-
+            
             _spawner = spawner;
             
+            if(spawner.TryGetComponent(out WaveProgressHandler waveProgressHandler) == false)
+                throw new InvalidOperationException();
+            
+            waveProgressHandler.Initialize(_canvas, _spawner.WavesCount, _timeBetweenWaves);
+            
+            _spawner.SetTimeBetweenWaves(_timeBetweenWaves);
+            
+            _spawner.SetEnemiesDyingTime(_enemyDyingTime);
+
             _spawner.AllWavesCompleted += OnAllWavesCompleted;
         }
 

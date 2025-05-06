@@ -93,8 +93,6 @@ namespace MythicalBattles
                 _rectTransform.localScale.y,
                 _rectTransform.localScale.z
             );
-
-            Debug.Log(_transform.localScale);
         }
 
         private void ChangeValue(float healthValue)

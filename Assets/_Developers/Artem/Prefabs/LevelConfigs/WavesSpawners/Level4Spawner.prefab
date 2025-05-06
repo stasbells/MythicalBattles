@@ -527,6 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8787363502604551453}
   - component: {fileID: 4779218795524742020}
+  - component: {fileID: 4565904369566164025}
   m_Layer: 0
   m_Name: Level4Spawner
   m_TagString: Untagged
@@ -576,9 +577,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d37a46486b2f4d24caa75402b7fc03a8, type: 2}
   _enemySpawnPoints: {fileID: 5258254612806474938}
   _boostsStorage: {fileID: 9130009972587618290}
-  _timeBetweenWaves: 4
-  _enemyDyingTime: 2
   _healDropPercentChance: 30
+--- !u!114 &4565904369566164025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038811949709905118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be23c82729b2e9c44a09f28809044a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressSliderView: {fileID: 1091528578891947511, guid: 7e2b7e3c1be38b04dabcf38ac46a998a, type: 3}
+  _smoothSpeed: 2
+  _fadeDuration: 0.4
 --- !u!1 &7588072954698977240
 GameObject:
   m_ObjectHideFlags: 0

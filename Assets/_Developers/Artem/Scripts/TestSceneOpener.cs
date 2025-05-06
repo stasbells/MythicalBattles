@@ -19,7 +19,6 @@ namespace MythicalBattles
         
         public void OpenArtemScene()
         {
-            _levelSelection.SelectLevel(0);
             SceneManager.LoadScene(Scenes.ARTEM_GAMEPLAY);
         }
         

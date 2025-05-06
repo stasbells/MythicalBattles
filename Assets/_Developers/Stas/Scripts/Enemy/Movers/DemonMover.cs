@@ -10,7 +10,7 @@ namespace MythicalBattles
         [SerializeField] private float _durationOfRandomMove = 2f;
         [SerializeField] private float _directionChangeInterval = 1f;
         [SerializeField] private float _raycastDistance = 7f;
-        [SerializeField] private float _attackDuration = 1f;
+        //[SerializeField] private float _attackDuration = 1f;
         [SerializeField] ParticleSystem _effect;
 
         private RandomMovementLogic _randomMovementLogic;
