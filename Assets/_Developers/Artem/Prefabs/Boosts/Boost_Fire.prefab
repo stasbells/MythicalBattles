@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68240ee12c677b45879254d10b5c487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boostTakingEffect: {fileID: 8280424322087289934, guid: 1a506942cae91ed4c97341811d3d3ef4, type: 3}
   _projectilePrefab: {fileID: 2651084798854190789, guid: 68664c127b398f1408ebed2eea33df0f, type: 3}
 --- !u!1001 &1860224367700528586
 PrefabInstance:

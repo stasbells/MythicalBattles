@@ -28446,6 +28446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9195990099506040103}
   - component: {fileID: 2395801909508109074}
+  - component: {fileID: 4579183608889860128}
   - component: {fileID: 2465767846499546015}
   - component: {fileID: 51538622818531211}
   m_Layer: 0
@@ -28484,7 +28485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f038ce23df99ce45a71ab4c92e9dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 20
+  _damage: 20
   _returnToPoolDelay: 1
   _baseEffects:
   - {fileID: 2328769330274289741}
@@ -28496,6 +28497,23 @@ MonoBehaviour:
   - {fileID: 4873799429126600263}
   - {fileID: 4195662385718374664}
   - {fileID: 1432979616606563308}
+--- !u!114 &4579183608889860128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714659582510993063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d52f50ed3293a48a393a472d05c0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shareOfMainDamage: 0.3
+  _damageFullTime: 4
+  _damageTicksCount: 8
+  _damageNumbersColor: {r: 1, g: 0.105882354, b: 0, a: 1}
+  _damageType: 2
 --- !u!54 &2465767846499546015
 Rigidbody:
   m_ObjectHideFlags: 0

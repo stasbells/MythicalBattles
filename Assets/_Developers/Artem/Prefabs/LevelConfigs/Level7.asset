@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8e66682b5bf784898fdfd88f893f3e, type: 3}
+  m_Name: Level7
+  m_EditorClassIdentifier: 
+  <LevelDesignPrefab>k__BackingField: {fileID: 5171649854648822856, guid: 9490029c1c6b4a94fa938b7e78e2f679, type: 3}
+  <WavesSpawner>k__BackingField: {fileID: 7038811949709905118, guid: 77965cb7f94d6d840a925222363af46b, type: 3}
+  <BaseRewardMoney>k__BackingField: 30000

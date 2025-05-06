@@ -35,7 +35,7 @@ namespace MythicalBattles
                 {
                     var newCompanionObject = Instantiate(companionPrefab, spot.transform.position, Quaternion.identity);
 
-                    Companion newCompanion = newCompanionObject.GetComponent<Companion>();
+                    CompanionMover newCompanion = newCompanionObject.GetComponent<CompanionMover>();
                     
                     if(newCompanion == null)
                         throw new InvalidOperationException();

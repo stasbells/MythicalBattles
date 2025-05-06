@@ -15,19 +15,19 @@ namespace MythicalBattles
         [SerializeField] private DamageNumber _damageNumber;
         [SerializeField] private float _recoveryRate;
         [SerializeField] private float _healthBarScale = 0.3f;
-
+        
         private Health _health;
         private Camera _camera;
         private Transform _transform;
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
         private Coroutine _changeValueJob;
-
         private Vector3 _initialLocalScale;
         private Vector3 _rotation;
         private Vector3 _scale;
         private float _initialMaxHealth;
         private float _initialScaleX;
+        private Color _healNumbersColor = new Color(0f, 0.81f, 0.02f);
 
         private readonly CompositeDisposable _disposable = new();
         
@@ -42,7 +42,7 @@ namespace MythicalBattles
             _rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
             _initialScaleX = _transform.localScale.x;
-            _initialMaxHealth = _health.MaxHealthValue;
+            _initialMaxHealth = _health.MaxHealth.Value;
             _canvasGroup.alpha = 0f;
         }
 
@@ -59,20 +59,17 @@ namespace MythicalBattles
         private void OnEnable()
         {
             _health.CurrentHealthPersentValueChanged += OnCurrentHealthPercentChanged;
-            //_health.MaxHealthValueChanged += OnUpdateMaxHealth;
-            _health.Damaged += ViewHealthChange;
-            _health.Healed += ViewHealthChange;
-
-            //_health.HealthValueChanged.Subscribe(value => OnCurrentHealthPercentChanged(value)).AddTo(_disposable);
-            _health.MaxHealthValueChanged.Subscribe(value => OnUpdateMaxHealth(value)).AddTo(_disposable);
+            _health.Damaged += OnDamaged;
+            _health.Healed += OnHealed;
+            
+            _health.MaxHealth.Subscribe(OnUpdateMaxHealth).AddTo(_disposable);
         }
 
         private void OnDisable()
         {
             _health.CurrentHealthPersentValueChanged -= OnCurrentHealthPercentChanged;
-            //_health.MaxHealthValueChanged -= OnUpdateMaxHealth;
-            _health.Damaged -= ViewHealthChange;
-            _health.Healed -= ViewHealthChange;
+            _health.Damaged -= OnDamaged;
+            _health.Healed -= OnHealed;
 
             _disposable?.Dispose();
         }
@@ -96,8 +93,6 @@ namespace MythicalBattles
                 _rectTransform.localScale.y,
                 _rectTransform.localScale.z
             );
-
-            Debug.Log(_transform.localScale);
         }
 
         private void ChangeValue(float healthValue)
@@ -121,17 +116,25 @@ namespace MythicalBattles
             }
         }
 
-        private void ViewHealthChange(float value)
+        private void OnDamaged(float value, Color color)
         {
-            _damageNumber.Spawn(_rectTransform.position, value, _transform);
+            _damageNumber.Spawn(_rectTransform.position, $"-{value}", _transform, color);
+        }
+        
+        private void OnHealed(float value)
+        {
+            _damageNumber.Spawn(_rectTransform.position,$"+{value}", _transform, _healNumbersColor);
         }
 
         private void AnimateBarChanging(float healthValue)
         {
-            _transform.DOPunchScale(_scale, 0.5f, 15, 5f).OnComplete(() =>
-            {
-                _transform.localScale = _initialLocalScale;
-            });
+            _transform.DOKill(true);
+            
+            _transform.localScale = _initialLocalScale;
+    
+            _transform.DOPunchScale(_scale, 0.5f, 15, 5f);
+            
+            _transform.localScale = _initialLocalScale;
 
             _canvasGroup.alpha = healthValue > 0 ? 1f : 0f;
         }

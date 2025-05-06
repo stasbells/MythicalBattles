@@ -3,45 +3,62 @@ using System.Collections;
 
 namespace MythicalBattles
 {
-    public class UltimateDamager : MonoBehaviour
+    public class UltimateDamager : MonoBehaviour, IWaveDamageMultiplier
     {
-        [SerializeField] private float _cooldown = 1f;
-
-        private Coroutine _damager;
-        private WaitForSeconds _sleep;
-
-        [field: SerializeField] public int DamageValue { get; private set; }
-
+        [SerializeField] private float _damagePeriod = 1f;
+        [SerializeField] private float _initDamageValue;
+        
+        private Coroutine _damageCoroutine;
+        private WaitForSeconds _delay;
+        private float _damage;
+        private bool _isPlayerGetDamage;
+        
         private void Awake()
         {
-            _sleep = new WaitForSeconds(_cooldown);
+            _delay = new WaitForSeconds(_damagePeriod);
+            _damage = _initDamageValue;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == Constants.LayerPlayer)
-                OnShoot(other);
+            if (other.gameObject.layer == Constants.LayerPlayer && _isPlayerGetDamage == false)
+            {
+                _isPlayerGetDamage = true;
+                Damage(other.GetComponent<Health>());
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.layer == Constants.LayerPlayer)
-                StopCoroutine(_damager);
+                _isPlayerGetDamage = false;
+        }
+        
+        public void ApplyMultiplier(float multiplier)
+        {
+            _damage = _initDamageValue * multiplier;
         }
 
-        private void OnShoot(Collider other)
+        public void CancelMultiplier()
         {
-            _damager = StartCoroutine(OnDamage(other.GetComponent<Health>()));
+            _damage = _initDamageValue;
         }
 
-        private IEnumerator OnDamage(Health playerHealth)
+        private void Damage(Health playerHealth)
         {
-            while (true)
+            _damageCoroutine ??= StartCoroutine(DamageWithDelay(playerHealth));
+        }
+
+        private IEnumerator DamageWithDelay(Health playerHealth)
+        {
+            while (_isPlayerGetDamage)
             {
-                playerHealth.TakeDamage(DamageValue);
+                playerHealth.TakeDamage(_damage);
 
-                yield return _sleep;
+                yield return _delay;
             }
+
+            _damageCoroutine = null;
         }
     }
 }

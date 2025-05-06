@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b64c05ca9ec34bb60a521103d3045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boostTakingEffect: {fileID: 8280424322087289934, guid: 1a506942cae91ed4c97341811d3d3ef4, type: 3}
 --- !u!1001 &1156014519473848229
 PrefabInstance:
   m_ObjectHideFlags: 0

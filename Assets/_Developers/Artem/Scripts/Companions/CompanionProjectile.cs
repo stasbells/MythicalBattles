@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
-    public class CompanionProjectile : ReturnableProjectile
+    public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {
-        [field: SerializeField] public int Damage { get; private set; }
-
+        private const float DamagePart = 0.4f;
+        
         [SerializeField] private float _returnToPoolDelay;
         [SerializeField] private List<ParticleSystem> _baseEffects;
         [SerializeField] private List<ParticleSystem> _collisionEffects;
 
+        private float _damage;
+
         public Rigidbody Rigidbody { get; private set; }
 
+        private void Construct()
+        {
+            IPlayerStats playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+
+            _damage = playerStats.Damage.Value * DamagePart;
+        }
+        
         private void Awake()
         {
+            Construct();
+            
             _transform = transform;
+            
             Rigidbody = GetComponent<Rigidbody>();
         }
 
@@ -28,7 +42,7 @@ namespace MythicalBattles
         private void OnTriggerEnter(Collider otherCollider)
         {
             if (otherCollider.gameObject.layer == Constants.LayerEnemy)
-                otherCollider.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                otherCollider.gameObject.GetComponent<Health>().TakeDamage(_damage);
 
             StopEffects(_baseEffects);
             
@@ -62,6 +76,11 @@ namespace MythicalBattles
             StopEffects(_collisionEffects);
             
             _pool.ReturnItem(this);
+        }
+
+        public float GetDamage()
+        {
+            return _damage;
         }
     }
 }

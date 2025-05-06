@@ -1,20 +1,18 @@
-using Reflex.Extensions;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class DamageBoost : Boost
     {
-        [SerializeField] private int _additionalDamage;
-
-        private IPlayerStats _playerStats;
+        [SerializeField] private float _damageMultiplier = 0.4f;
 
         protected override void Apply()
         {
-            _playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+            if(Player.TryGetComponent(out PlayerShooter shooter) == false)
+                throw new InvalidOperationException();
             
-            _playerStats.IncreaseDamage(_additionalDamage);
+            shooter.IncreaseDamage(_damageMultiplier);
         }
     }
 }

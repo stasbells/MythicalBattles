@@ -1,20 +1,18 @@
-using Reflex.Extensions;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class MaxHealthBoost : Boost
     {
-        [SerializeField] private int _additionalHealth;
-
-        private IPlayerStats _playerStats;
+        [SerializeField] private float _healthMultiplier = 0.3f;
 
         protected override void Apply()
         {
-            _playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+            if(Player.TryGetComponent(out PlayerHealth playerHealth) == false)
+                throw new InvalidOperationException();
             
-            _playerStats.IncreaseMaxHealth(_additionalHealth);
+            playerHealth.IncreaseMaxHealth(_healthMultiplier);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Companion))]
+    [RequireComponent(typeof(CompanionMover))]
     [RequireComponent(typeof(Animator))]
     public class CompanionAutoAim : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace MythicalBattles
         [SerializeField] private float _rotationSpeed = 500f;
         [SerializeField] private float _aimRadius = 15f;
 
-        private Companion _companion;
+        private CompanionMover _companion;
         private Collider[] _hitColliders;
         private Animator _animator;
         private Transform _nearestEnemy;
@@ -25,7 +25,7 @@ namespace MythicalBattles
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            _companion = GetComponent<Companion>();
+            _companion = GetComponent<CompanionMover>();
             _transform = transform;
         }
 

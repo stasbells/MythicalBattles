@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7244873375232470608, guid: 3cd57b48cb32aa2408ee0460d689be68, type: 2}
+  - {fileID: -112508593885672785, guid: 69e0ec4d526c5cf4e9fa2c42eed49173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,17 +99,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3cd57b48cb32aa2408ee0460d689be68, type: 2}
-  m_sharedMaterial: {fileID: -7244873375232470608, guid: 3cd57b48cb32aa2408ee0460d689be68, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69e0ec4d526c5cf4e9fa2c42eed49173, type: 2}
+  m_sharedMaterial: {fileID: -112508593885672785, guid: 69e0ec4d526c5cf4e9fa2c42eed49173, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -224,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7244873375232470608, guid: 3cd57b48cb32aa2408ee0460d689be68, type: 2}
+  - {fileID: -112508593885672785, guid: 69e0ec4d526c5cf4e9fa2c42eed49173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,7 +307,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7244873375232470608, guid: 3cd57b48cb32aa2408ee0460d689be68, type: 2}
+  - {fileID: -112508593885672785, guid: 69e0ec4d526c5cf4e9fa2c42eed49173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
     closeScale: 2
     farScale: 0.5
   cameraOverride: {fileID: 0}
-  enableNumber: 1
+  enableNumber: 0
   number: 0
   numberSettings:
     bold: 0
@@ -624,19 +624,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enableScaleByNumber: 1
+  enableScaleByNumber: 0
   scaleByNumberSettings:
     fromNumber: 0
     toNumber: 1000
-    fromScale: 0.8
-    toScale: 2
-  enableScaleOverTime: 0
+    fromScale: 0.6
+    toScale: 1
+  enableScaleOverTime: 1
   scaleOverTime:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.004169464
+      value: 0.7994995
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -644,8 +644,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0.7
+      time: 0.9791565
+      value: 0.6410095
       inSlope: 0
       outSlope: 0
       tangentMode: 0

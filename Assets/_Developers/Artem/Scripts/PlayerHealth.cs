@@ -1,36 +1,23 @@
 using Reflex.Attributes;
-using Reflex.Extensions;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
     public class PlayerHealth : Health
     {
-        private IPlayerStats _playerStats;
-        
+        private float _startMaxHealth;
+
         [Inject]
         private void Construct(IPlayerStats playerStats)
         {
-            _playerStats = playerStats;
+            MaxHealth.Value = playerStats.MaxHealth.Value;
+            _startMaxHealth = MaxHealth.Value;
         }
-
-        protected override void OnEnable()
+        
+        public void IncreaseMaxHealth(float healthMultiplier)
         {
-            _playerStats.MaxHealthChanged += OnMaxHealthChanged;
+             float newMaxHealth = _startMaxHealth * healthMultiplier + MaxHealth.Value;
             
-            ChangeMaxHealthValue(_playerStats.MaxHealth);
-            
-            base.OnEnable();
-        }
-
-        private void OnDisable()
-        {
-            _playerStats.MaxHealthChanged -= OnMaxHealthChanged;
-        }
-
-        private void OnMaxHealthChanged(float maxHealth)
-        {
-            ChangeMaxHealthValue(maxHealth);
+            ChangeMaxHealthValue(newMaxHealth);
         }
     }
 }

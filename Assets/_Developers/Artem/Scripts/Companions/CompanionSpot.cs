@@ -4,11 +4,11 @@ namespace MythicalBattles
 {
     public class CompanionSpot : MonoBehaviour
     {
-        private Companion _companion;
+        private CompanionMover _companion;
 
         public bool IsFilled => _companion != null;
 
-        public void Fill(Companion companion)
+        public void Fill(CompanionMover companion)
         {
             _companion = companion;
         }
