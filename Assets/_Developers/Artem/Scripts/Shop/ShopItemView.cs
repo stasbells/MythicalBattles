@@ -37,8 +37,11 @@ namespace MythicalBattles
             _currentBackgroundImage.sprite = _backgroundImage.sprite;
         }
         
-        public void OnPointerClick(PointerEventData eventData) => Clicked?.Invoke(this);
-
+        public void OnPointerClick(PointerEventData eventData) 
+        {
+            Clicked?.Invoke(this);
+        }
+            
         public void Lock()
         {
             IsLock = true;

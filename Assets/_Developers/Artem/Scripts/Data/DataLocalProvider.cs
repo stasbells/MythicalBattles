@@ -39,6 +39,8 @@ namespace MythicalBattles
 
         public bool TryLoad()
         {
+            return false;
+
             //if (IsDataAlreadyExist() == false)
                 //return false;
 
@@ -50,8 +52,6 @@ namespace MythicalBattles
             string jsonSavedData = YandexGame.savesData.JsonSavedData;
 
             PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonSavedData);
-
-            Debug.Log($"SavedData: {jsonSavedData}");
 
             _persistentData.PlayerData = new PlayerData(
 

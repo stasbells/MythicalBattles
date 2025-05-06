@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MythicalBattles
 {
@@ -12,7 +13,25 @@ namespace MythicalBattles
             return _itemTypes;
         }
         
-        public void Visit(ShopItem shopItem) => Visit((dynamic) shopItem);
+        //public void Visit(ShopItem shopItem) => Visit((dynamic) shopItem);
+
+        public void Visit(ShopItem shopItem)
+        {
+            if (shopItem is WeaponItem weapon)
+                Visit(weapon);
+            else if (shopItem is ArmorItem armor)
+                Visit(armor);
+            else if (shopItem is HelmetItem helmet)
+                Visit(helmet);
+            else if (shopItem is BootsItem boots)
+                Visit(boots);
+            else if (shopItem is NecklaceItem necklace)
+                Visit(necklace);
+            else if (shopItem is RingItem ring)
+                Visit(ring);
+            else
+                Debug.LogError("Unknown ShopItem type");
+        }
 
         public void Visit(WeaponItem weaponItem)
         {
