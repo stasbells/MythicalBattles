@@ -1,7 +1,6 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Services;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
+using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;
 using UnityEngine;

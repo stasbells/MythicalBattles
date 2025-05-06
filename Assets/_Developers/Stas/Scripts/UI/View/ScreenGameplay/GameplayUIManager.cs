@@ -1,6 +1,6 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupA;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupA;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
+using MythicalBattles.UI.Root.Gameplay;
 using R3;
 using Reflex.Core;
 
