@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7605536bbee2d5f42ae71b205ad2ce83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goToSceneGameplayButton: {fileID: 7456091299690020703}
+  _goToScreenLevelSelectorButton: {fileID: 7456091299690020703}
   _goToScreenShopButton: {fileID: 4955022649714567363}
   _goToScreenLeaderboardButton: {fileID: 8105998837523764483}
   _goToScreenSettingsButton: {fileID: 4015452610289132877}
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 7456091299690020703}
   - component: {fileID: 3765963790643251986}
   m_Layer: 5
-  m_Name: GoToGameplayButton
+  m_Name: GoToLevelSelectorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

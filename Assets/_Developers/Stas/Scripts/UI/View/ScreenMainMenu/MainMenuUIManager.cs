@@ -1,10 +1,10 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
 using R3;
 using Reflex.Core;
-using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
 {
@@ -17,9 +17,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
             _exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
         }
 
+        public ScreenLevelSelectorViewModel OpenScreenLevelSelector()
+        {
+            var viewModel = new ScreenLevelSelectorViewModel(this, _exitSceneRequest);
+            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+
+            UIRoot.OpenScreen(viewModel);
+
+            return viewModel;
+        }
+
         public ScreenMainMenuViewModel OpenScreenMainMenu()
         {
-            var viewModel = new ScreenMainMenuViewModel(this, _exitSceneRequest);
+            var viewModel = new ScreenMainMenuViewModel(this);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
             UIRoot.OpenScreen(viewModel);
@@ -56,5 +66,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
 
             return viewModel;
         }
+
     } 
 }

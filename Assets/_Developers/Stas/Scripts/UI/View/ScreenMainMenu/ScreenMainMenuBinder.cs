@@ -5,14 +5,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 {
     public class ScreenMainMenuBinder : ScreenBinder<ScreenMainMenuViewModel>
     {
-        [SerializeField] private Button _goToSceneGameplayButton;
+        [SerializeField] private Button _goToScreenLevelSelectorButton;
         [SerializeField] private Button _goToScreenShopButton;
         [SerializeField] private Button _goToScreenLeaderboardButton;
         [SerializeField] private Button _goToScreenSettingsButton;
 
         private void OnEnable()
         {
-            _goToSceneGameplayButton.onClick.AddListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenLevelSelectorButton.onClick.AddListener(OnGoToScreenLevelSelectorButtonClicked);
             _goToScreenShopButton.onClick.AddListener(OnGoToScreenShopButtonClicked);
             _goToScreenLeaderboardButton.onClick.AddListener(OnGoToScreenLeaderboardButtonClicked);
             _goToScreenSettingsButton.onClick.AddListener(OnGoToScreenSettingsButtonClicked);
@@ -21,15 +21,15 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 
         private void OnDisable()
         {
-            _goToSceneGameplayButton.onClick.RemoveListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenLevelSelectorButton.onClick.RemoveListener(OnGoToScreenLevelSelectorButtonClicked);
             _goToScreenShopButton.onClick.RemoveListener(OnGoToScreenShopButtonClicked);
             _goToScreenLeaderboardButton.onClick.RemoveListener(OnGoToScreenLeaderboardButtonClicked);
             _goToScreenSettingsButton.onClick.RemoveListener(OnGoToScreenSettingsButtonClicked);
         }
 
-        private void OnGoToSceneGameplayButtonClicked()
+        private void OnGoToScreenLevelSelectorButtonClicked()
         {
-            ViewModel.RequestGoToSceneGameplay();
+            ViewModel.RequestGoToScreenLevelSelector();
         }
 
         private void OnGoToScreenShopButtonClicked()
