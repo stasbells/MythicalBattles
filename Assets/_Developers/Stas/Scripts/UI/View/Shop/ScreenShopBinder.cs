@@ -45,16 +45,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.Shop
 
         private void LoadOrInitPlayerData()
         {
-            //if (_dataProvider.TryLoad() == false)
-            //{
-            //    _persistentData.PlayerData = new PlayerData();
+            if (_dataProvider.TryLoad() == false)
+            {
+                _persistentData.PlayerData = new PlayerData();
 
-            //   _dataProvider.Save();
-            //}
-
-            _persistentData.PlayerData = new PlayerData();
-
-            _dataProvider.Save();
+               _dataProvider.Save();
+            }
 
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
 

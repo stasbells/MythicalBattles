@@ -39,10 +39,8 @@ namespace MythicalBattles
 
         public bool TryLoad()
         {
-            return false;
-
             //if (IsDataAlreadyExist() == false)
-                //return false;
+            //return false;
 
             if (YandexGame.savesData.JsonSavedData == null)
                 return false;
