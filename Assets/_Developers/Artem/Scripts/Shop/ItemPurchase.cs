@@ -53,6 +53,5 @@ namespace MythicalBattles
                 _dataProvider.Save();
             }
         }
-        
     }
 }

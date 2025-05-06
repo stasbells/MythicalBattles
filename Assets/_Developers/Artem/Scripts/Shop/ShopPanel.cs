@@ -1,7 +1,8 @@
+using Reflex.Extensions;
 using System;
 using System.Collections.Generic;
-using Reflex.Attributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -10,8 +11,10 @@ namespace MythicalBattles
         [SerializeField] private Transform _itemsParent;
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
 
-        [Inject] private IPersistentData _persistentData;
-        
+        //[Inject] private IPersistentData _persistentData;
+
+        private IPersistentData _persistentData;
+
         private EquipmentItemsTypes _equipmentItemsTypes = new EquipmentItemsTypes();
         private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
         private List<ShopItemView> _shopItemViews = new List<ShopItemView>();
@@ -20,17 +23,21 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+
             _allTypesSelectedItemsGrade = new AllTypesSelectedItemsGrade(_persistentData);
         }
 
         public void Show(IEnumerable<ShopItem> items)
         {
             _shopItems = items;
-            
+
             Clear();
 
             var typeIndices = new Dictionary<Type, (int selectedIndex, int currentIndex)>();
-            
+
             foreach (ShopItem item in items)
                 _equipmentItemsTypes.Visit(item);
 
@@ -51,38 +58,41 @@ namespace MythicalBattles
 
                 EquipmentGrades selectedGrade = _allTypesSelectedItemsGrade.GetGrade(item);
 
-                if (selectedGrade == ((dynamic) item).EquipmentGrade)
+                if (item is EquipmentItem equipmentItem)
                 {
-                    itemView.UnLock();
-                    itemView.HidePrice();
-                    itemView.Select();
-                    selectedIndex = currentIndex;
-                    currentIndex++;
-                }
-                else if (selectedIndex < 0)
-                {
-                    itemView.UnLock();
-                    itemView.HidePrice();
-                    currentIndex++;
-                }
-                else if (currentIndex - 1 == selectedIndex)
-                {
-                    itemView.UnLock();
-                    itemView.ShowPrice();
-                    currentIndex++;
-                }
-                else if (currentIndex - 1 > selectedIndex)
-                {
-                    itemView.HidePrice();
-                    itemView.Lock();
-                    currentIndex++;
+                    if (selectedGrade == equipmentItem.EquipmentGrade)
+                    {
+                        itemView.UnLock();
+                        itemView.HidePrice();
+                        itemView.Select();
+                        selectedIndex = currentIndex;
+                        currentIndex++;
+                    }
+                    else if (selectedIndex < 0)
+                    {
+                        itemView.UnLock();
+                        itemView.HidePrice();
+                        currentIndex++;
+                    }
+                    else if (currentIndex - 1 == selectedIndex)
+                    {
+                        itemView.UnLock();
+                        itemView.ShowPrice();
+                        currentIndex++;
+                    }
+                    else if (currentIndex - 1 > selectedIndex)
+                    {
+                        itemView.HidePrice();
+                        itemView.Lock();
+                        currentIndex++;
+                    }
                 }
 
                 typeIndices[itemType] = (selectedIndex, currentIndex);
-                
+
                 _shopItemViews.Add(itemView);
             }
-            
+
             Canvas.ForceUpdateCanvases();
         }
 

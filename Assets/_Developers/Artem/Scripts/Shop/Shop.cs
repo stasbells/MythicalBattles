@@ -1,5 +1,6 @@
-using Reflex.Attributes;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -11,11 +12,19 @@ namespace MythicalBattles
         private IWallet _wallet;
         private IDataProvider _dataProvider;
 
-        [Inject]
-        private void Construct(IDataProvider dataProvider, IWallet wallet)
+        //[Inject]
+        //public void Construct(IDataProvider dataProvider, IWallet wallet, Container container)
+        //{
+        //    _dataProvider = dataProvider;
+        //    _wallet = wallet;
+        //}
+
+        private void Awake()
         {
-            _dataProvider = dataProvider;
-            _wallet = wallet;
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _dataProvider = container.Resolve<IDataProvider>();
+            _wallet = container.Resolve<IWallet>();
         }
 
         public EquipmentsShopContent ItemsContent => _itemsContent;

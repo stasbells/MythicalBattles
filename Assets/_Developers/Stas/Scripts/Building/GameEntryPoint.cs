@@ -7,6 +7,7 @@ using Reflex.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
@@ -42,8 +43,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         private void RunGame()
         {
 #if UNITY_EDITOR
-            Debug.Log("Game started");
-
             var sceneName = SceneManager.GetActiveScene().name;
 
             if (sceneName == Scenes.GAMEPLAY)
@@ -84,6 +83,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             RunScene(sceneEntryPoint);
 
             _uiRoot.HideLoadingScreen();
+
+            YandexGame.GameReadyAPI();
         }
 
         private void RunScene(Object sceneEntryPoint)
