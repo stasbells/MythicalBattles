@@ -17,7 +17,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 
         public ScreenGameplayViewModel OpenScreenGameplay()
         {
-            var viewModel = new ScreenGameplayViewModel(this, _exitSceneRequest);
+            var viewModel = new ScreenGameplayViewModel(this);
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
             UIRoot.OpenScreen(viewModel);
@@ -25,14 +25,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             return viewModel;
         }
 
-        public PopupAViewModel OpenPopupA()
+        public PopupPauseViewModel OpenPopupPause()
         {
-            var a = new PopupAViewModel();
+            var Pause = new PopupPauseViewModel(_exitSceneRequest);
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenPopup(a);
+            UIRoot.OpenPopup(Pause);
 
-            return a;
+            return Pause;
         }
 
         public PopupBViewModel OpenPopupB()

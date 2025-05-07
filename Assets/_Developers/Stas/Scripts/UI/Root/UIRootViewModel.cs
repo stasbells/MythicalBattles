@@ -58,7 +58,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 
         public void CloseAllPopups()
         {
-            foreach (var openedPopup in _openedPopups)
+            foreach (var openedPopup in _openedPopups.ToList())
                 ClosePopup(openedPopup);
         }
     }

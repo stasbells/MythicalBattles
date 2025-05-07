@@ -361,5 +361,16 @@
 
         document.body.appendChild(script);
     </script>
+    <script>
+        var Module = {
+            noInitialRun: true,
+            onRuntimeInitialized: function () {
+                FS.syncfs(true, function (err) {
+                    if (err) console.error(err);
+                    Module._main();
+                });
+            }
+        };
+    </script>
 </body>
 </html>

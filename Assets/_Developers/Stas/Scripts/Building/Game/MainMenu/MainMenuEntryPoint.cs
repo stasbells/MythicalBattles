@@ -1,5 +1,5 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;

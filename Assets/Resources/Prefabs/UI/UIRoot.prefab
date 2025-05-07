@@ -979,6 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 3032677781784929074}
   _sceneUIContainer: {fileID: 4968728743646885111}
+  _canvas: {fileID: 7191308369919238730}
 --- !u!1 &9174769810815397421
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace MythicalBattles
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private LevelConfig[] _levelConfigs;
-        [SerializeField] private Canvas _canvas;
+        //[SerializeField] private Canvas _canvas;
         [SerializeField] private int _timeBetweenWaves = 6;
         [SerializeField] private float _enemyDyingTime = 3f;
     
@@ -16,7 +17,9 @@ namespace MythicalBattles
         private LevelEndAlgorithm _levelEndAlgorithm;
         private WavesSpawner _spawner;
         private int _currentLevelNumber;
-    
+
+        private Canvas _canvas;
+
         [Inject]
         private void Construct(ILevelSelectionService levelSelection)
         {
@@ -25,6 +28,8 @@ namespace MythicalBattles
         
         private void Awake()
         {
+            _canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+
             _levelEndAlgorithm = GetComponent<LevelEndAlgorithm>();
             
             InitializeLevel();

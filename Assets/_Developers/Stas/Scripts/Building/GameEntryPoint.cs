@@ -71,7 +71,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             yield return LoadScene(Scenes.BOOT);
             yield return LoadScene(sceneName);
 
-            yield return new WaitForSeconds(1.0f);
+            //yield return new WaitForSeconds(1.0f);
 
             Object sceneEntryPoint = sceneName == Scenes.GAMEPLAY
                 ? Object.FindFirstObjectByType<GameplayEntryPoint>()

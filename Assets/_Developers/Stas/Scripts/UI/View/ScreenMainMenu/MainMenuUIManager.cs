@@ -1,12 +1,12 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
 using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 {
     public class MainMenuUIManager : UIManager
     {
@@ -29,6 +29,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
 
         public ScreenMainMenuViewModel OpenScreenMainMenu()
         {
+            OpenScreenShop();
+
             var viewModel = new ScreenMainMenuViewModel(this);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
@@ -40,8 +42,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu
         public ScreenShopViewModel OpenScreenShop()
         {
             var viewModel = new ScreenShopViewModel(this);
-
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+
             UIRoot.OpenScreen(viewModel);
 
             return viewModel;

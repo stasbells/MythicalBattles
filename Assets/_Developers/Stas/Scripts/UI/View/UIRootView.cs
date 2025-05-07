@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
 {
@@ -6,6 +8,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
     {
         [SerializeField] private GameObject _loadingScreen;
         [SerializeField] private Transform _sceneUIContainer;
+        [SerializeField] private Canvas _canvas;
 
         private void Awake()
         {
@@ -34,9 +37,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
         private void ClearSceneUI()
         {
             var childCount = _sceneUIContainer.childCount;
+            var progressBar = _canvas.GetComponentInChildren<WaveProgressView>();
 
             for (var i = 0; i < childCount; i++)
-                Destroy(_sceneUIContainer.GetChild(i).gameObject);        
+                Destroy(_sceneUIContainer.GetChild(i).gameObject);
+
+            if (progressBar != null && SceneManager.GetActiveScene().name != Scenes.GAMEPLAY)
+                Destroy(_canvas.GetComponentInChildren<WaveProgressView>().gameObject);
         }
     }
 }

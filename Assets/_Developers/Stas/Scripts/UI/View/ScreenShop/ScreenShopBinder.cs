@@ -1,14 +1,13 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
-using Reflex.Extensions;
+﻿using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.Shop
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
 {
     public class ScreenShopBinder : ScreenBinder<ScreenShopViewModel>
     {
-        [SerializeField] private MythicalBattles.Shop _shop;
+        [SerializeField] private Shop _shop;
         [SerializeField] private Button _goToScreenMainMenuButton;
 
         private IDataProvider _dataProvider;
