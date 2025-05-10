@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -8,10 +9,6 @@ namespace MythicalBattles
 {
     public class DataLocalProvider : IDataProvider
     {
-        private const string FileNamePlayerData = "PlayerSave";
-        private const string FileNameGameProgress = "GameProgress";
-        private const string SaveFileExtension = ".json";
-
         private IPersistentData _persistentData;
 
         public event Action PlayerDataReseted;
@@ -68,6 +65,16 @@ namespace MythicalBattles
                 return false;
 
             GameProgressData savedData = JsonConvert.DeserializeObject<GameProgressData>(YandexGame.savesData.JsonGameProgressData);
+
+            if (savedData == null)
+                return false;
+
+            // Проверка LevelsResults
+            if (savedData.LevelsResults == null)
+            {
+                // Обработка случая, когда LevelsResults равно null
+                Debug.LogWarning("LevelsResults is null, initializing with default values");
+            }
 
             _persistentData.GameProgressData = new GameProgressData(
 

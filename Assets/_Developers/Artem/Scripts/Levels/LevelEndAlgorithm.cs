@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Reflex.Attributes;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace MythicalBattles
         
         private IWallet _wallet;
         private IDataProvider _dataProvider;
-        private GameProgressData _gameProgressData;
+        private IPersistentData _persistentData;
         private float _levelStartTIme;
         private float _maxAdditionalGold; 
         
@@ -22,7 +23,7 @@ namespace MythicalBattles
         {
             _wallet = wallet;
             _dataProvider = dataProvider;
-            _gameProgressData = persistentData.GameProgressData;
+            _persistentData = persistentData;
         }
 
         private void Awake()
@@ -55,9 +56,11 @@ namespace MythicalBattles
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
 
-            if (_gameProgressData.TryUpdateLevelRecord(levelNumber, victoryPoints, levelPassTime))  
+            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, victoryPoints, levelPassTime))  
             {
                 _dataProvider.SaveGameProgressData();
+                
+                Debug.Log(_persistentData.GameProgressData.LevelsResults[levelNumber].Time);
                 
                 Debug.Log("new record!"); //вывести PopUp с указанием нового рекорда
             }
@@ -90,7 +93,7 @@ namespace MythicalBattles
 
         private bool TryGetRewardMoney(int levelNumber, float rewardMoney)
         {
-            if (Mathf.Approximately(_gameProgressData.GetLevelRecordPoints(levelNumber), 0f) == false)
+            if (Mathf.Approximately(_persistentData.GameProgressData.GetLevelRecordPoints(levelNumber), 0f) == false)
                 return false;
             else
             {
