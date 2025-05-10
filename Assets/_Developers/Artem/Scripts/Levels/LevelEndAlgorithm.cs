@@ -12,15 +12,17 @@ namespace MythicalBattles
         private const float DelayBeforeShowUI = 2f;
         
         private IWallet _wallet;
-        private IGameProgress _gameProgress;
+        private IDataProvider _dataProvider;
+        private GameProgressData _gameProgressData;
         private float _levelStartTIme;
         private float _maxAdditionalGold; 
         
         [Inject]
-        private void Construct(IWallet wallet, IGameProgress gameProgress)
+        private void Construct(IWallet wallet, IPersistentData persistentData, IDataProvider dataProvider)
         {
             _wallet = wallet;
-            _gameProgress = gameProgress;
+            _dataProvider = dataProvider;
+            _gameProgressData = persistentData.GameProgressData;
         }
 
         private void Awake()
@@ -53,8 +55,10 @@ namespace MythicalBattles
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
 
-            if (_gameProgress.TryUpdateLevelRecord(levelNumber, victoryPoints, levelPassTime))  
+            if (_gameProgressData.TryUpdateLevelRecord(levelNumber, victoryPoints, levelPassTime))  
             {
+                _dataProvider.SaveGameProgressData();
+                
                 Debug.Log("new record!"); //вывести PopUp с указанием нового рекорда
             }
             else
@@ -86,7 +90,7 @@ namespace MythicalBattles
 
         private bool TryGetRewardMoney(int levelNumber, float rewardMoney)
         {
-            if (Mathf.Approximately(_gameProgress.GetLevelRecordPoints(levelNumber), 0f) == false)
+            if (Mathf.Approximately(_gameProgressData.GetLevelRecordPoints(levelNumber), 0f) == false)
                 return false;
             else
             {

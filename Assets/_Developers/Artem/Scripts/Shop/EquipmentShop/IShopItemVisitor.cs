@@ -2,7 +2,7 @@ namespace MythicalBattles
 {
     public interface IShopItemVisitor
     {
-        void Visit(ShopItem shopItem);
+        void Visit(IVisitorAcceptor item);
         void Visit(WeaponItem weaponItem);
         void Visit(ArmorItem armorItem);
         void Visit(HelmetItem helmetItem);

@@ -29,7 +29,7 @@ namespace MythicalBattles
 
         public void ResetItems()
         {
-            _dataProvider.ResetData();
+            _dataProvider.ResetPlayerData();
         }
     }
 }

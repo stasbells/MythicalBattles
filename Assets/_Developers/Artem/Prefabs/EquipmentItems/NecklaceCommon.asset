@@ -15,6 +15,6 @@ MonoBehaviour:
   _model: {fileID: 2535416912739911397, guid: 4d555e2999e99a14fb096fa7e18de545, type: 3}
   _backgroundImage: {fileID: 21300000, guid: e6eea4f7cbb9f46f79c0fe06180fa5b3, type: 3}
   _itemImage: {fileID: 21300000, guid: 3c3bdd46268607b41be375d9b3b465e0, type: 3}
-  _price: 100
+  _price: 1000
   _equipmentGrade: 1
   _additionalDamage: 5

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MythicalBattles
 {
-    public abstract class ShopItem : ScriptableObject
+    public abstract class ShopItem : ScriptableObject, IVisitorAcceptor
     {
         [SerializeField] private GameObject _model;
         [SerializeField] private Sprite _backgroundImage;
@@ -14,5 +14,6 @@ namespace MythicalBattles
         public Sprite ItemImage => _itemImage;
         public Sprite BackgroundImage => _backgroundImage;
         public int Price => _price;
+        public abstract void Accept(IShopItemVisitor visitor);
     }
 }

@@ -8,5 +8,7 @@ namespace MythicalBattles
         [SerializeField] private float _additionalHealth;
 
         public float AdditionalHealth => _additionalHealth;
+        
+        public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
     }
 }

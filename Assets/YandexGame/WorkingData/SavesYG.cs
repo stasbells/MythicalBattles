@@ -18,7 +18,8 @@ namespace YG
 
         // Ваши сохранения
 
-        public string JsonSavedData;
+        public string JsonPlayerData;
+        public string JsonGameProgressData;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

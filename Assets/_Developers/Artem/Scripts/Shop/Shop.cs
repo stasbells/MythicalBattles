@@ -12,13 +12,6 @@ namespace MythicalBattles
         private IWallet _wallet;
         private IDataProvider _dataProvider;
 
-        //[Inject]
-        //public void Construct(IDataProvider dataProvider, IWallet wallet, Container container)
-        //{
-        //    _dataProvider = dataProvider;
-        //    _wallet = wallet;
-        //}
-
         private void Awake()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
@@ -36,12 +29,12 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            _dataProvider.DataReseted += OnDataReseted;
+            _dataProvider.PlayerDataReseted += OnDataReseted;
         }
 
         private void OnDisable()
         {
-            _dataProvider.DataReseted -= OnDataReseted;
+            _dataProvider.PlayerDataReseted -= OnDataReseted;
         }
 
         private void OnDataReseted()

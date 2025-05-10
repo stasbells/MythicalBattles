@@ -45,7 +45,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Scenes.GAMEPLAY)
+            if (sceneName == Scenes.GAMEPLAY)  
             {
                 _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
                 return;

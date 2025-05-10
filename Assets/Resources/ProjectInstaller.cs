@@ -9,7 +9,6 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         builder.AddSingleton(typeof(PersistentData), typeof(IPersistentData));
         builder.AddSingleton(typeof(PlayerStats), typeof(IPlayerStats));
         builder.AddSingleton(typeof(DataLocalProvider), typeof(IDataProvider));
-        builder.AddSingleton(typeof(GameProgress), typeof(IGameProgress));
         builder.AddSingleton(typeof(Wallet), typeof(IWallet));
         builder.AddSingleton(typeof(LevelSelectionService), typeof(ILevelSelectionService));
     }
