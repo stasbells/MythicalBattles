@@ -48,12 +48,21 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
             {
                 _persistentData.PlayerData = new PlayerData();
 
-               _dataProvider.Save();
+                _dataProvider.Save();
             }
 
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
 
             _playerStats.UpdatePlayerData(_persistentData.PlayerData);
+        }
+
+        protected override void OnBind(ScreenShopViewModel viewModel)
+        {
+            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
+
+            Debug.Log($"ScreenShopBinder: ShopPanel: {viewModel.ShopPanel.Value}");
+
+            viewModel.OnShopPanelChanged(_shop.ShopPanel);
         }
     }
 }

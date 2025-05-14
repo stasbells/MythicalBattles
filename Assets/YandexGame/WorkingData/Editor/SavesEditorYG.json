@@ -1,5 +1,5 @@
 {
-  "idSave": 237,
+  "idSave": 253,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
@@ -10,5 +10,5 @@
     true,
     false
   ],
-  "JsonSavedData": "{\r\n  \"Money\": 99400,\r\n  \"SelectedWeaponID\": \"BowRare\",\r\n  \"SelectedArmorID\": \"ArmorRare\",\r\n  \"SelectedHelmetID\": \"HelmetSimple\",\r\n  \"SelectedBootsID\": \"BootsSimple\",\r\n  \"SelectedNecklaceID\": \"NecklaceSimple\",\r\n  \"SelectedRingID\": \"RingSimple\"\r\n}"
+  "JsonSavedData": "{\r\n  \"Money\": 96100,\r\n  \"SelectedWeaponID\": \"BowLegendary\",\r\n  \"SelectedArmorID\": \"ArmorRare\",\r\n  \"SelectedHelmetID\": \"HelmetEpic\",\r\n  \"SelectedBootsID\": \"BootsEpic\",\r\n  \"SelectedNecklaceID\": \"NecklaceEpic\",\r\n  \"SelectedRingID\": \"RingRare\"\r\n}"
 }

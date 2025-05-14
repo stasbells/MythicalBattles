@@ -12,6 +12,8 @@ namespace MythicalBattles
         private IWallet _wallet;
         private IDataProvider _dataProvider;
 
+        public ShopPanel ShopPanel => _shopPanel;
+
         //[Inject]
         //public void Construct(IDataProvider dataProvider, IWallet wallet, Container container)
         //{

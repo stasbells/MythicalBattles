@@ -90,7 +90,7 @@ namespace MythicalBattles
                 Die();
         }
         
-         private void Die()
+        private void Die()
         {
             Animator.SetBool(Constants.IsDead, true);
             IsDead.Value = true;
