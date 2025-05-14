@@ -99,14 +99,5 @@ namespace MythicalBattles
             if (CurrentHealth <= MinHealthValue)
                 Die();
         }
-<<<<<<< HEAD
-        
-        private void Die()
-        {
-            Animator.SetBool(Constants.IsDead, true);
-            IsDead.Value = true;
-        }
-=======
->>>>>>> 9b9d89981aabef446a7fa19365ca94737c708b5e
     }
 }

@@ -1,9 +1,6 @@
 using System;
-<<<<<<< HEAD
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-=======
 using Ami.BroAudio;
->>>>>>> 9b9d89981aabef446a7fa19365ca94737c708b5e
 using Reflex.Attributes;
 using UnityEngine;
 
