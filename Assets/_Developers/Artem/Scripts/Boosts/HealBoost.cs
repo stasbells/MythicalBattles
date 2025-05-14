@@ -28,6 +28,8 @@ namespace MythicalBattles
         
         protected override void Apply()
         {
+            base.Apply();
+            
             float healAmount = Mathf.Round(_playerHealth.MaxHealth.Value * _healFactor);
             
             _playerHealth.Heal(healAmount);

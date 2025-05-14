@@ -1,4 +1,8 @@
+using System;
+using Ami.BroAudio;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -6,8 +10,14 @@ namespace MythicalBattles
     {
         [SerializeField] private ParticleSystem _boostTakingEffect;
 
+        private IAudioPlayback _audioPlayback;
         protected Transform Player { get; private set; }
-        
+
+        private void Awake()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerMover player))
@@ -16,7 +26,7 @@ namespace MythicalBattles
                 
                 Apply();
 
-                Destroy(gameObject);  //потом возможно поменять на отключение и помещение в пул
+                Destroy(gameObject);
             }
         }
 
@@ -30,6 +40,11 @@ namespace MythicalBattles
             Player = player;
         }
 
-        protected abstract void Apply();
+        protected virtual void Apply()
+        {
+            SoundID boostKeepUpSound = _audioPlayback.AudioContainer.BoostUpKeep;
+                
+            _audioPlayback.Play(boostKeepUpSound);
+        }
     }
 }

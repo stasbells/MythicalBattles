@@ -1,55 +1,62 @@
 using System;
-using System.IO;
 using Newtonsoft.Json;
-using UnityEngine;
 using YG;
 
 namespace MythicalBattles
 {
     public class DataLocalProvider : IDataProvider
     {
-        private const string FileName = "PlayerSave";
-        private const string SaveFileExtension = ".json";
-
         private IPersistentData _persistentData;
 
-        public event Action DataReseted;
+        public event Action PlayerDataReseted;
 
         public DataLocalProvider(IPersistentData persistentData) => _persistentData = persistentData;
 
-        private string SavePath => Application.persistentDataPath;
-        private string FullPath => Path.Combine(SavePath, $"{FileName}{SaveFileExtension}");
-
-        public void Save()
+        public void SavePlayerData()
         {
-            //File.WriteAllText(FullPath, JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
-            //{
-            //    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            //}));
-
-            string jsonSavedData = JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
+            string jsonPlayerData = JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
 
-            YandexGame.savesData.JsonSavedData = jsonSavedData;
+            YandexGame.savesData.JsonPlayerData = jsonPlayerData;
+
+            YandexGame.SaveProgress();
+        }
+        
+        public void SaveGameProgressData()
+        {
+            string jsonGameProgressData = JsonConvert.SerializeObject(_persistentData.GameProgressData, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
+            YandexGame.savesData.JsonGameProgressData = jsonGameProgressData;
 
             YandexGame.SaveProgress();
         }
 
-        public bool TryLoad()
+        public void SaveSettingsData()
         {
-            //if (IsDataAlreadyExist() == false)
-            //return false;
+            string jsonSettingsData = JsonConvert.SerializeObject(_persistentData.SettingsData, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
-            if (YandexGame.savesData.JsonSavedData == null)
+            YandexGame.savesData.JsonGameSettingsData = jsonSettingsData;
+            
+            YandexGame.SaveProgress();
+        }
+
+        public bool TryLoadPlayerData()
+        {
+            if (YandexGame.savesData.JsonPlayerData == null)
                 return false;
 
-            //PlayerData savedData = JsonUtility.FromJson<PlayerData>(jsonSavedData);
-
-            string jsonSavedData = YandexGame.savesData.JsonSavedData;
-
-            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonSavedData);
+            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonPlayerData);
+            
+            if (savedData == null)
+                throw new InvalidOperationException();
 
             _persistentData.PlayerData = new PlayerData(
 
@@ -63,16 +70,48 @@ namespace MythicalBattles
 
             return true;
         }
+        
+        public bool TryLoadGameProgressData()
+        {
+            if (YandexGame.savesData.JsonGameProgressData == null)
+                return false;
 
-        public void ResetData()
+            GameProgressData savedData = JsonConvert.DeserializeObject<GameProgressData>(YandexGame.savesData.JsonGameProgressData);
+
+            if (savedData == null)
+                throw new InvalidOperationException();
+
+            _persistentData.GameProgressData = new GameProgressData(
+
+                levelsResults: savedData.LevelsResults);
+
+            return true;
+        }
+        
+        public bool TryLoadSettingsData()
+        {
+            if (YandexGame.savesData.JsonGameSettingsData == null)
+                return false;
+
+            SettingsData savedData = JsonConvert.DeserializeObject<SettingsData>(YandexGame.savesData.JsonGameSettingsData);
+
+            if (savedData == null)
+                throw new InvalidOperationException();
+
+            _persistentData.SettingsData = new SettingsData(
+
+                volume: savedData.Volume);
+
+            return true;
+        }
+
+        public void ResetPlayerData()
         {
             _persistentData.PlayerData.Reset();
 
-            Save();
+            SavePlayerData();
 
-            DataReseted?.Invoke();
+            PlayerDataReseted?.Invoke();
         }
-
-        public bool IsDataAlreadyExist() => File.Exists(YandexGame.savesData.JsonSavedData);
     }
 }

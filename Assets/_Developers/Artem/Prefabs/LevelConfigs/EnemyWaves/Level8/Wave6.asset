@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wave6
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - enemyPrefab: {fileID: 1556532935942178190, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
-    count: 10
+  - <EnemyPrefab>k__BackingField: {fileID: 1703131478790005849, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+    <Count>k__BackingField: 16
   _powerMultiplier: 5

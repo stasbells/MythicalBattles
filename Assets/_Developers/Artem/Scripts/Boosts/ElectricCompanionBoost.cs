@@ -4,6 +4,8 @@ namespace MythicalBattles
     {
         protected override void Apply()
         {
+            base.Apply();
+            
             CompanionSpawner.SpawnElectricCompanion();
         }
     }

@@ -9,5 +9,6 @@ namespace MythicalBattles
 
         public float AdditionalHealth => _additionalHealth;
 
+        public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
     }
 }

@@ -1,6 +1,10 @@
+using System;
 using DG.Tweening;
 using System.Collections;
+using Ami.BroAudio;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -15,11 +19,18 @@ namespace MythicalBattles
 
         private SpawnPointGenerator _spawnPointGenerator = new SpawnPointGenerator();
         private Vector3[] _spawnPoints;
-
         private WaitForSeconds _projectilesSpawnDelay;
         private WaitForSeconds _animationDelay;
         private Transform _cameraTransform;
         private Coroutine _attackCoroutine;
+        private IAudioPlayback _audioPlayback;
+
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
 
         private void Start()
         {
@@ -27,8 +38,19 @@ namespace MythicalBattles
             _animationDelay = new WaitForSeconds(_afterAttackDelay);
             _cameraTransform = Camera.main.transform;
             _spawnPoints = new Vector3[_projectileCount];
+            
+            SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
+            
+            _audioPlayback.Play(bossTheme);
         }
-        
+
+        private void OnDisable()
+        {
+            SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
+            
+            _audioPlayback.StopPlay(bossTheme);
+        }
+
         public void ApplyMultiplier(float multiplier)
         {
             foreach (var item in _projectilePool.Items)
@@ -72,6 +94,10 @@ namespace MythicalBattles
                 particle.Transform.parent = null;
                 particle.Transform.position = _spawnPoints[i];
             }
+            
+            SoundID bossSpell = _audioPlayback.AudioContainer.BossSpell;
+            
+            _audioPlayback.Play(bossSpell);
         }
 
         private void SpawnProjecttiles()

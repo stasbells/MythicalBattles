@@ -24,6 +24,8 @@ namespace MythicalBattles
 
         protected override void Apply()
         {
+            base.Apply();
+            
             _playerShooter.SetProjectilePrefab(_projectilePrefab);
         }
     }

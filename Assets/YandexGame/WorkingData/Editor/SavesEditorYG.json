@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "idSave": 253,
   "isFirstSession": false,
   "language": "ru",
@@ -11,4 +12,20 @@
     false
   ],
   "JsonSavedData": "{\r\n  \"Money\": 96100,\r\n  \"SelectedWeaponID\": \"BowLegendary\",\r\n  \"SelectedArmorID\": \"ArmorRare\",\r\n  \"SelectedHelmetID\": \"HelmetEpic\",\r\n  \"SelectedBootsID\": \"BootsEpic\",\r\n  \"SelectedNecklaceID\": \"NecklaceEpic\",\r\n  \"SelectedRingID\": \"RingRare\"\r\n}"
+=======
+    "idSave": 279,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "JsonPlayerData": "{\r\n  \"Money\": 79000,\r\n  \"SelectedWeaponID\": \"BowEpic\",\r\n  \"SelectedArmorID\": \"ArmorSimple\",\r\n  \"SelectedHelmetID\": \"HelmetSimple\",\r\n  \"SelectedBootsID\": \"BootsRare\",\r\n  \"SelectedNecklaceID\": \"NecklaceRare\",\r\n  \"SelectedRingID\": \"RingRare\"\r\n}",
+    "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 156.391754,\r\n      \"Points\": 2087.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}",
+    "JsonGameSettingsData": "{\r\n  \"Volume\": 1.0\r\n}"
+>>>>>>> 9b9d89981aabef446a7fa19365ca94737c708b5e
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   _model: {fileID: 2535416912739911397, guid: 4d555e2999e99a14fb096fa7e18de545, type: 3}
   _backgroundImage: {fileID: 21300000, guid: b38b1974a788bec499b7329f0631f2b9, type: 3}
   _itemImage: {fileID: 21300000, guid: 9cd2ef475d8f1c543bfbdb481fe538ee, type: 3}
-  _price: 200
+  _price: 3000
   _equipmentGrade: 2
   _additionalAttackSpeed: 0.2
