@@ -1,6 +1,9 @@
 using R3;
 using System;
+using Ami.BroAudio;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -35,18 +38,12 @@ namespace MythicalBattles
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             ChangeHealthValue(CurrentHealth - damage);
             Damaged?.Invoke(damage, _baseDamageNumberColor);
         }
-
-        public void TakeDamage(float damage, Color damageNumberColor)
-        {
-            ChangeHealthValue(CurrentHealth - damage);
-            Damaged?.Invoke(damage, damageNumberColor);
-        }
-
+        
         public void Heal(float healAmount)
         {
             if(healAmount <= 0)
@@ -58,6 +55,12 @@ namespace MythicalBattles
                 ChangeHealthValue(CurrentHealth + healAmount);
             
             Healed?.Invoke(healAmount);
+        }
+        
+        protected void TakeDamage(float damage, Color damageNumberColor)
+        {
+            ChangeHealthValue(CurrentHealth - damage);
+            Damaged?.Invoke(damage, damageNumberColor);
         }
         
         protected virtual void OnAwakeBehaviour()
@@ -74,6 +77,13 @@ namespace MythicalBattles
             
             CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
+        
+        protected virtual void Die()
+        {
+            Animator.SetBool(Constants.IsDead, true);
+            
+            IsDead.Value = true;
+        }
 
         private float CalculateHealthPercentValue()
         {
@@ -88,12 +98,6 @@ namespace MythicalBattles
             
             if (CurrentHealth <= MinHealthValue)
                 Die();
-        }
-        
-         private void Die()
-        {
-            Animator.SetBool(Constants.IsDead, true);
-            IsDead.Value = true;
         }
     }
 }

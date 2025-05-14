@@ -1,5 +1,8 @@
 using System;
+using Ami.BroAudio;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -16,12 +19,15 @@ namespace MythicalBattles
         private float _timeBetweenTicksDamage;
         private float _periodicDamage;
         private bool _IsFirstContactComplete;
+        private IAudioPlayback _audioPlayback;
 
         private void Awake()
         {
             _mainDamageProjectile = GetComponent<IGetDamage>();
             
             _timeBetweenTicksDamage = _damageFullTime / _damageTicksCount;
+            
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
 
         private void OnEnable()
@@ -58,14 +64,37 @@ namespace MythicalBattles
                 if (target.TryGetComponent(out DamageOverTimeEffects effects) == false)
                     throw new InvalidOperationException();
 
-                if (_damageType == DamageTypes.Fire)
+                SoundID shotSound;
+
+                switch (_damageType)
                 {
-                    effects.PlayFireEffect(_timeBetweenTicksDamage, _damageTicksCount);
-                }
-                
-                if (_damageType == DamageTypes.Poison)
-                {
-                    effects.PlayPoisonEffect(_timeBetweenTicksDamage, _damageTicksCount);
+                    case DamageTypes.Electric:
+
+                        shotSound = _audioPlayback.AudioContainer.ElectricShot;
+                        
+                        _audioPlayback.Play(shotSound);
+                        
+                        break;
+                    case DamageTypes.Fire:
+                        
+                        effects.PlayFireEffect(_timeBetweenTicksDamage, _damageTicksCount);
+                        
+                        shotSound = _audioPlayback.AudioContainer.FireShot;
+                        
+                        _audioPlayback.Play(shotSound);
+                        
+                        break;
+                    case DamageTypes.Poison:
+                        
+                        effects.PlayPoisonEffect(_timeBetweenTicksDamage, _damageTicksCount);
+                        
+                        shotSound = _audioPlayback.AudioContainer.PoisonShot;
+                        
+                        _audioPlayback.Play(shotSound);
+                        
+                        break;
+                    default:
+                        throw new InvalidOperationException();
                 }
 
                 _IsFirstContactComplete = true;

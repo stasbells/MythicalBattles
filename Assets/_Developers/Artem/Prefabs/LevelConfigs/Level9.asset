@@ -15,3 +15,6 @@ MonoBehaviour:
   <LevelDesignPrefab>k__BackingField: {fileID: 5823296028433700911, guid: de55bb49eb2f9624295ff8b8ecae8ea7, type: 3}
   <WavesSpawner>k__BackingField: {fileID: 7038811949709905118, guid: c4e1bb34f62f79843bb1bdcd36ee36d8, type: 3}
   <BaseRewardMoney>k__BackingField: 0
+  <MusicTheme>k__BackingField:
+    ID: 268435461
+    _sourceAsset: {fileID: 11400000, guid: fe8a045ce8e506a4b9e7d128dc9d790b, type: 2}

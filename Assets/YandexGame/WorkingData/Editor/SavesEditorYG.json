@@ -1,5 +1,5 @@
 {
-    "idSave": 245,
+    "idSave": 279,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,6 +10,7 @@
         true,
         false
     ],
-    "JsonPlayerData": "{\r\n  \"Money\": 96000,\r\n  \"SelectedWeaponID\": \"BowRare\",\r\n  \"SelectedArmorID\": \"ArmorSimple\",\r\n  \"SelectedHelmetID\": \"HelmetSimple\",\r\n  \"SelectedBootsID\": \"BootsSimple\",\r\n  \"SelectedNecklaceID\": \"NecklaceSimple\",\r\n  \"SelectedRingID\": \"RingSimple\"\r\n}",
-    "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 200.585358,\r\n      \"Points\": 1999.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}"
+    "JsonPlayerData": "{\r\n  \"Money\": 79000,\r\n  \"SelectedWeaponID\": \"BowEpic\",\r\n  \"SelectedArmorID\": \"ArmorSimple\",\r\n  \"SelectedHelmetID\": \"HelmetSimple\",\r\n  \"SelectedBootsID\": \"BootsRare\",\r\n  \"SelectedNecklaceID\": \"NecklaceRare\",\r\n  \"SelectedRingID\": \"RingRare\"\r\n}",
+    "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 156.391754,\r\n      \"Points\": 2087.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}",
+    "JsonGameSettingsData": "{\r\n  \"Volume\": 1.0\r\n}"
 }

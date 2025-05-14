@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - enemyPrefab: {fileID: 1703131478790005849, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
-    count: 3
-  - enemyPrefab: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
-    count: 3
+  - <EnemyPrefab>k__BackingField: {fileID: 8264312157407485693, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+    <Count>k__BackingField: 3
+  - <EnemyPrefab>k__BackingField: {fileID: 8395176564760867790, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    <Count>k__BackingField: 4
   _powerMultiplier: 4

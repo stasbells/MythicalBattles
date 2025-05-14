@@ -1,3 +1,4 @@
+using Ami.BroAudio;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -8,5 +9,6 @@ namespace MythicalBattles
         [field: SerializeField] public GameObject LevelDesignPrefab { get; private set; }
         [field: SerializeField] public GameObject WavesSpawner { get; private set; }
         [field: SerializeField] public float BaseRewardMoney { get; private set; }
+        [field: SerializeField] public SoundID MusicTheme { get; private set; }
     }
 }

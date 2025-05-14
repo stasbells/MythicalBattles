@@ -9,6 +9,8 @@ namespace MythicalBattles
 
         protected override void Apply()
         {
+            base.Apply();
+            
             if(Player.TryGetComponent(out PlayerShooter shooter) == false)
                 throw new InvalidOperationException();
             

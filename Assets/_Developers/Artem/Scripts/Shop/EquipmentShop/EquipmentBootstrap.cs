@@ -48,6 +48,13 @@ namespace MythicalBattles
                 
                 _dataProvider.SaveGameProgressData();
             }
+
+            if (_dataProvider.TryLoadSettingsData() == false)       // временно для теста потом перенести в бутстрап общий
+            {
+                _persistentData.SettingsData = new SettingsData();
+                
+                _dataProvider.SaveSettingsData();
+            }
         }
     }
 }
