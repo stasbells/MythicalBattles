@@ -1,5 +1,6 @@
 using System;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
+using Ami.BroAudio;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace MythicalBattles
         [SerializeField] private float _enemyDyingTime = 3f;
     
         private ILevelSelectionService _levelSelection;
+        private IAudioPlayback _audioPlayback;
         private LevelEndAlgorithm _levelEndAlgorithm;
         private WavesSpawner _spawner;
         private int _currentLevelNumber;
@@ -21,9 +23,10 @@ namespace MythicalBattles
         private Canvas _canvas;
 
         [Inject]
-        private void Construct(ILevelSelectionService levelSelection)
+        private void Construct(ILevelSelectionService levelSelection, IAudioPlayback audioPlayback)
         {
             _levelSelection = levelSelection;
+            _audioPlayback = audioPlayback;
         }
         
         private void Awake()
@@ -52,7 +55,10 @@ namespace MythicalBattles
             }
 
             SpawnLevelDesign(_currentLevelNumber);
+            
             InitializeWaveSpawner(_currentLevelNumber);
+            
+            PlayLevelMusicTheme(_currentLevelNumber);
         }
         
         private void SpawnLevelDesign(int levelIndex)
@@ -95,6 +101,13 @@ namespace MythicalBattles
             _spawner.SetEnemiesDyingTime(_enemyDyingTime);
 
             _spawner.AllWavesCompleted += OnAllWavesCompleted;
+        }
+
+        private void PlayLevelMusicTheme(int levelIndex)
+        {
+            SoundID musicTheme = _levelConfigs[levelIndex - 1].MusicTheme;
+            
+            _audioPlayback.Play(musicTheme);
         }
 
         private void OnAllWavesCompleted()

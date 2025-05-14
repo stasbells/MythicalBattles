@@ -38,12 +38,12 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            _dataProvider.DataReseted += OnDataReseted;
+            _dataProvider.PlayerDataReseted += OnDataReseted;
         }
 
         private void OnDisable()
         {
-            _dataProvider.DataReseted -= OnDataReseted;
+            _dataProvider.PlayerDataReseted -= OnDataReseted;
         }
 
         private void OnDataReseted()
