@@ -1,5 +1,5 @@
 using System;
-using Ami.BroAudio;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -9,25 +9,27 @@ namespace MythicalBattles
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private LevelConfig[] _levelConfigs;
-        [SerializeField] private Canvas _canvas;
+        //[SerializeField] private Canvas _canvas;
         [SerializeField] private int _timeBetweenWaves = 6;
         [SerializeField] private float _enemyDyingTime = 3f;
     
         private ILevelSelectionService _levelSelection;
-        private IAudioPlayback _audioPlayback;
         private LevelEndAlgorithm _levelEndAlgorithm;
         private WavesSpawner _spawner;
         private int _currentLevelNumber;
-    
+
+        private Canvas _canvas;
+
         [Inject]
-        private void Construct(ILevelSelectionService levelSelection, IAudioPlayback audioPlayback)
+        private void Construct(ILevelSelectionService levelSelection)
         {
             _levelSelection = levelSelection;
-            _audioPlayback = audioPlayback;
         }
         
         private void Awake()
         {
+            _canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+
             _levelEndAlgorithm = GetComponent<LevelEndAlgorithm>();
             
             InitializeLevel();
@@ -50,10 +52,7 @@ namespace MythicalBattles
             }
 
             SpawnLevelDesign(_currentLevelNumber);
-            
             InitializeWaveSpawner(_currentLevelNumber);
-            
-            PlayLevelMusicTheme(_currentLevelNumber);
         }
         
         private void SpawnLevelDesign(int levelIndex)
@@ -96,13 +95,6 @@ namespace MythicalBattles
             _spawner.SetEnemiesDyingTime(_enemyDyingTime);
 
             _spawner.AllWavesCompleted += OnAllWavesCompleted;
-        }
-
-        private void PlayLevelMusicTheme(int levelIndex)
-        {
-            SoundID musicTheme = _levelConfigs[levelIndex - 1].MusicTheme;
-            
-            _audioPlayback.Play(musicTheme);
         }
 
         private void OnAllWavesCompleted()

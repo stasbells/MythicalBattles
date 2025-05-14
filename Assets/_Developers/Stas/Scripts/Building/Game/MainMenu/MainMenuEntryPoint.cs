@@ -1,5 +1,5 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;
@@ -44,6 +44,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
             uiSceneRootBinder.Bind(uiSceneRootViewModel);
 
             var uiManager = viewsContainer.Resolve<MainMenuUIManager>();
+
+            uiManager.OpenScreenShop();
             uiManager.OpenScreenMainMenu();
         }
     }

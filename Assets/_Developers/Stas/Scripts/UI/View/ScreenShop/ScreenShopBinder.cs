@@ -1,14 +1,13 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
-using Reflex.Extensions;
+﻿using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.Shop
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
 {
     public class ScreenShopBinder : ScreenBinder<ScreenShopViewModel>
     {
-        [SerializeField] private MythicalBattles.Shop _shop;
+        [SerializeField] private Shop _shop;
         [SerializeField] private Button _goToScreenMainMenuButton;
 
         private IDataProvider _dataProvider;
@@ -45,16 +44,25 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.Shop
 
         private void LoadOrInitPlayerData()
         {
-            if (_dataProvider.TryLoadPlayerData() == false)
+            if (_dataProvider.TryLoad() == false)
             {
                 _persistentData.PlayerData = new PlayerData();
 
-               _dataProvider.SavePlayerData();
+                _dataProvider.Save();
             }
 
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
 
             _playerStats.UpdatePlayerData(_persistentData.PlayerData);
+        }
+
+        protected override void OnBind(ScreenShopViewModel viewModel)
+        {
+            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
+
+            Debug.Log($"ScreenShopBinder: ShopPanel: {viewModel.ShopPanel.Value}");
+
+            viewModel.OnShopPanelChanged(_shop.ShopPanel);
         }
     }
 }

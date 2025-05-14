@@ -1,33 +1,19 @@
-﻿using R3;
-
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
+﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
     public class ScreenGameplayViewModel : ScreenViewModel 
     {
         private readonly GameplayUIManager _uiManager;
-        private readonly Subject<Unit> _exitSceneRequest;
 
         public override string Name => "ScreenGameplay";
 
-        public ScreenGameplayViewModel(GameplayUIManager uIManager, Subject<Unit> exitSceneRequest)
+        public ScreenGameplayViewModel(GameplayUIManager uIManager)
         {
             _uiManager = uIManager;
-            _exitSceneRequest = exitSceneRequest;
         }
 
-        public void RequestGoToPopupA()
+        public void RequestGoToPopupPause()
         {
-            _uiManager.OpenPopupA();
-        }
-
-        public void RequestGoToPopupB()
-        {
-            _uiManager.OpenPopupB();
-        }
-
-        public void RequestGoToMainMenu()
-        {
-            _exitSceneRequest.OnNext(Unit.Default);
+            _uiManager.OpenPopupPause();
         }
     }
 }

@@ -42,6 +42,7 @@ namespace MythicalBattles
             _timeBetweenWaves = timeBetweenWaves;
             
             WaveProgressView progressSliderView = Instantiate(_progressSliderView, _canvas.transform);
+            progressSliderView.transform.SetAsFirstSibling();
 
             _progressSliderObject = progressSliderView.ProgressBar;
             _nextWaveText = progressSliderView.NextWaveText;

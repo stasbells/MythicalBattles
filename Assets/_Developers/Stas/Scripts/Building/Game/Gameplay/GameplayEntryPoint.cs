@@ -31,7 +31,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
                 .AddSingleton(typeof(UIGameplayRootViewModel))
                 .Build();
 
-            //InitWorld(gameplayViewModelsContainer.Build());
+            InitWorld(gameplayViewModelsContainer.Build());
             InitUI(gameplayViewModelsContainer.Build());
 
             var exitSceneSignal = gameplayViewModelsContainer.Build().Resolve<Subject<Unit>>();

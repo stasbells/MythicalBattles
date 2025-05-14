@@ -1,4 +1,4 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMenu;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard
 {

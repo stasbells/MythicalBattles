@@ -10,6 +10,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
     {
         private readonly Subject<Unit> _exitSceneRequest;
 
+
         public GameplayUIManager(ContainerBuilder builder) : base(builder) 
         {
             _exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
@@ -17,7 +18,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 
         public ScreenGameplayViewModel OpenScreenGameplay()
         {
-            var viewModel = new ScreenGameplayViewModel(this, _exitSceneRequest);
+            var viewModel = new ScreenGameplayViewModel(this);
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
             UIRoot.OpenScreen(viewModel);
@@ -25,24 +26,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             return viewModel;
         }
 
-        public PopupAViewModel OpenPopupA()
+        public PopupPauseViewModel OpenPopupPause()
         {
-            var a = new PopupAViewModel();
+            var Pause = new PopupPauseViewModel(_exitSceneRequest);
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenPopup(a);
+            UIRoot.OpenPopup(Pause);
 
-            return a;
-        }
-
-        public PopupBViewModel OpenPopupB()
-        {
-            var b = new PopupBViewModel();
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
-
-            UIRoot.OpenPopup(b);
-
-            return b;
+            return Pause;
         }
     }
 }
