@@ -2,6 +2,9 @@ namespace MythicalBattles
 {
     public interface IPersistentData
     {
-        PlayerData PlayerData { get; set; }
+        public PlayerData PlayerData { get; set; }
+        public GameProgressData GameProgressData { get; set; }
+        public SettingsData SettingsData { get; set; }
+        
     }
 }

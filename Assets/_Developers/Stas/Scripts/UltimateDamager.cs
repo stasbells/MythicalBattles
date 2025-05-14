@@ -5,7 +5,7 @@ namespace MythicalBattles
 {
     public class UltimateDamager : MonoBehaviour, IWaveDamageMultiplier
     {
-        [SerializeField] private float _damagePeriod = 1f;
+        [SerializeField] private float _damagePeriod = 0.4f;
         [SerializeField] private float _initDamageValue;
         
         private Coroutine _damageCoroutine;

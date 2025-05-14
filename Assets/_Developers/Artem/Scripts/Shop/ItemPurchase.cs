@@ -50,7 +50,7 @@ namespace MythicalBattles
                 
                 _itemSelector.Visit(itemView.Item);
                 
-                _dataProvider.Save();
+                _dataProvider.SavePlayerData();
             }
         }
     }
