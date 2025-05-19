@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.67, y: 8.92, z: -40.814}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3899676778457797105}
   m_Father: {fileID: 0}
@@ -121,30 +121,6 @@ PrefabInstance:
     - target: {fileID: 2710802805705039832, guid: 4570569921279974fa9913e35652faa4, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_CompanionPoison
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270881645896929127, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270881645896929127, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5895692614386184271, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5895692614386184271, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8255136542639064983, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8255136542639064983, guid: 4570569921279974fa9913e35652faa4, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

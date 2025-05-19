@@ -2162,7 +2162,7 @@ Transform:
   m_GameObject: {fileID: 8264312157407485693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.2365417, y: 0.09486675, z: 8.599234}
+  m_LocalPosition: {x: -0.2365417, y: 0.09, z: 8.599234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2232,11 +2232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
-  RotationSpeed: 10
   PlayerSearchRadius: 50
+  RotationSpeed: 10
   InitDamage: 10
   AttackDistance: 1
-  _moveDuration: 3
+  _durationOfRandomMove: 2
   _directionChangeInterval: 1
   _raycastDistance: 7
   _attackCooldown: 0.8
