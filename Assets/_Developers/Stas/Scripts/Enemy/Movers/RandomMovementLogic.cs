@@ -20,6 +20,7 @@ namespace MythicalBattles
             _durationOfRandomMove = durationOfRandomMove;
             _directionChangeInterval = directionChangeInterval;
             _raycastDistance = raycastDistance;
+            _randomDirection = Vector3.zero;
         }
         
         public void MoveRandomly()

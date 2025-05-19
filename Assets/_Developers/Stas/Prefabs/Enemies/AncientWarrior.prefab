@@ -466,7 +466,7 @@ MonoBehaviour:
   PlayerSearchRadius: 50
   RotationSpeed: 10
   _moveDuration: 2
-  _directionChangeInterval: 1
+  _directionChangeInterval: 3
   _raycastDistance: 3
   _stopDuration: 1
 --- !u!114 &6009838996785140481

@@ -39,7 +39,7 @@ namespace MythicalBattles
         
         private void OnItemViewClicked(ShopItemView itemView)
         {
-            //потом поменять чтобы сначала окно открывалось
+            //переделать чтобы покупка была в попапе
             
             if(itemView.IsAvailableToBuy == false)
                 return;
