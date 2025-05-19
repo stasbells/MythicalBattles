@@ -2,9 +2,9 @@ namespace MythicalBattles
 {
     public class SkeletonMover : MeleeEnemyMover
     {
-        protected override void OnUpdate()
+        protected override void OnFixedUpdate()
         {
-            base.OnUpdate();
+            base.OnFixedUpdate();
             
             if (Animator.GetBool(Constants.IsDead))
                 return;

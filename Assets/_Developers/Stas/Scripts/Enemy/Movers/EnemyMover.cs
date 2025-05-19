@@ -34,9 +34,9 @@ namespace MythicalBattles
             OnStart();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            OnUpdate();
+            OnFixedUpdate();
         }
         
 
@@ -59,7 +59,7 @@ namespace MythicalBattles
                 throw new InvalidOperationException();
         }
 
-        protected virtual void OnUpdate()
+        protected virtual void OnFixedUpdate()
         {
             if (Animator.GetBool(Constants.IsDead))
             {

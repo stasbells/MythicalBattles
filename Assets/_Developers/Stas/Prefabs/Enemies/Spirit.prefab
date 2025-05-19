@@ -1962,10 +1962,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  RotationSpeed: 10
   PlayerSearchRadius: 50
+  RotationSpeed: 10
   _moveDuration: 2
-  _directionChangeInterval: 1
+  _directionChangeInterval: 3
   _raycastDistance: 7
   _stopDuration: 2
 --- !u!114 &5993620104692598466

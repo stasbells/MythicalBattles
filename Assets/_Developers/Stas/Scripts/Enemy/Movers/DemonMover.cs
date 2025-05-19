@@ -37,9 +37,9 @@ namespace MythicalBattles
             CorrectMoveAnimationSpeed();
         }
 
-        protected override void OnUpdate()
+        protected override void OnFixedUpdate()
         {
-            base.OnUpdate();
+            base.OnFixedUpdate();
 
             if (Animator.GetBool(Constants.IsDead))
                 return;

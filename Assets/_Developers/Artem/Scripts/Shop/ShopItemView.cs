@@ -59,8 +59,6 @@ namespace MythicalBattles
             IsSelected = true;
             _selectedImage.gameObject.SetActive(true);
             HidePrice();
-
-            //дописать применение характеристик позже
         }
         
         public void Unselect()
