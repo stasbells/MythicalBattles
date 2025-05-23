@@ -14,6 +14,7 @@ namespace MythicalBattles
         public Sprite ItemImage => _itemImage;
         public Sprite BackgroundImage => _backgroundImage;
         public int Price => _price;
+        public abstract string DisplayText { get; }
         public abstract void Accept(IShopItemVisitor visitor);
     }
 }

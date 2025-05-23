@@ -1,31 +1,110 @@
-﻿using TMPro;
+﻿using Reflex.Extensions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
 {
     public class PopupShopItemBinder : PopupBinder<PopupShopItemViewModel>
     {
-        [SerializeField] private TMP_Text _itemNameText;
-        [SerializeField] private TMP_Text _itemStatsText;
+        private const float AlphaChangeFactor = 0.4f;
+        private const string Price = "Price: ";
 
+        [SerializeField] private Image _contentImage;
+        [SerializeField] private Image _backgroundImage;
         [SerializeField] private Button _buyItemButton;
+        [SerializeField] private TMP_Text _itemStatsText;
+        [SerializeField] private TMP_Text _itemTypeText;
+        [SerializeField] private TMP_Text _priceText;
 
-        public System.Func<object, object> ItemViewClicked { get; internal set; }
+        private IWallet _wallet;
+        private IPersistentData _persistentData;
+        private IDataProvider _dataProvider;
+        private ShopItemView _shopItemView;
+        private ItemSelector _itemSelector;
 
-        private void OnEnable()
+        private void Construct()
         {
-            //_buyItemButton.onClick.AddListener(OnBuyItemButtonClicked);
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+            _dataProvider = container.Resolve<IDataProvider>();
+            _wallet = container.Resolve<IWallet>();
+
+            _itemSelector = new ItemSelector(_persistentData);
         }
 
-        private void OnDisable()
+        protected override void Start()
         {
-            //_buyItemButton.onClick.RemoveListener(OnBuyItemButtonClicked);
-        }
+            base.Start();
 
+            Construct();
+
+            _shopItemView = ViewModel.ShopItemView;
+
+            _backgroundImage.sprite = _shopItemView.Item.BackgroundImage;
+            _contentImage.sprite = _shopItemView.Item.ItemImage;
+            _itemStatsText.text = _shopItemView.Item.DisplayText;
+
+            if (_shopItemView.Item is EquipmentItem item)
+            {
+                _itemTypeText.text = item.TypeText;
+                _itemTypeText.color = item.GradeTextColor;
+            }
+            else
+            {
+                _itemTypeText.gameObject.SetActive(false);
+            }
+
+            if (_shopItemView.IsAvailableToBuy)
+            {
+                _priceText.text = Price + _shopItemView.Price;
+                
+                _buyItemButton.onClick.AddListener(OnBuyItemButtonClicked);
+
+                if (_wallet.GetCurrentCoins() < _shopItemView.Price)
+                {
+                    _priceText.color = Color.red;
+
+                    _buyItemButton.interactable = false;
+
+                    Image buttonImage = _buyItemButton.GetComponent<Image>();
+
+                    Color buttonColor = buttonImage.color;
+
+                    buttonColor.a = AlphaChangeFactor;
+
+                    buttonImage.color = buttonColor;
+                }
+            }
+
+            else
+            {
+                _priceText.gameObject.SetActive(false);
+                _buyItemButton.gameObject.SetActive(false);
+            }
+        }
+        
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            _buyItemButton.onClick?.RemoveListener(OnBuyItemButtonClicked);
+        }
+        
         private void OnBuyItemButtonClicked()
         {
+            if (_wallet.GetCurrentCoins() < _shopItemView.Price)
+                return;
             
+            _wallet.Spend(_shopItemView.Price);
+            
+            _itemSelector.Visit(_shopItemView.Item);
+            
+            _dataProvider.SavePlayerData();
+            
+            ViewModel.ShopPanel.Refresh();
         }
     }
 }

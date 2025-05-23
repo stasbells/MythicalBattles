@@ -58,7 +58,7 @@ namespace MythicalBattles
             return _levelsResults.Count;
         }
 
-        public bool TryUpdateLevelRecord(int levelNumber, float resultPoints, float resultTime)
+        public bool TryUpdateLevelRecord(int levelNumber, int resultPoints, float resultTime)
         {
             if (resultPoints > _levelsResults[levelNumber - 1].Points)
             {
@@ -72,7 +72,7 @@ namespace MythicalBattles
             }
         }
 
-        private void SetLevelResults(int levelNumber, float resultPoints, float resultTime)
+        private void SetLevelResults(int levelNumber, int resultPoints, float resultTime)
         {
             var levelResult = _levelsResults[levelNumber - 1];
             levelResult.Points = resultPoints;

@@ -14,13 +14,6 @@ namespace MythicalBattles
 
         public ShopPanel ShopPanel => _shopPanel;
 
-        //[Inject]
-        //public void Construct(IDataProvider dataProvider, IWallet wallet, Container container)
-        //{
-        //    _dataProvider = dataProvider;
-        //    _wallet = wallet;
-        //}
-
         private void Awake()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
@@ -33,7 +26,7 @@ namespace MythicalBattles
 
         private void Start()
         {
-            _shopPanel.Show(_itemsContent.GetItems());
+            ShowItems();
         }
 
         private void OnEnable()
@@ -46,9 +39,14 @@ namespace MythicalBattles
             _dataProvider.PlayerDataReseted -= OnDataReseted;
         }
 
-        private void OnDataReseted()
+        private void ShowItems()
         {
             _shopPanel.Show(_itemsContent.GetItems());
+        }
+
+        private void OnDataReseted()
+        {
+            ShowItems();
         }
     }
 }

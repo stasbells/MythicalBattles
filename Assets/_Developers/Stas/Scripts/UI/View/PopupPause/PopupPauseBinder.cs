@@ -17,6 +17,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupA
         private void OnDisable()
         {
             Time.timeScale = 1f;
+            _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
         }
 
         private void OnGoToMainMenuButtonClicked()

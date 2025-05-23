@@ -8,7 +8,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
         [SerializeField] private Transform _screensContainer;
         [SerializeField] private Transform _popupsContainer;
 
-        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopuupBinders = new();
+        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopupBinders = new();
         private IScreenBinder _openedScreenBinder;
 
         public void OpenPopup(ScreenViewModel viewModel)
@@ -19,15 +19,15 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
             var binder = createdPopup.GetComponent<IScreenBinder>();
 
             binder.Bind(viewModel);
-            _openedPopuupBinders.Add(viewModel, binder);
+            _openedPopupBinders.Add(viewModel, binder);
         }
 
         public void ClosePopup(ScreenViewModel popupViewModel)
         {
-            var binder = _openedPopuupBinders[popupViewModel];
+            var binder = _openedPopupBinders[popupViewModel];
 
             binder?.Close();
-            _openedPopuupBinders.Remove(popupViewModel);
+            _openedPopupBinders.Remove(popupViewModel);
         }
 
         public void OpenScreen(ScreenViewModel viewModel)

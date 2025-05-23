@@ -1,6 +1,8 @@
 using Reflex.Attributes;
+using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -8,11 +10,21 @@ namespace MythicalBattles
     {
         [SerializeField] private TMP_Text _currentMoney;
         
-        [Inject] private IWallet _wallet;
-        [Inject] private IPersistentData _persistentData;
+        private IWallet _wallet;
+        private IPersistentData _persistentData;
 
+        private void Construct()
+        {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _persistentData = container.Resolve<IPersistentData>();
+            _wallet = container.Resolve<IWallet>();
+        }
+        
         private void OnEnable()
         {
+            Construct();
+            
             _currentMoney.text = _wallet.GetCurrentCoins().ToString();
 
             _wallet.CoinsChanged += OnMoneyChanged;

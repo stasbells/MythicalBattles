@@ -23,14 +23,20 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
             _uiManager.OpenScreenMainMenu();
         }
 
-        public void RequestOpenPopupShopItem()
+        public void RequestOpenPopupShopItem(ShopPanel shopPanel, ShopItemView shopItemView)
         {
-            _uiManager.OpenPopupShopItem();
+            _uiManager.OpenPopupShopItem(shopPanel, shopItemView);
+        }
+        
+        public void RequestOpenPopupEquipmentItem(InventoryItemView inventoryItemView)
+        {
+            _uiManager.OpenPopupEquipmentItem(inventoryItemView);
         }
 
-        public void OnShopPanelChanged(ShopPanel newShopPanel)
+        public void OnShopPanelChanged(ShopPanel newShopPanel, InventoryView inventoryView)
         {
-           newShopPanel.SetUIManager(_uiManager);
+           newShopPanel.SetViewModel(this);
+           inventoryView.SetViewModel(this);
         }
     }
 }

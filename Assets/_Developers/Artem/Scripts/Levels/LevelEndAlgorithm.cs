@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -15,7 +16,8 @@ namespace MythicalBattles
         private IWallet _wallet;
         private IDataProvider _dataProvider;
         private IPersistentData _persistentData;
-        private float _levelStartTIme;
+        private GameplayUIManager _gameplayUIManager;
+        private float _levelStartTime;
         private float _maxAdditionalGold; 
         
         [Inject]
@@ -28,22 +30,26 @@ namespace MythicalBattles
 
         private void Awake()
         {
-            _levelStartTIme = Time.time;
+            _levelStartTime = Time.time;
+        }
+
+        public void SetUiManager(GameplayUIManager gameplayUIManager)
+        {
+            _gameplayUIManager = gameplayUIManager;
         }
 
         public IEnumerator Run(int levelNumber, float baselevelReward)
         {
-            float levelPassTime = Time.time - _levelStartTIme;
+            float levelPassTime = Time.time - _levelStartTime;
+            int score;
+            int rewardMoney;
 
             _maxAdditionalGold = baselevelReward * AdditionalGoldFactor;
 
-            float rewardMoney;
-            float victoryPoints;
-
             if (levelPassTime >= MaxTimeInSecondsForBonus)
             {
-                rewardMoney = baselevelReward;
-                victoryPoints = 1f;
+                rewardMoney = (int)baselevelReward;
+                score = 1;
             }
             else
             {
@@ -51,47 +57,35 @@ namespace MythicalBattles
                 
                 rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
 
-                victoryPoints = CalculateVictoryPoints(timeRatio);
+                score = CalculateScore(timeRatio);
             }
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
 
-            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, victoryPoints, levelPassTime))  
+            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, score, levelPassTime))  
             {
                 _dataProvider.SaveGameProgressData();
-                
-                Debug.Log(_persistentData.GameProgressData.LevelsResults[levelNumber].Time);
-                
-                Debug.Log("new record!"); //вывести PopUp с указанием нового рекорда
-            }
-            else
-            {
-                Debug.Log("base points view");  //вывести PopUp с обычным указанием счёта
             }
 
-            if (TryGetRewardMoney(levelNumber, rewardMoney))   
-            {
-                Debug.Log("collect money!"); //вывести PopUp с указанием заработанных монет
-            }
-            else
-            {
-                Debug.Log("only points and time view");  //вывести PopUp без указания заработанных монет
-            }
-        }
+            float bestTime = _persistentData.GameProgressData.LevelsResults[levelNumber].Time;
 
-        private float CalculateRewardMoney(float timeRatio, float baselevelReward)
-        {
-            float rewardMoney = baselevelReward + Mathf.RoundToInt(timeRatio * _maxAdditionalGold);
+            if (TryGetRewardMoney(levelNumber, rewardMoney) == false)
+                rewardMoney = 0;
             
-            return rewardMoney;
+            _gameplayUIManager.OpenScreenLevelComplete(levelPassTime, bestTime, score, rewardMoney);
         }
 
-        private float CalculateVictoryPoints(float timeRatio)
+        private int CalculateRewardMoney(float timeRatio, float baselevelReward)
+        {
+            return (int)(baselevelReward + Mathf.RoundToInt(timeRatio * _maxAdditionalGold));
+        }
+
+        private int CalculateScore(float timeRatio)
         {
             return Mathf.RoundToInt(timeRatio * MaxPoints);
         }
 
-        private bool TryGetRewardMoney(int levelNumber, float rewardMoney)
+        private bool TryGetRewardMoney(int levelNumber, int rewardMoney)
         {
             if (Mathf.Approximately(_persistentData.GameProgressData.GetLevelRecordPoints(levelNumber), 0f) == false)
                 return false;
