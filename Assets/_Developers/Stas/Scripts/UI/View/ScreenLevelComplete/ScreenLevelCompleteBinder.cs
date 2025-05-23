@@ -1,3 +1,4 @@
+using System;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
@@ -25,10 +26,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
             _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
         }
 
-        private void OnEnable()
+        private void Awake()
         {
             Construct();
-            
+        }
+
+        private void OnEnable()
+        {
             ShowTime();
             
             ShowScore();
@@ -47,6 +51,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void ShowTime()
         {
+            
+            Debug.Log(ViewModel.LevelPassTime);
+            Debug.Log(ViewModel.BestTime);
+            
             _completionTime.text = ConvertTimeToString(ViewModel.LevelPassTime);
             
             if (Mathf.Approximately(ViewModel.LevelPassTime, ViewModel.BestTime))
@@ -80,7 +88,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         
         private string ConvertTimeToString(float time)
         {
-            int minutes = Mathf.FloorToInt((time % 3600f) / 60f);
+            int minutes = Mathf.FloorToInt(time / 60f);
             
             int seconds = Mathf.FloorToInt(time % 60f);
             

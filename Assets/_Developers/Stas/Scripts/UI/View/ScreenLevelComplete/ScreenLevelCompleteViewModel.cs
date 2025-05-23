@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
 using R3;
-using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete
 {
@@ -18,12 +14,15 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         public override string Name => "ScreenLevelComplete";
         
-        public ScreenLevelCompleteViewModel(float levelPassTime, float bestTime, int score, int rewardMoney)
+        public ScreenLevelCompleteViewModel(float levelPassTime, float bestTime, int score, int rewardMoney,
+            Subject<Unit> exitSceneRequest, Subject<Unit> restartSceneRequest)
         {
             LevelPassTime = levelPassTime;
             BestTime = bestTime;
             Score = score;
             RewardMoney = rewardMoney;
+            _exitSceneRequest = exitSceneRequest;
+            _restartSceneRequest = restartSceneRequest;
         }
         
         public void RequestGoToMainMenu()
