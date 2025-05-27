@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
 {
     public static class Constants
     {

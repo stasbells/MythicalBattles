@@ -1,3 +1,5 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+
 namespace MythicalBattles
 {
     public class SkeletonMover : MeleeEnemyMover

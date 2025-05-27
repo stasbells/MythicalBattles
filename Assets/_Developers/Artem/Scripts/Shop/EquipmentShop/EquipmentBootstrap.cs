@@ -1,5 +1,7 @@
 using Reflex.Attributes;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -22,6 +24,12 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+            _dataProvider = container.Resolve<IDataProvider>();
+            _playerStats = container.Resolve<IPlayerStats>();
+
             _shop.ItemsContent.InitializeRegistry();
             
             LoadOrInitPlayerData();

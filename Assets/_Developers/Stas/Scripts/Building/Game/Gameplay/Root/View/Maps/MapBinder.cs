@@ -2,8 +2,8 @@
 
 public class MapBinder : MonoBehaviour
 {
-    public void Bind(MapViewModel mapViewModel)
+    public void Bind(LevelGeneratorViewModel mapViewModel)
     {
-        transform.position = mapViewModel.Position;
+
     }
 }

@@ -1,5 +1,6 @@
-using R3;
 using Reflex.Attributes;
+using Reflex.Extensions;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -16,7 +17,7 @@ namespace MythicalBattles
             _attackSpeed = playerStats.AttackSpeed.Value;
             Damage = _startDamage;
         }
-        
+
         public void IncreaseDamage(float damageMultiplier)
         {
             Damage += _startDamage*damageMultiplier;
@@ -34,7 +35,13 @@ namespace MythicalBattles
         protected override void OnAwake()
         {
             base.OnAwake();
-            
+
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _startDamage = container.Resolve<IPlayerStats>().Damage.Value;
+            _attackSpeed = container.Resolve<IPlayerStats>().AttackSpeed.Value;
+            Damage = _startDamage;
+
             SetProjectileDamage(Damage);
             
             ChangeAttackSpeed(_attackSpeed);

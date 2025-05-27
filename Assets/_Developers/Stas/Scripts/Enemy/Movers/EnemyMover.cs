@@ -1,5 +1,5 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using System;
-using R3;
 using UnityEngine;
 
 namespace MythicalBattles

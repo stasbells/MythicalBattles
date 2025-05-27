@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 {
     public class PopupShopItemBinder : PopupBinder<PopupShopItemViewModel>
     {

@@ -33,13 +33,13 @@ namespace MythicalBattles
         
         private void Awake()
         {
-            _camera = Camera.main;
+            //_camera = Camera.main;
             _transform = GetComponent<Transform>();
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _health = GetComponentInParent<Health>();
             _initialLocalScale = _transform.localScale;
-            _rotation = _camera.transform.rotation.eulerAngles;
+            //_rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
             _initialScaleX = _transform.localScale.x;
             _initialMaxHealth = _health.MaxHealth.Value;
@@ -48,6 +48,9 @@ namespace MythicalBattles
 
         private void Start()
         {
+            _camera = Camera.main;
+            _rotation = _camera.transform.rotation.eulerAngles;
+
             _canvasGroup.alpha = 0f;
         }
 

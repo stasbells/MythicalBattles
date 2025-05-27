@@ -1,5 +1,7 @@
 using Ami.BroAudio;
 using Reflex.Attributes;
+using Reflex.Extensions;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -15,7 +17,7 @@ namespace MythicalBattles
             _startMaxHealth = MaxHealth.Value;
             _audioPlayback = audioPlayback;
         }
-        
+
         public void IncreaseMaxHealth(float healthMultiplier)
         {
              float newMaxHealth = _startMaxHealth * healthMultiplier + MaxHealth.Value;
@@ -30,6 +32,17 @@ namespace MythicalBattles
             SoundID damageSound = _audioPlayback.AudioContainer.PlayerDamaged;
             
             _audioPlayback.Play(damageSound);
+        }
+
+        protected override void OnAwakeBehaviour()
+        {
+            base.OnAwakeBehaviour();
+        
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            MaxHealth.Value = container.Resolve<IPlayerStats>().MaxHealth.Value;
+            _startMaxHealth = MaxHealth.Value;
+            _audioPlayback = container.Resolve<IAudioPlayback>();
         }
 
         protected override void Die()

@@ -1,15 +1,19 @@
-﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
+﻿using R3;
+
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 {
     public class PopupShopItemViewModel : ScreenViewModel
     {
-        public override string Name => "PopupShopItem";
-        public ShopItemView ShopItemView { get; }
-        public ShopPanel ShopPanel { get; }
+        private Observable<PopupShopItemViewModel> _buyItemRequested;
+        private readonly Observable<ShopPanel> _shopPanel;
 
-        public PopupShopItemViewModel(ShopPanel shopPanel, ShopItemView shopItemView)
+        public override string Name => "PopupShopItem";
+
+        public Observable<PopupShopItemViewModel> BuyItemRequested => _buyItemRequested;
+
+        public PopupShopItemViewModel(Observable<ShopPanel> shopPanel)
         {
-            ShopItemView = shopItemView;
-            ShopPanel = shopPanel;
+            _shopPanel = shopPanel;
         }
     }
 }

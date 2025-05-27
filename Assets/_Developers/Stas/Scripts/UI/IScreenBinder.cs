@@ -1,4 +1,4 @@
-﻿namespace MythicalBattles
+﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 {
     internal interface IScreenBinder
     {
