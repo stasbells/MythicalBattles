@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Image))]
     public class HoverScaleAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private float _animationDuration = 0.5f;

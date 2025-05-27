@@ -54,6 +54,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
             uiSceneRootBinder.Bind(uiSceneRootViewModel);
 
             var uiManager = viewsContainer.Resolve<GameplayUIManager>();
+            
+            LevelEndAlgorithm levelEndAlgorithm = FindObjectOfType<LevelEndAlgorithm>();
+
+            levelEndAlgorithm.SetUiManager(uiManager);
+            
             uiManager.OpenScreenGameplay();
         }
     }

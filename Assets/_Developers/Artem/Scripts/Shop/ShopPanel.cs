@@ -2,6 +2,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using Reflex.Extensions;
 using System;
 using System.Collections.Generic;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,16 +13,12 @@ namespace MythicalBattles
         [SerializeField] private Transform _itemsParent;
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
 
-        //[Inject] private IPersistentData _persistentData;
-
         private IPersistentData _persistentData;
-
         private EquipmentItemsTypes _equipmentItemsTypes = new EquipmentItemsTypes();
         private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
         private List<ShopItemView> _shopItemViews = new List<ShopItemView>();
-        private MainMenuUIManager _uiManager;
+        private ScreenShopViewModel _viewModel;
         private IEnumerable<ShopItem> _shopItems;
-        public event Action<ShopItemView> ItemViewClicked;
 
         private void Awake()
         {
@@ -32,11 +29,9 @@ namespace MythicalBattles
             _allTypesSelectedItemsGrade = new AllTypesSelectedItemsGrade(_persistentData);
         }
 
-        public void SetUIManager(MainMenuUIManager uiManager)
+        public void SetViewModel(ScreenShopViewModel viewModel)
         {
-            _uiManager = uiManager;
-
-            Debug.Log($"ShopPanel: {uiManager}");
+            _viewModel = viewModel;
         }
 
         public void Show(IEnumerable<ShopItem> items)
@@ -105,6 +100,14 @@ namespace MythicalBattles
             Canvas.ForceUpdateCanvases();
         }
 
+        public void Refresh()
+        {
+            if(_shopItems == null)
+                throw new InvalidOperationException();
+                
+            Show(_shopItems);
+        }
+
         private void Clear()
         {
             foreach (ShopItemView item in _shopItemViews)
@@ -118,14 +121,10 @@ namespace MythicalBattles
 
         private void OnItemViewClick(ShopItemView itemView)
         {
-            ItemViewClicked?.Invoke(itemView);
-
-            _uiManager.OpenPopupShopItem();
-
-            //тут вставить открытие окна описания элемента, а весь функционал ниже перенести в это окно
-
-            if (itemView.IsAvailableToBuy)
-                Show(_shopItems);
+            if(itemView.IsLock)
+                return;
+            
+            _viewModel.RequestOpenPopupShopItem(this, itemView);
         }
     }
 }

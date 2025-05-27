@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +15,18 @@ namespace MythicalBattles
         [SerializeField] private InventoryItemView _necklaceView;
         [SerializeField] private InventoryItemView _ringView;
 
+        private List<InventoryItemView> _items; 
         private IPersistentData _persistentData;
+        private ScreenShopViewModel _viewModel;
 
         private void Awake()
         {
             _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            
+            _items = new List<InventoryItemView>
+            {
+                _weaponView, _armorView, _bootsView, _helmetView, _necklaceView, _ringView
+            };
         }
 
         private void OnEnable()
@@ -25,11 +34,26 @@ namespace MythicalBattles
             ShowEquipmentItems();
 
             _persistentData.PlayerData.SelectedItemChanged += OnSelectedItemChange;
+            
+            foreach (InventoryItemView item in _items)
+            {
+                item.Clicked += OnItemClicked;
+            }
         }
 
         private void OnDisable()
         {
             _persistentData.PlayerData.SelectedItemChanged -= OnSelectedItemChange;
+            
+            foreach (InventoryItemView item in _items)
+            {
+                item.Clicked -= OnItemClicked;
+            }
+        }
+        
+        public void SetViewModel(ScreenShopViewModel viewModel)
+        {
+            _viewModel = viewModel;
         }
 
         private void ShowEquipmentItems()
@@ -51,7 +75,12 @@ namespace MythicalBattles
 
         private void ViewItem(InventoryItemView itemView, EquipmentItem item)
         {
-            itemView.SetImages(item.ItemImage, item.BackgroundImage);
+            itemView.Initialize(item);
+        }
+
+        private void OnItemClicked(InventoryItemView item)
+        {
+            _viewModel.RequestOpenPopupEquipmentItem(item);
         }
         
         private void OnSelectedItemChange()

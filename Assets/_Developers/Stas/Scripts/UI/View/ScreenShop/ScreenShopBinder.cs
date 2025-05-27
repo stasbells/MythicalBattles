@@ -8,6 +8,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
     public class ScreenShopBinder : ScreenBinder<ScreenShopViewModel>
     {
         [SerializeField] private Shop _shop;
+        [SerializeField] private InventoryView _inventory;
         [SerializeField] private Button _goToScreenMainMenuButton;
 
         private IDataProvider _dataProvider;
@@ -76,7 +77,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
 
             Debug.Log($"ScreenShopBinder: ShopPanel: {viewModel.ShopPanel.Value}");
 
-            viewModel.OnShopPanelChanged(_shop.ShopPanel);
+            viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
         }
     }
 }

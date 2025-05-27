@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 namespace MythicalBattles
 {
-    public class InventoryItemView : MonoBehaviour
+    public class InventoryItemView : MonoBehaviour, IPointerClickHandler
     {
         public event Action<InventoryItemView> Clicked;
 
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _backgroundImage;
 
-        private Image _currentBackgroundImage;
+        public EquipmentItem Item { get; private set; }
 
-        public void SetImages(Sprite content, Sprite background)
+        public void Initialize(EquipmentItem item)
         {
-            _contentImage.sprite = content;
-            _backgroundImage.sprite = background;
+            _backgroundImage.sprite = item.BackgroundImage;
+            _contentImage.sprite = item.ItemImage;
+            Item = item;
         }
         
         public void OnPointerClick(PointerEventData eventData) => Clicked?.Invoke(this);

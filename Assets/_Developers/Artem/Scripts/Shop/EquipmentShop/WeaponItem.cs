@@ -8,6 +8,8 @@ namespace MythicalBattles
         [SerializeField] private float _additionalDamage;
 
         public float AdditionalDamage => _additionalDamage;
+        public override string DisplayText => $"Item effect: +{_additionalDamage} Damage";
+        public override string TypeText => $"{EquipmentGrade} Bow";
         
         public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
     }

@@ -31,8 +31,9 @@ namespace MythicalBattles
 
         public void Spend(int coins)
         {
-            _ = CheckInputIsNotNegative(coins);
-            
+            if (IsEnough(coins) == false)
+                throw new InvalidOperationException();
+                
             _persistentData.PlayerData.SpendMoney(coins);
             
             CoinsChanged?.Invoke(_persistentData.PlayerData.Money);
