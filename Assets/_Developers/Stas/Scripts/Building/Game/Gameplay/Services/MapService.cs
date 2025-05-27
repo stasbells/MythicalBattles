@@ -5,9 +5,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
 {
     public class MapService
     {
-        private ObservableList<MapViewModel> _mapViewModels = new ();
+        private ObservableList<LevelGeneratorViewModel> _mapViewModels = new ();
 
-        public IObservableCollection<MapViewModel> MapViewModels => _mapViewModels;
+        public IObservableCollection<LevelGeneratorViewModel> MapViewModels => _mapViewModels;
 
         public void PlaceMap(string mapId, Vector3Int position)
         {

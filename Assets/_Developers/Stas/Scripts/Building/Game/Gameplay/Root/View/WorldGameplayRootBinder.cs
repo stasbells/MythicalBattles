@@ -1,24 +1,40 @@
-﻿using UnityEngine;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+using Reflex.Core;
+using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
 {
     public class WorldGameplayRootBinder : MonoBehaviour
     {
-        [SerializeField] private MapBinder _map;
-
-        private MapBinder _currentMap;
+        [SerializeField] private LevelGenerator _levelGeneratorPrefab;
+        [SerializeField] private GameObject _archerPrefab;
+        [SerializeField] private PlayerFollower _cameraSystemPrefab;
 
         public void Bind(WorldGameplayRootViewModel viewModel)
         {
-            PlaceMap(viewModel.MapViewModel);
+            InitLevelGenerator(viewModel.GamplayContainer);
+            InitCameraSystem(InitArcher());
         }
 
-        private void PlaceMap(MapViewModel mapViewModel)
+        private void InitLevelGenerator(Container gamplayContainer)
         {
-            var mapBinder = Instantiate(_map, transform);
-            mapBinder.Bind(mapViewModel);
+            var uiManager = gamplayContainer.Resolve<GameplayUIManager>();
+            var levelGeneratorBinder = Instantiate(_levelGeneratorPrefab);
 
-            _currentMap = mapBinder;
+            // levelGeneratorBinder.Bind(levelGeneratorViewModel);
+        }
+
+        private Transform InitArcher()
+        {
+            var archerInstance = Instantiate(_archerPrefab);
+
+            return archerInstance.transform;
+        }
+
+        public void InitCameraSystem(Transform archerTransform)
+        {
+            var cameraInstance = Instantiate(_cameraSystemPrefab);
+            cameraInstance.SetTarget(archerTransform);
         }
     }
 }

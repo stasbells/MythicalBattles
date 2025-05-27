@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 
 namespace MythicalBattles
 {

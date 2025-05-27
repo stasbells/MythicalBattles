@@ -1,9 +1,11 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using R3;
 using Reflex.Core;
+using Reflex.Extensions;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,7 +39,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             _uiRoot = Object.Instantiate(prefabUIRoot);
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
 
-            _rootContainer.AddSingleton(_uiRoot);
+            _rootContainer
+                .AddSingleton(_uiRoot)
+                .AddSingleton(typeof(PersistentData), typeof(IPersistentData))
+                .AddSingleton(typeof(DataLocalProvider), typeof(IDataProvider))
+                .AddSingleton(typeof(PlayerStats), typeof(IPlayerStats))
+                .AddSingleton(typeof(AudioPlayback), typeof(IAudioPlayback))
+                .AddSingleton(typeof(Wallet), typeof(IWallet))
+                .AddSingleton(typeof(LevelSelectionService), typeof(ILevelSelectionService));
         }
 
         private void RunGame()
@@ -45,7 +54,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Scenes.GAMEPLAY)  
+            if (sceneName == Scenes.GAMEPLAY)
             {
                 _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
                 return;
@@ -77,7 +86,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
                 ? Object.FindFirstObjectByType<GameplayEntryPoint>()
                 : Object.FindFirstObjectByType<MainMenuEntryPoint>();
 
-            var gameplayContainer = _cachedSceneContainer = new ContainerBuilder()
+            var sceneContainer = _cachedSceneContainer = new ContainerBuilder()
                 .SetParent(_rootContainer.Build()).Build();
 
             RunScene(sceneEntryPoint);

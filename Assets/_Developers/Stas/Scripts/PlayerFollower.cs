@@ -5,16 +5,18 @@ namespace MythicalBattles
 {
     public class PlayerFollower : MonoBehaviour
     {
-        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private Transform _player;
         [SerializeField] private float _smoothSpeed = 0.125f;
         [SerializeField] private float _offsetZ = -10f;
         [SerializeField] private float _offsetX = -10f;
 
+        private Transform _playerTransform;
         private Transform _transform;
 
         private void Awake()
         {
             _transform = GetComponent<Transform>();
+            _playerTransform = _player;
         }
 
         private void Start()
@@ -25,6 +27,11 @@ namespace MythicalBattles
         private void LateUpdate()
         {
             Follow();
+        }
+
+        public void SetTarget(Transform playerTransform)
+        {
+            _playerTransform = playerTransform;
         }
 
         private void Follow()

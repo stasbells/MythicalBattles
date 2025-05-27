@@ -6091,7 +6091,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.703954, z: -0, w: 0.7102456}
   m_LocalPosition: {x: -14.8866, y: 7.6858764, z: 7.1225996}
-  m_LocalScale: {x: -3.5198903, y: 3.5198898, z: 3.5198903}
+  m_LocalScale: {x: 3.51989, y: 3.5198898, z: 3.5198903}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2568931748452436201}
@@ -6165,8 +6165,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7974046, y: 0.9419332, z: 0.60819614}
-  m_Center: {x: 0.0018234156, y: 0.4656318, z: -0.0219199}
+  m_Size: {x: 0.7974046, y: 0.9419332, z: 0.5464033}
+  m_Center: {x: 0.0018234175, y: 0.4656318, z: 0.008978229}
 --- !u!1 &1214944559234902159
 GameObject:
   m_ObjectHideFlags: 0
@@ -21562,7 +21562,7 @@ GameObject:
   - component: {fileID: 7025987270033064766}
   - component: {fileID: 3855692871898581031}
   - component: {fileID: 8322258243407516069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03_Broken_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26121,7 +26121,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.4, y: 8.03, z: -14.9}
-  m_LocalScale: {x: -5, y: 5, z: 5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2568931748452436201}
@@ -26195,8 +26195,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6524022, y: 0.7452707, z: 0.5269143}
-  m_Center: {x: 0.037084054, y: 0.3702798, z: -0.102244996}
+  m_Size: {x: 0.6524022, y: 0.7452707, z: 0.5077309}
+  m_Center: {x: 0.037084054, y: 0.3702798, z: 0.0032632828}
 --- !u!1 &3885272695155834037
 GameObject:
   m_ObjectHideFlags: 0
@@ -33024,6 +33024,7 @@ Transform:
   - {fileID: 2568931748452436201}
   - {fileID: 7664118577540972694}
   - {fileID: 494998194076508593}
+  - {fileID: 3337051939249341498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5171951260743041327
@@ -42921,7 +42922,6 @@ GameObject:
   - component: {fileID: 7309208027362107678}
   - component: {fileID: 6120395068216528401}
   - component: {fileID: 4557721328230056769}
-  - component: {fileID: 3647219643543492771}
   m_Layer: 6
   m_Name: SM_Env_Dwarf_Wall_Half_01 (1)
   m_TagString: Untagged
@@ -42994,27 +42994,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3647219643543492771
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6049304226657883569}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5, y: 5, z: 0.4543452}
-  m_Center: {x: -1.25, y: 2.499999, z: 0.08477872}
 --- !u!1 &6050431378897032992
 GameObject:
   m_ObjectHideFlags: 0
@@ -45599,7 +45578,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.3244667, y: 7.8989983, z: 29.94989}
-  m_LocalScale: {x: -3.519893, y: 3.519892, z: 3.5198936}
+  m_LocalScale: {x: 3.519893, y: 3.519892, z: 3.5198936}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2568931748452436201}
@@ -61877,8 +61856,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 5, z: 0.45434535}
-  m_Center: {x: -2.5, y: 2.499999, z: 0.084778495}
+  m_Size: {x: 7.498989, y: 5, z: 0.45434535}
+  m_Center: {x: -1.2505056, y: 2.499999, z: 0.08477841}
 --- !u!1 &7506940660330163895
 GameObject:
   m_ObjectHideFlags: 0
@@ -62847,7 +62826,7 @@ GameObject:
   - component: {fileID: 2840121839866307997}
   - component: {fileID: 3218228068746948914}
   - component: {fileID: 6762176344031274533}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03_Broken_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64944,7 +64923,6 @@ GameObject:
   - component: {fileID: 8363272115390358404}
   - component: {fileID: 6069690621286615188}
   - component: {fileID: 6112587935143233226}
-  - component: {fileID: 5543138737775799161}
   m_Layer: 0
   m_Name: SM_Env_Dwarf_Obelisk_02_Broken_02
   m_TagString: Untagged
@@ -65017,27 +64995,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5543138737775799161
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8066737087123758890}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6433227, y: 1.4627156, z: 3.729152}
-  m_Center: {x: 0, y: 0.7336241, z: -0.00000047683716}
 --- !u!1 &8121185371285231669
 GameObject:
   m_ObjectHideFlags: 0
@@ -65580,6 +65537,125 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5020897, y: 0.86809385, z: 0.2749823}
   m_Center: {x: 1.2489551, y: 0.43404692, z: 0.00000011920929}
+--- !u!1 &8211770828236381875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3337051939249341498}
+  - component: {fileID: 870450989558213122}
+  - component: {fileID: 6611140671267247309}
+  - component: {fileID: 2423422964968943613}
+  - component: {fileID: 9211777009825524205}
+  m_Layer: 6
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3337051939249341498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211770828236381875}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5369892, y: 13.62672, z: 6.569585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1178753324242796972}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &870450989558213122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211770828236381875}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.419174, y: 12.694689, z: 1.1648102}
+  m_Center: {x: 8.490195, y: 4.954338, z: 44.90959}
+--- !u!65 &6611140671267247309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211770828236381875}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.390465, y: 12.694689, z: 1.0997162}
+  m_Center: {x: 8.493588, y: 4.954338, z: -52.56929}
+--- !u!65 &2423422964968943613
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211770828236381875}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2428246, y: 12.694689, z: 98.62256}
+  m_Center: {x: 42.558533, y: 4.954338, z: -3.8192825}
+--- !u!65 &9211777009825524205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211770828236381875}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2300873, y: 12.694689, z: 98.62256}
+  m_Center: {x: -25.577301, y: 4.954338, z: -3.8192825}
 --- !u!1 &8239126154529341981
 GameObject:
   m_ObjectHideFlags: 0
@@ -68406,7 +68482,7 @@ GameObject:
   - component: {fileID: 4344375969402462286}
   - component: {fileID: 3543025668934636339}
   - component: {fileID: 1460129152942264620}
-  - component: {fileID: 1108362369175662637}
+  - component: {fileID: 3407923562404828706}
   m_Layer: 6
   m_Name: SM_Env_Dwarf_Wall_03 (103)
   m_TagString: Untagged
@@ -68479,7 +68555,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1108362369175662637
+--- !u!65 &3407923562404828706
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68499,7 +68575,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 5, y: 5, z: 0.45434505}
-  m_Center: {x: -2.5000005, y: 2.499998, z: 0.08478246}
+  m_Center: {x: -2.5, y: 2.499998, z: 0.08478246}
 --- !u!1 &8631259613575238014
 GameObject:
   m_ObjectHideFlags: 0

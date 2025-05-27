@@ -1,3 +1,4 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using UnityEngine;
 
 namespace MythicalBattles

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
 {
     public class UIRootViewModel : IDisposable
     {

@@ -1,11 +1,11 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
-using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
 {
     class MainMenuEntryPoint : MonoBehaviour
     {

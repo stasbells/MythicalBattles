@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using Reflex.Attributes;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -28,6 +30,12 @@ namespace MythicalBattles
 
         private void Awake()
         {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _wallet = container.Resolve<IWallet>();
+            _dataProvider = container.Resolve<IDataProvider>();
+            _persistentData = container.Resolve<IPersistentData>();
+
             _levelStartTIme = Time.time;
         }
 

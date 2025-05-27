@@ -1,10 +1,9 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
-using MythicalBattles.UI.Root.Gameplay;
-using MythicalBattles.UI.Root.MainMenu;
 using R3;
 using Reflex.Core;
 

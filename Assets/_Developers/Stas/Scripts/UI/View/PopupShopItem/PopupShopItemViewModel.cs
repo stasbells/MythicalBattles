@@ -1,6 +1,6 @@
 ﻿using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 {
     public class PopupShopItemViewModel : ScreenViewModel
     {

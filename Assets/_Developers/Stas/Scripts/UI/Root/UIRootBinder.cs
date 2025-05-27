@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using ObservableCollections;
+﻿using ObservableCollections;
 using R3;
+using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
 {
     public class UIRootBinder : MonoBehaviour
     {

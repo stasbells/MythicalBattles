@@ -5168,7 +5168,7 @@ GameObject:
   - component: {fileID: 1867795235854115350}
   - component: {fileID: 2197728250440848967}
   - component: {fileID: 1396565123940737539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5356,7 +5356,7 @@ GameObject:
   - component: {fileID: 7535168881247202670}
   - component: {fileID: 5846449277978889141}
   - component: {fileID: 1285557186073201395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5793,7 +5793,7 @@ GameObject:
   - component: {fileID: 1043665645150747764}
   - component: {fileID: 72029582680322718}
   - component: {fileID: 1538047772856875373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6645,7 +6645,7 @@ GameObject:
   - component: {fileID: 6255483859722962339}
   - component: {fileID: 5065243767873368331}
   - component: {fileID: 6683591198682076830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6750,7 +6750,7 @@ GameObject:
   - component: {fileID: 9022123031451947302}
   - component: {fileID: 7423989304973050523}
   - component: {fileID: 3020926481644570620}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7209,7 +7209,7 @@ GameObject:
   - component: {fileID: 8274055528229867335}
   - component: {fileID: 5343716447468398688}
   - component: {fileID: 7353151521540820064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7502,7 +7502,7 @@ GameObject:
   - component: {fileID: 2822895710540242490}
   - component: {fileID: 1139364239248908680}
   - component: {fileID: 2247707512108525516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7773,7 +7773,7 @@ GameObject:
   - component: {fileID: 2290098218749571786}
   - component: {fileID: 5538478447513819102}
   - component: {fileID: 2487579176396001447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8730,7 +8730,7 @@ GameObject:
   - component: {fileID: 6220948572781702596}
   - component: {fileID: 8838321884240670583}
   - component: {fileID: 3183212794841306421}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14127,7 +14127,7 @@ GameObject:
   - component: {fileID: 9215271097665569505}
   - component: {fileID: 7106038370097137705}
   - component: {fileID: 1729058350762705198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14491,6 +14491,125 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1413093995506218925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8129811955345326121}
+  - component: {fileID: 2951065956966358966}
+  - component: {fileID: 6784806651289218583}
+  - component: {fileID: 2694563999232147291}
+  - component: {fileID: 5994769187934475063}
+  m_Layer: 6
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8129811955345326121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413093995506218925}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 7.201481, y: -18.37328, z: -201.61212}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7206298366245895142}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2951065956966358966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413093995506218925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.419174, y: 12.694689, z: 1.1648102}
+  m_Center: {x: 8.490195, y: 4.954338, z: 44.90959}
+--- !u!65 &6784806651289218583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413093995506218925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.390465, y: 12.694689, z: 1.0997162}
+  m_Center: {x: 8.493588, y: 4.954338, z: -52.56929}
+--- !u!65 &2694563999232147291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413093995506218925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2428246, y: 12.694689, z: 98.62256}
+  m_Center: {x: 42.558533, y: 4.954338, z: -3.8192825}
+--- !u!65 &5994769187934475063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413093995506218925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2300873, y: 12.694689, z: 98.62256}
+  m_Center: {x: -25.577301, y: 4.954338, z: -3.8192825}
 --- !u!1 &1414779132356902611
 GameObject:
   m_ObjectHideFlags: 0
@@ -14684,7 +14803,7 @@ Transform:
   m_GameObject: {fileID: 1533951994149047350}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0037337076, y: -0.09631221, z: 0.040820755, w: 0.99450684}
-  m_LocalPosition: {x: 4.9185, y: 1.665, z: -0.023094177}
+  m_LocalPosition: {x: 4.8405, y: 1.5067005, z: 0.06030464}
   m_LocalScale: {x: 0.14542553, y: 0.14542553, z: 0.14542553}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14835,7 +14954,7 @@ GameObject:
   - component: {fileID: 6260566399161802546}
   - component: {fileID: 7328549772365285927}
   - component: {fileID: 293352295581000577}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15106,7 +15225,7 @@ GameObject:
   - component: {fileID: 8811183138327356355}
   - component: {fileID: 2612729093989253234}
   - component: {fileID: 8786746311716766591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20964,7 +21083,7 @@ GameObject:
   - component: {fileID: 2681240820534778153}
   - component: {fileID: 3063301760083532876}
   - component: {fileID: 1827238098297463051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21069,7 +21188,7 @@ GameObject:
   - component: {fileID: 1919781693320541305}
   - component: {fileID: 2301626292263773081}
   - component: {fileID: 7101154910431199914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32122,7 +32241,7 @@ GameObject:
   - component: {fileID: 1235303610364328149}
   - component: {fileID: 5616715058328050839}
   - component: {fileID: 3175365745673880885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38469,13 +38588,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3105550728807125340}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0034313656, y: 0.18830012, z: 0.007850611, w: 0.98207414}
-  m_LocalPosition: {x: -7.3475995, y: 1.5029287, z: -24.984095}
-  m_LocalScale: {x: 0.1671773, y: 0.16717732, z: 0.16717732}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0.0048919446, y: -0.0061905296, z: 0.007033862, w: 0.99994415}
+  m_LocalPosition: {x: -7.3318996, y: 1.4814005, z: -24.90849}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 180.556, y: -518.296, z: 180.81}
+  m_LocalEulerAnglesHint: {x: 180.556, y: -540.713, z: 180.81}
 --- !u!33 &6401469503267632943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38726,7 +38845,7 @@ GameObject:
   - component: {fileID: 7707704350358104513}
   - component: {fileID: 8221485158297692760}
   - component: {fileID: 2078781577826906035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43755,7 +43874,7 @@ GameObject:
   - component: {fileID: 5882582148567682136}
   - component: {fileID: 7113716884138560300}
   - component: {fileID: 4967096419970478273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49654,7 +49773,7 @@ GameObject:
   - component: {fileID: 3634425941623773630}
   - component: {fileID: 1336156366729384395}
   - component: {fileID: 6426034483316346912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49864,7 +49983,7 @@ GameObject:
   - component: {fileID: 9182017894133313553}
   - component: {fileID: 7076076582689224189}
   - component: {fileID: 1421956889053133841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55401,7 +55520,7 @@ GameObject:
   - component: {fileID: 8425240808249581802}
   - component: {fileID: 1848836249119575802}
   - component: {fileID: 9069770627016374759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55672,7 +55791,7 @@ GameObject:
   - component: {fileID: 2965270288160883758}
   - component: {fileID: 3685218051805725513}
   - component: {fileID: 92216828873105729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60356,7 +60475,7 @@ GameObject:
   - component: {fileID: 172182146463901735}
   - component: {fileID: 6098988245614959303}
   - component: {fileID: 4141551204663508387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60461,7 +60580,7 @@ GameObject:
   - component: {fileID: 4695361678580293319}
   - component: {fileID: 3315956537155546469}
   - component: {fileID: 1804579087310082128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60566,7 +60685,7 @@ GameObject:
   - component: {fileID: 2530286081008682860}
   - component: {fileID: 42930211217759594}
   - component: {fileID: 7594926421109428125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61191,7 +61310,7 @@ GameObject:
   - component: {fileID: 4938946834390387424}
   - component: {fileID: 4923699594525344496}
   - component: {fileID: 5965632640610711679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66392,13 +66511,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4201850876655914736}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.003211097, y: 0.16083956, z: 0.007943245, w: 0.9869434}
-  m_LocalPosition: {x: -7.3208995, y: 1.63, z: 10.044809}
-  m_LocalScale: {x: 0.1671773, y: 0.16717732, z: 0.16717732}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0.0036989078, y: 0.099145286, z: 0.00772815, w: 0.9950361}
+  m_LocalPosition: {x: -7.3601, y: 1.5343999, z: 10.096611}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 180.51, y: -521.492, z: 180.839}
+  m_LocalEulerAnglesHint: {x: 180.51, y: -528.623, z: 180.839}
 --- !u!33 &4995000478834574060
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66627,7 +66746,7 @@ GameObject:
   - component: {fileID: 8444160830235376781}
   - component: {fileID: 5853852060071833271}
   - component: {fileID: 7364494505782103763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71394,7 +71513,7 @@ GameObject:
   - component: {fileID: 4156385449357987065}
   - component: {fileID: 4772560564140086779}
   - component: {fileID: 882388949933236216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72539,7 +72658,7 @@ GameObject:
   - component: {fileID: 489760710579542117}
   - component: {fileID: 412580673658759036}
   - component: {fileID: 8313974624474944360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78444,7 +78563,7 @@ Transform:
   m_GameObject: {fileID: 5227283507555487902}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00033397553, y: -0.25862882, z: 0.008561236, w: 0.96593887}
-  m_LocalPosition: {x: 4.9421005, y: 1.691, z: -7.446495}
+  m_LocalPosition: {x: 4.8215, y: 1.4888, z: -7.3482876}
   m_LocalScale: {x: 0.1671773, y: 0.16717732, z: 0.16717732}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83727,7 +83846,7 @@ GameObject:
   - component: {fileID: 4694035260529624981}
   - component: {fileID: 998341210829785519}
   - component: {fileID: 6478954217708612225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88661,7 +88780,7 @@ GameObject:
   - component: {fileID: 8769947727845142820}
   - component: {fileID: 529544191797937259}
   - component: {fileID: 8627535807470509252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88766,7 +88885,7 @@ GameObject:
   - component: {fileID: 3472915932308149797}
   - component: {fileID: 3305396081919597291}
   - component: {fileID: 1547402537431711170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94024,6 +94143,7 @@ Transform:
   - {fileID: 7237328335196733413}
   - {fileID: 5252291517367031914}
   - {fileID: 6146213376908546516}
+  - {fileID: 8129811955345326121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5880763819686831458
@@ -94334,7 +94454,7 @@ GameObject:
   - component: {fileID: 6261833986605424911}
   - component: {fileID: 2256535400335280250}
   - component: {fileID: 6875036867352145243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94439,7 +94559,7 @@ GameObject:
   - component: {fileID: 4945178407687552588}
   - component: {fileID: 5218323710342625643}
   - component: {fileID: 7828060300728333747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94837,7 +94957,7 @@ GameObject:
   - component: {fileID: 3800875769936229432}
   - component: {fileID: 3221863214824877386}
   - component: {fileID: 3730168028443900400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94957,7 +95077,7 @@ Transform:
   m_GameObject: {fileID: 6178905891367485484}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00033397553, y: -0.25862882, z: 0.008561236, w: 0.96593887}
-  m_LocalPosition: {x: -19.568798, y: 1.6879997, z: -7.442095}
+  m_LocalPosition: {x: -19.6585, y: 1.4640999, z: -7.356599}
   m_LocalScale: {x: 0.1671773, y: 0.16717732, z: 0.16717732}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -99941,7 +100061,7 @@ GameObject:
   - component: {fileID: 4154699579330069008}
   - component: {fileID: 7127692410917969113}
   - component: {fileID: 7869892546025386156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105489,7 +105609,7 @@ GameObject:
   - component: {fileID: 4346083418438056342}
   - component: {fileID: 1145594988692086246}
   - component: {fileID: 4536068133039094723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106695,7 +106815,7 @@ GameObject:
   - component: {fileID: 4512897750431111958}
   - component: {fileID: 3883354097439008500}
   - component: {fileID: 7569651636911140370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112070,13 +112190,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020292767534141695}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.038928892, y: -0.9505465, z: 0.012838083, w: 0.30786538}
-  m_LocalPosition: {x: -19.763899, y: 1.6528349, z: -14.851595}
+  m_LocalRotation: {x: 0.031612452, y: -0.24617839, z: -0.026094822, w: 0.9683574}
+  m_LocalPosition: {x: -19.7655, y: 1.5767002, z: -14.788488}
   m_LocalScale: {x: 0.14542553, y: 0.14542553, z: 0.14542553}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 177.227, y: 35.800995, z: 176.205}
+  m_LocalEulerAnglesHint: {x: 177.227, y: 151.381, z: 176.205}
 --- !u!33 &7993971762028144127
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -117416,7 +117536,7 @@ GameObject:
   - component: {fileID: 3168692526422461230}
   - component: {fileID: 2760656407906189389}
   - component: {fileID: 156685628763434243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123025,7 +123145,7 @@ GameObject:
   - component: {fileID: 8275538624423950989}
   - component: {fileID: 2330584494734276657}
   - component: {fileID: 5712149069263078088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123227,13 +123347,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7606591959739072482}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.038928892, y: -0.9505465, z: 0.012838083, w: 0.30786538}
-  m_LocalPosition: {x: 4.7669, y: 1.6558352, z: -14.863495}
-  m_LocalScale: {x: 0.14542553, y: 0.14542553, z: 0.14542553}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0.03624694, y: -0.43742082, z: -0.019142536, w: 0.8983222}
+  m_LocalPosition: {x: 4.7931004, y: 1.5022001, z: -14.8205}
+  m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 177.227, y: 35.800995, z: 176.205}
+  m_LocalEulerAnglesHint: {x: 177.227, y: 127.981995, z: 176.205}
 --- !u!33 &8474657737383186673
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -123462,7 +123582,7 @@ GameObject:
   - component: {fileID: 4349239185969942253}
   - component: {fileID: 4683732513800774260}
   - component: {fileID: 6141346633120953367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125011,7 +125131,7 @@ GameObject:
   - component: {fileID: 8476015078650719918}
   - component: {fileID: 7333216797948160309}
   - component: {fileID: 8079505086858667674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125282,7 +125402,7 @@ GameObject:
   - component: {fileID: 5432329162930083928}
   - component: {fileID: 2349823984025204488}
   - component: {fileID: 237954697926730698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125387,7 +125507,7 @@ GameObject:
   - component: {fileID: 4678287640658331848}
   - component: {fileID: 1060693169715682609}
   - component: {fileID: 3634962171814670599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125716,7 +125836,7 @@ GameObject:
   - component: {fileID: 4360275947299963478}
   - component: {fileID: 2673742886969594440}
   - component: {fileID: 2858516202333844649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125987,7 +126107,7 @@ GameObject:
   - component: {fileID: 9209143798497549035}
   - component: {fileID: 7124050052863175370}
   - component: {fileID: 5334965047946455476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126532,13 +126652,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8460771562678537561}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.86549217, z: -0, w: -0.50092244}
-  m_LocalPosition: {x: -4.9199996, y: -5.75, z: 15.809998}
+  m_LocalRotation: {x: -0, y: 0.5918869, z: -0, w: 0.8060211}
+  m_LocalPosition: {x: -5.2233996, y: -4.683299, z: 16.144505}
   m_LocalScale: {x: 3.4799085, y: 3.479907, z: 3.4799073}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -287.418, z: 0}
 --- !u!33 &8375709166206296135
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126616,13 +126736,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8465356414848882379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0037337076, y: -0.09631221, z: 0.040820755, w: 0.99450684}
-  m_LocalPosition: {x: -19.593498, y: 1.4941998, z: -0.0055942535}
+  m_LocalRotation: {x: -0.008589758, y: -0.023338895, z: -0.040081237, w: -0.9988869}
+  m_LocalPosition: {x: -19.661598, y: 1.4941998, z: 0.01651001}
   m_LocalScale: {x: 0.14542553, y: 0.14542553, z: 0.14542553}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7237328335196733413}
-  m_LocalEulerAnglesHint: {x: 179.124, y: 168.972, z: 184.616}
+  m_LocalEulerAnglesHint: {x: 179.124, y: -177.288, z: 184.616}
 --- !u!33 &6978522500690616803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -136177,7 +136297,7 @@ GameObject:
   - component: {fileID: 572691648469358050}
   - component: {fileID: 4457338200593295805}
   - component: {fileID: 4766070610371832236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136531,7 +136651,7 @@ GameObject:
   - component: {fileID: 3131868412343056348}
   - component: {fileID: 2846049762986177767}
   - component: {fileID: 2338567369792691095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141935,7 +142055,7 @@ GameObject:
   - component: {fileID: 3087932328843840567}
   - component: {fileID: 1143787201372534651}
   - component: {fileID: 6320182992334894753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Dwarf_Balustrade_03 (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
