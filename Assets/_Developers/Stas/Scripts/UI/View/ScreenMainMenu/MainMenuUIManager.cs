@@ -1,4 +1,6 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipmentItem;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
@@ -69,14 +71,24 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
             return viewModel;
         }
 
-        public PopupShopItemViewModel OpenPopupShopItem()
+        public PopupShopItemViewModel OpenPopupShopItem(ShopPanel shopPanel, ShopItemView shopItemView)
         {
-            var ShopItem = new PopupShopItemViewModel(_shopPanel);
+            var shopItem = new PopupShopItemViewModel(shopPanel, shopItemView);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
-            UIRoot.OpenPopup(ShopItem);
+            UIRoot.OpenPopup(shopItem);
 
-            return ShopItem;
+            return shopItem;
+        }
+        
+        public PopupEquipmentItemViewModel OpenPopupEquipmentItem(InventoryItemView inventoryItemView)
+        {
+            var inventoryItem = new PopupEquipmentItemViewModel(inventoryItemView);
+            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+
+            UIRoot.OpenPopup(inventoryItem);
+
+            return inventoryItem;
         }
     } 
 }
