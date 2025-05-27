@@ -24,8 +24,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         private void Construct()
         {
             _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
-            
-            SceneManager.GetActiveScene().GetSceneContainer().
         }
 
         private void Awake()
@@ -47,8 +45,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         
         private void OnDisable()
         {
-            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
-            _retryButton.onClick.RemoveListener(OnRetryButtonClicked);
+            _continueButton.onClick?.RemoveListener(OnContinueButtonClicked);
+            _retryButton.onClick?.RemoveListener(OnRetryButtonClicked);
         }
 
         private void ShowTime()

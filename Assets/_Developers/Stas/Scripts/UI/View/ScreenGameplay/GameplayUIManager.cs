@@ -1,5 +1,6 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupA;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComplete;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete;
 using MythicalBattles.UI.Root.Gameplay;
 using R3;
@@ -34,6 +35,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
         {
             var viewModel = new ScreenLevelCompleteViewModel(levelPassTime, bestTime, score, rewardMoney,
                 _exitSceneRequest, _restartSceneRequest);
+            
+            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+
+            UIRoot.OpenScreen(viewModel);
+
+            return viewModel;
+        }
+
+        public ScreenGameCompleteViewModel OpenScreenGameComplete()
+        {
+            var viewModel = new ScreenGameCompleteViewModel(_exitSceneRequest);
             
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
