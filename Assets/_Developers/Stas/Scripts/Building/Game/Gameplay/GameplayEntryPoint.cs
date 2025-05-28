@@ -1,4 +1,5 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
@@ -15,7 +16,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
 
         //private Container _gameplayContainer;
 
-        public Observable<Unit> Run(Container projectContainer)
+        public Signal Run(Container projectContainer)
         {
             //_gameplayContainer = new ContainerBuilder().SetParent(gameplayContainer)
                 //.AddSingleton(new Subject<Unit>())
@@ -24,7 +25,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
             var gameplayContainer = new ContainerBuilder().SetParent(projectContainer);
 
             gameplayContainer
-                .AddSingleton(new Subject<Unit>())
+                //.AddSingleton(new Subject<Unit>())
+                .AddSingleton(new Signal())
                 .AddSingleton(new GameplayUIManager(gameplayContainer))
                 .AddSingleton(typeof(LevelGeneratorViewModel))
                 .AddSingleton(typeof(WorldGameplayRootViewModel))
@@ -33,9 +35,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
             InitUI(gameplayContainer);
             InitWorld(gameplayContainer.Build());
 
-            var exitSceneSignal = gameplayContainer.Build().Resolve<Subject<Unit>>();
+            //var exitSceneSignal = gameplayContainer.Build().Resolve<Signal>().ExitScene;
+            //var restartSceneSignal = gameplayContainer.Build().Resolve<Signal>().RestartScene;
 
-            return exitSceneSignal.AsObservable();
+            return gameplayContainer.Build().Resolve<Signal>();
         }
 
         private void InitWorld(Container gamplayContainer)

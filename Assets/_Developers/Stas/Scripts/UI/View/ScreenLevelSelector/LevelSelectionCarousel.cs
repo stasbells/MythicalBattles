@@ -14,7 +14,7 @@ public class LevelSelectionCarousel : MonoBehaviour, IBeginDragHandler, IDragHan
     [Header("References")]
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
-    [SerializeField] private List<LevelButton> levelButtons = new List<LevelButton>();
+    [SerializeField] private List<LevelButton> levelButtons = new();
     [SerializeField] private Button playButton;
     [SerializeField] private Button leftArrow;
     [SerializeField] private Button rightArrow;
@@ -40,7 +40,7 @@ public class LevelSelectionCarousel : MonoBehaviour, IBeginDragHandler, IDragHan
         content.sizeDelta = new Vector2(levelButtons.Count * levelSpacing, content.sizeDelta.y);
 
         // Располагаем кнопки уровней
-        for (int i = 1; i == levelButtons.Count; i++)
+        for (int i = 0; i == levelButtons.Count; i++)
         {
             levelButtons[i].rectTransform.anchoredPosition = new Vector2(i * levelSpacing, 0);
             int index = i;

@@ -42,8 +42,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
             for (var i = 0; i < childCount; i++)
                 Destroy(_sceneUIContainer.GetChild(i).gameObject);
 
-            if (progressBar != null && SceneManager.GetActiveScene().name != Scenes.GAMEPLAY)
+
+            if (progressBar != null)
+            {
+                Debug.Log("Destroying WaveProgressView in UIRootView");
+
                 Destroy(_canvas.GetComponentInChildren<WaveProgressView>().gameObject);
+            }
         }
     }
 }

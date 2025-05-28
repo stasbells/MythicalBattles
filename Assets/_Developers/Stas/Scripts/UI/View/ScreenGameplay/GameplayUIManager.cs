@@ -1,22 +1,26 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
+﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComplete;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete;
-using R3;
 using Reflex.Core;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
     public class GameplayUIManager : UIManager
     {
-        private readonly Subject<Unit> _exitSceneRequest;
-        private readonly Subject<Unit> _restartSceneRequest;
+        //private readonly Subject<Unit> _exitSceneRequest;
+        //private readonly Subject<Unit> _restartSceneRequest;
+
+        private readonly Signal _signal;
 
 
         public GameplayUIManager(ContainerBuilder builder) : base(builder) 
         {
-            _exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
+            //_exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
+
+            _signal = builder.Build().Resolve<Signal>();
         }
 
         public ScreenGameplayViewModel OpenScreenGameplay()
@@ -34,7 +38,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             float levelPassTime, float bestTime, int score, int rewardMoney)
         {
             var viewModel = new ScreenLevelCompleteViewModel(levelPassTime, bestTime, score, rewardMoney,
-                _exitSceneRequest, _restartSceneRequest);
+                _signal.ExitSceneRequest, _signal.RestartSceneRequest);
             
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
@@ -45,7 +49,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 
         public ScreenGameCompleteViewModel OpenScreenGameComplete()
         {
-            var viewModel = new ScreenGameCompleteViewModel(_exitSceneRequest);
+            var viewModel = new ScreenGameCompleteViewModel(_signal.ExitSceneRequest);
             
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
@@ -56,7 +60,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
         
         public ScreenDeathViewModel OpenScreenDeath()
         {
-            var viewModel = new ScreenDeathViewModel(_exitSceneRequest, _restartSceneRequest);
+            var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
             
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
@@ -67,7 +71,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
         
         public PopupPauseViewModel OpenPopupPause()
         {
-            var Pause = new PopupPauseViewModel(_exitSceneRequest);
+            var Pause = new PopupPauseViewModel(_signal.ExitSceneRequest);
             
             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 

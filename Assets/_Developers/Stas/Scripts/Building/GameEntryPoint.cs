@@ -100,9 +100,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         {
             if (sceneEntryPoint is GameplayEntryPoint gameplayEntryPoint)
             {
-                gameplayEntryPoint.Run(_cachedSceneContainer).Subscribe(_ =>
+                var signal = gameplayEntryPoint.Run(_cachedSceneContainer);
+
+                signal.ExitSceneRequest.Subscribe(_ =>
                 {
                     _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.GAMEPLAY)));
+                });
+
+                signal.RestartSceneRequest.Subscribe(_ =>
+                {
+                    RestartSceneGamplay();
                 });
             }
             else if (sceneEntryPoint is MainMenuEntryPoint mainMenuEntryPoint)
@@ -112,6 +119,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
                     _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.MAIN_MENU)));
                 });
             }
+        }
+
+        private void RestartSceneGamplay()
+        {
+            _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
         }
 
         private string GetSceneToLoad(string sceneName)
