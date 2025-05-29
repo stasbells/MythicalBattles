@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using Reflex.Attributes;
 using Reflex.Extensions;
@@ -38,11 +39,10 @@ namespace MythicalBattles
             _levelSelection = container.Resolve<ILevelSelectionService>();
             _audioPlayback = container.Resolve<IAudioPlayback>();
 
-            //_levelSelection = SceneContainer.Resolve<ILevelSelectionService>();
-            //_audioPlayback = SceneContainer.Resolve<IAudioPlayback>();
-            //_canvas = SceneContainer.Resolve<UIRootView>().GetComponentInChildren<Canvas>();
+            //_canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
 
-            _canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+            _canvas = GetComponentInParent<WorldGameplayRootBinder>().GameplayContainer
+                .Resolve<UIRootView>().GetComponentInChildren<Canvas>();
 
             _levelEndAlgorithm = GetComponent<LevelEndAlgorithm>();
             
@@ -126,11 +126,6 @@ namespace MythicalBattles
             float currentLevelBaseReward = _levelConfigs[_currentLevelNumber - 1].BaseRewardMoney;
             
             StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward));
-        }
-
-        public void SetCanvas(Canvas canvas)
-        {
-            _canvas = canvas;
         }
     }
 }

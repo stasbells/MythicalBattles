@@ -40,13 +40,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
 
             _rootContainer
-                .AddSingleton(_uiRoot)
-                .AddSingleton(typeof(PersistentData), typeof(IPersistentData))
-                .AddSingleton(typeof(DataLocalProvider), typeof(IDataProvider))
-                .AddSingleton(typeof(PlayerStats), typeof(IPlayerStats))
-                .AddSingleton(typeof(AudioPlayback), typeof(IAudioPlayback))
-                .AddSingleton(typeof(Wallet), typeof(IWallet))
-                .AddSingleton(typeof(LevelSelectionService), typeof(ILevelSelectionService));
+                .AddSingleton(_uiRoot);
         }
 
         private void RunGame()
@@ -86,8 +80,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
                 ? Object.FindFirstObjectByType<GameplayEntryPoint>()
                 : Object.FindFirstObjectByType<MainMenuEntryPoint>();
 
-            var sceneContainer = _cachedSceneContainer = new ContainerBuilder()
-                .SetParent(_rootContainer.Build()).Build();
+            _cachedSceneContainer = new ContainerBuilder().SetParent
+                (_rootContainer.Build()).Build();
 
             RunScene(sceneEntryPoint);
 
