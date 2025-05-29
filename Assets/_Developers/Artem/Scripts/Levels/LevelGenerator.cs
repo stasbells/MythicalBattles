@@ -1,9 +1,9 @@
 using Ami.BroAudio;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using Reflex.Attributes;
 using Reflex.Extensions;
 using System;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,22 +24,25 @@ namespace MythicalBattles
         private int _currentLevelNumber;
 
         private Canvas _canvas;
-        
-        private void Construct()
+
+        [Inject]
+        private void Construct(ILevelSelectionService levelSelection, IAudioPlayback audioPlayback)
         {
-            var container = SceneManager.GetActiveScene().GetSceneContainer();
-            
-            _levelSelection = container.Resolve<ILevelSelectionService>();
-            _audioPlayback = container.Resolve<IAudioPlayback>();
+            _levelSelection = levelSelection;
+            _audioPlayback = audioPlayback;
         }
         
         private void Awake()
         {
-            Construct();
-            
-            //_canvas = SceneContainer.Resolve<UIRootView>().GetComponentInChildren<Canvas>();
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
 
-            _canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+            _levelSelection = container.Resolve<ILevelSelectionService>();
+            _audioPlayback = container.Resolve<IAudioPlayback>();
+
+            //_canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+
+            _canvas = GetComponentInParent<WorldGameplayRootBinder>().GameplayContainer
+                .Resolve<UIRootView>().GetComponentInChildren<Canvas>();
 
             _levelEndAlgorithm = GetComponent<LevelEndAlgorithm>();
             
@@ -50,16 +53,6 @@ namespace MythicalBattles
         {
             if (_spawner != null)
                 _spawner.AllWavesCompleted -= OnAllWavesCompleted;
-        }
-        
-        public void SetCanvas(Canvas canvas)
-        {
-            _canvas = canvas;
-        }
-
-        public void SetUiManager(GameplayUIManager uiManager)
-        {
-            _levelEndAlgorithm.SetUiManager(uiManager);
         }
 
         private void InitializeLevel()

@@ -28,8 +28,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
                 //.AddSingleton(new Subject<Unit>())
                 .AddSingleton(new Signal())
                 .AddSingleton(new GameplayUIManager(gameplayContainer))
+                .AddSingleton(new WorldGameplayRootViewModel(gameplayContainer.Build()))
                 .AddSingleton(typeof(LevelGeneratorViewModel))
-                .AddSingleton(typeof(WorldGameplayRootViewModel))
                 .AddSingleton(typeof(UIGameplayRootViewModel));
                 
             InitUI(gameplayContainer);
