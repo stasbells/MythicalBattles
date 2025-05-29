@@ -7,8 +7,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
     public class WorldGameplayRootBinder : MonoBehaviour
     {
         [SerializeField] private LevelGenerator _levelGeneratorPrefab;
-        [SerializeField] private GameObject _archerPrefab;
+        [SerializeField] private PlayerHealth _archerPrefab;
         [SerializeField] private PlayerFollower _cameraSystemPrefab;
+
+        private GameplayUIManager _uiManager;
 
         public Container GameplayContainer { get; private set; }
 
@@ -22,10 +24,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
 
         private void InitLevelGenerator(Container gamplayContainer)
         {
-            var uiManager = gamplayContainer.Resolve<GameplayUIManager>();
-            var levelGeneratorBinder = Instantiate(_levelGeneratorPrefab, transform);
+            _uiManager = gamplayContainer.Resolve<GameplayUIManager>();
+            var levelGenerator = Instantiate(_levelGeneratorPrefab, transform);
 
-            levelGeneratorBinder.gameObject.transform.parent = null;
+            levelGenerator.SetUiManager(_uiManager);
+
+            levelGenerator.gameObject.transform.parent = null;
 
             // levelGeneratorBinder.Bind(levelGeneratorViewModel);
         }
@@ -33,6 +37,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
         private Transform InitArcher()
         {
             var archerInstance = Instantiate(_archerPrefab);
+
+            _uiManager.SubscribeOnPlayerDeath(archerInstance.IsDead);
 
             return archerInstance.transform;
         }
