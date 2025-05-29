@@ -1,4 +1,5 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+using R3;
 using Reflex.Core;
 using UnityEngine;
 
@@ -7,8 +8,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
     public class WorldGameplayRootBinder : MonoBehaviour
     {
         [SerializeField] private LevelGenerator _levelGeneratorPrefab;
-        [SerializeField] private GameObject _archerPrefab;
+        [SerializeField] private PlayerHealth _archerPrefab;
         [SerializeField] private PlayerFollower _cameraSystemPrefab;
+
+        private GameplayUIManager _uiManager;
 
         public void Bind(WorldGameplayRootViewModel viewModel)
         {
@@ -18,20 +21,25 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
 
         private void InitLevelGenerator(Container gamplayContainer)
         {
-            var uiManager = gamplayContainer.Resolve<GameplayUIManager>();
-            var levelGeneratorBinder = Instantiate(_levelGeneratorPrefab);
+            _uiManager = gamplayContainer.Resolve<GameplayUIManager>();
+            
+            var levelGenerator = Instantiate(_levelGeneratorPrefab);
+            
+            levelGenerator.SetUiManager(_uiManager);
 
             // levelGeneratorBinder.Bind(levelGeneratorViewModel);
         }
 
         private Transform InitArcher()
         {
-            var archerInstance = Instantiate(_archerPrefab);
+            var archer = Instantiate(_archerPrefab);
+            
+            _uiManager.SubscribeOnPlayerDeath(archer.IsDead);
 
-            return archerInstance.transform;
+            return archer.transform;
         }
 
-        public void InitCameraSystem(Transform archerTransform)
+        private void InitCameraSystem(Transform archerTransform)
         {
             var cameraInstance = Instantiate(_cameraSystemPrefab);
             cameraInstance.SetTarget(archerTransform);

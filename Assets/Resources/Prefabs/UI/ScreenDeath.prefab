@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 2927419272565385946}
   - component: {fileID: 7928035807420404835}
   - component: {fileID: 6455602791048997851}
+  - component: {fileID: 3762514967869322881}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -236,6 +237,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3762514967869322881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726024829230139965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918ed5a01946e7c428e670088fb5fd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animateTime: 0.7
+  _maxScale: 1.2
 --- !u!1 &1838452238778417667
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +918,7 @@ GameObject:
   - component: {fileID: 6026733318555416165}
   - component: {fileID: 5090521213617171349}
   - component: {fileID: 8811051456053937966}
+  - component: {fileID: 5211066958220604023}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -1012,6 +1028,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5211066958220604023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967416181563094971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918ed5a01946e7c428e670088fb5fd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animateTime: 0.7
+  _maxScale: 1.2
 --- !u!1 &6669113656687692180
 GameObject:
   m_ObjectHideFlags: 0

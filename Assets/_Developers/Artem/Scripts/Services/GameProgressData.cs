@@ -10,7 +10,7 @@ namespace MythicalBattles
     {
         private const int LevelsCount = 9;
 
-        private readonly List<LevelResultData> _levelsResults;
+        private List<LevelResultData> _levelsResults;
         
         public GameProgressData()
         {
@@ -72,6 +72,11 @@ namespace MythicalBattles
             }
         }
 
+        public void Reset()
+        {
+            _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
+        }
+
         private void SetLevelResults(int levelNumber, int resultPoints, float resultTime)
         {
             var levelResult = _levelsResults[levelNumber - 1];
@@ -79,5 +84,7 @@ namespace MythicalBattles
             levelResult.Time = resultTime;
             _levelsResults[levelNumber - 1] = levelResult;
         }
+        
+        
     }
 }

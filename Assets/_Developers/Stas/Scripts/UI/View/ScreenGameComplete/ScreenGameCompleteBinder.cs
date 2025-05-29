@@ -1,4 +1,5 @@
 using System.Collections;
+using Ami.BroAudio;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
@@ -15,10 +16,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
         [SerializeField] private TMP_Text _score;
         
         private IPersistentData _persistentData;
+        private IAudioPlayback _audioPlayback;
 
         private void Construct()
         {
-            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _persistentData = container.Resolve<IPersistentData>();
+            _audioPlayback = container.Resolve<IAudioPlayback>();
         }
 
         private void Awake()
@@ -35,6 +40,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
             int totalScore = (int)_persistentData.GameProgressData.GetAllPoints();
 
             _score.text = totalScore.ToString();
+
+            SoundID soundID = _audioPlayback.AudioContainer.FinalTittlesTheme;
+            
+            _audioPlayback.Play(soundID);
         }
 
         private void OnDisable()

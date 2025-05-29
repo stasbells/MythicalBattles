@@ -3,6 +3,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using Reflex.Attributes;
 using Reflex.Extensions;
 using System;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,23 +24,19 @@ namespace MythicalBattles
         private int _currentLevelNumber;
 
         private Canvas _canvas;
-
-        [Inject]
-        private void Construct(ILevelSelectionService levelSelection, IAudioPlayback audioPlayback)
+        
+        private void Construct()
         {
-            _levelSelection = levelSelection;
-            _audioPlayback = audioPlayback;
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _levelSelection = container.Resolve<ILevelSelectionService>();
+            _audioPlayback = container.Resolve<IAudioPlayback>();
         }
         
         private void Awake()
         {
-            var container = SceneManager.GetActiveScene().GetSceneContainer();
-
-            _levelSelection = container.Resolve<ILevelSelectionService>();
-            _audioPlayback = container.Resolve<IAudioPlayback>();
-
-            //_levelSelection = SceneContainer.Resolve<ILevelSelectionService>();
-            //_audioPlayback = SceneContainer.Resolve<IAudioPlayback>();
+            Construct();
+            
             //_canvas = SceneContainer.Resolve<UIRootView>().GetComponentInChildren<Canvas>();
 
             _canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
@@ -53,6 +50,16 @@ namespace MythicalBattles
         {
             if (_spawner != null)
                 _spawner.AllWavesCompleted -= OnAllWavesCompleted;
+        }
+        
+        public void SetCanvas(Canvas canvas)
+        {
+            _canvas = canvas;
+        }
+
+        public void SetUiManager(GameplayUIManager uiManager)
+        {
+            _levelEndAlgorithm.SetUiManager(uiManager);
         }
 
         private void InitializeLevel()
@@ -126,11 +133,6 @@ namespace MythicalBattles
             float currentLevelBaseReward = _levelConfigs[_currentLevelNumber - 1].BaseRewardMoney;
             
             StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward));
-        }
-
-        public void SetCanvas(Canvas canvas)
-        {
-            _canvas = canvas;
         }
     }
 }

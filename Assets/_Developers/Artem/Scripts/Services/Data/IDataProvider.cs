@@ -12,5 +12,6 @@ namespace MythicalBattles
         public bool TryLoadGameProgressData();
         public bool TryLoadSettingsData();
         public void ResetPlayerData();
+        public void ResetProgressData();
     }
 }

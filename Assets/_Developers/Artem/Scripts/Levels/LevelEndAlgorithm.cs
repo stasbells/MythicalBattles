@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
-using Reflex.Attributes;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -18,18 +18,22 @@ namespace MythicalBattles
         private IPersistentData _persistentData;
         private GameplayUIManager _gameplayUIManager;
         private float _levelStartTime;
-        private float _maxAdditionalGold; 
-        
-        [Inject]
-        private void Construct(IWallet wallet, IPersistentData persistentData, IDataProvider dataProvider)
+        private float _maxAdditionalGold;
+        private float _levelPassTime;
+        private int _score;
+        private int _rewardMoney;
+
+        private void Construct()
         {
-            _wallet = wallet;
-            _dataProvider = dataProvider;
-            _persistentData = persistentData;
+            _wallet = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IWallet>();
+            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
+            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
         }
 
         private void Awake()
         {
+            Construct();
+            
             _levelStartTime = Time.time;
         }
 
@@ -40,44 +44,44 @@ namespace MythicalBattles
 
         public IEnumerator Run(int levelNumber, float baselevelReward)
         {
-            float levelPassTime = Time.time - _levelStartTime;
-            int score;
-            int rewardMoney;
-
+            _levelPassTime = Time.time - _levelStartTime;
+            
             _maxAdditionalGold = baselevelReward * AdditionalGoldFactor;
 
-            if (levelPassTime >= MaxTimeInSecondsForBonus)
+            if (_levelPassTime >= MaxTimeInSecondsForBonus)
             {
-                rewardMoney = (int)baselevelReward;
-                score = 1;
+                _rewardMoney = (int)baselevelReward;
+                _score = 1;
             }
             else
             {
-                float timeRatio = 1 - (levelPassTime / MaxTimeInSecondsForBonus);
+                float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
                 
-                rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
+                _rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
 
-                score = CalculateScore(timeRatio);
+                _score = CalculateScore(timeRatio);
             }
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
-
-            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, score, levelPassTime))  
+            
+            if (TryGetRewardMoney(levelNumber, _rewardMoney) == false)
+                _rewardMoney = 0;
+            
+            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, _score, _levelPassTime))  
             {
                 _dataProvider.SaveGameProgressData();
             }
 
-            float bestTime = _persistentData.GameProgressData.LevelsResults[levelNumber].Time;
+            float bestTime = _persistentData.GameProgressData.LevelsResults[levelNumber - 1].Time;
 
-            if (TryGetRewardMoney(levelNumber, rewardMoney) == false)
-                rewardMoney = 0;
-            
-            _gameplayUIManager.OpenScreenLevelComplete(levelPassTime, bestTime, score, rewardMoney);
+            _gameplayUIManager.OpenScreenLevelComplete(_levelPassTime, bestTime, _score, _rewardMoney);
         }
 
         private int CalculateRewardMoney(float timeRatio, float baselevelReward)
         {
-            return (int)(baselevelReward + Mathf.RoundToInt(timeRatio * _maxAdditionalGold));
+            float reward = baselevelReward + Mathf.RoundToInt(timeRatio * _maxAdditionalGold);
+            
+            return (int)reward;
         }
 
         private int CalculateScore(float timeRatio)
@@ -91,7 +95,7 @@ namespace MythicalBattles
                 return false;
             else
             {
-                _wallet.AddCoins((int)rewardMoney);
+                _wallet.AddCoins(rewardMoney);
                 
                 return true;
             }

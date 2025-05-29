@@ -20,10 +20,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         [SerializeField] private TMP_Text _bestTimeText;
         
         private IPersistentData _persistentData;
-
+        private ILevelSelectionService _levelSelectionService;
+   
         private void Construct()
         {
-            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _persistentData = container.Resolve<IPersistentData>();
+            _levelSelectionService = container.Resolve<ILevelSelectionService>();
         }
 
         private void Awake()
@@ -33,16 +37,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void OnEnable()
         {
+            _continueButton.onClick.AddListener(OnContinueButtonClicked);
+            _retryButton.onClick.AddListener(OnRetryButtonClicked);
+        }
+
+        private void Start()
+        {
             ShowTime();
             
             ShowScore();
             
             ShowRewardMoney();
-            
-            _continueButton.onClick.AddListener(OnContinueButtonClicked);
-            _retryButton.onClick.AddListener(OnRetryButtonClicked);
         }
-        
+
         private void OnDisable()
         {
             _continueButton.onClick?.RemoveListener(OnContinueButtonClicked);
@@ -51,7 +58,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void ShowTime()
         {
-            
+            if(ViewModel == null)
+                throw new InvalidOperationException();
+
             Debug.Log(ViewModel.LevelPassTime);
             Debug.Log(ViewModel.BestTime);
             
@@ -99,7 +108,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void OnContinueButtonClicked()
         {
-            ViewModel.RequestGoToMainMenu();
+            if(_levelSelectionService.CurrentLevelNumber == _levelSelectionService.LastLevelNumber)
+                ViewModel.RequestOpenScreenGameComplete();
+            else
+                ViewModel.RequestGoToMainMenu();
         }
         
         private void OnRetryButtonClicked()

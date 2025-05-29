@@ -113,5 +113,12 @@ namespace MythicalBattles
 
             PlayerDataReseted?.Invoke();
         }
+
+        public void ResetProgressData()
+        {
+            _persistentData.GameProgressData.Reset();
+            
+            SaveGameProgressData();
+        }
     }
 }

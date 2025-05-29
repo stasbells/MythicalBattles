@@ -8,8 +8,13 @@ namespace MythicalBattles
         public event Action<int> CoinsChanged;
 
         private IPersistentData _persistentData;
+        private IDataProvider _dataProvider;
 
-        public Wallet(IPersistentData persistentData) => _persistentData = persistentData;
+        public Wallet(IPersistentData persistentData, IDataProvider dataProvider)
+        {
+            _persistentData = persistentData;
+            _dataProvider = dataProvider;
+        }
 
         public void AddCoins(int coins)
         {
@@ -18,6 +23,8 @@ namespace MythicalBattles
             _persistentData.PlayerData.AddMoney(coins);
             
             CoinsChanged?.Invoke(_persistentData.PlayerData.Money);
+            
+            _dataProvider.SavePlayerData();
         }
 
         public int GetCurrentCoins() => _persistentData.PlayerData.Money;

@@ -16,7 +16,8 @@ namespace MythicalBattles
             
             _tweener = transform.DOScale(_maxScale, _animateTime)
                 .SetLoops(-1, LoopType.Yoyo)
-                .SetEase(Ease.InOutSine);;
+                .SetEase(Ease.InOutSine)
+                .SetUpdate(true);;
         }
 
         private void OnDisable()

@@ -12,10 +12,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
         {
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _retryButton.onClick.AddListener(OnRetryButtonClicked);
+            
+            Time.timeScale = 0f;
         }
 
         private void OnDisable()
         {
+            Time.timeScale = 1f;
+            
             _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _retryButton.onClick.RemoveListener(OnRetryButtonClicked);
         }
