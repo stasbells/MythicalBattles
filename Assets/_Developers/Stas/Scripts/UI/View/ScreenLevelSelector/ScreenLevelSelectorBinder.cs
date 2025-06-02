@@ -7,6 +7,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
     {
         [SerializeField] private Button _goToSceneGameplayButton;
         [SerializeField] private Button _goToScreenMainMenuButton;
+        [SerializeField] private LevelSelectionCarousel _levelSelectionCarousel;
 
         private void OnEnable()
         {
