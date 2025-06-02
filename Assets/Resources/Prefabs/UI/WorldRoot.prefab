@@ -77,5 +77,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGeneratorPrefab: {fileID: 5468041452534971480, guid: 3edf7db55baa747409861ce498da2880, type: 3}
-  _archerPrefab: {fileID: 560187270254431267, guid: 6623b7cf0c485ae4e9c361c4110a0495, type: 3}
+  _archerPrefab: {fileID: 6992156434023091181, guid: 6623b7cf0c485ae4e9c361c4110a0495, type: 3}
   _cameraSystemPrefab: {fileID: 4812336291313251869, guid: 2223be320a619da4292215cdb530b33f, type: 3}

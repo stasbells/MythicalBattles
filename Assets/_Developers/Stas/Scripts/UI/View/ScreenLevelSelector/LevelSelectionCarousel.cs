@@ -3,202 +3,151 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelSelectionCarousel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
 {
-    [Header("Settings")]
-    [SerializeField] private float levelSpacing = 300f;
-    [SerializeField] private float snapSpeed = 10f;
-    [SerializeField] private float scaleFactor = 0.7f;
-    [SerializeField] private float dragThreshold = 50f;
-
-    [Header("References")]
-    [SerializeField] private ScrollRect scrollRect;
-    [SerializeField] private RectTransform content;
-    [SerializeField] private List<LevelButton> levelButtons = new();
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button leftArrow;
-    [SerializeField] private Button rightArrow;
-
-    private int currentLevelIndex = 1;
-    private bool isDragging = false;
-    private Vector2 startDragPosition;
-
-    private void Start()
+    public class LevelSelectionCarousel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        scrollRect.onValueChanged.AddListener(OnScrollValueChanged);
-        leftArrow.onClick.AddListener(ScrollLeft);
-        rightArrow.onClick.AddListener(ScrollRight);
-        playButton.onClick.AddListener(PlayCurrentLevel);
+        [Header("Settings")]
+        [SerializeField] private float _levelSpacing = 925f;
+        [SerializeField] private float _snapSpeed = 5f;
+        [SerializeField] private float _scaleFactor = 0.4f;
+        [SerializeField] private float _dragThreshold = 50f;
 
-        InitializeContent();
-        UpdateLevelButtons();
-    }
+        [Header("References")]
+        [SerializeField] private ScrollRect _scrollRect;
+        [SerializeField] private RectTransform _content;
+        [SerializeField] private List<LevelButton> _levelButtons = new();
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _leftArrow;
+        [SerializeField] private Button _rightArrow;
 
-    private void InitializeContent()
-    {
-        // Устанавливаем размер контента
-        content.sizeDelta = new Vector2(levelButtons.Count * levelSpacing, content.sizeDelta.y);
+        private int _currentLevelIndex = 0;
+        private bool _isUnlocked = true;
 
-        // Располагаем кнопки уровней
-        for (int i = 0; i == levelButtons.Count; i++)
+        private bool _isDragging = false;
+        private Vector2 _startDragPosition;
+
+        private void Awake()
         {
-            levelButtons[i].rectTransform.anchoredPosition = new Vector2(i * levelSpacing, 0);
-            int index = i;
-            levelButtons[i].button.onClick.AddListener(() => OnLevelSelected(index));
+            InitializeContent();
+            UpdateButtons();
         }
-    }
 
-    private void OnScrollValueChanged(Vector2 value)
-    {
-        if (!isDragging) return;
-        UpdateVisuals();
-    }
-
-    private void Update()
-    {
-        if (!isDragging)
+        private void OnEnable()
         {
-            SnapToCurrentLevel();
+            _scrollRect.onValueChanged.AddListener(OnScrollValueChanged);
+            _leftArrow.onClick.AddListener(ScrollLeft);
+            _rightArrow.onClick.AddListener(ScrollRight);
         }
-    }
 
-    private void SnapToCurrentLevel()
-    {
-        float targetPosition = (float)currentLevelIndex / (levelButtons.Count - 1);
-        scrollRect.horizontalNormalizedPosition = Mathf.Lerp(
-            scrollRect.horizontalNormalizedPosition,
-            targetPosition,
-            snapSpeed * Time.deltaTime
-        );
-        UpdateVisuals();
-    }
-
-    private void UpdateVisuals()
-    {
-        for (int i = 0; i < levelButtons.Count; i++)
+        private void OnDisable()
         {
-            // Рассчитываем расстояние от центра
-            float viewportX = content.anchoredPosition.x + levelButtons[i].rectTransform.anchoredPosition.x;
-            float distance = Mathf.Abs(viewportX) / levelSpacing;
-
-            // Применяем масштаб
-            float scale = Mathf.Clamp(1 - distance * (1 - scaleFactor), scaleFactor, 1f);
-            levelButtons[i].rectTransform.localScale = Vector3.one * scale;
+            _scrollRect.onValueChanged.RemoveListener(OnScrollValueChanged);
+            _leftArrow.onClick.RemoveListener(ScrollLeft);
+            _rightArrow.onClick.RemoveListener(ScrollRight);
         }
-    }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        isDragging = true;
-        startDragPosition = content.anchoredPosition;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        // Пустая реализация, но необходима для работы интерфейса
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        isDragging = false;
-
-        // Определяем направление свайпа
-        float dragDistance = content.anchoredPosition.x - startDragPosition.x;
-
-        if (Mathf.Abs(dragDistance) > dragThreshold)
+        private void Update()
         {
-            if (dragDistance > 0 && currentLevelIndex > 0)
+            if (!_isDragging)
+                SnapToCurrentLevel();
+        }
+
+        private void InitializeContent()
+        {
+            _content.sizeDelta = new Vector2(_levelButtons.Count * _levelSpacing, _content.sizeDelta.y);
+        }
+
+        private void OnScrollValueChanged(Vector2 value)
+        {
+            if (!_isDragging)
+                return;
+
+            UpdateVisuals();
+        }
+
+        private void SnapToCurrentLevel()
+        {
+            float targetPosition = (float)_currentLevelIndex / (_levelButtons.Count - 1);
+
+            _scrollRect.horizontalNormalizedPosition = Mathf.Lerp
+                (_scrollRect.horizontalNormalizedPosition, targetPosition, _snapSpeed * Time.deltaTime);
+
+            UpdateVisuals();
+        }
+
+        private void UpdateVisuals()
+        {
+            for (int i = 0; i < _levelButtons.Count; i++)
             {
-                currentLevelIndex--;
-            }
-            else if (dragDistance < 0 && currentLevelIndex < levelButtons.Count - 1)
-            {
-                currentLevelIndex++;
+                float viewportX = _content.anchoredPosition.x + _levelButtons[i].RectTransform.anchoredPosition.x;
+                float distance = Mathf.Abs(viewportX) / _levelSpacing;
+
+                float scale = Mathf.Clamp(1 - distance * (1 - _scaleFactor), _scaleFactor, 1f);
+                _levelButtons[i].RectTransform.localScale = Vector3.one * scale;
             }
         }
 
-        UpdateLevelButtons();
-    }
-
-    private void OnLevelSelected(int index)
-    {
-        if (!isDragging)
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            currentLevelIndex = index;
-            UpdateLevelButtons();
-        }
-    }
-
-    private void ScrollLeft()
-    {
-        if (currentLevelIndex > 0)
-        {
-            currentLevelIndex--;
-            UpdateLevelButtons();
-        }
-    }
-
-    private void ScrollRight()
-    {
-        if (currentLevelIndex < levelButtons.Count - 1)
-        {
-            currentLevelIndex++;
-            UpdateLevelButtons();
-        }
-    }
-
-    private void UpdateLevelButtons()
-    {
-        for (int i = 0; i < levelButtons.Count; i++)
-        {
-            //bool isUnlocked = i <= GameManager.Instance.UnlockedLevels;
-            //levelButtons[i].SetLocked(!isUnlocked);
-
-            //if (isUnlocked)
-            //{
-            //    levelButtons[i].SetStars(GameManager.Instance.GetLevelStars(i));
-            //}
+            _isDragging = true;
+            _startDragPosition = _content.anchoredPosition;
         }
 
-        UpdateArrowsVisibility();
-    }
+        public void OnDrag(PointerEventData eventData) { }
 
-    private void UpdateArrowsVisibility()
-    {
-        leftArrow.gameObject.SetActive(currentLevelIndex > 0);
-        rightArrow.gameObject.SetActive(currentLevelIndex < levelButtons.Count - 1);
-    }
-
-    private void PlayCurrentLevel()
-    {
-        //if (currentLevelIndex <= GameManager.Instance.UnlockedLevels)
-        //{
-        //    GameManager.Instance.LoadLevel(currentLevelIndex);
-        //}
-    }
-}
-
-[System.Serializable]
-public class LevelButton
-{
-    public RectTransform rectTransform;
-    public Button button;
-    //public GameObject lockedIcon;
-    public List<GameObject> stars;
-
-    //public void SetLocked(bool locked)
-    //{
-    //    if (lockedIcon != null) lockedIcon.SetActive(locked);
-    //    if (button != null) button.interactable = !locked;
-    //}
-
-    public void SetStars(int count)
-    {
-        if (stars == null) return;
-
-        for (int i = 0; i < stars.Count; i++)
+        public void OnEndDrag(PointerEventData eventData)
         {
-            if (stars[i] != null) stars[i].SetActive(i < count);
+            _isDragging = false;
+
+            float dragDistance = _content.anchoredPosition.x - _startDragPosition.x;
+
+            if (Mathf.Abs(dragDistance) > _dragThreshold)
+            {
+                if (dragDistance > 0 && _currentLevelIndex > 0)
+                    _currentLevelIndex--;
+                else if (dragDistance < 0 && _currentLevelIndex < _levelButtons.Count - 1)
+                    _currentLevelIndex++;
+            }
+
+            UpdateButtons();
+        }
+
+        private void ScrollLeft()
+        {
+            if (_currentLevelIndex > 0)
+            {
+                _currentLevelIndex--;
+                UpdateButtons();
+            }
+        }
+
+        private void ScrollRight()
+        {
+            if (_currentLevelIndex < _levelButtons.Count - 1)
+            {
+                _currentLevelIndex++;
+                UpdateButtons();
+            }
+        }
+
+        private void UpdateButtons()
+        {
+            for (int i = 0; i < _levelButtons.Count; i++)
+            {
+                if (i == _currentLevelIndex)
+                    _playButton.interactable = _isUnlocked;
+
+                _levelButtons[i].SetLocked(!_isUnlocked);
+            }
+
+            UpdateArrowsVisibility();
+        }
+
+        private void UpdateArrowsVisibility()
+        {
+            _leftArrow.interactable = _currentLevelIndex > 0;
+            _rightArrow.interactable = _currentLevelIndex < _levelButtons.Count - 1;
         }
     }
 }
