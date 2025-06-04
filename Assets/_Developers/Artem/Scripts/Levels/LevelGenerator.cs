@@ -126,7 +126,9 @@ namespace MythicalBattles
         {
             float currentLevelBaseReward = _levelConfigs[_currentLevelNumber - 1].BaseRewardMoney;
 
-            StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward));
+            float currentLevelMaxScore = _levelConfigs[_currentLevelNumber - 1].MaxScore;
+
+            StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward, currentLevelMaxScore));
         }
 
         public void SetUiManager(GameplayUIManager gameplayUIManager)

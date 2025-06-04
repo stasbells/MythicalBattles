@@ -9,7 +9,6 @@ namespace MythicalBattles
     public class LevelEndAlgorithm : MonoBehaviour
     {
         private const float MaxTimeInSecondsForBonus = 1200f;
-        private const float MaxPoints = 2400f;
         private const float AdditionalGoldFactor = 0.08f;
         private const float DelayBeforeShowUI = 2f;
         
@@ -42,7 +41,7 @@ namespace MythicalBattles
             _gameplayUIManager = gameplayUIManager;
         }
 
-        public IEnumerator Run(int levelNumber, float baselevelReward)
+        public IEnumerator Run(int levelNumber, float baselevelReward, float maxScore)
         {
             _levelPassTime = Time.time - _levelStartTime;
             
@@ -59,7 +58,7 @@ namespace MythicalBattles
                 
                 _rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
 
-                _score = CalculateScore(timeRatio);
+                _score = CalculateScore(timeRatio, maxScore);
             }
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
@@ -84,9 +83,9 @@ namespace MythicalBattles
             return (int)reward;
         }
 
-        private int CalculateScore(float timeRatio)
+        private int CalculateScore(float timeRatio, float maxScore)
         {
-            return Mathf.RoundToInt(timeRatio * MaxPoints);
+            return Mathf.RoundToInt(timeRatio * maxScore);
         }
 
         private bool TryGetRewardMoney(int levelNumber, int rewardMoney)
