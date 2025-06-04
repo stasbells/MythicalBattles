@@ -196,7 +196,7 @@ namespace MythicalBattles
 
             if (_activeEnemiesCount == 0)
             {
-                if (_currentWaveNumber < _waves.Length - 1)
+                if (_currentWaveNumber < _waves.Length)
                     Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
 
                 StartNextWave();

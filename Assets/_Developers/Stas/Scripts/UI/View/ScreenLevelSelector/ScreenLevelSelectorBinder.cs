@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using Reflex.Extensions;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
@@ -8,6 +11,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         [SerializeField] private Button _goToSceneGameplayButton;
         [SerializeField] private Button _goToScreenMainMenuButton;
         [SerializeField] private LevelSelectionCarousel _levelSelectionCarousel;
+        
+        private ILevelSelectionService _levelSelectionService;
+
+        private void Construct()
+        {
+            _levelSelectionService = SceneManager.GetActiveScene().GetSceneContainer().Resolve<ILevelSelectionService>();
+        }
+
+        private void Awake()
+        {
+            Construct();
+        }
 
         private void OnEnable()
         {
@@ -23,6 +38,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
 
         private void OnGoToSceneGameplayButtonClicked()
         {
+            _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
+            
             ViewModel.RequestGoToSceneGameplay();
         }
 
