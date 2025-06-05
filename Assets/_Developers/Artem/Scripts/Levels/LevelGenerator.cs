@@ -73,26 +73,26 @@ namespace MythicalBattles
             PlayLevelMusicTheme(_currentLevelNumber);
         }
 
-        private void SpawnLevelDesign(int levelIndex)
+        private void SpawnLevelDesign(int levelNumber)
         {
-            var designPrefab = _levelConfigs[levelIndex - 1].LevelDesignPrefab;
+            var designPrefab = _levelConfigs[levelNumber - 1].LevelDesignPrefab;
 
             if (designPrefab == null)
             {
-                Debug.LogError($"Interior prefab missing for level {levelIndex}");
+                Debug.LogError($"Interior prefab missing for level {levelNumber}");
                 return;
             }
 
             _ = Instantiate(designPrefab);
         }
 
-        private void InitializeWaveSpawner(int levelIndex)
+        private void InitializeWaveSpawner(int levelNumber)
         {
-            var spawnerPrefab = _levelConfigs[levelIndex - 1].WavesSpawner;
+            var spawnerPrefab = _levelConfigs[levelNumber - 1].WavesSpawner;
 
             if (spawnerPrefab == null)
             {
-                Debug.LogError($"WaveSpawner missing for level {levelIndex}");
+                Debug.LogError($"WaveSpawner missing for level {levelNumber}");
                 return;
             }
 
@@ -115,9 +115,9 @@ namespace MythicalBattles
             _spawner.AllWavesCompleted += OnAllWavesCompleted;
         }
 
-        private void PlayLevelMusicTheme(int levelIndex)
+        private void PlayLevelMusicTheme(int levelNumber)
         {
-            SoundID musicTheme = _levelConfigs[levelIndex - 1].MusicTheme;
+            SoundID musicTheme = _levelConfigs[levelNumber - 1].MusicTheme;
 
             _audioPlayback.Play(musicTheme);
         }
@@ -126,7 +126,9 @@ namespace MythicalBattles
         {
             float currentLevelBaseReward = _levelConfigs[_currentLevelNumber - 1].BaseRewardMoney;
 
-            StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward));
+            float currentLevelMaxScore = _levelConfigs[_currentLevelNumber - 1].MaxScore;
+
+            StartCoroutine(_levelEndAlgorithm.Run(_currentLevelNumber, currentLevelBaseReward, currentLevelMaxScore));
         }
 
         public void SetUiManager(GameplayUIManager gameplayUIManager)

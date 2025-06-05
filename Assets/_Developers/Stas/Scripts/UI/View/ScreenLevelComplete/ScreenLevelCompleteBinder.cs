@@ -64,7 +64,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
             Debug.Log(ViewModel.LevelPassTime);
             Debug.Log(ViewModel.BestTime);
             
-            _completionTime.text = ConvertTimeToString(ViewModel.LevelPassTime);
+            _completionTime.text = TimeFormatter.GetTimeInString(ViewModel.LevelPassTime);
             
             if (Mathf.Approximately(ViewModel.LevelPassTime, ViewModel.BestTime))
             {
@@ -78,7 +78,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
                 _bestTimeText.gameObject.SetActive(true);
                 _newRecordText.gameObject.SetActive(false);
                 
-                _bestTime.text = ConvertTimeToString(ViewModel.BestTime);
+                _bestTime.text = TimeFormatter.GetTimeInString(ViewModel.BestTime);
             }
         }
 
@@ -93,17 +93,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
                 _moneyAwardView.SetActive(false);
             else
                 _moneyAward.text = ViewModel.RewardMoney.ToString();
-        }
-        
-        private string ConvertTimeToString(float time)
-        {
-            int minutes = Mathf.FloorToInt(time / 60f);
-            
-            int seconds = Mathf.FloorToInt(time % 60f);
-            
-            string formattedTime = $"{minutes:00}:{seconds:00}";
-            
-            return formattedTime;
         }
 
         private void OnContinueButtonClicked()

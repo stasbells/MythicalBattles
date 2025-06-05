@@ -1,9 +1,13 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
+﻿using System;
+using Ami.BroAudio;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
 using R3;
 using Reflex.Core;
+using Reflex.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
 {
@@ -12,7 +16,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 
         private Container _mainMenuContainer;
+        private IAudioPlayback _audioPlayback;
 
+        private void Construct()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+        
+        private void Awake()
+        {
+            Construct();
+        }
+        
         public Observable<Unit> Run(Container mainMenuContainer)
         {
             _mainMenuContainer = new ContainerBuilder().SetParent(mainMenuContainer)
@@ -28,6 +43,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
                 .Build();
 
             InitUI(mainMenuViewModelsContainer.Build());
+            
+            PlayMenuTheme();
 
             var exitSceneSignal = mainMenuViewModelsContainer.Build().Resolve<Subject<Unit>>();
 
@@ -47,6 +64,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
 
             uiManager.OpenScreenShop();
             uiManager.OpenScreenMainMenu();
+        }
+
+        private void PlayMenuTheme()
+        {
+            SoundID mainThemeID = _audioPlayback.AudioContainer.MenuTheme;
+            
+            _audioPlayback.Play(mainThemeID);
         }
     }
 }

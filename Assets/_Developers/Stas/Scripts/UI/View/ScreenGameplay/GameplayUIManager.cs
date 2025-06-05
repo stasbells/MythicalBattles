@@ -13,7 +13,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
     public class GameplayUIManager : UIManager
     {
-        private const float DeathScreenDelay = 1f;
+        private const float DeathScreenDelay = 2f;
         
         //private readonly Subject<Unit> _exitSceneRequest;
         //private readonly Subject<Unit> _restartSceneRequest;

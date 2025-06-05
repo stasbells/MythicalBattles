@@ -47,7 +47,7 @@ namespace MythicalBattles
             return resultsSum;
         }
 
-        public int GetLastOpenedLevelNumber()
+        public int GetLastUnlockedLevelNumber()
         {
             for (int i = 0; i < _levelsResults.Count; i++)
             {

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using Reflex.Extensions;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
@@ -8,6 +12,25 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         [SerializeField] private Button _goToSceneGameplayButton;
         [SerializeField] private Button _goToScreenMainMenuButton;
         [SerializeField] private LevelSelectionCarousel _levelSelectionCarousel;
+        [SerializeField] private TMP_Text _totalScore;
+
+        private IPersistentData _persistentData;
+        private ILevelSelectionService _levelSelectionService;
+
+        private void Construct()
+        {
+            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            _levelSelectionService = SceneManager.GetActiveScene().GetSceneContainer().Resolve<ILevelSelectionService>();
+        }
+
+        private void Awake()
+        {
+            Construct();
+
+            int totalScore = (int)_persistentData.GameProgressData.GetAllPoints();
+            
+            _totalScore.text = totalScore.ToString();
+        }
 
         private void OnEnable()
         {
@@ -23,6 +46,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
 
         private void OnGoToSceneGameplayButtonClicked()
         {
+            _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
+            
             ViewModel.RequestGoToSceneGameplay();
         }
 
