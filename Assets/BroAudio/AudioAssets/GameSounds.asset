@@ -43,9 +43,17 @@ MonoBehaviour:
   - <Name>k__BackingField: MainTheme
     <ID>k__BackingField: 268435458
     MulticlipsPlayMode: 0
-    Clips: []
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: ebc52afc8f3bcb74581fe5debf3a4216, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0
+      EndPosition: 0
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
     <MasterVolume>k__BackingField: 1
-    <Loop>k__BackingField: 0
+    <Loop>k__BackingField: 1
     <SeamlessLoop>k__BackingField: 0
     <TransitionTime>k__BackingField: 0
     <SpatialSetting>k__BackingField: {fileID: 0}
@@ -117,8 +125,8 @@ MonoBehaviour:
     <ID>k__BackingField: 268435459
     MulticlipsPlayMode: 0
     Clips:
-    - AudioClip: {fileID: 8300000, guid: 7a4a86a1ad6c47f45a8212989c773ffa, type: 3}
-      Volume: 0.5191038
+    - AudioClip: {fileID: 8300000, guid: a57a6f06fec732a4d8864343c90eb1c7, type: 3}
+      Volume: 0.4953535
       Delay: 0
       StartPosition: 0
       EndPosition: 0
@@ -171,8 +179,8 @@ MonoBehaviour:
     <ID>k__BackingField: 268435461
     MulticlipsPlayMode: 0
     Clips:
-    - AudioClip: {fileID: 8300000, guid: e767c7444845c0a409f18d6d3d6527f7, type: 3}
-      Volume: 0.5314025
+    - AudioClip: {fileID: 8300000, guid: 45e50a76a25dc5d4f8205decd5b8cc32, type: 3}
+      Volume: 0.4953535
       Delay: 0
       StartPosition: 0
       EndPosition: 0
