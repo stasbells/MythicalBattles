@@ -8,7 +8,7 @@ namespace MythicalBattles
         [SerializeField] private float _additionalHealth;
 
         public float AdditionalHealth => _additionalHealth;
-        public override string DisplayText => $"Item effect: +{_additionalHealth} Health";
+        public override string DisplayText => $"+{_additionalHealth} Health";
         public override string TypeText => $"{EquipmentGrade} Helmet";
         
         public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
