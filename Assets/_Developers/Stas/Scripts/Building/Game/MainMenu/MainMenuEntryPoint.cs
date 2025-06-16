@@ -16,16 +16,22 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 
         private Container _mainMenuContainer;
+        private IPersistentData _persistentData;
+        private IDataProvider _dataProvider;
         private IAudioPlayback _audioPlayback;
 
         private void Construct()
         {
+            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
             _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
         
         private void Awake()
         {
             Construct();
+            
+            LoadData();
         }
         
         public Observable<Unit> Run(Container mainMenuContainer)
@@ -51,6 +57,30 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
             return exitSceneSignal.AsObservable();
         }
 
+        private void LoadData()
+        {
+            if (_dataProvider.TryLoadPlayerData() == false)
+            {
+                _persistentData.PlayerData = new PlayerData();
+                
+                _dataProvider.SavePlayerData();
+            }
+            
+            if (_dataProvider.TryLoadGameProgressData() == false)   
+            {
+                _persistentData.GameProgressData = new GameProgressData();
+
+                _dataProvider.SaveGameProgressData();
+            }
+
+            if (_dataProvider.TryLoadSettingsData() == false)      
+            {
+                _persistentData.SettingsData = new SettingsData();
+
+                _dataProvider.SaveSettingsData();
+            }
+        }
+
         private void InitUI(Container viewsContainer)
         {
             var uiRoot = viewsContainer.Resolve<UIRootView>();
@@ -70,7 +100,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
         {
             SoundID mainThemeID = _audioPlayback.AudioContainer.MenuTheme;
             
-            _audioPlayback.Play(mainThemeID);
+            _audioPlayback.PlayMusic(mainThemeID);
         }
     }
 }

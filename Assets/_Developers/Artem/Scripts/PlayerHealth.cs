@@ -31,13 +31,11 @@ namespace MythicalBattles
 
             SoundID damageSound = _audioPlayback.AudioContainer.PlayerDamaged;
             
-            _audioPlayback.Play(damageSound);
+            _audioPlayback.PlaySound(damageSound);
         }
 
         protected override void OnAwakeBehaviour()
         {
-            base.OnAwakeBehaviour();
-        
             var container = SceneManager.GetActiveScene().GetSceneContainer();
 
             MaxHealth.Value = container.Resolve<IPlayerStats>().MaxHealth.Value;
@@ -51,7 +49,7 @@ namespace MythicalBattles
 
             SoundID deathSound = _audioPlayback.AudioContainer.PlayerDeath;
             
-            _audioPlayback.Play(deathSound);
+            _audioPlayback.PlaySound(deathSound);
         }
     }
 }

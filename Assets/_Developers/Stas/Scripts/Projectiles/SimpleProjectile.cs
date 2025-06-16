@@ -26,7 +26,7 @@ namespace MythicalBattles
                 {
                     SoundID shotSound = _audioPlayback.AudioContainer.BaseShot;
                     
-                    _audioPlayback.Play(shotSound);
+                    _audioPlayback.PlaySound(shotSound);
                 }
             }
         }

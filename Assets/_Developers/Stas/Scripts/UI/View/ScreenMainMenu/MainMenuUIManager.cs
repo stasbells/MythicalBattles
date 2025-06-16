@@ -6,6 +6,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial;
 using R3;
 using Reflex.Core;
 
@@ -46,6 +47,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
             var viewModel = new ScreenShopViewModel(this, _shopPanel);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
+            UIRoot.OpenScreen(viewModel);
+
+            return viewModel;
+        }
+
+        public ScreenTutorialViewModel OpenScreenTutorial()
+        {
+            var viewModel = new ScreenTutorialViewModel(_exitSceneRequest);
+            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
+            
             UIRoot.OpenScreen(viewModel);
 
             return viewModel;

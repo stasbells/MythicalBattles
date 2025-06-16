@@ -1,4 +1,5 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
+﻿using Ami.BroAudio;
+using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
         private IWallet _wallet;
         private IPersistentData _persistentData;
         private IDataProvider _dataProvider;
+        private IAudioPlayback _audioPlayback;
         private ShopItemView _shopItemView;
         private ItemSelector _itemSelector;
 
@@ -32,6 +34,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             _persistentData = container.Resolve<IPersistentData>();
             _dataProvider = container.Resolve<IDataProvider>();
             _wallet = container.Resolve<IWallet>();
+            _audioPlayback = container.Resolve<IAudioPlayback>();
 
             _itemSelector = new ItemSelector(_persistentData);
         }
@@ -102,6 +105,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             _wallet.Spend(_shopItemView.Price);
             
             _itemSelector.Visit(_shopItemView.Item);
+
+            SoundID paySound = _audioPlayback.AudioContainer.PayMoney;
+            
+            _audioPlayback.PlaySound(paySound);
             
             _dataProvider.SavePlayerData();
             

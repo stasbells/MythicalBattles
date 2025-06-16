@@ -41,7 +41,7 @@ namespace MythicalBattles
             
             SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
             
-            _audioPlayback.Play(bossTheme);
+            _audioPlayback.PlayMusic(bossTheme);
         }
 
         private void OnDisable()
@@ -97,7 +97,7 @@ namespace MythicalBattles
             
             SoundID bossSpell = _audioPlayback.AudioContainer.BossSpell;
             
-            _audioPlayback.Play(bossSpell);
+            _audioPlayback.PlaySound(bossSpell);
         }
 
         private void SpawnProjecttiles()

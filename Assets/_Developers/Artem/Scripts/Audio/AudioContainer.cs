@@ -11,7 +11,7 @@ namespace MythicalBattles
     public class AudioContainer : ScriptableObject
     {
         [SerializeField] private float _volumeDecayTime = 1.5f;
-        
+
         [field: SerializeField] public SoundID MenuTheme { get; private set; }
         [field: SerializeField] public SoundID BossTheme { get; private set; }
         [field: SerializeField] public SoundID GraveyardTheme { get; private set; }
@@ -28,34 +28,31 @@ namespace MythicalBattles
         [field: SerializeField] public SoundID BossSpell { get; private set; }
         [field: SerializeField] public SoundID PayMoney { get; private set; }
         [field: SerializeField] public SoundID ButtonClick { get; private set; }
-        
+
         private SoundID _currentPlayingMusicID;
-        
-        public void Play(SoundID soundID, float volume)
+
+        public void PlayMusic(SoundID soundID, float volume)
         {
-            if (GetSoundsIdList().Contains(soundID))
-            {
-                BroAudio.SetVolume(soundID, volume);    
-                
-                BroAudio.Play(soundID);
+            if (GetMusicIdList().Contains(soundID) == false)
+                throw new InvalidCastException("Music ID not found");
 
-                return;
-            }
-            
-            if (GetMusicIdList().Contains(soundID))
-            {
-                BroAudio.Stop(_currentPlayingMusicID);
-                
-                _currentPlayingMusicID = soundID;
+            BroAudio.Stop(_currentPlayingMusicID);
 
-                BroAudio.SetVolume(soundID, volume);   
-                
-                BroAudio.Play(soundID);
-                
-                return;
-            }
+            _currentPlayingMusicID = soundID;
+
+            BroAudio.Play(soundID);
             
-            throw new InvalidCastException("Sound ID not found");
+            BroAudio.SetVolume(soundID, volume);
+        }
+
+        public void PlaySound(SoundID soundID, float volume)
+        {
+            if (GetSoundsIdList().Contains(soundID) == false)
+                throw new InvalidCastException("Sound ID not found");
+
+            BroAudio.Play(soundID);
+            
+            BroAudio.SetVolume(soundID, volume);
         }
 
         public void Stop(SoundID soundID)
@@ -63,11 +60,11 @@ namespace MythicalBattles
             BroAudio.Stop(soundID, _volumeDecayTime);
         }
 
-        public void SetVolume(float volume)
+        public void SetMusicVolume(float volume)
         {
             BroAudio.SetVolume(_currentPlayingMusicID, volume);
         }
-        
+
         private IReadOnlyList<SoundID> GetMusicIdList()
         {
             List<SoundID> idList = new List<SoundID>
@@ -82,7 +79,7 @@ namespace MythicalBattles
 
             return idList;
         }
-        
+
         private IReadOnlyList<SoundID> GetSoundsIdList()
         {
             List<SoundID> idList = new List<SoundID>

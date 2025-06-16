@@ -73,7 +73,7 @@ namespace MythicalBattles
 
                         shotSound = _audioPlayback.AudioContainer.ElectricShot;
                         
-                        _audioPlayback.Play(shotSound);
+                        _audioPlayback.PlaySound(shotSound);
                         
                         break;
                     case DamageTypes.Fire:
@@ -82,7 +82,7 @@ namespace MythicalBattles
                         
                         shotSound = _audioPlayback.AudioContainer.FireShot;
                         
-                        _audioPlayback.Play(shotSound);
+                        _audioPlayback.PlaySound(shotSound);
                         
                         break;
                     case DamageTypes.Poison:
@@ -91,7 +91,7 @@ namespace MythicalBattles
                         
                         shotSound = _audioPlayback.AudioContainer.PoisonShot;
                         
-                        _audioPlayback.Play(shotSound);
+                        _audioPlayback.PlaySound(shotSound);
                         
                         break;
                     default:

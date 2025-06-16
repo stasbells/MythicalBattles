@@ -5,31 +5,63 @@ namespace MythicalBattles
 {
     public class AudioPlayback : IAudioPlayback
     {
-        private IPersistentData _persistentData;
+        private float _currentMusicVolume;
+        private float _currentSoundsVolume;
         
-        public AudioPlayback(IPersistentData persistentData)
+        private IPersistentData _persistentData;
+        private IDataProvider _dataProvider;
+
+        public AudioPlayback(IPersistentData persistentData, IDataProvider dataProvider)
         {
             _persistentData = persistentData;
+            _dataProvider = dataProvider;
+            
             AudioContainer = Resources.Load<AudioContainer>("Prefabs/AudioContainer");
         }
         
         public AudioContainer AudioContainer { get;  set; }
-        
-        public void Play(SoundID soundID)
+
+        public void PlayMusic(SoundID soundID)
         {
-            AudioContainer.Play(soundID, _persistentData.SettingsData.Volume);
+            _currentMusicVolume = _persistentData.SettingsData.MusicVolume;
+            
+            Debug.Log(_currentMusicVolume + "громкость музыки");
+            
+            AudioContainer.PlayMusic(soundID, _currentMusicVolume);
+        }
+        
+        public void PlaySound(SoundID soundID)
+        {
+            _currentSoundsVolume = _persistentData.SettingsData.SoundsVolume;
+            
+            Debug.Log(_currentSoundsVolume + "громкость звука");
+
+            AudioContainer.PlaySound(soundID, _currentSoundsVolume);
         }
         
         public void StopPlay(SoundID soundID)
         {
             AudioContainer.Stop(soundID);
         }
-
-        public void ChangeVolume(float volume)
+        
+        public void ChangeMusicVolume(float volume)
         {
-           _persistentData.SettingsData.SetVolume(volume);
+            _currentMusicVolume = volume;
+            
+           _persistentData.SettingsData.SetMusicVolume(volume);
            
-           AudioContainer.SetVolume(volume);
+           _dataProvider.SaveSettingsData();
+           
+           AudioContainer.SetMusicVolume(volume);
+        }
+        
+        public void ChangeSoundsVolume(float volume)
+        {
+            _currentSoundsVolume = volume;
+            
+            _persistentData.SettingsData.SetSoundsVolume(volume);
+            
+            _dataProvider.SaveSettingsData();
         }
     }
 }

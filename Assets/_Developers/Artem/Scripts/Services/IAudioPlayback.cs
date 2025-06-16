@@ -5,8 +5,10 @@ namespace MythicalBattles
     public interface IAudioPlayback
     {
         public AudioContainer AudioContainer { get; set; }
-        public void Play(SoundID soundID);
+        public void PlayMusic(SoundID soundID);
+        public void PlaySound(SoundID soundID);
         public void StopPlay(SoundID soundID);
-        public void ChangeVolume(float volume);
+        public void ChangeMusicVolume(float volume);
+        public void ChangeSoundsVolume(float volume);
     }
 }

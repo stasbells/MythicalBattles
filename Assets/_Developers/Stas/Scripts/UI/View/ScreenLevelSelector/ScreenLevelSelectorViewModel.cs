@@ -7,14 +7,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
     {
         private readonly MainMenuUIManager _uiManager;
         private readonly Subject<Unit> _exitSceneRequest;
-
-        public override string Name => "ScreenLevelSelector";
-
+        
         public ScreenLevelSelectorViewModel(MainMenuUIManager mainMenuUIManager, Subject<Unit> exitSceneRequest)
         {
             _uiManager = mainMenuUIManager;
             _exitSceneRequest = exitSceneRequest;
         }
+        
+        public override string Name => "ScreenLevelSelector";
 
         public void RequestGoToSceneGameplay()
         {
@@ -24,6 +24,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         public void RequestGoToScreenMainMenu()
         {
             _uiManager.OpenScreenMainMenu();
+        }
+        
+        public void RequestGoToTutorial()
+        {
+            _uiManager.OpenScreenTutorial();
         }
     }
 }

@@ -100,7 +100,8 @@ namespace MythicalBattles
 
             _persistentData.SettingsData = new SettingsData(
 
-                volume: savedData.Volume);
+                musicVolume: savedData.MusicVolume,
+                soundsVolume: savedData.SoundsVolume);
 
             return true;
         }

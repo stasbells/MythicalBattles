@@ -55,20 +55,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
 
             _playerStats.UpdatePlayerData(_persistentData.PlayerData);
-
-            if (_dataProvider.TryLoadGameProgressData() == false)   // временно для теста потом перенести в бутстрап общий
-            {
-                _persistentData.GameProgressData = new GameProgressData();
-
-                _dataProvider.SaveGameProgressData();
-            }
-
-            if (_dataProvider.TryLoadSettingsData() == false)       // временно для теста потом перенести в бутстрап общий
-            {
-                _persistentData.SettingsData = new SettingsData();
-
-                _dataProvider.SaveSettingsData();
-            }
         }
 
         protected override void OnBind(ScreenShopViewModel viewModel)

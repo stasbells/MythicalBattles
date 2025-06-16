@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
 {
@@ -47,8 +48,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         private void OnGoToSceneGameplayButtonClicked()
         {
             _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
+
+            // if (YandexGame.savesData.isFirstSession)
+            // {
+            //     ViewModel.RequestGoToTutorial();
+            //     return;
+            // }
             
-            ViewModel.RequestGoToSceneGameplay();
+            ViewModel.RequestGoToTutorial();
+            
+            // ViewModel.RequestGoToSceneGameplay();
         }
 
         private void OnGoToScreenMainMenuButtonClicked()

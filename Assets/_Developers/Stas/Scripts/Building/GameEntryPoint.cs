@@ -105,7 +105,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
                 signal.RestartSceneRequest.Subscribe(_ =>
                 {
-                    RestartSceneGamplay();
+                    RestartSceneGameplay();
                 });
             }
             else if (sceneEntryPoint is MainMenuEntryPoint mainMenuEntryPoint)
@@ -117,7 +117,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             }
         }
 
-        private void RestartSceneGamplay()
+        private void RestartSceneGameplay()
         {
             _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
         }

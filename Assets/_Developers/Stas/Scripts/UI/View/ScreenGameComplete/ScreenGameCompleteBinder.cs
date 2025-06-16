@@ -43,7 +43,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
 
             SoundID soundID = _audioPlayback.AudioContainer.FinalTittlesTheme;
             
-            _audioPlayback.Play(soundID);
+            _audioPlayback.PlayMusic(soundID);
         }
 
         private void OnDisable()

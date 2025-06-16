@@ -35,6 +35,11 @@ namespace MythicalBattles
         
         private IDisposable _timerSubscription;
 
+        private void OnDestroy()
+        {
+            _timerSubscription.Dispose();
+        }
+
         public void Initialize(Canvas canvas, int wavesCount, int timeBetweenWaves)
         {
             _canvas = canvas;

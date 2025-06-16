@@ -44,7 +44,7 @@ namespace MythicalBattles
         {
             SoundID boostKeepUpSound = _audioPlayback.AudioContainer.BoostUpKeep;
                 
-            _audioPlayback.Play(boostKeepUpSound);
+            _audioPlayback.PlaySound(boostKeepUpSound);
         }
     }
 }

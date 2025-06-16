@@ -119,7 +119,7 @@ namespace MythicalBattles
         {
             SoundID musicTheme = _levelConfigs[levelNumber - 1].MusicTheme;
 
-            _audioPlayback.Play(musicTheme);
+            _audioPlayback.PlayMusic(musicTheme);
         }
 
         private void OnAllWavesCompleted()

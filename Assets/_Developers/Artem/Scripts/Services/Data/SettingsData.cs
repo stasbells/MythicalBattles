@@ -6,27 +6,39 @@ namespace MythicalBattles
     [Serializable]
     public class SettingsData
     {
-        private const float InitVolume = 1f;
+        private const float InitVolume = 0.7f;
 
         public SettingsData()
         {
-            Volume = InitVolume;
+            MusicVolume = InitVolume;
+            SoundsVolume = InitVolume;
         }
 
         [JsonConstructor]
-        public SettingsData(float volume)
+        public SettingsData(float musicVolume, float soundsVolume)
         {
-            SetVolume(volume);
+            SetMusicVolume(musicVolume);
+            
+            SetSoundsVolume(soundsVolume);
         }
         
-        public float Volume { get; private set; }
-
-        public void SetVolume(float volume)
+        public float MusicVolume { get; private set; }
+        public float SoundsVolume { get; private set; }
+        
+        public void SetMusicVolume(float volume)
         {
             if(volume < 0 || volume > 1)
                 throw new InvalidOperationException();
 
-            Volume = volume;
+            MusicVolume = volume;
+        }
+        
+        public void SetSoundsVolume(float volume)
+        {
+            if(volume < 0 || volume > 1)
+                throw new InvalidOperationException();
+
+            SoundsVolume = volume;
         }
     }
 }
