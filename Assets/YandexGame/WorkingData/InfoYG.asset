@@ -81,12 +81,82 @@ MonoBehaviour:
       uniqueID: 321
     - rank: 5
       name: Player this
-      score: 40
+      score: 30
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 000
     - rank: 6
-      name: Player6
+      name: Player322
+      score: 64
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player62
+      score: 3
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player678
+      score: 89
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player66
+      score: 42
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Pla
+      score: 11
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Playe452
+      score: 24
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: "Player\u0414\u0449\u0446"
+      score: 38
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player7
       score: 50
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 30
+      name: "\u0418\u0432\u0430\u043D"
+      score: 47
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: "\u0421\u0430\u043D\u044F"
+      score: 101
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: "\u0432\u043F\u043E\u0430\u0432\u043B\u043E"
+      score: 7
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player20
+      score: 26
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 4
+      name: Player6
+      score: 53
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 5
+      name: Player6
+      score: 25
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player19
+      score: 21
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 321
     thisPlayer:

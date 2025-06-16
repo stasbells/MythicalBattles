@@ -11,7 +11,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
     public class PopupShopItemBinder : PopupBinder<PopupShopItemViewModel>
     {
         private const float AlphaChangeFactor = 0.4f;
-        private const string Price = "Price: ";
 
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _backgroundImage;
@@ -63,7 +62,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 
             if (_shopItemView.IsAvailableToBuy)
             {
-                _priceText.text = Price + _shopItemView.Price;
+                _priceText.text = _shopItemView.Price.ToString();
                 
                 _buyItemButton.onClick.AddListener(OnBuyItemButtonClicked);
 
