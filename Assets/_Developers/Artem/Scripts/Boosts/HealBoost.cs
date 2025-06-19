@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Reflex.Extensions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -11,21 +10,15 @@ namespace MythicalBattles
         [SerializeField] private float _healFactor = 0.4f;
         
         private PlayerHealth _playerHealth;
-        
-        protected override void OnTriggerEnter(Collider other)
+
+        protected override void OnTriggerEnterBehaviour(Collider otherCollider)
         {
-            if (other.TryGetComponent(out PlayerHealth playerHealth))
+            if (otherCollider.TryGetComponent(out PlayerHealth playerHealth))
             {
                 _playerHealth = playerHealth;
-                
-                RememberPlayer(playerHealth.transform);
-            
-                Apply();
-
-                Destroy(gameObject);  //потом возможно поменять на отключение и помещение в пул
             }
         }
-        
+
         protected override void Apply()
         {
             base.Apply();

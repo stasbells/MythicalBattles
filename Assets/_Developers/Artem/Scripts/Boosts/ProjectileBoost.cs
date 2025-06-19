@@ -7,18 +7,12 @@ namespace MythicalBattles
         [SerializeField] private ParticleSystem _projectilePrefab;
         
         private PlayerShooter _playerShooter;
-        
-        protected override void OnTriggerEnter(Collider other)
+
+        protected override void OnTriggerEnterBehaviour(Collider otherCollider)
         {
-            if (other.TryGetComponent(out PlayerShooter playerShooter))
+            if (otherCollider.TryGetComponent(out PlayerShooter playerShooter))
             {
                 _playerShooter = playerShooter;
-
-                RememberPlayer(playerShooter.transform);
-                
-                Apply();
-
-                Destroy(gameObject);  //потом возможно поменять на отключение и помещение в пул
             }
         }
 

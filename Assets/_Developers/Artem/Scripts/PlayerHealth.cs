@@ -27,6 +27,9 @@ namespace MythicalBattles
 
         public override void TakeDamage(float damage)
         {
+            if (IsDead.Value)
+                return;
+            
             base.TakeDamage(damage);
 
             SoundID damageSound = _audioPlayback.AudioContainer.PlayerDamaged;

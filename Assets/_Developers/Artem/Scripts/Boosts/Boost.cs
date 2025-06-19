@@ -1,4 +1,3 @@
-using System;
 using Ami.BroAudio;
 using Reflex.Extensions;
 using UnityEngine;
@@ -18,33 +17,36 @@ namespace MythicalBattles
             _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
 
-        protected virtual void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider otherCollider)
         {
-            if (other.TryGetComponent(out PlayerMover player))
+            OnTriggerEnterBehaviour(otherCollider);
+            
+            if (otherCollider.TryGetComponent(out PlayerMover player))
             {
                 RememberPlayer(player.transform);
                 
                 Apply();
+                
+                Instantiate(_boostTakingEffect, Player);
 
                 Destroy(gameObject);
             }
         }
 
-        private void OnDestroy()
+        protected virtual void OnTriggerEnterBehaviour(Collider otherCollider)
         {
-            Instantiate(_boostTakingEffect, Player);
         }
-
-        protected void RememberPlayer(Transform player)
-        {
-            Player = player;
-        }
-
+        
         protected virtual void Apply()
         {
             SoundID boostKeepUpSound = _audioPlayback.AudioContainer.BoostUpKeep;
                 
             _audioPlayback.PlaySound(boostKeepUpSound);
+        }
+        
+        private void RememberPlayer(Transform player)
+        {
+            Player = player;
         }
     }
 }
