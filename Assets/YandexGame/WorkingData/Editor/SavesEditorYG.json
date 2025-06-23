@@ -1,16 +1,16 @@
 {
-    "idSave": 530,
-    "isFirstSession": true,
-    "language": "ru",
-    "promptDone": false,
-    "money": 1,
-    "newPlayerName": "Hello!",
-    "openLevels": [
-        false,
-        true,
-        false
-    ],
-    "JsonPlayerData": "{\r\n  \"Money\": 71000,\r\n  \"SelectedWeaponID\": \"BowRare\",\r\n  \"SelectedArmorID\": \"ArmorCommon\",\r\n  \"SelectedHelmetID\": \"HelmetRare\",\r\n  \"SelectedBootsID\": \"BootsLegendary\",\r\n  \"SelectedNecklaceID\": \"NecklaceCommon\",\r\n  \"SelectedRingID\": \"RingSimple\"\r\n}",
-    "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 119.145706,\r\n      \"Points\": 1081.0\r\n    },\r\n    {\r\n      \"Time\": 142.541458,\r\n      \"Points\": 1234.0\r\n    },\r\n    {\r\n      \"Time\": 174.2761,\r\n      \"Points\": 1368.0\r\n    },\r\n    {\r\n      \"Time\": 213.744873,\r\n      \"Points\": 1479.0\r\n    },\r\n    {\r\n      \"Time\": 205.271149,\r\n      \"Points\": 1658.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}",
-    "JsonGameSettingsData": "{\r\n  \"MusicVolume\": 0.414434463,\r\n  \"SoundsVolume\": 0.4616884\r\n}"
+  "idSave": 536,
+  "isFirstSession": true,
+  "language": "en",
+  "promptDone": false,
+  "money": 1,
+  "newPlayerName": "Hello!",
+  "openLevels": [
+    false,
+    true,
+    false
+  ],
+  "JsonPlayerData": "{\r\n  \"Money\": 71000,\r\n  \"SelectedWeaponID\": \"BowRare\",\r\n  \"SelectedArmorID\": \"ArmorCommon\",\r\n  \"SelectedHelmetID\": \"HelmetRare\",\r\n  \"SelectedBootsID\": \"BootsLegendary\",\r\n  \"SelectedNecklaceID\": \"NecklaceCommon\",\r\n  \"SelectedRingID\": \"RingSimple\"\r\n}",
+  "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 119.145706,\r\n      \"Points\": 1081.0\r\n    },\r\n    {\r\n      \"Time\": 142.541458,\r\n      \"Points\": 1234.0\r\n    },\r\n    {\r\n      \"Time\": 174.2761,\r\n      \"Points\": 1368.0\r\n    },\r\n    {\r\n      \"Time\": 213.744873,\r\n      \"Points\": 1479.0\r\n    },\r\n    {\r\n      \"Time\": 205.271149,\r\n      \"Points\": 1658.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}",
+  "JsonGameSettingsData": "{\r\n  \"MusicVolume\": 0.414434463,\r\n  \"SoundsVolume\": 0.4616884\r\n}"
 }
