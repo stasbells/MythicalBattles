@@ -1,3 +1,4 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -7,10 +8,24 @@ namespace MythicalBattles
     {
         [SerializeField] private float _additionalAttackSpeed;
 
+        private readonly string _itemName = "Ring";
+        private readonly string _improvementType = "Attack speed";
+        private readonly float _improvementFactor = 100f;
+
         public float AdditionalAttackSpeed => _additionalAttackSpeed;
-        public override string DisplayText => $"+{_additionalAttackSpeed*100f}% Attack speed";
-        public override string TypeText => $"{EquipmentGrade} Ring";
-        
-        public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
+        public override string DisplayText => GetDisplayText();
+        public override string TypeText => GetTypeText();
+
+        public override void Accept(IShopItemVisitor visitor) => visitor.Visit(this);
+
+        private string GetDisplayText()
+        {
+            return $"+{_additionalAttackSpeed * _improvementFactor}% {LanguagesDictionary.GetTranslation(_improvementType)}";
+        }
+
+        private string GetTypeText()
+        {
+            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
+        }
     }
 }

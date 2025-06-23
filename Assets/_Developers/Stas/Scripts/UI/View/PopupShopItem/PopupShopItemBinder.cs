@@ -17,6 +17,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
         [SerializeField] private Button _buyItemButton;
         [SerializeField] private TMP_Text _itemStatsText;
         [SerializeField] private TMP_Text _itemTypeText;
+        [SerializeField] private TMP_Text _priceCountText;
         [SerializeField] private TMP_Text _priceText;
 
         private IWallet _wallet;
@@ -62,13 +63,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 
             if (_shopItemView.IsAvailableToBuy)
             {
-                _priceText.text = _shopItemView.Price.ToString();
+                _priceCountText.text = _shopItemView.Price.ToString();
                 
                 _buyItemButton.onClick.AddListener(OnBuyItemButtonClicked);
 
                 if (_wallet.GetCurrentCoins() < _shopItemView.Price)
                 {
-                    _priceText.color = Color.red;
+                    _priceCountText.color = Color.red;
 
                     _buyItemButton.interactable = false;
 
@@ -81,9 +82,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
                     buttonImage.color = buttonColor;
                 }
             }
-
             else
             {
+                _priceCountText.gameObject.SetActive(false);
                 _priceText.gameObject.SetActive(false);
                 _buyItemButton.gameObject.SetActive(false);
             }

@@ -1,3 +1,4 @@
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -7,10 +8,23 @@ namespace MythicalBattles
     {
         [SerializeField] private float _additionalDamage;
 
+        private readonly string _itemName = "Bow";
+        private readonly string _improvementType = "Damage";
+
         public float AdditionalDamage => _additionalDamage;
-        public override string DisplayText => $"+{_additionalDamage} Damage";
-        public override string TypeText => $"{EquipmentGrade} Bow";
-        
-        public override void Accept(IShopItemVisitor visitor)  => visitor.Visit(this);
-    }
+        public override string DisplayText => GetDisplayText();
+        public override string TypeText => GetTypeText();
+
+        public override void Accept(IShopItemVisitor visitor) => visitor.Visit(this);
+
+        private string GetDisplayText()
+        {
+            return $"+{_additionalDamage} {LanguagesDictionary.GetTranslation(_improvementType)}";
+        }
+
+        private string GetTypeText()
+        {
+            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
+        }
+    }   
 }

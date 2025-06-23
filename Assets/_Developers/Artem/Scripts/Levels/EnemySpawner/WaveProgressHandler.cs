@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using R3;
 using TMPro;
 using UnityEngine;
@@ -10,8 +11,9 @@ namespace MythicalBattles
 {
     public class WaveProgressHandler : MonoBehaviour
     {
-        private const string Wave = "Wave";
-        
+        private readonly string _wave = "Wave";
+        private readonly string _nextWaveTextFormat = "Next wave in";
+
         [SerializeField] private WaveProgressView _progressSliderView;
         [SerializeField] private float _smoothSpeed = 2f;
         [SerializeField] private float _fadeDuration = 0.4f;
@@ -78,7 +80,7 @@ namespace MythicalBattles
             
             FadeIn(_progressSliderCanvasGroup);
 
-            _waveNumberText.text = $"{Wave} {waveNumber}";
+            _waveNumberText.text = $"{LanguagesDictionary.GetTranslation(_wave)} {waveNumber}";
             
             _currentWaveTotalEnemies = totalEnemies;
             _defeatedEnemies = 0;
@@ -169,7 +171,7 @@ namespace MythicalBattles
             
             _ticksBetweenWaves = _timeBetweenWaves - 1;
 
-            _nextWaveText.text = $"Next wave in {_ticksBetweenWaves}!";
+            _nextWaveText.text = $"{LanguagesDictionary.GetTranslation(_nextWaveTextFormat)} {_ticksBetweenWaves}";
 
             _timerSubscription = Observable
                 .Interval(TimeSpan.FromSeconds(1f))
@@ -179,7 +181,7 @@ namespace MythicalBattles
         private void AddTick()
         {
             _ticksBetweenWaves--;
-            _nextWaveText.text = $"Next wave in {_ticksBetweenWaves}!";
+            _nextWaveText.text = $"{LanguagesDictionary.GetTranslation(_nextWaveTextFormat)} {_ticksBetweenWaves}";
 
             if (_ticksBetweenWaves == 1)
             {
