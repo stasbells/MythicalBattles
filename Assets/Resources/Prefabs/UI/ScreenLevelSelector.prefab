@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 439304179493797335}
   - component: {fileID: 3960405196314893880}
   - component: {fileID: 4604991489198000563}
+  - component: {fileID: 5820719075205561335}
   m_Layer: 5
   m_Name: LeftButton
   m_TagString: Untagged
@@ -591,6 +592,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5820719075205561335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755711335916736074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be8d18aa86547043863b0eccc3b303d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757108344792805337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,6 +4907,7 @@ GameObject:
   - component: {fileID: 7200439193620719841}
   - component: {fileID: 7944500049396163755}
   - component: {fileID: 718529560305753130}
+  - component: {fileID: 3866343694538741646}
   m_Layer: 5
   m_Name: RightButton
   m_TagString: Untagged
@@ -5037,6 +5051,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3866343694538741646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461665524641118662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be8d18aa86547043863b0eccc3b303d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5493117734356662863
 GameObject:
   m_ObjectHideFlags: 0
@@ -7447,7 +7473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fcfcd7da3c44c554db6791d28dd79a59, type: 2}
   m_sharedMaterial: {fileID: -4152293307406879841, guid: fcfcd7da3c44c554db6791d28dd79a59, type: 2}

@@ -37,7 +37,7 @@ namespace MythicalBattles
 
         private void OnDestroy()
         {
-            _timerSubscription.Dispose();
+            _timerSubscription?.Dispose();
         }
 
         public void Initialize(Canvas canvas, int wavesCount, int timeBetweenWaves)

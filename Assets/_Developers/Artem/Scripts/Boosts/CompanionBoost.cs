@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -8,23 +6,17 @@ namespace MythicalBattles
     public abstract class CompanionBoost : Boost
     {
         protected CompanionSpawner CompanionSpawner;
-        
-        protected override void OnTriggerEnter(Collider other)
+
+        protected override void OnTriggerEnterBehaviour(Collider otherCollider)
         {
-            if (other.TryGetComponent(out PlayerMover player))
+            if (otherCollider.TryGetComponent(out PlayerMover player))
             {
-                CompanionSpawner companionSpawner = other.gameObject.GetComponentInChildren<CompanionSpawner>();
+                CompanionSpawner companionSpawner = otherCollider.gameObject.GetComponentInChildren<CompanionSpawner>();
             
                 if(companionSpawner == null)
                     throw new InvalidOperationException();
 
                 CompanionSpawner = companionSpawner;
-                
-                RememberPlayer(player.transform);
-            
-                Apply();
-
-                Destroy(gameObject);  //потом возможно поменять на отключение и помещение в пул
             }
         }
     }
