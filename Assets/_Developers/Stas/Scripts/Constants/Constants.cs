@@ -5,6 +5,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
     public static class Constants
     {
         public const string ExitSceneRequest = nameof(ExitSceneRequest);
+        public const string BestScoreLeaderboard = nameof(BestScoreLeaderboard);
+        public const string TestLeaderbord = nameof(TestLeaderbord);
 
         public static readonly float MoveControllerRotationAngle = 45f;
 

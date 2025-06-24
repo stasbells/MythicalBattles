@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using Newtonsoft.Json;
 using UnityEngine;
+using YG;
 
 namespace MythicalBattles
 {
@@ -64,6 +66,8 @@ namespace MythicalBattles
             {
                 SetLevelResults(levelNumber, resultPoints, resultTime);
 
+                YandexGame.NewLeaderboardScores(Constants.TestLeaderbord, (int)GetAllPoints());
+
                 return true;
             }
             else
@@ -83,8 +87,6 @@ namespace MythicalBattles
             levelResult.Points = resultPoints;
             levelResult.Time = resultTime;
             _levelsResults[levelNumber - 1] = levelResult;
-        }
-        
-        
+        }      
     }
 }
