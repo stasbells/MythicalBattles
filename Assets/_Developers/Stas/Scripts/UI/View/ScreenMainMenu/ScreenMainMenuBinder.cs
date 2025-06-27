@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
@@ -10,6 +11,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
         [SerializeField] private Button _goToScreenLeaderboardButton;
         [SerializeField] private Button _goToScreenSettingsButton;
 
+        [SerializeField] private List<Button> _serviceButtons;
+
+        private void Awake()
+        {
+#if UNITY_EDITOR
+            foreach (var button in _serviceButtons)
+            {
+                if (button != null)
+                    button.gameObject.SetActive(true);
+            }
+#endif
+        }
+
         private void OnEnable()
         {
             _goToScreenLevelSelectorButton.onClick.AddListener(OnGoToScreenLevelSelectorButtonClicked);
@@ -17,7 +31,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
             _goToScreenLeaderboardButton.onClick.AddListener(OnGoToScreenLeaderboardButtonClicked);
             _goToScreenSettingsButton.onClick.AddListener(OnGoToScreenSettingsButtonClicked);
         }
-
 
         private void OnDisable()
         {

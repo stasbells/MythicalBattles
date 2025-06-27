@@ -23,18 +23,14 @@ namespace MythicalBattles
 
         public void PlayMusic(SoundID soundID)
         {
-            _currentMusicVolume = _persistentData.SettingsData.MusicVolume;
-            
-            Debug.Log(_currentMusicVolume + "громкость музыки");
+            _currentMusicVolume = _persistentData.SettingsData.MusicVolume;         
             
             AudioContainer.PlayMusic(soundID, _currentMusicVolume);
         }
         
         public void PlaySound(SoundID soundID)
         {
-            _currentSoundsVolume = _persistentData.SettingsData.SoundsVolume;
-            
-            Debug.Log(_currentSoundsVolume + "громкость звука");
+            _currentSoundsVolume = _persistentData.SettingsData.SoundsVolume;         
 
             AudioContainer.PlaySound(soundID, _currentSoundsVolume);
         }

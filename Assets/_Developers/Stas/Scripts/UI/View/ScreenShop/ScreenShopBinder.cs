@@ -61,8 +61,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         {
             viewModel.ShopPanel.OnNext(_shop.ShopPanel);
 
-            Debug.Log($"ScreenShopBinder: ShopPanel: {viewModel.ShopPanel.Value}");
-
             viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
         }
     }

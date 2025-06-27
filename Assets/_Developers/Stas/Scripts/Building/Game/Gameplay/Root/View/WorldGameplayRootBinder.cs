@@ -30,8 +30,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
             levelGenerator.SetUiManager(_uiManager);
 
             levelGenerator.gameObject.transform.parent = null;
-
-            // levelGeneratorBinder.Bind(levelGeneratorViewModel);
         }
 
         private Transform InitArcher()

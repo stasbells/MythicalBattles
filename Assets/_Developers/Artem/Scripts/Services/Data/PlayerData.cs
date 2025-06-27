@@ -7,7 +7,7 @@ namespace MythicalBattles
     [Serializable]
     public class PlayerData
     {
-        private const int InitMoney = 100000;
+        private const int InitMoney = 0;
         
         [JsonIgnore] private EquipmentsShopContent _shopContent;
         

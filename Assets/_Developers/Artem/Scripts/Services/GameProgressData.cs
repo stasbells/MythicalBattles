@@ -66,7 +66,7 @@ namespace MythicalBattles
             {
                 SetLevelResults(levelNumber, resultPoints, resultTime);
 
-                YandexGame.NewLeaderboardScores(Constants.TestLeaderbord, (int)GetAllPoints());
+                YandexGame.NewLeaderboardScores(Constants.TestLeaderboard, (int)GetAllPoints());
 
                 return true;
             }

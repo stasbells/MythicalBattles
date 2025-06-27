@@ -29,7 +29,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
             Construct();
 
             int totalScore = (int)_persistentData.GameProgressData.GetAllPoints();
-            
+
             _totalScore.text = totalScore.ToString();
         }
 
@@ -49,15 +49,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         {
             _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
 
-            // if (YandexGame.savesData.isFirstSession)
-            // {
-            //     ViewModel.RequestGoToTutorial();
-            //     return;
-            // }
-            
-            ViewModel.RequestGoToTutorial();
-            
-            // ViewModel.RequestGoToSceneGameplay();
+            if (YandexGame.savesData.isFirstSession)
+                ViewModel.RequestGoToTutorial();
+            else
+                ViewModel.RequestGoToSceneGameplay();
         }
 
         private void OnGoToScreenMainMenuButtonClicked()

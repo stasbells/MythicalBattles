@@ -320,7 +320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderbord
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d704db3add354e641b36b367a6d94638, type: 2}
   m_sharedMaterial: {fileID: 2143127819209939410, guid: d704db3add354e641b36b367a6d94638, type: 2}
@@ -407,7 +407,7 @@ MonoBehaviour:
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
   ru: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
-  en: Leaderbord
+  en: Leaderboard
   tr: Liderbord
   az: 
   be: 
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 5319660771336480890}
   - component: {fileID: 6598942829178877614}
   m_Layer: 5
-  m_Name: Leaderbord
+  m_Name: Leaderboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423e13a42d313f948a13bcedae13febe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLB: Test Leaderboard
+  nameLB: TestLeaderboard
   maxQuantityPlayers: 10
   quantityTop: 3
   quantityAround: 3
