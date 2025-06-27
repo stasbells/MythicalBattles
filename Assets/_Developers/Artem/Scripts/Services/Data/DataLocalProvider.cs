@@ -1,5 +1,6 @@
-using System;
 using Newtonsoft.Json;
+using System;
+using UnityEngine;
 using YG;
 
 namespace MythicalBattles
@@ -23,7 +24,7 @@ namespace MythicalBattles
 
             YandexGame.SaveProgress();
         }
-        
+
         public void SaveGameProgressData()
         {
             string jsonGameProgressData = JsonConvert.SerializeObject(_persistentData.GameProgressData, Formatting.Indented, new JsonSerializerSettings
@@ -44,7 +45,7 @@ namespace MythicalBattles
             });
 
             YandexGame.savesData.JsonGameSettingsData = jsonSettingsData;
-            
+
             YandexGame.SaveProgress();
         }
 
@@ -53,8 +54,19 @@ namespace MythicalBattles
             if (YandexGame.savesData.JsonPlayerData == null)
                 return false;
 
-            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonPlayerData);
-            
+            string json = YandexGame.savesData.JsonPlayerData ??= string.Empty;
+
+            if (json != string.Empty && json[1] == 'n')
+            {
+                Debug.Log(json);
+                Debug.LogWarning("Replacing chars");
+                json = ConvertJsonString(json);
+            }
+
+            Debug.Log(json);
+
+            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(json);
+
             if (savedData == null)
                 throw new InvalidOperationException();
 
@@ -70,13 +82,24 @@ namespace MythicalBattles
 
             return true;
         }
-        
+
         public bool TryLoadGameProgressData()
         {
             if (YandexGame.savesData.JsonGameProgressData == null)
                 return false;
 
-            GameProgressData savedData = JsonConvert.DeserializeObject<GameProgressData>(YandexGame.savesData.JsonGameProgressData);
+            string json = YandexGame.savesData.JsonGameProgressData ??= string.Empty;
+
+            if (json != string.Empty && json[1] == 'n')
+            {
+                Debug.Log(json);
+                Debug.LogWarning("Replacing chars");
+                json = ConvertJsonString(json);
+            }
+
+            Debug.Log(json);
+
+            GameProgressData savedData = JsonConvert.DeserializeObject<GameProgressData>(json);
 
             if (savedData == null)
                 throw new InvalidOperationException();
@@ -87,13 +110,24 @@ namespace MythicalBattles
 
             return true;
         }
-        
+
         public bool TryLoadSettingsData()
         {
             if (YandexGame.savesData.JsonGameSettingsData == null)
                 return false;
 
-            SettingsData savedData = JsonConvert.DeserializeObject<SettingsData>(YandexGame.savesData.JsonGameSettingsData);
+            string json = YandexGame.savesData.JsonGameSettingsData ??= string.Empty;
+
+            if (json != string.Empty && json[1] == 'n')
+            {
+                Debug.Log(json);
+                Debug.LogWarning("Replacing chars");
+                json = ConvertJsonString(json);
+            }
+
+            Debug.Log(json);
+
+            SettingsData savedData = JsonConvert.DeserializeObject<SettingsData>(json);
 
             if (savedData == null)
                 throw new InvalidOperationException();
@@ -118,8 +152,31 @@ namespace MythicalBattles
         public void ResetProgressData()
         {
             _persistentData.GameProgressData.Reset();
-            
+
             SaveGameProgressData();
+        }
+
+        private string ConvertJsonString(string json)
+        {
+            char previous;
+            char next;
+
+            for (int i = 0; i < json.Length; i++)
+            {
+                if (json[i] == 'n')
+                {
+                    previous = json[i - 1];
+                    next = json[i + 1];
+
+                    if (previous == '{' || previous == '}' || previous == ',' || next == ' ' || next == '}')
+                    {
+                        json = json.Remove(i, 1);
+                        json = json.Insert(i, "\n");
+                    }
+                }
+            }
+
+            return json;
         }
     }
 }

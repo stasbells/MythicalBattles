@@ -1,5 +1,5 @@
 {
-  "idSave": 423,
+  "idSave": 186,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
@@ -12,5 +12,5 @@
   ],
   "JsonPlayerData": "{\r\n  \"Money\": 0,\r\n  \"SelectedWeaponID\": \"BowSimple\",\r\n  \"SelectedArmorID\": \"ArmorSimple\",\r\n  \"SelectedHelmetID\": \"HelmetSimple\",\r\n  \"SelectedBootsID\": \"BootsSimple\",\r\n  \"SelectedNecklaceID\": \"NecklaceSimple\",\r\n  \"SelectedRingID\": \"RingSimple\"\r\n}",
   "JsonGameProgressData": "{\r\n  \"LevelsResults\": [\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    },\r\n    {\r\n      \"Time\": 0.0,\r\n      \"Points\": 0.0\r\n    }\r\n  ]\r\n}",
-  "JsonGameSettingsData": "{\r\n  \"MusicVolume\": 0.650125563,\r\n  \"SoundsVolume\": 0.215505868\r\n}"
+  "JsonGameSettingsData": "{\r\n  \"MusicVolume\": 0.1462311,\r\n  \"SoundsVolume\": 0.310142\r\n}"
 }
