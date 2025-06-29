@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace MythicalBattles
 {
@@ -8,29 +9,32 @@ namespace MythicalBattles
     {
         private const float InitVolume = 0.7f;
 
-        public SettingsData()
-        {
-            MusicVolume = InitVolume;
-            SoundsVolume = InitVolume;
-        }
+        [SerializeField] private float _musicVolume = InitVolume;
+        [SerializeField] private float _soundsVolume = InitVolume;
 
-        [JsonConstructor]
-        public SettingsData(float musicVolume, float soundsVolume)
-        {
-            SetMusicVolume(musicVolume);
-            
-            SetSoundsVolume(soundsVolume);
-        }
-        
-        public float MusicVolume { get; private set; }
-        public float SoundsVolume { get; private set; }
+        // public SettingsData()
+        // {
+        //     MusicVolume = InitVolume;
+        //     SoundsVolume = InitVolume;
+        // }
+        //
+        // [JsonConstructor]
+        // public SettingsData(float musicVolume, float soundsVolume)
+        // {
+        //     SetMusicVolume(musicVolume);
+        //     
+        //     SetSoundsVolume(soundsVolume);
+        // }
+
+        public float MusicVolume => _musicVolume;
+        public float SoundsVolume => _soundsVolume;
         
         public void SetMusicVolume(float volume)
         {
             if(volume < 0 || volume > 1)
                 throw new InvalidOperationException();
 
-            MusicVolume = volume;
+            _musicVolume = volume;
         }
         
         public void SetSoundsVolume(float volume)
@@ -38,7 +42,7 @@ namespace MythicalBattles
             if(volume < 0 || volume > 1)
                 throw new InvalidOperationException();
 
-            SoundsVolume = volume;
+            _soundsVolume = volume;
         }
     }
 }

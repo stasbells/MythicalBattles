@@ -8,22 +8,23 @@ using YG;
 namespace MythicalBattles
 {
     [Serializable]
+    [JsonObject(MemberSerialization.Fields)]
     public class GameProgressData
     {
         private const int LevelsCount = 9;
 
-        private List<LevelResultData> _levelsResults;
+        [SerializeField] private List<LevelResultData> _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
         
-        public GameProgressData()
-        {
-            _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
-        }
-        
-        [JsonConstructor]
-        public GameProgressData(IEnumerable<LevelResultData> levelsResults)
-        {
-            _levelsResults = new List<LevelResultData>(levelsResults);
-        }
+        // public GameProgressData()
+        // {
+        //     _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
+        // }
+        //
+        // [JsonConstructor]
+        // public GameProgressData(IEnumerable<LevelResultData> levelsResults)
+        // {
+        //     _levelsResults = new List<LevelResultData>(levelsResults);
+        // }
         
         public IReadOnlyList<LevelResultData> LevelsResults => _levelsResults.AsReadOnly();
 

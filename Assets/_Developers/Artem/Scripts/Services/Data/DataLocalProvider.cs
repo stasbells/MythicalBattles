@@ -15,10 +15,7 @@ namespace MythicalBattles
 
         public void SavePlayerData()
         {
-            string jsonPlayerData = JsonConvert.SerializeObject(_persistentData.PlayerData, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
+            string jsonPlayerData = JsonConvert.SerializeObject(_persistentData.PlayerData);
 
             YandexGame.savesData.JsonPlayerData = jsonPlayerData;
 
@@ -27,10 +24,7 @@ namespace MythicalBattles
 
         public void SaveGameProgressData()
         {
-            string jsonGameProgressData = JsonConvert.SerializeObject(_persistentData.GameProgressData, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
+            string jsonGameProgressData = JsonConvert.SerializeObject(_persistentData.GameProgressData);
 
             YandexGame.savesData.JsonGameProgressData = jsonGameProgressData;
 
@@ -39,105 +33,62 @@ namespace MythicalBattles
 
         public void SaveSettingsData()
         {
-            string jsonSettingsData = JsonConvert.SerializeObject(_persistentData.SettingsData, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
+            string jsonSettingsData = JsonConvert.SerializeObject(_persistentData.SettingsData);
 
             YandexGame.savesData.JsonGameSettingsData = jsonSettingsData;
 
             YandexGame.SaveProgress();
         }
 
-        public bool TryLoadPlayerData()
+        public void LoadPlayerData()
         {
-            if (YandexGame.savesData.JsonPlayerData == null)
-                return false;
-
-            string json = YandexGame.savesData.JsonPlayerData ??= string.Empty;
-
-            if (json != string.Empty && json[1] == 'n')
+            if (string.IsNullOrEmpty(YandexGame.savesData.JsonPlayerData))
             {
-                Debug.Log(json);
-                Debug.LogWarning("Replacing chars");
-                json = ConvertJsonString(json);
+                _persistentData.PlayerData = new PlayerData();
+                return;
             }
 
-            Debug.Log(json);
-
-            PlayerData savedData = JsonConvert.DeserializeObject<PlayerData>(json);
-
-            if (savedData == null)
-                throw new InvalidOperationException();
-
-            _persistentData.PlayerData = new PlayerData(
-
-                money: savedData.Money,
-                selectedWeaponID: savedData.SelectedWeaponID,
-                selectedArmorID: savedData.SelectedArmorID,
-                selectedHelmetID: savedData.SelectedHelmetID,
-                selectedBootsID: savedData.SelectedBootsID,
-                selectedNecklaceID: savedData.SelectedNecklaceID,
-                selectedRingID: savedData.SelectedRingID);
-
-            return true;
+            _persistentData.PlayerData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonPlayerData);
         }
 
-        public bool TryLoadGameProgressData()
+        public void LoadGameProgressData()
         {
-            if (YandexGame.savesData.JsonGameProgressData == null)
-                return false;
-
-            string json = YandexGame.savesData.JsonGameProgressData ??= string.Empty;
-
-            if (json != string.Empty && json[1] == 'n')
+            if (string.IsNullOrEmpty(YandexGame.savesData.JsonGameProgressData))
             {
-                Debug.Log(json);
-                Debug.LogWarning("Replacing chars");
-                json = ConvertJsonString(json);
+                _persistentData.GameProgressData = new GameProgressData();
+                return;
             }
 
-            Debug.Log(json);
+            // string json = YandexGame.savesData.JsonGameProgressData ??= string.Empty;
+            //
+            // if (json != string.Empty && json[1] == 'n')
+            // {
+            //     Debug.Log(json);
+            //     Debug.LogWarning("Replacing chars");
+            //     json = ConvertJsonString(json);
+            // }
 
-            GameProgressData savedData = JsonConvert.DeserializeObject<GameProgressData>(json);
-
-            if (savedData == null)
-                throw new InvalidOperationException();
-
-            _persistentData.GameProgressData = new GameProgressData(
-
-                levelsResults: savedData.LevelsResults);
-
-            return true;
+            _persistentData.GameProgressData = JsonConvert.DeserializeObject<GameProgressData>(YandexGame.savesData.JsonGameProgressData);
         }
 
-        public bool TryLoadSettingsData()
+        public void LoadSettingsData()
         {
-            if (YandexGame.savesData.JsonGameSettingsData == null)
-                return false;
-
-            string json = YandexGame.savesData.JsonGameSettingsData ??= string.Empty;
-
-            if (json != string.Empty && json[1] == 'n')
+            if (string.IsNullOrEmpty(YandexGame.savesData.JsonGameSettingsData))
             {
-                Debug.Log(json);
-                Debug.LogWarning("Replacing chars");
-                json = ConvertJsonString(json);
+                _persistentData.SettingsData = new SettingsData();
+                return;
             }
 
-            Debug.Log(json);
+            // string json = YandexGame.savesData.JsonGameSettingsData ??= string.Empty;
+            //
+            // if (json != string.Empty && json[1] == 'n')
+            // {
+            //     Debug.Log(json);
+            //     Debug.LogWarning("Replacing chars");
+            //     json = ConvertJsonString(json);
+            // }
 
-            SettingsData savedData = JsonConvert.DeserializeObject<SettingsData>(json);
-
-            if (savedData == null)
-                throw new InvalidOperationException();
-
-            _persistentData.SettingsData = new SettingsData(
-
-                musicVolume: savedData.MusicVolume,
-                soundsVolume: savedData.SoundsVolume);
-
-            return true;
+            _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YandexGame.savesData.JsonGameSettingsData);
         }
 
         public void ResetPlayerData()

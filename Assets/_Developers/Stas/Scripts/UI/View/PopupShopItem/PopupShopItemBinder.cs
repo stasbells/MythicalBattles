@@ -25,7 +25,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
         private IDataProvider _dataProvider;
         private IAudioPlayback _audioPlayback;
         private ShopItemView _shopItemView;
-        private ItemSelector _itemSelector;
+        private IShopItemVisitor _itemSelector;
 
         private void Construct()
         {
@@ -35,8 +35,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             _dataProvider = container.Resolve<IDataProvider>();
             _wallet = container.Resolve<IWallet>();
             _audioPlayback = container.Resolve<IAudioPlayback>();
-
-            _itemSelector = new ItemSelector(_persistentData);
+            _itemSelector = container.Resolve<IShopItemVisitor>();
         }
 
         protected override void Start()

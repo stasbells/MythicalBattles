@@ -10,6 +10,12 @@ namespace MythicalBattles
         private const int InitAttackSpeed = 1;
 
         private PlayerData _playerData;
+        private IItemSelector _itemSelector;
+
+        public PlayerStats(IItemSelector itemSelector)
+        {
+            _itemSelector = itemSelector;
+        }
 
         public ReactiveProperty<float> MaxHealth { get; } = new ReactiveProperty<float>();
         public ReactiveProperty<float> Damage { get; } = new ReactiveProperty<float>();
@@ -18,18 +24,18 @@ namespace MythicalBattles
         public void UpdatePlayerData(PlayerData playerData)
         {
             if (_playerData != null)
-                _playerData.SelectedItemChanged -= OnInventoryItemChanged;
+                _itemSelector.SelectedItemChanged -= OnInventoryItemChanged;
             
             _playerData = playerData;
             
-            _playerData.SelectedItemChanged += OnInventoryItemChanged;
+            _itemSelector.SelectedItemChanged += OnInventoryItemChanged;
             
             ResetStats();
         }
         
         public void Dispose()
         {
-            _playerData.SelectedItemChanged -= OnInventoryItemChanged;
+            _itemSelector.SelectedItemChanged -= OnInventoryItemChanged;
         }
 
         public void ResetStats()

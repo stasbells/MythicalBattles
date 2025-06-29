@@ -17,12 +17,21 @@ namespace MythicalBattles
 
         private List<InventoryItemView> _items; 
         private IPersistentData _persistentData;
+        private IItemSelector _itemSelector;
         private ScreenShopViewModel _viewModel;
+
+        private void Construct()
+        {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _persistentData = container.Resolve<IPersistentData>();
+            _itemSelector = container.Resolve<IItemSelector>();
+        }
 
         private void Awake()
         {
-            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
-            
+            Construct();
+
             _items = new List<InventoryItemView>
             {
                 _weaponView, _armorView, _bootsView, _helmetView, _necklaceView, _ringView
@@ -33,7 +42,7 @@ namespace MythicalBattles
         {
             ShowEquipmentItems();
 
-            _persistentData.PlayerData.SelectedItemChanged += OnSelectedItemChange;
+            _itemSelector.SelectedItemChanged += OnSelectedItemChange;
             
             foreach (InventoryItemView item in _items)
             {
@@ -43,7 +52,7 @@ namespace MythicalBattles
 
         private void OnDisable()
         {
-            _persistentData.PlayerData.SelectedItemChanged -= OnSelectedItemChange;
+              _itemSelector.SelectedItemChanged -= OnSelectedItemChange;
             
             foreach (InventoryItemView item in _items)
             {

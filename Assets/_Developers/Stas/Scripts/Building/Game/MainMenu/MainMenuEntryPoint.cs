@@ -59,26 +59,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
 
         private void LoadData()
         {
-            if (_dataProvider.TryLoadPlayerData() == false)
-            {
-                _persistentData.PlayerData = new PlayerData();
-                
-                _dataProvider.SavePlayerData();
-            }
+            _dataProvider.LoadPlayerData();
             
-            if (_dataProvider.TryLoadGameProgressData() == false)   
-            {
-                _persistentData.GameProgressData = new GameProgressData();
-
-                _dataProvider.SaveGameProgressData();
-            }
-
-            if (_dataProvider.TryLoadSettingsData() == false)      
-            {
-                _persistentData.SettingsData = new SettingsData();
-
-                _dataProvider.SaveSettingsData();
-            }
+            _dataProvider.LoadGameProgressData();
+            
+            _dataProvider.LoadSettingsData();
         }
 
         private void InitUI(Container viewsContainer)

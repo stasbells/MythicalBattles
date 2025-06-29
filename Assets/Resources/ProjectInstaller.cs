@@ -8,6 +8,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
     {
         builder.AddSingleton(typeof(PersistentData), typeof(IPersistentData));
         builder.AddSingleton(typeof(DataLocalProvider), typeof(IDataProvider));
+        builder.AddSingleton(typeof(ItemSelector), typeof(IItemSelector));
         builder.AddSingleton(typeof(PlayerStats), typeof(IPlayerStats));
         builder.AddSingleton(typeof(AudioPlayback), typeof(IAudioPlayback));
         builder.AddSingleton(typeof(Wallet), typeof(IWallet));

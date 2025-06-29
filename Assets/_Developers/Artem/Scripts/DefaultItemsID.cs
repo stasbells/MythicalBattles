@@ -2,11 +2,11 @@ namespace MythicalBattles
 {
     public static class DefaultItemsID
     {
-        public static readonly string Weapon = "BowSimple";
-        public static readonly string Armor = "ArmorSimple";
-        public static readonly string Helmet = "HelmetSimple";
-        public static readonly string Boots = "BootsSimple";
-        public static readonly string Necklace = "NecklaceSimple";
-        public static readonly string Ring = "RingSimple";
+        public const string Weapon = "BowSimple";
+        public const string Armor = "ArmorSimple";
+        public const string Helmet = "HelmetSimple";
+        public const string Boots = "BootsSimple";
+        public const string Necklace = "NecklaceSimple";
+        public const string Ring = "RingSimple";
     }
 }
