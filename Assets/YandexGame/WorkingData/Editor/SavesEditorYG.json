@@ -1,7 +1,7 @@
 {
-  "idSave": 104,
+  "idSave": 399,
   "isFirstSession": false,
-  "language": "ru",
+  "language": "en",
   "promptDone": false,
   "money": 1,
   "newPlayerName": "Hello!",
@@ -10,7 +10,7 @@
     true,
     false
   ],
-  "JsonPlayerData": "{\"_money\":0,\"_selectedWeaponID\":\"BowSimple\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
-  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
-  "JsonGameSettingsData": "{\"MusicVolume\":0.278064519,\"SoundsVolume\":0.4856295}"
+  "JsonPlayerData": "{\"_money\":4536,\"_selectedWeaponID\":\"BowRare\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetCommon\",\"_selectedBootsID\":\"BootsEpic\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingCommon\"}",
+  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":223.686646,\"Points\":976.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
+  "JsonGameSettingsData": "{\"MusicVolume\":0.7,\"SoundsVolume\":0.7}"
 }

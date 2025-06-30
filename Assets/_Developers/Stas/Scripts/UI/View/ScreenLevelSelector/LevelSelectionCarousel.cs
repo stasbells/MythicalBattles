@@ -159,7 +159,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
             
             for (int i = 0; i < _levelButtons.Count; i++)
             {
-                if (i == _currentLevelIndex)
+                if (i <= _currentLevelIndex)
                 {
                     _playButton.interactable = _isUnlocked;
 
