@@ -35,7 +35,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             _dataProvider = container.Resolve<IDataProvider>();
             _wallet = container.Resolve<IWallet>();
             _audioPlayback = container.Resolve<IAudioPlayback>();
-            _itemSelector = container.Resolve<IShopItemVisitor>();
+            _itemSelector = (IShopItemVisitor)container.Resolve<IItemSelector>();
         }
 
         protected override void Start()
