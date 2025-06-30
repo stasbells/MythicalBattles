@@ -32,7 +32,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
                 _screensContainer.ClosePopup(e.Value);
             }));
 
-
             OnBind(viewModel);
         }
 
