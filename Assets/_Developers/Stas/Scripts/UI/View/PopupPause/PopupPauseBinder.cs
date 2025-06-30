@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
 {
@@ -10,19 +11,27 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
         private void OnEnable()
         {
             _goToMainMenuButton.onClick.AddListener(OnGoToMainMenuButtonClicked);
+            YandexGame.onShowWindowGame += OnShowWindowGame;
 
             Time.timeScale = 0f;
         }
 
         private void OnDisable()
         {
-            Time.timeScale = 1f;
             _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
+            YandexGame.onShowWindowGame -= OnShowWindowGame;
+
+            Time.timeScale = 1f;
         }
 
         private void OnGoToMainMenuButtonClicked()
         {
             ViewModel.RequestGoToMainMenu();
+        }
+
+        private void OnShowWindowGame()
+        {
+            Time.timeScale = 0f;
         }
     }
 }

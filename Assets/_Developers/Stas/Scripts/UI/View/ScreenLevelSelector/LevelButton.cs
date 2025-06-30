@@ -17,15 +17,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         public Button Button => _levelButton;
 
         public void SetLocked(bool isLocked)
-        {
-            // if (_lockedIcon != null)
-            // {
-            //     var color = _lockedIcon.color;
-            //     color.a = isLocked ? 1f : 0f;       
-            //
-            //     _lockedIcon.color = color;
-            // }
-
+        {       
             _lockedIcon.gameObject.SetActive(isLocked);
             _levelLabel.gameObject.SetActive(!isLocked);
             _levelNumber.gameObject.SetActive(!isLocked);

@@ -167,6 +167,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
                     {
                         _results.SetActive(true);
 
+                        _levelButtons[i].SetLocked(!_isUnlocked);
+
                         int score = (int)_persistentData.GameProgressData.GetLevelRecordPoints(i + 1);
 
                         _levelScore.text = score.ToString();
@@ -180,8 +182,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
                         _results.SetActive(false);
                     }
                 }
-                
-                _levelButtons[i].SetLocked(!_isUnlocked);
             }
 
             UpdateArrowsVisibility();
