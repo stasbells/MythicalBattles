@@ -1,0 +1,57 @@
+using System.Globalization;
+using R3;
+using Reflex.Extensions;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace MythicalBattles
+{
+    public class StatsView : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text _damage;
+        [SerializeField] private TMP_Text _health;
+        [SerializeField] private TMP_Text _attackSpeed;
+
+        private IPlayerStats _playerStats;
+        private readonly CompositeDisposable _disposable = new ();
+        
+        private void Construct()
+        {
+            _playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
+        }
+
+        private void OnEnable()
+        {
+            Construct();
+            
+            DisplayStats();
+
+            _playerStats.Damage.Subscribe(value => OnStatsChanged()).AddTo(_disposable);
+            
+            _playerStats.MaxHealth.Subscribe(value => OnStatsChanged()).AddTo(_disposable);
+            
+            _playerStats.AttackSpeed.Subscribe(value => OnStatsChanged()).AddTo(_disposable);
+
+        }
+
+        private void OnDisable()
+        {
+            _disposable.Dispose();
+        }
+
+        private void OnStatsChanged()
+        {
+            DisplayStats();
+        }
+
+        private void DisplayStats()
+        {
+            _damage.text = _playerStats.Damage.Value.ToString(CultureInfo.InvariantCulture);
+            
+            _health.text = _playerStats.MaxHealth.Value.ToString(CultureInfo.InvariantCulture);
+            
+            _attackSpeed.text = _playerStats.AttackSpeed.Value.ToString(CultureInfo.InvariantCulture);
+        }
+    }
+}

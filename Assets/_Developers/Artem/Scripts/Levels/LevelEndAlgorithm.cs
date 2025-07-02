@@ -63,8 +63,7 @@ namespace MythicalBattles
             
             yield return new WaitForSeconds(DelayBeforeShowUI);
             
-            if (TryGetRewardMoney(levelNumber, _rewardMoney) == false)
-                _rewardMoney = 0;
+            _wallet.AddCoins(_rewardMoney);
             
             if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, _score, _levelPassTime))  
             {
@@ -86,18 +85,6 @@ namespace MythicalBattles
         private int CalculateScore(float timeRatio, float maxScore)
         {
             return Mathf.RoundToInt(timeRatio * maxScore);
-        }
-
-        private bool TryGetRewardMoney(int levelNumber, int rewardMoney)
-        {
-            if (Mathf.Approximately(_persistentData.GameProgressData.GetLevelRecordPoints(levelNumber), 0f) == false)
-                return false;
-            else
-            {
-                _wallet.AddCoins(rewardMoney);
-                
-                return true;
-            }
         }
     }
 }

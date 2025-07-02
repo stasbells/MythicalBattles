@@ -12,6 +12,7 @@ namespace MythicalBattles
         
         private IWallet _wallet;
         private IPersistentData _persistentData;
+        
 
         private void Construct()
         {

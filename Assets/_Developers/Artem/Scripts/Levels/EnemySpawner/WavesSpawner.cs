@@ -28,8 +28,6 @@ namespace MythicalBattles
         private System.Random _random = new System.Random();
         private WaveProgressHandler _waveProgressHandler;
 
-        private readonly CompositeDisposable _disposable = new ();
-
         public int WavesCount => _waves.Length;
         public event Action AllWavesCompleted;
 
@@ -43,11 +41,6 @@ namespace MythicalBattles
         private void Start()
         {
             StartNextWave();
-        }
-
-        private void OnDisable()
-        {
-            _disposable?.Dispose();
         }
 
         public void SetTimeBetweenWaves(int timeBetweenWaves)
