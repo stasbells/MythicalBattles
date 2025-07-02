@@ -32,6 +32,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
             if (_openedPopups.Contains(popupViewModel))
                 return;
 
+            if (_openedPopups.Any(popup => popup.Name == popupViewModel.Name))
+                return;
+           
             var subscription = popupViewModel.CloseReqested.Subscribe(ClosePopup);
             _popupSubscriptions.Add(popupViewModel, subscription);
             _openedPopups.Add(popupViewModel);

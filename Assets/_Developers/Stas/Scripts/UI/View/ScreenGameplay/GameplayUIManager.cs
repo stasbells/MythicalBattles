@@ -8,24 +8,17 @@ using R3;
 using Reflex.Core;
 using System;
 
-
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
     public class GameplayUIManager : UIManager
     {
         private const float DeathScreenDelay = 2.5f;
-        
-        //private readonly Subject<Unit> _exitSceneRequest;
-        //private readonly Subject<Unit> _restartSceneRequest;
 
         private readonly Signal _signal;
         private readonly CompositeDisposable _disposable = new ();
 
-
         public GameplayUIManager(ContainerBuilder builder) : base(builder) 
         {
-            //_exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
-
             _signal = builder.Build().Resolve<Signal>();
         }
 
@@ -75,6 +68,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             return Pause;
         }
 
+        public ScreenDeathViewModel OpenScreenDeath()
+        {
+            var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
+            
+            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+
+            UIRoot.OpenScreen(viewModel);
+
+            return viewModel;
+        }
+
         public void SubscribeOnPlayerDeath(ReadOnlyReactiveProperty<bool> isDead)
         {
             isDead.Subscribe(OnPlayerDeath).AddTo(_disposable);
@@ -95,17 +99,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             OpenScreenDeath();
                 
             _disposable.Dispose();
-        }
-        
-        private ScreenDeathViewModel OpenScreenDeath()
-        {
-            var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
-            
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
-
-            return viewModel;
         }
     }
 }

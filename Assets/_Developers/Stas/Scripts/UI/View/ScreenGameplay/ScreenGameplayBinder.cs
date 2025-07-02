@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
@@ -10,14 +11,21 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
         private void OnEnable()
         {
             _popupPauseButton.onClick.AddListener(OnPopupPauseButtonClicked);
+            YandexGame.onHideWindowGame += OnHideWindowGame;
         }
 
         private void OnDisable()
         {
             _popupPauseButton.onClick.RemoveListener(OnPopupPauseButtonClicked);
+            YandexGame.onHideWindowGame -= OnHideWindowGame;
         }
 
         private void OnPopupPauseButtonClicked()
+        {
+            ViewModel.RequestGoToPopupPause();
+        }
+
+        private void OnHideWindowGame()
         {
             ViewModel.RequestGoToPopupPause();
         }

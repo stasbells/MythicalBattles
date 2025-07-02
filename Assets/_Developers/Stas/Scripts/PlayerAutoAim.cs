@@ -42,7 +42,7 @@ namespace MythicalBattles
             else
                 SetActiveTargetMarker(false);
 
-            TryShoot();
+            TakeAim();
         }
 
         private void FindNearestEnemy()
@@ -77,9 +77,9 @@ namespace MythicalBattles
             MarkTarget();
         }
 
-        private void TryShoot()
+        private void TakeAim()
         {
-            _animator.SetBool(Constants.IsAttack, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.1f);
+            _animator.SetBool(Constants.IsAttack, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.05f);
         }
 
         private void MarkTarget()

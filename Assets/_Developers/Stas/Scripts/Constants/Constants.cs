@@ -44,5 +44,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
         public static readonly int IsShoot = Animator.StringToHash("isShoot");
         public static readonly int IsMeleeAttack = Animator.StringToHash("isMeleeAttack");
         public static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+        public static readonly int ShootSpeed = Animator.StringToHash("shootSpeed");
     }
 }
