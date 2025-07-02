@@ -7,19 +7,20 @@ namespace MythicalBattles
     public abstract class Shooter : MonoBehaviour
     {
         [SerializeField] private float _initRateOfFire = 1f;
-        [SerializeField] private float _shootDelay = 0.3f;
+
+        private readonly float _shootDelay = 0.1f;
 
         protected Animator _animator;
         private Coroutine _shootCoroutine;
         private float _shootSpeedAnimationMultiplier;
         private float _rateOfFire;
-        private float _restTimer;
+        private float _remainingDelay;
+        private bool _wasAttacking;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _animator.SetBool(Constants.IsAttack, false);
-
             _rateOfFire = _initRateOfFire;
 
             if (this is PlayerShooter)
@@ -30,7 +31,8 @@ namespace MythicalBattles
 
         private void OnEnable()
         {
-            _restTimer = 0f;
+            _remainingDelay = _shootDelay;
+            _wasAttacking = false;
         }
 
         private void Update()
@@ -38,25 +40,32 @@ namespace MythicalBattles
             if (_animator.GetBool(Constants.IsDead))
                 return;
 
-            if (!_animator.GetBool(Constants.IsMove) && _animator.GetBool(Constants.IsAttack))
-            {
-                _restTimer += Time.deltaTime;
+            bool isAttacking = !_animator.GetBool(Constants.IsMove) && _animator.GetBool(Constants.IsAttack);
 
-                if (_restTimer >= _shootDelay)
+            if (isAttacking)
+            {
+                if (!_wasAttacking)
                     StartShootCoroutine();
             }
-            else if (_shootCoroutine != null)
+            else
             {
-                StopCoroutine(_shootCoroutine);
-                _shootCoroutine = null;
-                _restTimer = 0f;
+                if (_shootCoroutine != null)
+                {
+                    StopCoroutine(_shootCoroutine);
+                    _shootCoroutine = null;
+                }
+                else
+                {
+                    _remainingDelay -= Time.deltaTime;
+                }
             }
+
+            _wasAttacking = isAttacking;
         }
 
         protected void ChangeAttackSpeed(float attackSpeedFactor)
         {
             _rateOfFire = _initRateOfFire / attackSpeedFactor;
-
             ApplyShootAnimationSpeed(_rateOfFire);
         }
 
@@ -64,12 +73,10 @@ namespace MythicalBattles
 
         protected virtual void OnAwake() { }
 
-
         private void ApplyShootAnimationSpeed(float rateOfFire)
         {
-            _shootSpeedAnimationMultiplier = 1 / rateOfFire; ;
-
-            _animator.SetFloat("shootSpeed", _shootSpeedAnimationMultiplier);
+            _shootSpeedAnimationMultiplier = 1 / rateOfFire;
+            _animator.SetFloat(Constants.ShootSpeed, _shootSpeedAnimationMultiplier);
         }
 
         private void StartShootCoroutine()
@@ -79,11 +86,44 @@ namespace MythicalBattles
 
         private IEnumerator ShootWithFrequency()
         {
+            float delay = _remainingDelay > 0 ? _remainingDelay : _shootDelay;
+            float timer = 0f;
+
+            while (timer < delay)
+            {
+                if (_animator.GetBool(Constants.IsDead) || _animator.GetBool(Constants.IsMove) || !_animator.GetBool(Constants.IsAttack))
+                {
+                    _remainingDelay = delay - timer;
+
+                    yield break;
+                }
+
+                timer += Time.deltaTime;
+
+                yield return null;
+            }
+
             while (!_animator.GetBool(Constants.IsDead))
             {
+                _remainingDelay = _rateOfFire;
+
                 Shoot();
 
-                yield return new WaitForSeconds(_rateOfFire);
+                timer = 0f;
+
+                while (timer < _rateOfFire)
+                {
+                    if (_animator.GetBool(Constants.IsDead) || _animator.GetBool(Constants.IsMove) || !_animator.GetBool(Constants.IsAttack))
+                    {
+                        _remainingDelay = _rateOfFire - timer;
+
+                        yield break;
+                    }
+
+                    timer += Time.deltaTime;
+
+                    yield return null;
+                }
             }
         }
     }

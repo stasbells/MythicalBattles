@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimMarker: {fileID: 6328196089668016312}
-  _rotationSpeed: 700
+  _rotationSpeed: 900
   _aimRadius: 15
 --- !u!114 &502790092247924797
 MonoBehaviour:
@@ -200,7 +200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.3
   ShootPoint: {fileID: 6282566242958126188}
   Damage: 0
   _projectilePrefab: {fileID: 2651084798854190789, guid: dfe925e94a6d6ee46b56cc7f03ea5e6b, type: 3}

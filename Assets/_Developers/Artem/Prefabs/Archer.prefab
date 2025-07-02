@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimMarker: {fileID: 5766862801588419389}
-  _rotationSpeed: 700
+  _rotationSpeed: 1500
   _aimRadius: 15
 --- !u!114 &7959709863046783518
 MonoBehaviour:
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.3
+  _shootDelay: 0.1
   ShootPoint: {fileID: 3333186591725529566}
   Damage: 0
   _projectilePrefab: {fileID: 2651084798854190789, guid: dfe925e94a6d6ee46b56cc7f03ea5e6b, type: 3}
@@ -11538,7 +11538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9dbcd02df8b93488e30af2cf208083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6372463842321586431, guid: 17a64ec97b0a698478a6f86675e4b4a2, type: 3}
+  _prefab: {fileID: 0}
   _itemsCount: 15
   _projectileLayer: 8
 --- !u!1 &6212709001478002623

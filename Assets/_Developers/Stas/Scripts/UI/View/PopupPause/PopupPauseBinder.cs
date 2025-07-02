@@ -13,7 +13,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
             _goToMainMenuButton.onClick.AddListener(OnGoToMainMenuButtonClicked);
             YandexGame.onShowWindowGame += OnShowWindowGame;
 
-            Time.timeScale = 0f;
+            OnPause();
         }
 
         private void OnDisable()
@@ -21,7 +21,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
             _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
             YandexGame.onShowWindowGame -= OnShowWindowGame;
 
-            Time.timeScale = 1f;
+            OnPlay();
         }
 
         private void OnGoToMainMenuButtonClicked()
@@ -31,7 +31,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
 
         private void OnShowWindowGame()
         {
+            OnPause();
+        }
+
+        private void OnPause()
+        {
             Time.timeScale = 0f;
+            AudioListener.volume = 0f;
+        }
+
+        private void OnPlay()
+        {
+            Time.timeScale = 1f;
+            AudioListener.volume = 1f;
         }
     }
 }

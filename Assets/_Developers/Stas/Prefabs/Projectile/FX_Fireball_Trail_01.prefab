@@ -4648,7 +4648,7 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 3
+  cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
@@ -9249,6 +9249,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150649967365504, guid: 05cf130dc036e3644beca47f70b700b2, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198195352207415246, guid: 05cf130dc036e3644beca47f70b700b2, type: 3}
+      propertyPath: cullingMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199019332059290098, guid: 05cf130dc036e3644beca47f70b700b2, type: 3}

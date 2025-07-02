@@ -4887,7 +4887,7 @@ ParticleSystem:
   lengthInSec: 25
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -9623,7 +9623,7 @@ ParticleSystem:
   lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -19077,7 +19077,7 @@ ParticleSystem:
   lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
@@ -33202,7 +33202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f038ce23df99ce45a71ab4c92e9dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
   _returnToPoolDelay: 1
   _baseEffects:
   - {fileID: 8758976827352338325}

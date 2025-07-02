@@ -83,7 +83,9 @@ namespace MythicalBattles
                 return;
             }
 
-            _ = Instantiate(designPrefab);
+            GameObject map = Instantiate(designPrefab);
+
+            StaticBatchingUtility.Combine(map);
         }
 
         private void InitializeWaveSpawner(int levelNumber)
