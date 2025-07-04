@@ -1,3 +1,4 @@
+using System;
 using Ami.BroAudio;
 using Reflex.Extensions;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace MythicalBattles
         [SerializeField] private ParticleSystem _boostTakingEffect;
 
         private IAudioPlayback _audioPlayback;
+        public event Action<Boost> Applied; 
         protected Transform Player { get; private set; }
 
         private void Awake()
@@ -39,6 +41,8 @@ namespace MythicalBattles
         
         protected virtual void Apply()
         {
+            Applied?.Invoke(this);
+
             SoundID boostKeepUpSound = _audioPlayback.AudioContainer.BoostUpKeep;
                 
             _audioPlayback.PlaySound(boostKeepUpSound);

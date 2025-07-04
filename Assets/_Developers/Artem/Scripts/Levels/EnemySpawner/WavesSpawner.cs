@@ -190,8 +190,15 @@ namespace MythicalBattles
             if (_activeEnemiesCount == 0)
             {
                 if (_currentWaveNumber < _waves.Length)
-                    Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
-
+                {
+                    GameObject boostObject = Instantiate(_boostsStorage.GetRandomBoost(), enemy.transform.position, Quaternion.identity);
+                    
+                    if(boostObject.TryGetComponent(out Boost boost) == false)
+                        throw new InvalidOperationException();
+                    
+                    _waveProgressHandler.SubscribeOnBoostTaking(boost);
+                }
+                
                 StartNextWave();
             }
         }

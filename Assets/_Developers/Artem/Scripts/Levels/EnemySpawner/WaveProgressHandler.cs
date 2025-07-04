@@ -14,7 +14,7 @@ namespace MythicalBattles
         private readonly string _wave = "Wave";
         private readonly string _nextWaveTextFormat = "Next wave in";
 
-        [SerializeField] private WaveProgressView _progressSliderView;
+        [SerializeField] private WaveProgressView _waveProgressView;
         [SerializeField] private float _smoothSpeed = 2f;
         [SerializeField] private float _fadeDuration = 0.4f;
         
@@ -24,6 +24,8 @@ namespace MythicalBattles
         private Slider _waveProgressSlider;
         private TMP_Text _waveNumberText;
         private TMP_Text _nextWaveText;
+        private TMP_Text _boostsDescriptionText;
+        private BoostsDescription _boostsDescription;
         private Coroutine _smoothProgressCoroutine;
         private ParticleSystem _sliderEffect;
         private RectTransform _fillRect;
@@ -48,11 +50,17 @@ namespace MythicalBattles
             _wavesCount = wavesCount;
             _timeBetweenWaves = timeBetweenWaves;
             
-            WaveProgressView progressSliderView = Instantiate(_progressSliderView, _canvas.transform);
+            WaveProgressView progressSliderView = Instantiate(_waveProgressView, _canvas.transform);
             progressSliderView.transform.SetAsFirstSibling();
 
             _progressSliderObject = progressSliderView.ProgressBar;
             _nextWaveText = progressSliderView.NextWaveText;
+            _boostsDescription = progressSliderView.BoostsDescription;
+            
+            if(_boostsDescription.TryGetComponent(out TMP_Text text) == false)
+                throw new InvalidOperationException();
+                
+            _boostsDescriptionText = text;
 
             if(_progressSliderObject.TryGetComponent(out CanvasGroup canvasGroup) == false)
                 throw new InvalidOperationException();
@@ -61,14 +69,12 @@ namespace MythicalBattles
             
             _waveProgressSlider = _progressSliderObject.GetComponentInChildren<Slider>();
             _waveNumberText = _progressSliderObject.GetComponentInChildren<TMP_Text>();
-            
-            //_sliderEffect = _progressSliderObject.GetComponentInChildren<ParticleSystem>();
-            //_fillRect = _waveProgressSlider.fillRect;
-            
+
             _progressSliderCanvasGroup.alpha = 0f;
             
             _progressSliderObject.SetActive(false);
             _nextWaveText.gameObject.SetActive(false);
+            _boostsDescriptionText.gameObject.SetActive(false);
         }
         
         public void InitializeWave(int totalEnemies, int waveNumber)
@@ -99,6 +105,22 @@ namespace MythicalBattles
         {
             _defeatedEnemies++;
             UpdateProgressSmoothly();
+        }
+
+        public void SubscribeOnBoostTaking(Boost boost)
+        {
+            boost.Applied += OnBoostApplied;
+        }
+
+        private void OnBoostApplied(Boost boost)
+        {
+            FadeIn(_boostsDescriptionText);
+            
+            _boostsDescription.Display(boost);
+
+            boost.Applied -= OnBoostApplied;
+
+            StartCoroutine(WaitForBoostDescriptionFadeOut());
         }
 
         private void UpdateProgressSmoothly()
@@ -152,11 +174,7 @@ namespace MythicalBattles
                 
                 yield return new WaitForSeconds(_fadeDuration);
 
-                if (_currentWaveNumber == _wavesCount)
-                {
-                    //запускаем окно результатов уровня
-                }
-                else
+                if (_currentWaveNumber != _wavesCount)
                 {
                     FadeIn(_nextWaveText);
                     
@@ -185,17 +203,24 @@ namespace MythicalBattles
 
             if (_ticksBetweenWaves == 1)
             {
-                StartCoroutine(WaitForFadeOut());
+                StartCoroutine(WaitForNextWaveTextFadeOut());
             }
         }
 
-        private IEnumerator WaitForFadeOut()
+        private IEnumerator WaitForNextWaveTextFadeOut()
         {
             yield return new WaitForSeconds(_fadeDuration);
             
             FadeOut(_nextWaveText);
                 
             _timerSubscription?.Dispose();
+        }
+
+        private IEnumerator WaitForBoostDescriptionFadeOut()
+        {
+            yield return new WaitForSeconds(2);
+            
+            FadeOut(_boostsDescriptionText);
         }
 
         private void FadeIn(Component target)

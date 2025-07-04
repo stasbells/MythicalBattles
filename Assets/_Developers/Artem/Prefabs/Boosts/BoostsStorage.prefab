@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2396998582484148260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5782629738273376312}
+  - component: {fileID: 2736505258524978868}
+  m_Layer: 0
+  m_Name: BoostsStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5782629738273376312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396998582484148260}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2736505258524978868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396998582484148260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05aaaf383b211f04595911651acdedec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageBoost: {fileID: 5517477319322059478, guid: 46d3ceed40bc02746a43c0d576a0ff12, type: 3}
+  _maxHealthBoost: {fileID: 2348413629321698620, guid: 4c0eb67194cd7a547be6a3b3c05c94df, type: 3}
+  _attackSpeedBoost: {fileID: 751588228693213616, guid: 911cb87bba0983947bc695a1b7eb5ce1, type: 3}
+  _fireBoost: {fileID: 3255075430538313180, guid: d592e81fee66ccb4e96fd7e4b0146334, type: 3}
+  _electricityBoost: {fileID: 832774541999751729, guid: f90bb18ff2653a04791483db70764922, type: 3}
+  _poisonBoost: {fileID: 3316111299382164733, guid: 329493964ec79154ab0469a9342c365e, type: 3}
+  _fireCompanionBoost: {fileID: 2246235352009161969, guid: 83695ef3239a25647803af0facc7a774, type: 3}
+  _electricCompanionBoost: {fileID: 964204302342432847, guid: 1534f49f9d3edad40b64027e6d740f78, type: 3}
+  _poisonCompanionBoost: {fileID: 448717580541957492, guid: 479161468a726134a91b9679bc0aed88, type: 3}
+  _healBoost: {fileID: 3272064053678876468, guid: f85ef8d70c49d0a429d0f6f122676a59, type: 3}

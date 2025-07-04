@@ -958,11 +958,11 @@ PlayerSettings:
   apiCompatibilityLevel: 3
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: c28abf9c-2d08-4b64-a600-e63933b92179
+  cloudProjectId: 6ccbcd43-35f0-479c-836b-93b28bbf1fa5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: MythicalBattles
-  organizationId: stasbells
+  organizationId: arti1993
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

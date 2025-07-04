@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3063818279901200008}
   - component: {fileID: 6506092770427038293}
-  - component: {fileID: -657537215812843234}
+  - component: {fileID: -970264469534276973}
   m_Layer: 0
   m_Name: Boost_Electricity
   m_TagString: Untagged
@@ -57,7 +57,7 @@ CapsuleCollider:
   m_Height: 1.325311
   m_Direction: 1
   m_Center: {x: 0.039386928, y: 0.16265547, z: -0.04662645}
---- !u!114 &-657537215812843234
+--- !u!114 &-970264469534276973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 832774541999751729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68240ee12c677b45879254d10b5c487, type: 3}
+  m_Script: {fileID: 11500000, guid: c99da5083537e1a4bb5ae31c4eb6b230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _boostTakingEffect: {fileID: 8280424322087289934, guid: 1a506942cae91ed4c97341811d3d3ef4, type: 3}
