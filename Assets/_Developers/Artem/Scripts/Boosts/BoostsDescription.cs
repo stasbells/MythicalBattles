@@ -40,7 +40,6 @@ namespace MythicalBattles
             foreach (TMP_Text boostText in _boostsTexts)
                 boostText.gameObject.SetActive(false);
 
-
             switch (boost)
             {
                 case DamageBoost _:
