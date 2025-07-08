@@ -86,7 +86,7 @@ namespace MythicalBattles
             
             FadeIn(_progressSliderCanvasGroup);
 
-            _waveNumberText.text = $"{LanguagesDictionary.GetTranslation(_wave)} {waveNumber}";
+            _waveNumberText.text = $"{waveNumber}";
             
             _currentWaveTotalEnemies = totalEnemies;
             _defeatedEnemies = 0;

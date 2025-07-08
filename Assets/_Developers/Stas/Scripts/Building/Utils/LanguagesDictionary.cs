@@ -12,7 +12,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
             { "Health", "Здоровья" },
             { "Damage", "Урон" },
             { "Simple Boots", "Простые Сапоги" },
-            { "Common Boots", "Обычные Сапоги" },
+            { "Common Boots", "ОБЫЧНЫЕ САПОГИ" },
             { "Rare Boots", "Редкие Сапоги" },
             { "Epic Boots", "Эпические Сапоги" },
             { "Legendary Boots", "Легендарные Сапоги" },

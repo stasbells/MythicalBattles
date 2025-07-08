@@ -18,7 +18,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
         [SerializeField] private TMP_Text _itemStatsText;
         [SerializeField] private TMP_Text _itemTypeText;
         [SerializeField] private TMP_Text _priceCountText;
-        [SerializeField] private TMP_Text _priceText;
+        [SerializeField] private RectTransform _backgroundPrice;
+        [SerializeField] private RectTransform _backgroundUnprice;
 
         private IWallet _wallet;
         private IPersistentData _persistentData;
@@ -83,9 +84,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             }
             else
             {
-                _priceCountText.gameObject.SetActive(false);
-                _priceText.gameObject.SetActive(false);
+                _priceCountText.gameObject.GetComponentInParent<HorizontalLayoutGroup>().gameObject.SetActive(false);
                 _buyItemButton.gameObject.SetActive(false);
+                _backgroundPrice.gameObject.SetActive(false);
+                _backgroundUnprice.gameObject.SetActive(true);
             }
         }
         
