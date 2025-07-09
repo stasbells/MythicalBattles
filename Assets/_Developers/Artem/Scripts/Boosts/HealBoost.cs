@@ -7,7 +7,7 @@ namespace MythicalBattles
 {
     public class HealBoost : Boost
     {
-        [SerializeField] private float _healFactor = 0.4f;
+        [SerializeField] private float _healFactor = 0.3f;
         
         private PlayerHealth _playerHealth;
 
