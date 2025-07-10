@@ -17,43 +17,43 @@ namespace MythicalBattles
         {
             string jsonPlayerData = JsonConvert.SerializeObject(_persistentData.PlayerData);
 
-            YandexGame.savesData.JsonPlayerData = jsonPlayerData;
+            YG2.saves.JsonPlayerData = jsonPlayerData;
 
-            YandexGame.SaveProgress();
+            YG2.SaveProgress();
         }
 
         public void SaveGameProgressData()
         {
             string jsonGameProgressData = JsonConvert.SerializeObject(_persistentData.GameProgressData);
 
-            YandexGame.savesData.JsonGameProgressData = jsonGameProgressData;
+            YG2.saves.JsonGameProgressData = jsonGameProgressData;
 
-            YandexGame.SaveProgress();
+            YG2.SaveProgress();
         }
 
         public void SaveSettingsData()
         {
             string jsonSettingsData = JsonConvert.SerializeObject(_persistentData.SettingsData);
 
-            YandexGame.savesData.JsonGameSettingsData = jsonSettingsData;
+            YG2.saves.JsonGameSettingsData = jsonSettingsData;
 
-            YandexGame.SaveProgress();
+            YG2.SaveProgress();
         }
 
         public void LoadPlayerData()
         {
-            if (string.IsNullOrEmpty(YandexGame.savesData.JsonPlayerData))
+            if (string.IsNullOrEmpty(YG2.saves.JsonPlayerData))
             {
                 _persistentData.PlayerData = new PlayerData();
                 return;
             }
 
-            _persistentData.PlayerData = JsonConvert.DeserializeObject<PlayerData>(YandexGame.savesData.JsonPlayerData);
+            _persistentData.PlayerData = JsonConvert.DeserializeObject<PlayerData>(YG2.saves.JsonPlayerData);
         }
 
         public void LoadGameProgressData()
         {
-            if (string.IsNullOrEmpty(YandexGame.savesData.JsonGameProgressData))
+            if (string.IsNullOrEmpty(YG2.saves.JsonGameProgressData))
             {
                 _persistentData.GameProgressData = new GameProgressData();
                 return;
@@ -68,12 +68,12 @@ namespace MythicalBattles
             //     json = ConvertJsonString(json);
             // }
 
-            _persistentData.GameProgressData = JsonConvert.DeserializeObject<GameProgressData>(YandexGame.savesData.JsonGameProgressData);
+            _persistentData.GameProgressData = JsonConvert.DeserializeObject<GameProgressData>(YG2.saves.JsonGameProgressData);
         }
 
         public void LoadSettingsData()
         {
-            if (string.IsNullOrEmpty(YandexGame.savesData.JsonGameSettingsData))
+            if (string.IsNullOrEmpty(YG2.saves.JsonGameSettingsData))
             {
                 _persistentData.SettingsData = new SettingsData();
                 return;
@@ -88,7 +88,7 @@ namespace MythicalBattles
             //     json = ConvertJsonString(json);
             // }
 
-            _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YandexGame.savesData.JsonGameSettingsData);
+            _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YG2.saves.JsonGameSettingsData);
         }
 
         public void ResetPlayerData()

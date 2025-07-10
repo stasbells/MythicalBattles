@@ -125,7 +125,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
 
         public static string GetTranslation(string key)
         {
-            string language = YandexGame.savesData.language;
+            string language = YG2.envir.language;
 
             return language.ToLower() switch
             {

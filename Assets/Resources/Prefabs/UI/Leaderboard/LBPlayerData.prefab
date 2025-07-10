@@ -1203,11 +1203,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLoad: 0
+  urlImage: 
   rawImage: {fileID: 5473081142185404979}
   spriteImage: {fileID: 0}
-  urlImage: 
   loadAnimObj: {fileID: 0}
-  debug: 0
+  log: 0
 --- !u!1 &5473081142185404977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,14 +1384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageLoad: {fileID: 5473081142010101597}
-  topPlayerActivityComponents:
-  - {fileID: 356398437333130549}
-  thisPlayerActivityComponents:
-  - {fileID: 8367155149555838090}
-  - {fileID: 57280250401627119}
-  - {fileID: 198421523621027850}
-  - {fileID: 1628907264625255654}
-  - {fileID: 2322484383104441127}
   textLegasy:
     rank: {fileID: 0}
     name: {fileID: 0}
@@ -1400,6 +1392,14 @@ MonoBehaviour:
     rank: {fileID: 1473844525341068206}
     name: {fileID: 286894963732732997}
     score: {fileID: 3985624115511853007}
+  topPlayerActivityComponents:
+  - {fileID: 356398437333130549}
+  currentPlayerActivityComponents:
+  - {fileID: 57280250401627119}
+  - {fileID: 8367155149555838090}
+  - {fileID: 198421523621027850}
+  - {fileID: 1628907264625255654}
+  - {fileID: 2322484383104441127}
 --- !u!222 &2702932886069751926
 CanvasRenderer:
   m_ObjectHideFlags: 0

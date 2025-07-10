@@ -67,7 +67,7 @@ namespace MythicalBattles
             {
                 SetLevelResults(levelNumber, resultPoints, resultTime);
 
-                YandexGame.NewLeaderboardScores(Constants.TestLeaderboard, (int)GetAllPoints());
+                YG2.SetLeaderboard(Constants.TestLeaderboard, (int)GetAllPoints());
 
                 return true;
             }

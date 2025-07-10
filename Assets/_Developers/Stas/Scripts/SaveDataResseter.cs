@@ -1,5 +1,5 @@
 using UnityEngine;
-using YG;
+// YG Old/using YG;
 
 namespace MythicalBattles
 {
@@ -10,8 +10,8 @@ namespace MythicalBattles
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
 
-            YandexGame.ResetSaveProgress();
-            YandexGame.SaveProgress();
+            // YG Old/YandexGame.ResetSaveProgress();
+            // YG Old/YandexGame.SaveProgress();
 
             Debug.Log("Save data has been reset.");
         }

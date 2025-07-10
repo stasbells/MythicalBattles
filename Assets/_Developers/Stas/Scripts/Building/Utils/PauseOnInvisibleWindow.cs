@@ -1,5 +1,5 @@
 using UnityEngine;
-using YG;
+// YG Old/using YG;
 
 namespace RallyLegends.Scene
 {
@@ -7,14 +7,14 @@ namespace RallyLegends.Scene
     {
         private void OnEnable()
         {
-            YandexGame.onShowWindowGame += OnShowWindowGame;
-            YandexGame.onHideWindowGame += OnHideWindowGame;
+            // YG Old/YandexGame.onShowWindowGame += OnShowWindowGame;
+            // YG Old/YandexGame.onHideWindowGame += OnHideWindowGame;
         }
 
         private void OnDisable()
         {
-            YandexGame.onShowWindowGame -= OnShowWindowGame;
-            YandexGame.onHideWindowGame -= OnHideWindowGame;
+            // YG Old/YandexGame.onShowWindowGame -= OnShowWindowGame;
+            // YG Old/YandexGame.onHideWindowGame -= OnHideWindowGame;
         }
 
         public void OnShowWindowGame()
