@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
+
 #if YG_NEWTONSOFT_FOR_SAVES
 using Newtonsoft.Json;
 #endif
