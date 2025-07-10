@@ -14,12 +14,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial
 
         private void OnEnable()
         {
-            if (YandexGame.EnvironmentData.isMobile)
+            if (YG2.envir.isMobile)
             {
                 _messageMobile.gameObject.SetActive(true);
                 _messageDesktop.gameObject.SetActive(false);
             }
-            else if(YandexGame.EnvironmentData.isDesktop)
+            else if(YG2.envir.isDesktop)
             {
                 _messageMobile.gameObject.SetActive(false);
                 _messageDesktop.gameObject.SetActive(true);

@@ -83,7 +83,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
             _uiRoot.HideLoadingScreen();
 
-            YandexGame.GameReadyAPI();
+            YG2.GameReadyAPI();
         }
 
         private void RunScene(Object sceneEntryPoint)

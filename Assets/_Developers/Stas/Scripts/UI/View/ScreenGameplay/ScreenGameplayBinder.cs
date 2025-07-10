@@ -11,13 +11,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
         private void OnEnable()
         {
             _popupPauseButton.onClick.AddListener(OnPopupPauseButtonClicked);
-            YandexGame.onHideWindowGame += OnHideWindowGame;
+            YG2.onHideWindowGame += OnHideWindowGame;
         }
 
         private void OnDisable()
         {
             _popupPauseButton.onClick.RemoveListener(OnPopupPauseButtonClicked);
-            YandexGame.onHideWindowGame -= OnHideWindowGame;
+            YG2.onHideWindowGame -= OnHideWindowGame;
         }
 
         private void OnPopupPauseButtonClicked()

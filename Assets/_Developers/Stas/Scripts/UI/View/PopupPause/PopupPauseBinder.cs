@@ -11,7 +11,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
         private void OnEnable()
         {
             _goToMainMenuButton.onClick.AddListener(OnGoToMainMenuButtonClicked);
-            YandexGame.onShowWindowGame += OnShowWindowGame;
+            YG2.onShowWindowGame += OnShowWindowGame;
 
             OnPause();
         }
@@ -19,7 +19,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
         private void OnDisable()
         {
             _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
-            YandexGame.onShowWindowGame -= OnShowWindowGame;
+            YG2.onShowWindowGame -= OnShowWindowGame;
 
             OnPlay();
         }
