@@ -12,9 +12,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
             _exitSceneRequest = exitSceneRequest;
             _restartSceneRequest = restartSceneRequest;
         }
-        
+
         public override string Name => "ScreenDeath";
-        
+
         public void RequestGoToMainMenu()
         {
             _exitSceneRequest.OnNext(Unit.Default);

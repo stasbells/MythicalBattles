@@ -15,6 +15,7 @@ namespace MythicalBattles
         private IWallet _wallet;
         private IDataProvider _dataProvider;
         private IPersistentData _persistentData;
+        private ILevelCompletionStopwatch _levelCompletionStopwatch;
         private GameplayUIManager _gameplayUIManager;
         private float _levelStartTime;
         private float _maxAdditionalGold;
@@ -24,16 +25,20 @@ namespace MythicalBattles
 
         private void Construct()
         {
-            _wallet = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IWallet>();
-            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
-            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+            
+            _wallet = container.Resolve<IWallet>();
+            _dataProvider = container.Resolve<IDataProvider>();
+            _persistentData = container.Resolve<IPersistentData>();
+            _levelCompletionStopwatch = container.Resolve<ILevelCompletionStopwatch>();
         }
 
         private void Awake()
         {
             Construct();
             
-            _levelStartTime = Time.time;
+            _levelCompletionStopwatch.Reset();
+            _levelCompletionStopwatch.Start();
         }
 
         public void SetUiManager(GameplayUIManager gameplayUIManager)
@@ -43,7 +48,9 @@ namespace MythicalBattles
 
         public IEnumerator Run(int levelNumber, float baselevelReward, float maxScore)
         {
-            _levelPassTime = Time.time - _levelStartTime;
+            _levelCompletionStopwatch.Stop();
+            
+            _levelPassTime = _levelCompletionStopwatch.ElapsedTime;
             
             _maxAdditionalGold = baselevelReward * AdditionalGoldFactor;
 

@@ -13,5 +13,6 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         builder.AddSingleton(typeof(AudioPlayback), typeof(IAudioPlayback));
         builder.AddSingleton(typeof(Wallet), typeof(IWallet));
         builder.AddSingleton(typeof(LevelSelectionService), typeof(ILevelSelectionService));
+        builder.AddSingleton(typeof(LevelCompletionStopwatch), typeof(ILevelCompletionStopwatch));
     }
 }

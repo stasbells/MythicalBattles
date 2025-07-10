@@ -29,13 +29,6 @@ namespace MythicalBattles
 
         public int GetCurrentCoins() => _persistentData.PlayerData.Money;
 
-        public bool IsEnough(int coins)
-        {
-            _ = CheckInputIsNotNegative(coins);
-
-            return _persistentData.PlayerData.Money >= coins;
-        }
-
         public void Spend(int coins)
         {
             if (IsEnough(coins) == false)
@@ -44,6 +37,13 @@ namespace MythicalBattles
             _persistentData.PlayerData.SpendMoney(coins);
             
             CoinsChanged?.Invoke(_persistentData.PlayerData.Money);
+        }
+        
+        private bool IsEnough(int coins)
+        {
+            _ = CheckInputIsNotNegative(coins);
+
+            return _persistentData.PlayerData.Money >= coins;
         }
 
         private bool CheckInputIsNotNegative(int coins)

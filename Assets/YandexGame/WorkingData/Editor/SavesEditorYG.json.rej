@@ -1,0 +1,10 @@
+diff a/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json b/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json	(rejected hunks)
+@@ -11,6 +11,6 @@
+     false
+   ],
+   "JsonPlayerData": "{\"_money\":3207,\"_selectedWeaponID\":\"BowSimple\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
+-  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":165.424286,\"Points\":1035.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
++  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
+   "JsonGameSettingsData": "{\"MusicVolume\":0.411556423,\"SoundsVolume\":0.526278257}"
+ }
+\ No newline at end of file

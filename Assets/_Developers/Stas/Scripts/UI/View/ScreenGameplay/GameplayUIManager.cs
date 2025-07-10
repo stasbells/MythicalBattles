@@ -67,23 +67,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 
             return Pause;
         }
-
-        public ScreenDeathViewModel OpenScreenDeath()
-        {
-            var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
-            
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
-
-            return viewModel;
-        }
-
+        
         public void SubscribeOnPlayerDeath(ReadOnlyReactiveProperty<bool> isDead)
         {
             isDead.Subscribe(OnPlayerDeath).AddTo(_disposable);
         }
-        
+
         private void OnPlayerDeath(bool isDead)
         {
             if (isDead)
@@ -99,6 +88,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             OpenScreenDeath();
                 
             _disposable.Dispose();
+        }
+        
+        private ScreenDeathViewModel OpenScreenDeath()
+        {
+            var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
+            
+            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+
+            UIRoot.OpenScreen(viewModel);
+
+            return viewModel;
         }
     }
 }
