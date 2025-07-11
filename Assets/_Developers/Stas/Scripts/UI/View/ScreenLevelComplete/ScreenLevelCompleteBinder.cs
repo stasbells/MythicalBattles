@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete
 {
@@ -94,18 +95,27 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
             else
                 _moneyAward.text = ViewModel.RewardMoney.ToString();
         }
+        
+        private void OnRetryButtonClicked()
+        {
+            ViewModel.RequestToRestartLevel();
+        }
 
         private void OnContinueButtonClicked()
+        {
+            YG2.onCloseInterAdv += OnInterstitialAdClose;
+
+            YG2.InterstitialAdvShow();
+        }
+
+        private void OnInterstitialAdClose()
         {
             if(_levelSelectionService.CurrentLevelNumber == _levelSelectionService.LastLevelNumber)
                 ViewModel.RequestOpenScreenGameComplete();
             else
                 ViewModel.RequestGoToMainMenu();
-        }
-        
-        private void OnRetryButtonClicked()
-        {
-            ViewModel.RequestToRestartLevel();
+
+            YG2.onCloseInterAdv -= OnInterstitialAdClose;
         }
     }
 }
