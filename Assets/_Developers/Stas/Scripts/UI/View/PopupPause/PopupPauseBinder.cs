@@ -11,7 +11,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
         private void OnEnable()
         {
             _goToMainMenuButton.onClick.AddListener(OnGoToMainMenuButtonClicked);
-            YG2.onShowWindowGame += OnShowWindowGame;
+            YG2.onShowWindowGame += OnPause;
 
             OnPause();
         }
@@ -19,7 +19,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
         private void OnDisable()
         {
             _goToMainMenuButton.onClick.RemoveListener(OnGoToMainMenuButtonClicked);
-            YG2.onShowWindowGame -= OnShowWindowGame;
+            YG2.onShowWindowGame -= OnPause;
 
             OnPlay();
         }
@@ -29,21 +29,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
             ViewModel.RequestGoToMainMenu();
         }
 
-        private void OnShowWindowGame()
-        {
-            OnPause();
-        }
-
         private void OnPause()
         {
             Time.timeScale = 0f;
-            AudioListener.volume = 0f;
+            AudioListener.pause = true;
         }
 
         private void OnPlay()
         {
             Time.timeScale = 1f;
-            AudioListener.volume = 1f;
+            AudioListener.pause = false;
         }
     }
 }

@@ -4,9 +4,9 @@ namespace YG
     [System.Serializable]
     public partial class SavesYG
     {
-        public bool isFirstSession = true;
+        public bool IsFirstSession = true;
 
-        public int idSave;
+        public int IdSave;
 
         public string JsonPlayerData;
         public string JsonGameProgressData;

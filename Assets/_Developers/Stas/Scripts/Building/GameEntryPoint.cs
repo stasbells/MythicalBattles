@@ -82,8 +82,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             RunScene(sceneEntryPoint);
 
             _uiRoot.HideLoadingScreen();
-
-            YG2.GameReadyAPI();
         }
 
         private void RunScene(Object sceneEntryPoint)

@@ -20,12 +20,24 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
             YG2.onHideWindowGame -= OnHideWindowGame;
         }
 
-        private void OnPopupPauseButtonClicked()
+        private void OnApplicationFocus(bool focus)
+        {
+            if (!focus)
+                ViewModel.RequestGoToPopupPause();
+        }
+
+        private void OnApplicationPause(bool pause)
+        {
+            if (pause)
+                ViewModel.RequestGoToPopupPause();
+        }
+
+        private void OnHideWindowGame()
         {
             ViewModel.RequestGoToPopupPause();
         }
 
-        private void OnHideWindowGame()
+        private void OnPopupPauseButtonClicked()
         {
             ViewModel.RequestGoToPopupPause();
         }

@@ -1,15 +1,15 @@
 {
-    "intExample": 5,
-    "strExample": "Hello!",
-    "boolExample": [
-        false,
-        false,
-        false,
-        false
-    ],
-    "isFirstSession": true,
-    "idSave": 2,
-    "JsonPlayerData": "{\"_money\":3202,\"_selectedWeaponID\":\"BowSimple\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
-    "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":188.107468,\"Points\":1012.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
-    "JsonGameSettingsData": ""
+  "intExample": 5,
+  "strExample": "Hello!",
+  "boolExample": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "IsFirstSession": false,
+  "IdSave": 3,
+  "JsonPlayerData": null,
+  "JsonGameProgressData": null,
+  "JsonGameSettingsData": "{\"MusicVolume\":0.7,\"SoundsVolume\":0.7}"
 }
