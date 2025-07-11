@@ -48,10 +48,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         {
             _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
 
-            if (YG2.isFirstGameSession)
-            ViewModel.RequestGoToTutorial();
+            if (YG2.saves.IsFirstSession)
+                ViewModel.RequestGoToTutorial();
             else
-            ViewModel.RequestGoToSceneGameplay();
+                ViewModel.RequestGoToSceneGameplay();
         }
 
         private void OnGoToScreenMainMenuButtonClicked()

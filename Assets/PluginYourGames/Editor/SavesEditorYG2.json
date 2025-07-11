@@ -7,8 +7,8 @@
     false,
     false
   ],
-  "isFirstSession": true,
-  "idSave": 2,
+  "IsFirstSession": false,
+  "IdSave": 3,
   "JsonPlayerData": null,
   "JsonGameProgressData": null,
   "JsonGameSettingsData": "{\"MusicVolume\":0.7,\"SoundsVolume\":0.7}"

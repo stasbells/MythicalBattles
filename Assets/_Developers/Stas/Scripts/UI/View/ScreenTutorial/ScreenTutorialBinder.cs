@@ -35,6 +35,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial
         private void OnDisable()
         {
             _gameButton.onClick?.RemoveListener(OnPlayButtonClicked);
+            YG2.saves.IsFirstSession = false;
+            YG2.SaveProgress();
         }
 
         private void OnPlayButtonClicked()

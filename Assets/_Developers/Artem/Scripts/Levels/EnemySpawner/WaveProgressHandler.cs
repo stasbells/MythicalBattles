@@ -11,7 +11,6 @@ namespace MythicalBattles
 {
     public class WaveProgressHandler : MonoBehaviour
     {
-        private readonly string _wave = "Wave";
         private readonly string _nextWaveTextFormat = "Next wave in";
 
         [SerializeField] private WaveProgressView _waveProgressView;
