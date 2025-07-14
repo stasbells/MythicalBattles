@@ -38,7 +38,7 @@ namespace MythicalBattles
         private int _timeBetweenWaves;
         private int _ticksBetweenWaves;
         private Queue<Boost> _boostQueue = new Queue<Boost>();
-        private bool _isDisplayingBoost = false;
+        private bool _isDisplayingBoost;
 
         private IDisposable _timerSubscription;
 
@@ -117,10 +117,11 @@ namespace MythicalBattles
         private void OnBoostApplied(Boost boost)
         {
             _boostQueue.Enqueue(boost);
-            if (!_isDisplayingBoost)
-            {
+
+            boost.Applied -= OnBoostApplied;
+            
+            if (_isDisplayingBoost == false)
                 DisplayNextBoost();
-            }
         }
 
         private void DisplayNextBoost()
@@ -135,6 +136,7 @@ namespace MythicalBattles
             Boost nextBoost = _boostQueue.Dequeue();
             
             FadeIn(_boostsDescriptionText, _currentBoostTween);
+            
             _boostsDescription.Display(nextBoost);
 
             StartCoroutine(WaitAndFadeOut());
@@ -250,7 +252,6 @@ namespace MythicalBattles
                         .OnComplete(() => 
                         {
                             target.gameObject.SetActive(false);
-                            CheckNextBoost();
                         });
                     break;
                 case Graphic graphic:
@@ -258,6 +259,7 @@ namespace MythicalBattles
                         .OnComplete(() => 
                         {
                             target.gameObject.SetActive(false);
+                            
                             CheckNextBoost();
                         });
                     break;
