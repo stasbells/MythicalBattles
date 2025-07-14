@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ami.BroAudio;
 using R3;
+using Reflex.Extensions;
 using Unity.VisualScripting;
+using UnityEditor.iOS.Xcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles
 {
@@ -27,12 +31,20 @@ namespace MythicalBattles
         private bool _isSpawning;
         private System.Random _random = new System.Random();
         private WaveProgressHandler _waveProgressHandler;
+        private IAudioPlayback _audioPlayback;
 
         public int WavesCount => _waves.Length;
         public event Action AllWavesCompleted;
 
+        private void Construct()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+        
         private void Awake()
         {
+            Construct();
+            
             _waveProgressHandler = GetComponent<WaveProgressHandler>();
             
             InitializePools();
@@ -133,8 +145,27 @@ namespace MythicalBattles
                     
                 ActivateEnemy(enemyGameobject, wave);
             }
+
+            ActualizeMusicTheme(wave, waveNumber);
             
             _waveProgressHandler.InitializeWave(_activeEnemiesCount, waveNumber);
+        }
+
+        private void ActualizeMusicTheme(EnemyWave wave, int waveNumber)
+        {
+            SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
+
+            if (wave is BossWave && waveNumber == _waves.Length)
+            {
+               _audioPlayback.PlayMusic(bossTheme);
+            }
+            else
+            {
+                if (_audioPlayback.AudioContainer.CurrentPlayingMusicID == bossTheme)
+                {
+                    _audioPlayback.PlayLevelThemeAfterBossTheme();
+                }
+            }
         }
 
         private void ActivateEnemy(GameObject enemyGameobject, EnemyWave wave)

@@ -7,6 +7,7 @@ namespace MythicalBattles
     {
         private float _currentMusicVolume;
         private float _currentSoundsVolume;
+        private SoundID CurrentLevelThemeID;
         
         private IPersistentData _persistentData;
         private IDataProvider _dataProvider;
@@ -18,7 +19,7 @@ namespace MythicalBattles
             
             AudioContainer = Resources.Load<AudioContainer>("Prefabs/AudioContainer");
         }
-        
+
         public AudioContainer AudioContainer { get;  set; }
 
         public void PlayMusic(SoundID soundID)
@@ -34,6 +35,14 @@ namespace MythicalBattles
 
             AudioContainer.PlaySound(soundID, _currentSoundsVolume);
         }
+        
+        public void PlayLevelThemeAfterBossTheme()
+        {
+            _currentMusicVolume = _persistentData.SettingsData.MusicVolume;
+
+            AudioContainer.PlayLevelThemeAfterBossTheme(_currentMusicVolume);
+        }
+        
         
         public void StopPlay(SoundID soundID)
         {

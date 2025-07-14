@@ -38,17 +38,6 @@ namespace MythicalBattles
             _animationDelay = new WaitForSeconds(_afterAttackDelay);
             _cameraTransform = Camera.main.transform;
             _spawnPoints = new Vector3[_projectileCount];
-            
-            SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
-            
-            _audioPlayback.PlayMusic(bossTheme);
-        }
-
-        private void OnDisable()
-        {
-            SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
-            
-            _audioPlayback.StopPlay(bossTheme);
         }
 
         public void ApplyMultiplier(float multiplier)

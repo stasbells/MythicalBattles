@@ -29,20 +29,37 @@ namespace MythicalBattles
         [field: SerializeField] public SoundID PayMoney { get; private set; }
         [field: SerializeField] public SoundID ButtonClick { get; private set; }
 
-        private SoundID _currentPlayingMusicID;
+        public SoundID CurrentPlayingMusicID;
+
+        private SoundID _themePlayedBeforeBossThemeID;
 
         public void PlayMusic(SoundID soundID, float volume)
         {
             if (GetMusicIdList().Contains(soundID) == false)
                 throw new InvalidCastException("Music ID not found");
 
-            BroAudio.Stop(_currentPlayingMusicID);
+            if (soundID == BossTheme)
+                _themePlayedBeforeBossThemeID = CurrentPlayingMusicID;
 
-            _currentPlayingMusicID = soundID;
+            BroAudio.Stop(CurrentPlayingMusicID);
+
+            CurrentPlayingMusicID = soundID;
 
             BroAudio.Play(soundID);
             
             BroAudio.SetVolume(soundID, volume);
+        }
+        
+        public void PlayLevelThemeAfterBossTheme(float volume)
+        {
+            BroAudio.Stop(CurrentPlayingMusicID);
+
+            CurrentPlayingMusicID = _themePlayedBeforeBossThemeID;
+            
+            BroAudio.Play(_themePlayedBeforeBossThemeID);
+            
+            BroAudio.SetVolume(_themePlayedBeforeBossThemeID, volume);
+
         }
 
         public void PlaySound(SoundID soundID, float volume)
@@ -62,7 +79,7 @@ namespace MythicalBattles
 
         public void SetMusicVolume(float volume)
         {
-            BroAudio.SetVolume(_currentPlayingMusicID, volume);
+            BroAudio.SetVolume(CurrentPlayingMusicID, volume);
         }
 
         private IReadOnlyList<SoundID> GetMusicIdList()
