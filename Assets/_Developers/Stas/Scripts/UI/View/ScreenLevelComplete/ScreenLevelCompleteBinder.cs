@@ -55,6 +55,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         {
             _continueButton.onClick?.RemoveListener(OnContinueButtonClicked);
             _retryButton.onClick?.RemoveListener(OnRetryButtonClicked);
+            YG2.onCloseInterAdv -= ViewModel.RequestToRestartLevel;
         }
 
         private void ShowTime()
@@ -98,7 +99,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         
         private void OnRetryButtonClicked()
         {
-            ViewModel.RequestToRestartLevel();
+            YG2.onCloseInterAdv += ViewModel.RequestToRestartLevel;
+
+            YG2.InterstitialAdvShow();
         }
 
         private void OnContinueButtonClicked()

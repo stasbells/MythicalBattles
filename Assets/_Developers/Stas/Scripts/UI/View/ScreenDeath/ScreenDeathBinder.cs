@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
 {
@@ -10,7 +11,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
     {
         private const float MaxMoneyForTimeLife = 4000f;
         private const float MaxLifeTimeForReward = 600f;
-        
+
         [SerializeField] private Button _mainMenuButton;
         [SerializeField] private Button _retryButton;
         [SerializeField] private TMP_Text _moneyRewardText;
@@ -22,9 +23,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
         private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
-            
+
             _wallet = container.Resolve<IWallet>();
-            _levelCompletionStopwatch =  container.Resolve<ILevelCompletionStopwatch>();
+            _levelCompletionStopwatch = container.Resolve<ILevelCompletionStopwatch>();
         }
 
         private void Awake()
@@ -39,18 +40,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
             _retryButton.onClick.AddListener(OnRetryButtonClicked);
 
             _levelCompletionStopwatch.Stop();
-            
+
             ShowRewardMoney();
-            
+
             Time.timeScale = 0f;
         }
 
         private void OnDisable()
         {
             Time.timeScale = 1f;
-            
+
             _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _retryButton.onClick.RemoveListener(OnRetryButtonClicked);
+            YG2.onCloseInterAdv -= ViewModel.RequestToRestartLevel;
         }
 
         private void ShowRewardMoney()
@@ -63,20 +65,31 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
             {
                 _moneyReward = MaxMoneyForTimeLife * _levelCompletionStopwatch.ElapsedTime / MaxLifeTimeForReward;
             }
-            
+
             _wallet.AddCoins((int)_moneyReward);
 
-            _moneyRewardText.text = ((int) _moneyReward).ToString();
+            _moneyRewardText.text = ((int)_moneyReward).ToString();
         }
-        
+
         private void OnMainMenuButtonClicked()
         {
-            ViewModel.RequestGoToMainMenu();
+            YG2.onCloseInterAdv += OnInterstitialAdClose;
+
+            YG2.InterstitialAdvShow();
         }
-        
+
         private void OnRetryButtonClicked()
         {
-            ViewModel.RequestToRestartLevel();
+            YG2.onCloseInterAdv += ViewModel.RequestToRestartLevel;
+
+            YG2.InterstitialAdvShow();
+        }
+
+        private void OnInterstitialAdClose()
+        {
+            ViewModel.RequestGoToMainMenu();
+
+            YG2.onCloseInterAdv -= OnInterstitialAdClose;
         }
     }
 }
