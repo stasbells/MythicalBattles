@@ -1,15 +1,15 @@
 {
-  "intExample": 5,
-  "strExample": "Hello!",
-  "boolExample": [
-    false,
-    false,
-    false,
-    false
-  ],
-  "IsFirstSession": false,
-  "IdSave": 3,
-  "JsonPlayerData": null,
-  "JsonGameProgressData": null,
-  "JsonGameSettingsData": "{\"MusicVolume\":0.7,\"SoundsVolume\":0.7}"
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "IsFirstSession": false,
+    "IdSave": 1,
+    "JsonPlayerData": "",
+    "JsonGameProgressData": "",
+    "JsonGameSettingsData": ""
 }
