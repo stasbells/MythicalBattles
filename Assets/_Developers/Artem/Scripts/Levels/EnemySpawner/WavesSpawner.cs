@@ -155,7 +155,7 @@ namespace MythicalBattles
         {
             SoundID bossTheme = _audioPlayback.AudioContainer.BossTheme;
 
-            if (wave is BossWave && waveNumber == _waves.Length)
+            if (wave is BossWave || waveNumber == _waves.Length)
             {
                _audioPlayback.PlayMusic(bossTheme);
             }
