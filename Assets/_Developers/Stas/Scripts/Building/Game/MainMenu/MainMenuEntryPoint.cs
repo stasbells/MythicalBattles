@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Ami.BroAudio;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
@@ -49,8 +51,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
                 .Build();
 
             InitUI(mainMenuViewModelsContainer.Build());
-            
-            PlayMenuTheme();
+
+            PlayLevelTheme();
 
             var exitSceneSignal = mainMenuViewModelsContainer.Build().Resolve<Subject<Unit>>();
 
@@ -81,10 +83,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
             uiManager.OpenScreenMainMenu();
         }
 
-        private void PlayMenuTheme()
+        private void PlayLevelTheme()
         {
             SoundID mainThemeID = _audioPlayback.AudioContainer.MenuTheme;
-            
+
             _audioPlayback.PlayMusic(mainThemeID);
         }
     }

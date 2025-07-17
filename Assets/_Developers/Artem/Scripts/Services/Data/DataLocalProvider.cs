@@ -76,6 +76,9 @@ namespace MythicalBattles
             if (string.IsNullOrEmpty(YG2.saves.JsonGameSettingsData))
             {
                 _persistentData.SettingsData = new SettingsData();
+                
+                Debug.Log("WRONG VOLUME LOAD");
+                
                 return;
             }
 
@@ -89,6 +92,14 @@ namespace MythicalBattles
             // }
 
             _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YG2.saves.JsonGameSettingsData);
+            
+            Debug.Log("RIGHT VOLUME LOAD");
+            
+            Debug.Log(_persistentData.SettingsData.MusicVolume);
+            
+            Debug.Log("RIGHT VOLUME LOAD");
+            
+            Debug.Log(_persistentData.SettingsData.SoundsVolume);
         }
 
         public void ResetPlayerData()
@@ -107,27 +118,27 @@ namespace MythicalBattles
             SaveGameProgressData();
         }
 
-        private string ConvertJsonString(string json)
-        {
-            char previous;
-            char next;
-
-            for (int i = 0; i < json.Length; i++)
-            {
-                if (json[i] == 'n')
-                {
-                    previous = json[i - 1];
-                    next = json[i + 1];
-
-                    if (previous == '{' || previous == '}' || previous == ',' || next == ' ' || next == '}')
-                    {
-                        json = json.Remove(i, 1);
-                        json = json.Insert(i, "\n");
-                    }
-                }
-            }
-
-            return json;
-        }
+        // private string ConvertJsonString(string json)
+        // {
+        //     char previous;
+        //     char next;
+        //
+        //     for (int i = 0; i < json.Length; i++)
+        //     {
+        //         if (json[i] == 'n')
+        //         {
+        //             previous = json[i - 1];
+        //             next = json[i + 1];
+        //
+        //             if (previous == '{' || previous == '}' || previous == ',' || next == ' ' || next == '}')
+        //             {
+        //                 json = json.Remove(i, 1);
+        //                 json = json.Insert(i, "\n");
+        //             }
+        //         }
+        //     }
+        //
+        //     return json;
+        // }
     }
 }

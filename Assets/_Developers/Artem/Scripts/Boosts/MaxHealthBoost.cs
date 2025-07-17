@@ -6,7 +6,6 @@ namespace MythicalBattles
     public class MaxHealthBoost : Boost
     {
         [SerializeField] private float _healthMultiplier = 0.1f;
-        [SerializeField] private float _healFactor = 1f;
 
         protected override void Apply()
         {

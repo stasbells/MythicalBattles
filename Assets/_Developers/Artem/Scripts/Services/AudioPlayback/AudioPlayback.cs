@@ -54,10 +54,10 @@ namespace MythicalBattles
             _currentMusicVolume = volume;
             
            _persistentData.SettingsData.SetMusicVolume(volume);
+
+           AudioContainer.SetMusicVolume(volume);
            
            _dataProvider.SaveSettingsData();
-           
-           AudioContainer.SetMusicVolume(volume);
         }
         
         public void ChangeSoundsVolume(float volume)
@@ -67,6 +67,13 @@ namespace MythicalBattles
             _persistentData.SettingsData.SetSoundsVolume(volume);
             
             _dataProvider.SaveSettingsData();
+        }
+        
+        private void SetLoadedVolume()
+        {
+            ChangeMusicVolume(_persistentData.SettingsData.MusicVolume);
+            
+            ChangeSoundsVolume(_persistentData.SettingsData.SoundsVolume);
         }
     }
 }

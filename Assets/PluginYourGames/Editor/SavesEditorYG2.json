@@ -1,15 +1,15 @@
 {
-  "intExample": 5,
-  "strExample": "Hello!",
-  "boolExample": [
-    false,
-    false,
-    false,
-    false
-  ],
-  "IsFirstSession": false,
-  "IdSave": 46,
-  "JsonPlayerData": "{\"_money\":2886,\"_selectedWeaponID\":\"BowSimple\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
-  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
-  "JsonGameSettingsData": "{\"MusicVolume\":0.7,\"SoundsVolume\":0.7}"
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "IsFirstSession": false,
+    "IdSave": 534,
+    "JsonPlayerData": "{\"_money\":119660,\"_selectedWeaponID\":\"BowLegendary\",\"_selectedArmorID\":\"ArmorLegendary\",\"_selectedHelmetID\":\"HelmetLegendary\",\"_selectedBootsID\":\"BootsLegendary\",\"_selectedNecklaceID\":\"NecklaceLegendary\",\"_selectedRingID\":\"RingLegendary\"}",
+    "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":181.672409,\"Points\":1018.0},{\"Time\":139.106552,\"Points\":1238.0},{\"Time\":176.7583,\"Points\":1364.0},{\"Time\":172.2763,\"Points\":1542.0},{\"Time\":208.651733,\"Points\":1652.0},{\"Time\":201.346985,\"Points\":1831.0},{\"Time\":237.832153,\"Points\":1924.0},{\"Time\":404.583,\"Points\":2121.0},{\"Time\":344.914154,\"Points\":3420.0}]}",
+    "JsonGameSettingsData": "{\"_musicVolume\":0.5100393,\"_soundsVolume\":0.8317173}"
 }

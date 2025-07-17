@@ -5,6 +5,7 @@ using UnityEngine;
 namespace MythicalBattles
 {
     [Serializable]
+    [JsonObject(MemberSerialization.Fields)]
     public class SettingsData
     {
         private const float InitVolume = 0.7f;

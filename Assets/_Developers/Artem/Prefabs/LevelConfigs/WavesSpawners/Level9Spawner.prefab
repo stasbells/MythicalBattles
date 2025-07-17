@@ -577,7 +577,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0b9ab1893cfd734db31ebf1af2abc90, type: 2}
   _enemySpawnPoints: {fileID: 5258254612806474938}
   _boostsStorage: {fileID: 5156579678087447953}
-  _healDropPercentChance: 40
+  _healDropPercentChance: 80
 --- !u!114 &4565904369566164025
 MonoBehaviour:
   m_ObjectHideFlags: 0
