@@ -4,6 +4,8 @@ namespace MythicalBattles
 {
     public class MeleeEnemyMover : EnemyMover, IWaveDamageMultiplier
     {
+        private const float MaxDistanceToDealDamage = 4;
+        
         [SerializeField] protected float InitDamage;
         [SerializeField] protected float AttackDistance;
 
@@ -18,7 +20,10 @@ namespace MythicalBattles
         
         public void Attack()
         {
-            Player.GetComponent<Health>().TakeDamage(_damage);
+            float distanceToPlayer = Vector3.Distance(Transform.position, Player.position);
+            
+            if(distanceToPlayer < MaxDistanceToDealDamage)
+                Player.GetComponent<Health>().TakeDamage(_damage);
         }
         
         public void ApplyMultiplier(float multiplier)

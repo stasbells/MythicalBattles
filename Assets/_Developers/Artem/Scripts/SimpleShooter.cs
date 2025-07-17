@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -27,7 +28,11 @@ namespace MythicalBattles
 
         protected override void Shoot()
         {
-            _particle.Play();
+            if (TryGetComponent(out Health health) == false)
+                throw new InvalidOperationException();
+            
+            if(health.IsDead.Value == false)
+                _particle.Play();
         }
 
         protected void SetProjectileDamage(float damage)
