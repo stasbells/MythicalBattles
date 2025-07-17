@@ -324,7 +324,7 @@ MonoBehaviour:
     simulationLoadScene: 0
   Simulation:
     device: 0
-    language: ru
+    language: en
     advIntervalSimulation: 5
     durationAdv: 0.5
     loadAdv: 0
@@ -347,7 +347,10 @@ MonoBehaviour:
       color2: {r: 1, g: 0.831, b: 0.149, a: 0.7}
     fixedAspectRatio: 0
     aspectRatio: 16/9
+    disableForMobile: 1
     fillBackground: 0
+    imageBackground: 0
+    imageName: background.jpg
     gradientBackgroundByAspectRatio:
       radial: 0
       angleInclination: 140
