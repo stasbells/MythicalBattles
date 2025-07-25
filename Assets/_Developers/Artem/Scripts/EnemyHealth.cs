@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using R3;
 using UnityEngine;
 
@@ -66,7 +66,7 @@ namespace MythicalBattles
         {
             MaxHealth.Value = _initMaxHealthValue * multiplier;
 
-            CurrentHealth = MaxHealth.Value;
+            SetCurrentHealth();
         }
 
         public void Reset()
@@ -76,7 +76,7 @@ namespace MythicalBattles
      
             MaxHealth.Value = _initMaxHealthValue;
 
-            CurrentHealth = MaxHealth.Value;
+            SetCurrentHealth();
         }
 
         protected override void OnAwakeBehaviour()

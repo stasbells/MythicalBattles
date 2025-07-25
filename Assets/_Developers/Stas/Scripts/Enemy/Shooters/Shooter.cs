@@ -1,21 +1,24 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using System.Collections;
 using UnityEngine;
 
 namespace MythicalBattles
 {
+    [RequireComponent(typeof(Animator))]
     public abstract class Shooter : MonoBehaviour
     {
+        private const float ShootDelay = 0.1f;
+
         [SerializeField] private float _initRateOfFire = 1f;
 
-        private readonly float _shootDelay = 0.1f;
-
-        protected Animator _animator;
+        private Animator _animator;
         private Coroutine _shootCoroutine;
         private float _shootSpeedAnimationMultiplier;
         private float _rateOfFire;
         private float _remainingDelay;
         private bool _wasAttacking;
+
+        public Animator Animator => _animator;
 
         private void Awake()
         {
@@ -26,12 +29,12 @@ namespace MythicalBattles
             if (this is PlayerShooter)
                 ApplyShootAnimationSpeed(_rateOfFire);
 
-            OnAwake();
+            OnShooterAwake();
         }
 
         private void OnEnable()
         {
-            _remainingDelay = _shootDelay;
+            _remainingDelay = ShootDelay;
             _wasAttacking = false;
         }
 
@@ -71,7 +74,7 @@ namespace MythicalBattles
 
         protected virtual void Shoot() { }
 
-        protected virtual void OnAwake() { }
+        protected virtual void OnShooterAwake() { }
 
         private void ApplyShootAnimationSpeed(float rateOfFire)
         {
@@ -86,7 +89,7 @@ namespace MythicalBattles
 
         private IEnumerator ShootWithFrequency()
         {
-            float delay = _remainingDelay > 0 ? _remainingDelay : _shootDelay;
+            float delay = _remainingDelay > 0 ? _remainingDelay : ShootDelay;
             float timer = 0f;
 
             while (timer < delay)

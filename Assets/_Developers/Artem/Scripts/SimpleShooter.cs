@@ -5,19 +5,15 @@ namespace MythicalBattles
 {
     public class SimpleShooter : Shooter
     {
-        [SerializeField] protected Transform ShootPoint;
-        [SerializeField] protected float Damage;
+        [SerializeField] private Transform _shootPoint;
         [SerializeField] private ParticleSystem _projectilePrefab;
-        
+        [SerializeField] private float _damage;
+
         private ParticleSystem _particle;
         private SimpleProjectile _projectile;
-        
-        protected override void OnAwake()
-        {
-            base.OnAwake();
 
-            InstantiateNewProjectileParticle();
-        }
+        public Transform ShootPoint => _shootPoint;
+        public float Damage => _damage;
 
         public void SetProjectilePrefab(ParticleSystem projectilePrefab)
         {
@@ -26,12 +22,28 @@ namespace MythicalBattles
             InstantiateNewProjectileParticle();
         }
 
+        public void SetDamage(float damage)
+        {
+            _damage = damage;
+        }
+
+        protected virtual void OnSimpleShooterAwake() { }
+
+        protected virtual void OnInstantiateNewProjectileParticle() { }
+
+        protected override void OnShooterAwake()
+        {
+            InstantiateNewProjectileParticle();
+
+            OnSimpleShooterAwake();
+        }
+
         protected override void Shoot()
         {
             if (TryGetComponent(out Health health) == false)
                 throw new InvalidOperationException();
-            
-            if(health.IsDead.Value == false)
+
+            if (health.IsDead.Value == false)
                 _particle.Play();
         }
 
@@ -45,17 +57,16 @@ namespace MythicalBattles
             if (_particle != null)
                 Destroy(_particle);
 
-            _particle = Instantiate(_projectilePrefab, ShootPoint.position, ShootPoint.rotation);
+            _particle = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
 
-            _particle.transform.SetParent(ShootPoint);
-
+            _particle.transform.SetParent(_shootPoint);
             _particle.Stop();
-
             _particle.TryGetComponent(out SimpleProjectile projectile);
-
             _projectile = projectile;
 
-            SetProjectileDamage(Damage);
+            SetProjectileDamage(_damage);
+
+            OnInstantiateNewProjectileParticle();
         }
     }
 }

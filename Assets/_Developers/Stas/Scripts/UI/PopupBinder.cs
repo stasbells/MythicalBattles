@@ -8,21 +8,29 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _closeAltButton;
 
-        protected virtual void Start()
+        private void Start()
         {
             _closeButton?.onClick.AddListener(OnCloseButtonClick);
             _closeAltButton?.onClick.AddListener(OnCloseButtonClick);
+
+            OnPopupBinderStart();
         }
 
-        protected virtual void OnDestroy()
+        private void OnDestroy()
         {
             _closeButton?.onClick.RemoveListener(OnCloseButtonClick);
             _closeAltButton?.onClick.RemoveListener(OnCloseButtonClick);
+
+            OnPopupBinderDestroy();
         }
 
         protected virtual void OnCloseButtonClick()
         {
             ViewModel.Close();
         }
+
+        protected virtual void OnPopupBinderStart() { }
+
+        protected virtual void OnPopupBinderDestroy() { }
     }
 }

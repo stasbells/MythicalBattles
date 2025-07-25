@@ -1,6 +1,7 @@
 namespace MythicalBattles
 {
-    public class SpiritMover : RangeEnemyMover
+    public class SpiritMover : RangeEnemyMover 
     {
+
     }
 }

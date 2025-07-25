@@ -6,9 +6,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
 {
     public class UIRootBinder : MonoBehaviour
     {
+        private readonly CompositeDisposable _subscriptions = new();
+
         [SerializeField] private ScreensContainer _screensContainer;
 
-        private readonly CompositeDisposable _subscriptions = new();
+        private void OnDestroy()
+        {
+            _subscriptions.Dispose();
+        }
 
         public void Bind(UIRootViewModel viewModel)
         {
@@ -36,10 +41,5 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
         }
 
         protected virtual void OnBind(UIRootViewModel viewModel) { }
-
-        private void OnDestroy()
-        {
-            _subscriptions.Dispose();
-        }
     }
 }

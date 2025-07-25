@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
@@ -17,31 +14,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
     {
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 
-        private Container _mainMenuContainer;
-        private IPersistentData _persistentData;
         private IDataProvider _dataProvider;
         private IAudioPlayback _audioPlayback;
 
-        private void Construct()
-        {
-            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
-            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
-            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
-        }
-        
         private void Awake()
         {
             Construct();
-            
+
             LoadData();
         }
-        
+
         public Observable<Unit> Run(Container mainMenuContainer)
         {
-            _mainMenuContainer = new ContainerBuilder().SetParent(mainMenuContainer)
-                .AddSingleton(new Subject<Unit>())
-                .Build();
-
             var mainMenuViewModelsContainer = new ContainerBuilder().SetParent(mainMenuContainer);
 
             mainMenuViewModelsContainer
@@ -59,12 +43,16 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
             return exitSceneSignal.AsObservable();
         }
 
+        private void Construct()
+        {
+            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+
         private void LoadData()
         {
             _dataProvider.LoadPlayerData();
-            
             _dataProvider.LoadGameProgressData();
-            
             _dataProvider.LoadSettingsData();
         }
 
@@ -78,7 +66,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
             uiSceneRootBinder.Bind(uiSceneRootViewModel);
 
             var uiManager = viewsContainer.Resolve<MainMenuUIManager>();
-
             uiManager.OpenScreenShop();
             uiManager.OpenScreenMainMenu();
         }

@@ -1,45 +1,45 @@
+using DamageNumbersPro;
+using DG.Tweening;
+using R3;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
-using DamageNumbersPro;
-using R3;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Image _healthBar;
-        [SerializeField] private Image _smoothHealthBar;
+        private readonly CompositeDisposable _disposable = new();
+
         [SerializeField] private DamageNumber _damageNumber;
+        [SerializeField] private Image _smoothHealthBar;
+        [SerializeField] private Image _healthBar;
         [SerializeField] private float _recoveryRate;
         [SerializeField] private float _healthBarScale = 0.3f;
-        
+
+        private RectTransform _rectTransform;
+        private Coroutine _changeValueJob;
+        private CanvasGroup _canvasGroup;
+        private Transform _transform;
         private Health _health;
         private Camera _camera;
-        private Transform _transform;
-        private RectTransform _rectTransform;
-        private CanvasGroup _canvasGroup;
-        private Coroutine _changeValueJob;
+
+        private Color _healNumbersColor = new(0f, 0.81f, 0.02f);
         private Vector3 _initialLocalScale;
         private Vector3 _rotation;
         private Vector3 _scale;
+
         private float _initialMaxHealth;
         private float _initialScaleX;
-        private Color _healNumbersColor = new Color(0f, 0.81f, 0.02f);
 
-        private readonly CompositeDisposable _disposable = new();
-        
         private void Awake()
         {
-            //_camera = Camera.main;
             _transform = GetComponent<Transform>();
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _health = GetComponentInParent<Health>();
             _initialLocalScale = _transform.localScale;
-            //_rotation = _camera.transform.rotation.eulerAngles;
             _scale = _transform.localScale * _healthBarScale;
             _initialScaleX = _transform.localScale.x;
             _initialMaxHealth = _health.MaxHealth.Value;
@@ -50,7 +50,6 @@ namespace MythicalBattles
         {
             _camera = Camera.main;
             _rotation = _camera.transform.rotation.eulerAngles;
-
             _canvasGroup.alpha = 0f;
         }
 
@@ -64,7 +63,7 @@ namespace MythicalBattles
             _health.CurrentHealthPersentValueChanged += OnCurrentHealthPercentChanged;
             _health.Damaged += OnDamaged;
             _health.Healed += OnHealed;
-            
+
             _health.MaxHealth.Subscribe(OnUpdateMaxHealth).AddTo(_disposable);
         }
 
@@ -123,20 +122,20 @@ namespace MythicalBattles
         {
             _damageNumber.Spawn(_rectTransform.position, $"-{value}", _transform, color);
         }
-        
+
         private void OnHealed(float value)
         {
-            _damageNumber.Spawn(_rectTransform.position,$"+{value}", _transform, _healNumbersColor);
+            _damageNumber.Spawn(_rectTransform.position, $"+{value}", _transform, _healNumbersColor);
         }
 
         private void AnimateBarChanging(float healthValue)
         {
             _transform.DOKill(true);
-            
+
             _transform.localScale = _initialLocalScale;
-    
+
             _transform.DOPunchScale(_scale, 0.5f, 15, 5f);
-            
+
             _transform.localScale = _initialLocalScale;
 
             _canvasGroup.alpha = healthValue > 0 ? 1f : 0f;

@@ -5,10 +5,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 {
     public class ScreensContainer : MonoBehaviour
     {
+        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopupBinders = new();
+
         [SerializeField] private Transform _screensContainer;
         [SerializeField] private Transform _popupsContainer;
 
-        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopupBinders = new();
         private IScreenBinder _openedScreenBinder;
 
         public void OpenPopup(ScreenViewModel viewModel)

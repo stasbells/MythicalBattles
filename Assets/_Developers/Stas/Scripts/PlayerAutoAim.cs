@@ -1,17 +1,19 @@
 using UnityEngine;
 using DG.Tweening;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 
 namespace MythicalBattles
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAutoAim : MonoBehaviour
     {
-        [SerializeField] AimMarker _aimMarker;
+        private readonly Collider[] _hitColliders = new Collider[10];
+        private readonly float _maxAimAngle = 0.05f;
+
+        [SerializeField] private AimMarker _aimMarker;
         [SerializeField] private float _rotationSpeed = 5f;
         [SerializeField] private float _aimRadius;
 
-        private Collider[] _hitColliders = new Collider[10];
         private Animator _animator;
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
@@ -79,7 +81,7 @@ namespace MythicalBattles
 
         private void TakeAim()
         {
-            _animator.SetBool(Constants.IsAttack, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < 0.05f);
+            _animator.SetBool(Constants.IsAttack, _targetEnemy != null && Mathf.Abs(_rotationToTarget) < _maxAimAngle);
         }
 
         private void MarkTarget()

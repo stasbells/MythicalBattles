@@ -1,5 +1,5 @@
-using System;
 using Reflex.Extensions;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,15 +19,13 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         [SerializeField] private TMP_Text _bestTime;
         [SerializeField] private TMP_Text _newRecordText;
         [SerializeField] private TMP_Text _bestTimeText;
-        
-        private IPersistentData _persistentData;
+
         private ILevelSelectionService _levelSelectionService;
-   
+
         private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
-            
-            _persistentData = container.Resolve<IPersistentData>();
+
             _levelSelectionService = container.Resolve<ILevelSelectionService>();
         }
 
@@ -45,9 +43,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
         private void Start()
         {
             ShowTime();
-            
+
             ShowScore();
-            
+
             ShowRewardMoney();
         }
 
@@ -60,14 +58,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void ShowTime()
         {
-            if(ViewModel == null)
+            if (ViewModel == null)
                 throw new InvalidOperationException();
 
             Debug.Log(ViewModel.LevelPassTime);
             Debug.Log(ViewModel.BestTime);
-            
+
             _completionTime.text = TimeFormatter.GetTimeInString(ViewModel.LevelPassTime);
-            
+
             if (Mathf.Approximately(ViewModel.LevelPassTime, ViewModel.BestTime))
             {
                 _bestTime.gameObject.SetActive(false);
@@ -79,7 +77,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
                 _bestTime.gameObject.SetActive(true);
                 _bestTimeText.gameObject.SetActive(true);
                 _newRecordText.gameObject.SetActive(false);
-                
+
                 _bestTime.text = TimeFormatter.GetTimeInString(ViewModel.BestTime);
             }
         }
@@ -96,7 +94,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
             else
                 _moneyAward.text = ViewModel.RewardMoney.ToString();
         }
-        
+
         private void OnRetryButtonClicked()
         {
             YG2.onCloseInterAdv += ViewModel.RequestToRestartLevel;
@@ -113,7 +111,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void OnInterstitialAdClose()
         {
-            if(_levelSelectionService.CurrentLevelNumber == _levelSelectionService.LastLevelNumber)
+            if (_levelSelectionService.CurrentLevelNumber == _levelSelectionService.LastLevelNumber)
                 ViewModel.RequestOpenScreenGameComplete();
             else
                 ViewModel.RequestGoToMainMenu();

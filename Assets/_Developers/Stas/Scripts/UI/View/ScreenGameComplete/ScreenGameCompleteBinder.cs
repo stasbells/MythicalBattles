@@ -1,6 +1,6 @@
-using System.Collections;
 using Ami.BroAudio;
 using Reflex.Extensions;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,17 +11,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
     public class ScreenGameCompleteBinder : ScreenBinder<ScreenGameCompleteViewModel>
     {
         private const float DelayToShowButton = 5f;
-        
+
         [SerializeField] private Button _mainMenuButton;
         [SerializeField] private TMP_Text _score;
-        
+
         private IPersistentData _persistentData;
         private IAudioPlayback _audioPlayback;
 
         private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
-            
+
             _persistentData = container.Resolve<IPersistentData>();
             _audioPlayback = container.Resolve<IAudioPlayback>();
         }
@@ -34,7 +34,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
         private void OnEnable()
         {
             _mainMenuButton.gameObject.SetActive(false);
-            
+
             StartCoroutine(ShowMainMenuButton(DelayToShowButton));
 
             int totalScore = (int)_persistentData.GameProgressData.GetAllPoints();
@@ -42,7 +42,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
             _score.text = totalScore.ToString();
 
             SoundID soundID = _audioPlayback.AudioContainer.FinalTittlesTheme;
-            
+
             _audioPlayback.PlayMusic(soundID);
         }
 
@@ -59,9 +59,9 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComp
         private IEnumerator ShowMainMenuButton(float duration)
         {
             yield return new WaitForSeconds(duration);
-            
+
             _mainMenuButton.gameObject.SetActive(true);
-            
+
             _mainMenuButton.onClick?.AddListener(OnMainMenuButtonClicked);
         }
     }

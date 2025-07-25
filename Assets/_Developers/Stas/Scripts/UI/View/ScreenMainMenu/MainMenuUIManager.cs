@@ -1,7 +1,6 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipmentItem;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
@@ -56,7 +55,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
         {
             var viewModel = new ScreenTutorialViewModel(_exitSceneRequest);
             var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-            
+
             UIRoot.OpenScreen(viewModel);
 
             return viewModel;
@@ -91,7 +90,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 
             return shopItem;
         }
-        
+
         public PopupEquipmentItemViewModel OpenPopupEquipmentItem(InventoryItemView inventoryItemView)
         {
             var inventoryItem = new PopupEquipmentItemViewModel(inventoryItemView);
@@ -101,5 +100,5 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
 
             return inventoryItem;
         }
-    } 
+    }
 }

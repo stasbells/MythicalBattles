@@ -4,28 +4,24 @@ namespace MythicalBattles
 {
     public class MeleeEnemyMover : EnemyMover, IWaveDamageMultiplier
     {
-        private const float MaxDistanceToDealDamage = 4;
-        
-        [SerializeField] protected float InitDamage;
-        [SerializeField] protected float AttackDistance;
+        private const float MaxDistanceToDealDamage = 4f;
+
+        [SerializeField] private float _initDamage;
+        [SerializeField] private float _attackDistance;
 
         private float _damage;
-        
-        protected override void OnAwake()
+
+        public float InitDamage => _initDamage;
+        public float AttackDistance => _attackDistance;
+
+        public void OnAttackAnimationPlay()
         {
-            base.OnAwake();
-            
-            _damage = InitDamage;
+            float distanceToPlayer = Vector3.Distance(Transform.position, PlayerTransform.position);
+
+            if (distanceToPlayer < MaxDistanceToDealDamage)
+                PlayerTransform.GetComponent<Health>().TakeDamage(_damage);
         }
-        
-        public void Attack()
-        {
-            float distanceToPlayer = Vector3.Distance(Transform.position, Player.position);
-            
-            if(distanceToPlayer < MaxDistanceToDealDamage)
-                Player.GetComponent<Health>().TakeDamage(_damage);
-        }
-        
+
         public void ApplyMultiplier(float multiplier)
         {
             _damage = InitDamage * multiplier;
@@ -35,10 +31,40 @@ namespace MythicalBattles
         {
             _damage = InitDamage;
         }
-        
+
+        protected override void OnEnemyMoverAwake()
+        {
+            _damage = InitDamage;
+
+            OnMeleeEnemyMoverAwake();
+        }
+
+        protected override void OnEnemyMoverStart()
+        {
+            OnMeleeEnemyMoverStart();
+        }
+
+        protected override void OnEnemyMoverEnable()
+        {
+            OnMeleeEnemyMoverEnable();
+        }
+
+        protected override void OnEnemyMoverFixedUpdate()
+        {
+            OnMeleeEnemyMoverFixedUpdate();
+        }
+
         protected float GetDistanceToPlayer()
         {
-            return Vector3.Distance(Transform.position, Player.position);
+            return Vector3.Distance(Transform.position, PlayerTransform.position);
         }
+
+        protected virtual void OnMeleeEnemyMoverAwake() { }
+
+        protected virtual void OnMeleeEnemyMoverStart() { }
+
+        protected virtual void OnMeleeEnemyMoverFixedUpdate() { }
+
+        protected virtual void OnMeleeEnemyMoverEnable() { }
     }
 }

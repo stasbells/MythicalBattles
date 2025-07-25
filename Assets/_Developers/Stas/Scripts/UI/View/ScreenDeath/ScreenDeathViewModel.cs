@@ -19,7 +19,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
         {
             _exitSceneRequest.OnNext(Unit.Default);
         }
-        
+
         public void RequestToRestartLevel()
         {
             _restartSceneRequest.OnNext(Unit.Default);

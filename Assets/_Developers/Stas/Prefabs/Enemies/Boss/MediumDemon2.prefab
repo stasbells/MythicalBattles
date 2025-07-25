@@ -50,7 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4132383025755851166, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
       propertyPath: m_Name
-      value: MediumDemon2 Variant
+      value: MediumDemon2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672236284490064862, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
+      propertyPath: _initDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672236284490064862, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
+      propertyPath: _attackDistance
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6672236284490064862, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
       propertyPath: _playerFollowTime

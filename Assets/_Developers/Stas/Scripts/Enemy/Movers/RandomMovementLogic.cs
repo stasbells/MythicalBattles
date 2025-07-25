@@ -1,20 +1,22 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
 {
     public class RandomMovementLogic
     {
-        private IRandomlyMover _mover;
+        private readonly float _durationOfRandomMove;
+        private readonly float _raycastDistance;
+        private readonly float _directionChangeInterval;
+        private readonly Transform _transform;
+        private readonly IRandomlyMover _mover;
+
         private float _moveTimer;
         private float _directionChangeTimer;
         private Vector3 _randomDirection;
-        private float _durationOfRandomMove;
-        private float _raycastDistance;
-        private float _directionChangeInterval;
-        private Transform _transform;
         
-        public RandomMovementLogic(IRandomlyMover mover, Transform transform, float durationOfRandomMove, float directionChangeInterval, float raycastDistance)
+        public RandomMovementLogic(IRandomlyMover mover, Transform transform,
+            float durationOfRandomMove, float directionChangeInterval, float raycastDistance)
         {
             _mover = mover;
             _transform = transform;

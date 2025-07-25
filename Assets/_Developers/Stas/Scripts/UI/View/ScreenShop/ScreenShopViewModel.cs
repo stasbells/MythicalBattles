@@ -9,7 +9,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         private readonly ReactiveProperty<ShopPanel> _shopPanel;
 
         public ReactiveProperty<ShopPanel> ShopPanel => _shopPanel;
-
         public override string Name => "ScreenShop";
 
         public ScreenShopViewModel(MainMenuUIManager mainMenuUIManager, ReactiveProperty<ShopPanel> shopPanel)
@@ -27,7 +26,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         {
             _uiManager.OpenPopupShopItem(shopPanel, shopItemView);
         }
-        
+
         public void RequestOpenPopupEquipmentItem(InventoryItemView inventoryItemView)
         {
             _uiManager.OpenPopupEquipmentItem(inventoryItemView);
@@ -35,8 +34,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
 
         public void OnShopPanelChanged(ShopPanel newShopPanel, InventoryView inventoryView)
         {
-           newShopPanel.SetViewModel(this);
-           inventoryView.SetViewModel(this);
+            newShopPanel.SetViewModel(this);
+            inventoryView.SetViewModel(this);
         }
     }
 }

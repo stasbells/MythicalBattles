@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Reflex.Extensions;
+﻿using Reflex.Extensions;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -37,17 +37,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
 
         private void Construct()
         {
-           _persistentData =  SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
+            _persistentData = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPersistentData>();
         }
-        
+
         private void Awake()
         {
             Construct();
-            
+
             InitializeContent();
 
             _currentLevelIndex = _persistentData.GameProgressData.GetLastUnlockedLevelNumber() - 1;
-            
+
             UpdateButtons();
         }
 
@@ -69,6 +69,31 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         {
             if (!_isDragging)
                 SnapToCurrentLevel();
+        }
+
+        public void OnDrag(PointerEventData eventData) { }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            _isDragging = true;
+            _startDragPosition = _content.anchoredPosition;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            _isDragging = false;
+
+            float dragDistance = _content.anchoredPosition.x - _startDragPosition.x;
+
+            if (Mathf.Abs(dragDistance) > _dragThreshold)
+            {
+                if (dragDistance > 0 && _currentLevelIndex > 0)
+                    _currentLevelIndex--;
+                else if (dragDistance < 0 && _currentLevelIndex < _levelButtons.Count - 1)
+                    _currentLevelIndex++;
+            }
+
+            UpdateButtons();
         }
 
         private void InitializeContent()
@@ -106,31 +131,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
             }
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            _isDragging = true;
-            _startDragPosition = _content.anchoredPosition;
-        }
-
-        public void OnDrag(PointerEventData eventData) { }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            _isDragging = false;
-
-            float dragDistance = _content.anchoredPosition.x - _startDragPosition.x;
-
-            if (Mathf.Abs(dragDistance) > _dragThreshold)
-            {
-                if (dragDistance > 0 && _currentLevelIndex > 0)
-                    _currentLevelIndex--;
-                else if (dragDistance < 0 && _currentLevelIndex < _levelButtons.Count - 1)
-                    _currentLevelIndex++;
-            }
-
-            UpdateButtons();
-        }
-
         private void ScrollLeft()
         {
             if (_currentLevelIndex > 0)
@@ -156,7 +156,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
             int lastUnlockedLevelNumber = _persistentData.GameProgressData.GetLastUnlockedLevelNumber();
 
             _isUnlocked = lastUnlockedLevelNumber - 1 >= _currentLevelIndex;
-            
+
             for (int i = 0; i < _levelButtons.Count; i++)
             {
                 if (i <= _currentLevelIndex)

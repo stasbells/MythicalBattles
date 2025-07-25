@@ -38,6 +38,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
             _goToScreenMainMenuButton.onClick.RemoveListener(OnGoToScreenMainMenuButtonClicked);
         }
 
+        protected override void OnBind(ScreenShopViewModel viewModel)
+        {
+            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
+            viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
+        }
+
         private void OnGoToScreenMainMenuButtonClicked()
         {
             ViewModel.RequestGoToScreenMainMenu();
@@ -46,17 +52,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         private void LoadOrInitPlayerData()
         {
             _dataProvider.LoadPlayerData();
-            
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
-
             _playerStats.UpdatePlayerData(_persistentData.PlayerData);
-        }
-
-        protected override void OnBind(ScreenShopViewModel viewModel)
-        {
-            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
-
-            viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
         }
     }
 }

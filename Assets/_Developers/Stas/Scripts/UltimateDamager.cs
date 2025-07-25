@@ -1,6 +1,6 @@
-using UnityEngine;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using System.Collections;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using UnityEngine;
 
 namespace MythicalBattles
 {
@@ -8,12 +8,12 @@ namespace MythicalBattles
     {
         [SerializeField] private float _damagePeriod = 0.4f;
         [SerializeField] private float _initDamageValue;
-        
+
         private Coroutine _damageCoroutine;
         private WaitForSeconds _delay;
         private float _damage;
         private bool _isPlayerGetDamage;
-        
+
         private void Awake()
         {
             _delay = new WaitForSeconds(_damagePeriod);
@@ -34,7 +34,7 @@ namespace MythicalBattles
             if (other.gameObject.layer == Constants.LayerPlayer)
                 _isPlayerGetDamage = false;
         }
-        
+
         public void ApplyMultiplier(float multiplier)
         {
             _damage = _initDamageValue * multiplier;

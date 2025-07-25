@@ -1754,7 +1754,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.2
   _projectileCount: 8
   _projectilePool: {fileID: 7580349265740801852}
   _effectPool: {fileID: 2056904125409483971}
@@ -1773,11 +1772,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e602bc5b0df054d4da49f3e579ffd0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  PlayerSearchRadius: 50
-  RotationSpeed: 10
-  InitDamage: 25
-  AttackDistance: 1.5
+  _moveSpeed: 4
+  _playerSearchRadius: 50
+  _rotationSpeed: 10
+  _initDamage: 25
+  _initDamageReserv: 25
+  _attackDistance: 1.5
+  _attackDistanceReserv: 1.5
   _playerFollowTime: 4
   _durationOfRandomMove: 2
   _directionChangeInterval: 1

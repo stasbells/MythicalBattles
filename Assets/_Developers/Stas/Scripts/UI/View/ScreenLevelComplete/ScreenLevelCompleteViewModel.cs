@@ -7,8 +7,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
     {
         private readonly Subject<Unit> _exitSceneRequest;
         private readonly Subject<Unit> _restartSceneRequest;
-        private GameplayUIManager _uiManager;
-        
+        private readonly GameplayUIManager _uiManager;
         
         public ScreenLevelCompleteViewModel(GameplayUIManager uiManager, float levelPassTime, float bestTime, int score, int rewardMoney,
             Subject<Unit> exitSceneRequest, Subject<Unit> restartSceneRequest)

@@ -3,7 +3,6 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
-using R3;
 using Reflex.Core;
 using UnityEngine;
 
@@ -14,18 +13,11 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
         [SerializeField] private UIGameplayRootBinder _sceneUIRootPrefab;
         [SerializeField] private WorldGameplayRootBinder _worldRootBinder;
 
-        //private Container _gameplayContainer;
-
         public Signal Run(Container projectContainer)
         {
-            //_gameplayContainer = new ContainerBuilder().SetParent(gameplayContainer)
-                //.AddSingleton(new Subject<Unit>())
-                //.Build();
-
             var gameplayContainer = new ContainerBuilder().SetParent(projectContainer);
 
             gameplayContainer
-                //.AddSingleton(new Subject<Unit>())
                 .AddSingleton(new Signal())
                 .AddSingleton(new GameplayUIManager(gameplayContainer))
                 .AddSingleton(new WorldGameplayRootViewModel(gameplayContainer.Build()))
@@ -34,9 +26,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
                 
             InitUI(gameplayContainer);
             InitWorld(gameplayContainer.Build());
-
-            //var exitSceneSignal = gameplayContainer.Build().Resolve<Signal>().ExitScene;
-            //var restartSceneSignal = gameplayContainer.Build().Resolve<Signal>().RestartScene;
 
             return gameplayContainer.Build().Resolve<Signal>();
         }

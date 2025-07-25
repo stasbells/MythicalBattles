@@ -1,4 +1,4 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -11,37 +11,44 @@ namespace MythicalBattles
         [SerializeField] private float _durationOfRandomMove = 2f;
         [SerializeField] private float _directionChangeInterval = 1f;
         [SerializeField] private float _raycastDistance = 7f;
-        //[SerializeField] private float _attackDuration = 1f;
-        [SerializeField] ParticleSystem _effect;
+        [SerializeField] private ParticleSystem _effect;
 
         private RandomMovementLogic _randomMovementLogic;
         private float _playerFollowTimer;
         private float _moveAnimationSpeedMultiplier;
-        private float _attackTimer;
         private bool _isMovingRandomly;
 
-        protected override void OnAwake()
+        public void OnAttackAnimationPlayEffect()
         {
-            base.OnAwake();
+            _effect.Play();
+        }
 
+        public void StopRandomMoveAndCastSpell()
+        {
+            _playerFollowTimer = 0f;
+            CastSpell();
+        }
+
+        public void StopRandomMoving()
+        {
+            _isMovingRandomly = false;
+        }
+
+        protected override void OnMeleeEnemyMoverAwake()
+        {
             _effect.Stop();
 
             _randomMovementLogic = new RandomMovementLogic(this, Transform, _durationOfRandomMove,
-                _directionChangeInterval,
-                _raycastDistance);
+                _directionChangeInterval, _raycastDistance);
         }
 
-        protected override void OnStart()
+        protected override void OnMeleeEnemyMoverStart()
         {
-            base.OnStart();
-
             CorrectMoveAnimationSpeed();
         }
 
-        protected override void OnFixedUpdate()
+        protected override void OnMeleeEnemyMoverFixedUpdate()
         {
-            base.OnFixedUpdate();
-
             if (Animator.GetBool(Constants.IsDead))
                 return;
 
@@ -79,10 +86,8 @@ namespace MythicalBattles
             }
         }
 
-        protected override void OnEnableBehaviour()
+        protected override void OnMeleeEnemyMoverEnable()
         {
-            base.OnEnableBehaviour();
-
             Animator.SetBool(Constants.IsMove, true);
         }
 
@@ -90,22 +95,6 @@ namespace MythicalBattles
         {
             _moveAnimationSpeedMultiplier = MoveSpeed / BaseMoveSpeed;
             Animator.SetFloat(Constants.MoveSpeed, _moveAnimationSpeedMultiplier);
-        }
-
-        public void StopRandomMoveAndCastSpell()
-        {
-            _playerFollowTimer = 0f;
-            CastSpell();
-        }
-
-        public void AttackEffect()
-        {
-            _effect.Play();
-        }
-
-        public void StopRandomMoving()
-        {
-            _isMovingRandomly = false;
         }
 
         private void AttackInMelee()
@@ -119,9 +108,9 @@ namespace MythicalBattles
             Animator.SetBool(Constants.IsAttack, true);
             Animator.SetBool(Constants.IsMove, false);
 
-            if(Mathf.Approximately(_durationOfRandomMove, 0f) == false)
+            if (Mathf.Approximately(_durationOfRandomMove, 0f) == false)
                 _isMovingRandomly = !_isMovingRandomly;
-            
+
             _randomMovementLogic.ResetMoveTimer();
         }
     }

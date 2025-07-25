@@ -1,6 +1,6 @@
 using System;
 using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,19 +16,24 @@ namespace MythicalBattles
         [SerializeField] private Color _damageNumbersColor;
         [SerializeField] private DamageTypes _damageType;
 
-        private IGetDamage _mainDamageProjectile;
         private float _timeBetweenTicksDamage;
         private float _periodicDamage;
         private bool _IsFirstContactComplete;
+        private IGetDamage _mainDamageProjectile;
         private IAudioPlayback _audioPlayback;
+
+        private void Construct()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
 
         private void Awake()
         {
+            Construct();
+
             _mainDamageProjectile = GetComponent<IGetDamage>();
             
             _timeBetweenTicksDamage = _damageFullTime / _damageTicksCount;
-            
-            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
 
         private void OnEnable()
@@ -65,34 +70,22 @@ namespace MythicalBattles
                 if (target.TryGetComponent(out DamageOverTimeEffects effects) == false)
                     throw new InvalidOperationException();
 
-                SoundID shotSound;
-
                 switch (_damageType)
                 {
                     case DamageTypes.Electric:
 
-                        shotSound = _audioPlayback.AudioContainer.ElectricShot;
-                        
-                        _audioPlayback.PlaySound(shotSound);
-                        
+                        OnElectricDamage();
+
                         break;
                     case DamageTypes.Fire:
                         
-                        effects.PlayFireEffect(_timeBetweenTicksDamage, _damageTicksCount);
-                        
-                        shotSound = _audioPlayback.AudioContainer.FireShot;
-                        
-                        _audioPlayback.PlaySound(shotSound);
-                        
+                        OnFireDamage(effects);
+
                         break;
                     case DamageTypes.Poison:
                         
-                        effects.PlayPoisonEffect(_timeBetweenTicksDamage, _damageTicksCount);
-                        
-                        shotSound = _audioPlayback.AudioContainer.PoisonShot;
-                        
-                        _audioPlayback.PlaySound(shotSound);
-                        
+                        OnPoisonDamage(effects);
+
                         break;
                     default:
                         throw new InvalidOperationException();
@@ -106,6 +99,25 @@ namespace MythicalBattles
             {
                 return false;
             }
+        }
+
+        private void OnElectricDamage()
+        {
+            _audioPlayback.PlaySound(_audioPlayback.AudioContainer.ElectricShot);
+        }
+
+        private void OnFireDamage(DamageOverTimeEffects effects)
+        {
+            effects.PlayFireEffect(_timeBetweenTicksDamage, _damageTicksCount);
+
+            _audioPlayback.PlaySound(_audioPlayback.AudioContainer.FireShot);
+        }
+
+        private void OnPoisonDamage(DamageOverTimeEffects effects)
+        {
+            effects.PlayPoisonEffect(_timeBetweenTicksDamage, _damageTicksCount);
+
+            _audioPlayback.PlaySound(_audioPlayback.AudioContainer.PoisonShot);
         }
     }
 }

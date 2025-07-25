@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace MythicalBattles
 {
     public class PlayerFollower : MonoBehaviour

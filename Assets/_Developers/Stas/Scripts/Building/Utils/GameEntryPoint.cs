@@ -1,20 +1,18 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
 using R3;
 using Reflex.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using YG;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 {
     public class GameEntryPoint
     {
-        private static GameEntryPoint _instance;
+        private static GameEntryPoint s_instance;
 
         private readonly Corutines _corutines;
         private readonly UIRootView _uiRoot;
@@ -25,8 +23,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void AutostartGame()
         {
-            _instance = new GameEntryPoint();
-            _instance.RunGame();
+            s_instance = new GameEntryPoint();
+            s_instance.RunGame();
         }
 
         private GameEntryPoint()
@@ -46,22 +44,22 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Scenes.GAMEPLAY)
+            if (sceneName == Scenes.Gameplay)
             {
-                _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
+                _corutines.StartCoroutine(LoadAndStart(Scenes.Gameplay));
                 return;
             }
 
-            if (sceneName == Scenes.MAIN_MENU)
+            if (sceneName == Scenes.MainMenu)
             {
-                _corutines.StartCoroutine(LoadAndStart(Scenes.MAIN_MENU));
+                _corutines.StartCoroutine(LoadAndStart(Scenes.MainMenu));
                 return;
             }
 
-            if (sceneName != Scenes.BOOT)
+            if (sceneName != Scenes.Boot)
                 return;
 #endif
-            _corutines.StartCoroutine(LoadAndStart(Scenes.MAIN_MENU));
+            _corutines.StartCoroutine(LoadAndStart(Scenes.MainMenu));
         }
 
         private IEnumerator LoadAndStart(string sceneName)
@@ -69,10 +67,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             _uiRoot.ShowLoadingScreen();
             _cachedSceneContainer?.Dispose();
 
-            yield return LoadScene(Scenes.BOOT);
+            yield return LoadScene(Scenes.Boot);
             yield return LoadScene(sceneName);
 
-            Object sceneEntryPoint = sceneName == Scenes.GAMEPLAY
+            Object sceneEntryPoint = sceneName == Scenes.Gameplay
                 ? Object.FindFirstObjectByType<GameplayEntryPoint>()
                 : Object.FindFirstObjectByType<MainMenuEntryPoint>();
 
@@ -92,7 +90,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
 
                 signal.ExitSceneRequest.Subscribe(_ =>
                 {
-                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.GAMEPLAY)));
+                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.Gameplay)));
                 });
 
                 signal.RestartSceneRequest.Subscribe(_ =>
@@ -104,19 +102,19 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
             {
                 mainMenuEntryPoint.Run(_cachedSceneContainer).Subscribe(_ =>
                 {
-                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.MAIN_MENU)));
+                    _corutines.StartCoroutine(LoadAndStart(GetSceneToLoad(Scenes.MainMenu)));
                 });
             }
         }
 
         private void RestartSceneGameplay()
         {
-            _corutines.StartCoroutine(LoadAndStart(Scenes.GAMEPLAY));
+            _corutines.StartCoroutine(LoadAndStart(Scenes.Gameplay));
         }
 
         private string GetSceneToLoad(string sceneName)
         {
-            return sceneName == Scenes.GAMEPLAY ? Scenes.MAIN_MENU : Scenes.GAMEPLAY;
+            return sceneName == Scenes.Gameplay ? Scenes.MainMenu : Scenes.Gameplay;
         }
 
         private IEnumerator LoadScene(string sceneName)

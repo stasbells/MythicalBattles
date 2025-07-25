@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+      propertyPath: _moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+      propertyPath: _initDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+      propertyPath: _attackDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790984586936817656, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
       propertyPath: _playerFollowTime
       value: 3.5
       objectReference: {fileID: 0}

@@ -13,7 +13,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings
             _uiManager = mainMenuUIManager;
         }
 
-        internal void RequestGoToScreenMainMenu()
+        public void RequestGoToScreenMainMenu()
         {
             _uiManager.OpenScreenMainMenu();
         }

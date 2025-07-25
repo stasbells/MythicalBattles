@@ -1,6 +1,4 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
 {

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,15 +26,6 @@ namespace MythicalBattles
             _damage = playerStats.Damage.Value * DamagePart;
         }
         
-        private void Awake()
-        {
-            Construct();
-            
-            _transform = transform;
-            
-            Rigidbody = GetComponent<Rigidbody>();
-        }
-
         private void OnEnable()
         {
             PlayEffects(_baseEffects);
@@ -50,6 +41,18 @@ namespace MythicalBattles
             PlayEffects(_collisionEffects);
 
             StartCoroutine(ReturnToPoolAfterDelay());
+        }
+
+        public float GetDamage()
+        {
+            return _damage;
+        }
+
+        protected override void OnAwake()
+        {
+            Construct();
+            
+            Rigidbody = GetComponent<Rigidbody>();
         }
 
         private void PlayEffects(IEnumerable<ParticleSystem> effects)
@@ -76,12 +79,7 @@ namespace MythicalBattles
             
             StopEffects(_collisionEffects);
             
-            _pool.ReturnItem(this);
-        }
-
-        public float GetDamage()
-        {
-            return _damage;
+            Pool.ReturnItem(this);
         }
     }
 }

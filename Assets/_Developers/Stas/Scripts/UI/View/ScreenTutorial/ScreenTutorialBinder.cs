@@ -19,7 +19,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial
                 _messageMobile.gameObject.SetActive(true);
                 _messageDesktop.gameObject.SetActive(false);
             }
-            else if(YG2.envir.isDesktop)
+            else if (YG2.envir.isDesktop)
             {
                 _messageMobile.gameObject.SetActive(false);
                 _messageDesktop.gameObject.SetActive(true);
@@ -28,10 +28,10 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial
             {
                 throw new InvalidOperationException();
             }
-            
+
             _gameButton.onClick?.AddListener(OnPlayButtonClicked);
         }
-        
+
         private void OnDisable()
         {
             _gameButton.onClick?.RemoveListener(OnPlayButtonClicked);
