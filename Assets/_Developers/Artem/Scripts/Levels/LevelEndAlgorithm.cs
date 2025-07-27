@@ -1,10 +1,13 @@
 using System.Collections;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.LevelCompletionStopwatch;
+using MythicalBattles.Services.Wallet;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels
 {
     public class LevelEndAlgorithm : MonoBehaviour
     {

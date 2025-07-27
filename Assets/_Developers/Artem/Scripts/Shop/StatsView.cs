@@ -1,11 +1,12 @@
 using System.Globalization;
+using MythicalBattles.Services.PlayerStats;
 using R3;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop
 {
     public class StatsView : MonoBehaviour
     {

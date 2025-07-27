@@ -1,7 +1,8 @@
 using System;
+using MythicalBattles.Companions;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public abstract class CompanionBoost : Boost
     {

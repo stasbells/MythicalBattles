@@ -1,9 +1,8 @@
-using Newtonsoft.Json;
 using System;
-using UnityEngine;
+using Newtonsoft.Json;
 using YG;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     public class DataLocalProvider : IDataProvider
     {
@@ -76,9 +75,7 @@ namespace MythicalBattles
             if (string.IsNullOrEmpty(YG2.saves.JsonGameSettingsData))
             {
                 _persistentData.SettingsData = new SettingsData();
-                
-                Debug.Log("WRONG VOLUME LOAD");
-                
+
                 return;
             }
 
@@ -92,14 +89,6 @@ namespace MythicalBattles
             // }
 
             _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YG2.saves.JsonGameSettingsData);
-            
-            Debug.Log("RIGHT VOLUME LOAD");
-            
-            Debug.Log(_persistentData.SettingsData.MusicVolume);
-            
-            Debug.Log("RIGHT VOLUME LOAD");
-            
-            Debug.Log(_persistentData.SettingsData.SoundsVolume);
         }
 
         public void ResetPlayerData()

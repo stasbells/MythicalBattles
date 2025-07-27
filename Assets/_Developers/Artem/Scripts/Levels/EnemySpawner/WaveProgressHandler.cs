@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Boosts;
 using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     public class WaveProgressHandler : MonoBehaviour
     {

@@ -1,28 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MythicalBattles.Boosts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels
 {
     public class BoostsStorage : MonoBehaviour
     {
-        [SerializeField] private GameObject _damageBoost;
-        [SerializeField] private GameObject _maxHealthBoost;
-        [SerializeField] private GameObject _attackSpeedBoost;
-        [SerializeField] private GameObject _fireBoost;
-        [SerializeField] private GameObject _electricityBoost;
-        [SerializeField] private GameObject _poisonBoost;
-        [SerializeField] private GameObject _fireCompanionBoost;
-        [SerializeField] private GameObject _electricCompanionBoost;
-        [SerializeField] private GameObject _poisonCompanionBoost;
-        [SerializeField] private GameObject _healBoost;
+        [SerializeField] private Boost _damageBoost;
+        [SerializeField] private Boost _maxHealthBoost;
+        [SerializeField] private Boost _attackSpeedBoost;
+        [SerializeField] private Boost _fireBoost;
+        [SerializeField] private Boost _electricityBoost;
+        [SerializeField] private Boost _poisonBoost;
+        [SerializeField] private Boost _fireCompanionBoost;
+        [SerializeField] private Boost _electricCompanionBoost;
+        [SerializeField] private Boost _poisonCompanionBoost;
+        [SerializeField] private Boost _healBoost;
 
-        private GameObject[] _statsBoosts;
-        private GameObject[] _projectileBoosts;
-        private GameObject[] _companionBoosts;
-        private List<GameObject> _usedCompanions = new List<GameObject>();
+        private Boost[] _statsBoosts;
+        private Boost[] _projectileBoosts;
+        private Boost[] _companionBoosts;
+        private List<Boost> _usedCompanions = new List<Boost>();
         private bool _isProjectileBoostAlreadyUsed = false;
 
         private void Awake()
@@ -32,9 +33,9 @@ namespace MythicalBattles
             _companionBoosts = new[]{_fireCompanionBoost, _electricCompanionBoost, _poisonCompanionBoost};
         }
 
-        public GameObject GetRandomBoost()
+        public Boost GetRandomBoost()
         {
-            var availableGroups = new List<IEnumerable<GameObject>>();
+            var availableGroups = new List<IEnumerable<Boost>>();
             
             var duplicatedStatsBoosts = _statsBoosts
                 .SelectMany(boost => new[] { boost, boost })
@@ -57,7 +58,7 @@ namespace MythicalBattles
             
             availableGroups.Add(availableCompanions);
             
-            var candidates = new List<GameObject>();
+            var candidates = new List<Boost>();
             
             foreach (var group in availableGroups)
             {
@@ -68,7 +69,7 @@ namespace MythicalBattles
             if (candidates.Count == 0)
                 throw new InvalidOperationException();
             
-            GameObject selected = candidates[Random.Range(0, candidates.Count)];
+            Boost selected = candidates[Random.Range(0, candidates.Count)];
             
             if (_projectileBoosts.Contains(selected))
             {
@@ -82,7 +83,7 @@ namespace MythicalBattles
             return selected;
         }
 
-        public GameObject GetHealBoost()
+        public Boost GetHealBoost()
         {
             return _healBoost;
         }

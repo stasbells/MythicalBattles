@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels
 {
     [CreateAssetMenu(fileName = "newLevelConfig", menuName = "LevelConfig")]
     public class LevelConfig : ScriptableObject

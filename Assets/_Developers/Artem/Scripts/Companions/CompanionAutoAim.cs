@@ -1,23 +1,25 @@
 using System;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     [RequireComponent(typeof(CompanionMover))]
     [RequireComponent(typeof(Animator))]
     public class CompanionAutoAim : MonoBehaviour
     {
+        private const int CollidersToCheckCount = 10;
+        
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private float _rotationSpeed = 500f;
         [SerializeField] private float _aimRadius = 15f;
 
         private CompanionMover _companion;
-        private Collider[] _hitColliders;
         private Animator _animator;
         private Transform _nearestEnemy;
         private Transform _targetEnemy;
         private Transform _transform;
         private float _rotationToTarget;
+        private Collider[] _hitColliders;
 
         public event Action EnemyFound;
         public event Action EnemyMissed;
@@ -44,9 +46,10 @@ namespace MythicalBattles
         private void FindNearestEnemy()
         {
             float closestDistance = Mathf.Infinity;
+            
             _nearestEnemy = null;
-
-            _hitColliders = new Collider[10];
+            _hitColliders = new Collider[CollidersToCheckCount];
+            
             int hitCount = Physics.OverlapSphereNonAlloc(_transform.position, _aimRadius, _hitColliders, _enemyLayer);
 
             for (int i = 0; i < hitCount; i++)
@@ -86,7 +89,8 @@ namespace MythicalBattles
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             
-            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+            _transform.rotation = Quaternion.RotateTowards(
+                _transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
             
             _rotationToTarget = _transform.rotation.y - lookRotation.y;
         }

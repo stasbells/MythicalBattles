@@ -7,6 +7,7 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelecto
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial;
+using MythicalBattles.Shop;
 using R3;
 using Reflex.Core;
 

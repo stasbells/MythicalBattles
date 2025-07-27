@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.LevelCompletionStopwatch
 {
     public class LevelCompletionStopwatch : ILevelCompletionStopwatch
     {

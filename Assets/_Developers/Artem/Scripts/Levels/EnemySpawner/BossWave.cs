@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     [CreateAssetMenu(fileName = "BossWave", menuName = "EnemyWaves/BossWave")]
     public class BossWave : EnemyWave

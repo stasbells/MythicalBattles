@@ -1,7 +1,9 @@
 using System;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.ItemSelector;
 using R3;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.PlayerStats
 {
     public class PlayerStats : IPlayerStats, IDisposable
     {

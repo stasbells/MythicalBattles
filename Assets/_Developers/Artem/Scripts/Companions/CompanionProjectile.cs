@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {
@@ -57,6 +58,7 @@ namespace MythicalBattles
             foreach (ParticleSystem particleSystem in effects)
             {
                 particleSystem.gameObject.SetActive(true);
+                
                 particleSystem.Play();
             }
         }
@@ -66,6 +68,7 @@ namespace MythicalBattles
             foreach (ParticleSystem particleSystem in effects)
             {
                 particleSystem.Stop();
+                
                 particleSystem.gameObject.SetActive(false);
             }
         }

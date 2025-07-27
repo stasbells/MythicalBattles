@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
+using MythicalBattles.Services.Data;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Wallet
 {
     public class Wallet : IWallet
     {

@@ -1,6 +1,6 @@
-using UnityEngine;
+using MythicalBattles.Services.Data;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     public class AllTypesSelectedItemsGrade : IShopItemVisitor
     {

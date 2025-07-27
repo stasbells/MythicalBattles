@@ -1,6 +1,7 @@
 using Ami.BroAudio;
+using MythicalBattles.Audio;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.AudioPlayback
 {
     public interface IAudioPlayback
     {

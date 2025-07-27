@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

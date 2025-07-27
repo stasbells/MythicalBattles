@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop
 {
     [RequireComponent(typeof(Image))]
     public class ShopItemView : MonoBehaviour, IPointerClickHandler

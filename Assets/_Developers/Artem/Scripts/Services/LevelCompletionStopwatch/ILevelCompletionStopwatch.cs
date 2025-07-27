@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Services.LevelCompletionStopwatch
 {
     public interface ILevelCompletionStopwatch
     {

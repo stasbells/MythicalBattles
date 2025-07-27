@@ -1,7 +1,7 @@
-using System;
+using MythicalBattles.Services.Data;
 using R3;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.PlayerStats
 {
     public interface IPlayerStats
     {

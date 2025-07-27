@@ -1,6 +1,8 @@
 using System;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Shop.EquipmentShop;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.ItemSelector
 {
     public class ItemSelector : IItemSelector, IShopItemVisitor
     {

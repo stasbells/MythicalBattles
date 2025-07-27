@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     public class CompanionSpot : MonoBehaviour
     {

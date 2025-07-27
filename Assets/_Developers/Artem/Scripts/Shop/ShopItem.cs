@@ -1,6 +1,7 @@
+using MythicalBattles.Shop.EquipmentShop;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop
 {
     public abstract class ShopItem : ScriptableObject, IVisitorAcceptor
     {

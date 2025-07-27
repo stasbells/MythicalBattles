@@ -1,23 +1,22 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using R3;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     public class EnemyPool
     {
-        private readonly GameObject _prefab;
-        private readonly Queue<GameObject> _pool = new Queue<GameObject>();
+        private readonly Enemy _prefab;
+        private readonly Queue<Enemy> _pool = new Queue<Enemy>();
         private int _poolSize;
         private readonly Transform _parent;
-        private readonly Action<GameObject> _onEnemyDead;
+        private readonly Action<Enemy> _onEnemyDead;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         
-        public EnemyPool(GameObject prefab, int poolSize, Action<GameObject> onEnemyDead, Transform parent)
+        public EnemyPool(Enemy prefab, int poolSize, Action<Enemy> onEnemyDead, Transform parent)
         {
             if (prefab == null)
                 throw new ArgumentNullException(nameof(prefab), "Prefab cannot be null.");
@@ -26,6 +25,7 @@ namespace MythicalBattles
             _poolSize = poolSize;
             _onEnemyDead = onEnemyDead;
             _parent = parent;
+            
             InitializePool();
         }
 
@@ -46,14 +46,10 @@ namespace MythicalBattles
         {
             for (int i = 0; i < _poolSize; i++)
             {
-                GameObject enemy = Object.Instantiate(_prefab, _parent);
+                Enemy enemy = Object.Instantiate(_prefab, _parent);
                 
-                enemy.SetActive(false);
-                
-                Enemy enemyComponent = enemy.GetComponent<Enemy>();
-                
-                enemyComponent.Initialize(_prefab);
-                
+                enemy.gameObject.SetActive(false);
+
                 enemy.GetComponent<Health>().IsDead
                     .Subscribe(value => OnEnemyDeadStateChanged(value, enemy))
                     .AddTo(_disposable);
@@ -62,18 +58,14 @@ namespace MythicalBattles
             }
         }
 
-        public GameObject GetEnemy()
+        public Enemy GetEnemy()
         {
             if (_pool.Count == 0)
             {
-                GameObject enemy = Object.Instantiate(_prefab, _parent);
+                Enemy enemy = Object.Instantiate(_prefab, _parent);
                 
-                enemy.SetActive(false);
-                
-                Enemy enemyComponent = enemy.GetComponent<Enemy>();
-                
-                enemyComponent.Initialize(_prefab);
-                
+                enemy.gameObject.SetActive(false);
+
                 enemy.GetComponent<Health>().IsDead
                     .Subscribe(value => OnEnemyDeadStateChanged(value, enemy))
                     .AddTo(_disposable);
@@ -84,18 +76,16 @@ namespace MythicalBattles
             return _pool.Dequeue();
         }
 
-        public void ReturnEnemy(GameObject enemyGameObject)
+        public void ReturnEnemy(Enemy enemy)
         {
-            Enemy enemy = enemyGameObject.GetComponent<Enemy>();
-            
             enemy.CancelWaveMultipliers();
             
-            enemyGameObject.SetActive(false);
+            enemy.gameObject.SetActive(false);
             
-            _pool.Enqueue(enemyGameObject);
+            _pool.Enqueue(enemy);
         }
 
-        private void OnEnemyDeadStateChanged(bool isDead, GameObject enemy)
+        private void OnEnemyDeadStateChanged(bool isDead, Enemy enemy)
         {
             if (isDead)
                 _onEnemyDead?.Invoke(enemy);

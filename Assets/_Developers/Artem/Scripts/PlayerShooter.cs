@@ -1,4 +1,4 @@
-using Reflex.Attributes;
+using MythicalBattles.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine.SceneManagement;
 
@@ -9,13 +9,11 @@ namespace MythicalBattles
         private float _startDamage;
         private float _startAttackSpeed;
         private float _attackSpeed;
-
-        [Inject]
-        private void Construct(IPlayerStats playerStats)
+        private IPlayerStats _playerStats;
+        
+        private void Construct()
         {
-            _startDamage = playerStats.Damage.Value;
-            _attackSpeed = playerStats.AttackSpeed.Value;
-            Damage = _startDamage;
+            _playerStats = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IPlayerStats>();
         }
 
         public void IncreaseDamage(float damageMultiplier)
@@ -34,24 +32,17 @@ namespace MythicalBattles
 
         protected override void OnAwake()
         {
+            Construct();
+            
             base.OnAwake();
-
-            var container = SceneManager.GetActiveScene().GetSceneContainer();
-
-            _startDamage = container.Resolve<IPlayerStats>().Damage.Value;
-            _attackSpeed = container.Resolve<IPlayerStats>().AttackSpeed.Value;
+            
+            _startDamage = _playerStats.Damage.Value;
+            _attackSpeed = _playerStats.AttackSpeed.Value;
             Damage = _startDamage;
 
             SetProjectileDamage(Damage);
             
             ChangeAttackSpeed(_attackSpeed);
-        }
-
-        protected override void InstantiateNewProjectileParticle()
-        {
-            base.InstantiateNewProjectileParticle();
-            
-            SetProjectileDamage(Damage);
         }
     }
 }

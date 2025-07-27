@@ -14,8 +14,6 @@ namespace MythicalBattles
         
         protected override void OnAwake()
         {
-            base.OnAwake();
-
             InstantiateNewProjectileParticle();
         }
 
@@ -40,7 +38,7 @@ namespace MythicalBattles
             _projectile.SetDamage(damage);
         }
 
-        protected virtual void InstantiateNewProjectileParticle()
+        private void InstantiateNewProjectileParticle()
         {
             if (_particle != null)
                 Destroy(_particle);
@@ -51,7 +49,8 @@ namespace MythicalBattles
 
             _particle.Stop();
 
-            _particle.TryGetComponent(out SimpleProjectile projectile);
+            if(_particle.TryGetComponent(out SimpleProjectile projectile) == false)
+                throw new InvalidOperationException();
 
             _projectile = projectile;
 

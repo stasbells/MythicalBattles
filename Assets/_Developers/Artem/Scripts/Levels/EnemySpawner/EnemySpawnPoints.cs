@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     public class EnemySpawnPoints : MonoBehaviour
     {

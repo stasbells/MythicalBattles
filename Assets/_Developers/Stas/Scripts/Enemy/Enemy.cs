@@ -10,19 +10,12 @@ namespace MythicalBattles
     {
         private EnemyHealth _health;
         private List<IWaveDamageMultiplier> _waveDamageMultipliers;
-        
-        public GameObject Prefab { get; private set; }
 
         private void Awake()
         {
             _health = GetComponent<EnemyHealth>();
 
             _waveDamageMultipliers = GetComponents<IWaveDamageMultiplier>().ToList();
-        }
-        
-        public void Initialize(GameObject prefab)
-        {
-            Prefab = prefab;
         }
 
         public void ApplyWaveMultipliers(float multiplier)
