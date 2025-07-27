@@ -10,9 +10,8 @@ namespace MythicalBattles.Levels.EnemySpawner
     {
         private readonly Enemy _prefab;
         private readonly Queue<Enemy> _pool = new Queue<Enemy>();
-        private int _poolSize;
         private readonly Transform _parent;
-        private readonly Action<Enemy> _onEnemyDead;
+        private int _poolSize;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         
@@ -29,6 +28,8 @@ namespace MythicalBattles.Levels.EnemySpawner
             InitializePool();
         }
 
+        private readonly Action<Enemy> _onEnemyDead;
+        
         public bool TryUpdateSize(int poolSize)
         {
             if (_poolSize < poolSize)

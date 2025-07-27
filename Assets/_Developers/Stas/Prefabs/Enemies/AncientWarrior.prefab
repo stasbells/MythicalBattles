@@ -368,13 +368,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7108774379072329100}
   - component: {fileID: 2238734437193767042}
-  - component: {fileID: 2755791877097384291}
   - component: {fileID: 8971862865015148795}
   - component: {fileID: 3732544168456419976}
   - component: {fileID: 6009838996785140481}
   - component: {fileID: 3730180216024647316}
   - component: {fileID: 7489759233889146171}
   - component: {fileID: 7780274270582815095}
+  - component: {fileID: -5960286821623647622}
   m_Layer: 3
   m_Name: AncientWarrior
   m_TagString: Untagged
@@ -424,18 +424,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2755791877097384291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556532935942178190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8971862865015148795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.1
   ShootPoint: {fileID: 7462337520997259198}
   Damage: 10
   _projectilePrefab: {fileID: 7822837374249201035, guid: dad939317fc9a024187181dfca1881a7, type: 3}
@@ -549,6 +536,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &-5960286821623647622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556532935942178190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316c03ac8e8b0fa4eb9de23c45a565a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1799561515251187743
 GameObject:
   m_ObjectHideFlags: 0

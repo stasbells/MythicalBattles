@@ -1658,13 +1658,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6491445400696874754}
   - component: {fileID: 6078564004877223684}
-  - component: {fileID: 5828788323807625816}
   - component: {fileID: 3009029909121527962}
   - component: {fileID: 2435262434936199825}
   - component: {fileID: 3790984586936817656}
   - component: {fileID: 3281316014478903760}
   - component: {fileID: 1292108779451077425}
   - component: {fileID: 5668335556150871968}
+  - component: {fileID: 6925700052454992749}
   m_Layer: 3
   m_Name: EasyDemon
   m_TagString: Untagged
@@ -1716,18 +1716,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5828788323807625816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5863105753833881016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3009029909121527962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1754,7 +1742,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.2
   _projectileCount: 8
   _projectilePool: {fileID: 7580349265740801852}
   _effectPool: {fileID: 2056904125409483971}
@@ -1847,6 +1834,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &6925700052454992749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5863105753833881016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f6fb6e7ccf80644afd49eeeeec5042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6042182692522371431
 GameObject:
   m_ObjectHideFlags: 0

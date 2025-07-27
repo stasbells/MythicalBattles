@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Wave7
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - EnemyPrefab: {fileID: 4985248093915631573, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
-    Count: 1
-  - EnemyPrefab: {fileID: 2755791877097384291, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
-    Count: 1
-  - EnemyPrefab: {fileID: 5901643521405357967, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
-    Count: 1
-  - EnemyPrefab: {fileID: 4372366671960313055, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
-    Count: 1
+  - EnemyPrefab: {fileID: 2400983923281424960, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+    Count: 2
+  - EnemyPrefab: {fileID: -1914276872863095563, guid: cdcc34fcb2c6e794fb96a3998a21b09f, type: 3}
+    Count: 3
+  - EnemyPrefab: {fileID: -5960286821623647622, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+    Count: 3
+  - EnemyPrefab: {fileID: 2363240037292941549, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    Count: 2
   _powerMultiplier: 3

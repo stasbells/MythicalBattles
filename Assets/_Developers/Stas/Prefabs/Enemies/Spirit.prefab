@@ -1867,13 +1867,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9208304568749861236}
   - component: {fileID: 3869769109205853673}
-  - component: {fileID: 5901643521405357967}
   - component: {fileID: 5674002697363083340}
   - component: {fileID: 2310055971245182895}
   - component: {fileID: 5993620104692598466}
   - component: {fileID: 665643675739080510}
   - component: {fileID: 5628146892955810300}
   - component: {fileID: 9060530769399249685}
+  - component: {fileID: 2363240037292941549}
   m_Layer: 3
   m_Name: Spirit
   m_TagString: Untagged
@@ -1924,18 +1924,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5901643521405357967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395176564760867790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5674002697363083340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,7 +1969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 2
-  _shootDelay: 0.9
   ShootPoint: {fileID: 3667858939544100879}
   Damage: 10
   _projectilePrefab: {fileID: 2651084798854190789, guid: 50b129f204b329143b6972af8aa2fa33, type: 3}
@@ -2049,6 +2036,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &2363240037292941549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395176564760867790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531dd8510599f9b4f8183a3cd80a8b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8502759786533674527
 GameObject:
   m_ObjectHideFlags: 0

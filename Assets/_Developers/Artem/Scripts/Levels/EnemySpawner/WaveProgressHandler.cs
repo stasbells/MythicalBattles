@@ -55,27 +55,7 @@ namespace MythicalBattles.Levels.EnemySpawner
             _wavesCount = wavesCount;
             _timeBetweenWaves = timeBetweenWaves;
             
-            WaveProgressView progressSliderView = Instantiate(_waveProgressView, _canvas.transform);
-            progressSliderView.transform.SetAsFirstSibling();
-
-            _progressSliderObject = progressSliderView.ProgressBar;
-            _nextWaveText = progressSliderView.NextWaveText;
-            _boostsDescription = progressSliderView.BoostsDescription;
-            
-            if(_boostsDescription.TryGetComponent(out TMP_Text text) == false)
-                throw new InvalidOperationException();
-                
-            _boostsDescriptionText = text;
-
-            if(_progressSliderObject.TryGetComponent(out CanvasGroup canvasGroup) == false)
-                throw new InvalidOperationException();
-
-            _progressSliderCanvasGroup = canvasGroup;
-            
-            _waveProgressSlider = _progressSliderObject.GetComponentInChildren<Slider>();
-            _waveNumberText = _progressSliderObject.GetComponentInChildren<TMP_Text>();
-
-            _progressSliderCanvasGroup.alpha = 0f;
+            HashVariables();
             
             _progressSliderObject.SetActive(false);
             _nextWaveText.gameObject.SetActive(false);
@@ -113,6 +93,32 @@ namespace MythicalBattles.Levels.EnemySpawner
         public void SubscribeOnBoostTaking(Boost boost)
         {
             boost.Applied += OnBoostApplied;
+        }
+
+        private void HashVariables()
+        {
+            WaveProgressView progressSliderView = Instantiate(_waveProgressView, _canvas.transform);
+            progressSliderView.transform.SetAsFirstSibling();
+
+            _progressSliderObject = progressSliderView.ProgressBar;
+            _nextWaveText = progressSliderView.NextWaveText;
+            _boostsDescription = progressSliderView.BoostsDescription;
+            
+            if(_boostsDescription.TryGetComponent(out TMP_Text text) == false)
+                throw new InvalidOperationException();
+                
+            _boostsDescriptionText = text;
+
+            if(_progressSliderObject.TryGetComponent(out CanvasGroup canvasGroup) == false)
+                throw new InvalidOperationException();
+
+            _progressSliderCanvasGroup = canvasGroup;
+            
+            _waveProgressSlider = _progressSliderObject.GetComponentInChildren<Slider>();
+            
+            _waveNumberText = _progressSliderObject.GetComponentInChildren<TMP_Text>();
+
+            _progressSliderCanvasGroup.alpha = 0f;
         }
 
         private void OnBoostApplied(Boost boost)

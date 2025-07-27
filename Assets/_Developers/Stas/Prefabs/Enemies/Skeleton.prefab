@@ -619,12 +619,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3570379304240420412}
   - component: {fileID: 8962337161973997395}
-  - component: {fileID: 4985248093915631573}
   - component: {fileID: 513198485195249186}
   - component: {fileID: 2610733052885619531}
   - component: {fileID: 1984212904086549765}
   - component: {fileID: 6887080056222959762}
   - component: {fileID: 1229125760942934957}
+  - component: {fileID: 2400983923281424960}
   m_Layer: 3
   m_Name: Skeleton
   m_TagString: Untagged
@@ -673,18 +673,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4985248093915631573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703131478790005849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &513198485195249186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,6 +767,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &2400983923281424960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703131478790005849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e936df2da4a97a047bef764842fdff7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1765327782812313712
 GameObject:
   m_ObjectHideFlags: 0
