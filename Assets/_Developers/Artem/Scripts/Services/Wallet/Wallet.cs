@@ -5,8 +5,6 @@ namespace MythicalBattles.Services.Wallet
 {
     public class Wallet : IWallet
     {
-        public event Action<int> CoinsChanged;
-
         private IPersistentData _persistentData;
         private IDataProvider _dataProvider;
 
@@ -15,6 +13,8 @@ namespace MythicalBattles.Services.Wallet
             _persistentData = persistentData;
             _dataProvider = dataProvider;
         }
+        
+        public event Action<int> CoinsChanged;
 
         public void AddCoins(int coins)
         {

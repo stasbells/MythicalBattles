@@ -8,10 +8,10 @@ namespace MythicalBattles.Services.ItemSelector
     {
         private IPersistentData _persistentData;
         
-        public event Action SelectedItemChanged;
-
         public ItemSelector(IPersistentData persistentData) => _persistentData = persistentData;
-
+        
+        public event Action SelectedItemChanged;
+        
         public void Visit(IVisitorAcceptor item) => item.Accept(this);
 
         public void Visit(WeaponItem weaponItem)

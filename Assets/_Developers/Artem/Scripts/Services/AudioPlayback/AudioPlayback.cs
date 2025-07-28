@@ -45,7 +45,6 @@ namespace MythicalBattles.Services.AudioPlayback
             AudioContainer.PlayLevelThemeAfterBossTheme(_currentMusicVolume);
         }
         
-        
         public void StopPlay(SoundID soundID)
         {
             AudioContainer.Stop(soundID);
@@ -69,13 +68,6 @@ namespace MythicalBattles.Services.AudioPlayback
             _persistentData.SettingsData.SetSoundsVolume(volume);
             
             _dataProvider.SaveSettingsData();
-        }
-        
-        private void SetLoadedVolume()
-        {
-            ChangeMusicVolume(_persistentData.SettingsData.MusicVolume);
-            
-            ChangeSoundsVolume(_persistentData.SettingsData.SoundsVolume);
         }
     }
 }

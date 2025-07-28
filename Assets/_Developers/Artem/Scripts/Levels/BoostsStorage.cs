@@ -23,7 +23,7 @@ namespace MythicalBattles.Levels
         private Boost[] _statsBoosts;
         private Boost[] _projectileBoosts;
         private Boost[] _companionBoosts;
-        private List<Boost> _usedCompanions = new List<Boost>();
+        private List<Boost> _usedCompanions = new();
         private bool _isProjectileBoostAlreadyUsed = false;
 
         private void Awake()
@@ -34,6 +34,17 @@ namespace MythicalBattles.Levels
         }
 
         public Boost GetRandomBoost()
+        {
+            var candidates = PrepareAvailableBoosts();
+            
+            Boost selectedBoost = candidates[Random.Range(0, candidates.Count)];
+            
+            CorrectAvailableBoosts(selectedBoost);
+
+            return selectedBoost;
+        }
+
+        private List<Boost> PrepareAvailableBoosts()
         {
             var availableGroups = new List<IEnumerable<Boost>>();
             
@@ -69,18 +80,19 @@ namespace MythicalBattles.Levels
             if (candidates.Count == 0)
                 throw new InvalidOperationException();
             
-            Boost selected = candidates[Random.Range(0, candidates.Count)];
-            
-            if (_projectileBoosts.Contains(selected))
+            return candidates;
+        }
+
+        private void CorrectAvailableBoosts(Boost selectedBoost)
+        {
+            if (_projectileBoosts.Contains(selectedBoost))
             {
                 _isProjectileBoostAlreadyUsed = true;
             }
-            else if (_companionBoosts.Contains(selected))
+            else if (_companionBoosts.Contains(selectedBoost))
             {
-                _usedCompanions.Add(selected);
+                _usedCompanions.Add(selectedBoost);
             }
-
-            return selected;
         }
 
         public Boost GetHealBoost()

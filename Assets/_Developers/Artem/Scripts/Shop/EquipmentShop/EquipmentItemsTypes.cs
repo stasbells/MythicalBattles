@@ -5,7 +5,7 @@ namespace MythicalBattles.Shop.EquipmentShop
 {
     public class EquipmentItemsTypes : IShopItemVisitor
     {
-        private List<Type> _itemTypes = new List<Type>();
+        private List<Type> _itemTypes = new();
 
         public IEnumerable<Type> GetTypes()
         {
@@ -16,44 +16,32 @@ namespace MythicalBattles.Shop.EquipmentShop
 
         public void Visit(WeaponItem weaponItem)
         {
-            Type itemType = weaponItem.GetType();
-    
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(weaponItem.GetType());
         }
 
         public void Visit(ArmorItem armorItem)
         {
-            Type itemType = armorItem.GetType();
-    
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(armorItem.GetType());
         }
 
         public void Visit(HelmetItem helmetItem)
         {
-            Type itemType = helmetItem.GetType();
-    
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(helmetItem.GetType());
         }
 
         public void Visit(BootsItem bootsItem)
         {
-            Type itemType = bootsItem.GetType();
-    
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(bootsItem.GetType());
         }
 
         public void Visit(NecklaceItem necklaceItem)
         {
-            Type itemType = necklaceItem.GetType();
-    
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(necklaceItem.GetType());
         }
 
         public void Visit(RingItem ringItem)
         {
-            Type itemType = ringItem.GetType();
-
-            TryAddTypeToList(itemType);
+            TryAddTypeToList(ringItem.GetType());
         }
 
         private bool TryAddTypeToList(Type itemType)
@@ -62,6 +50,7 @@ namespace MythicalBattles.Shop.EquipmentShop
                 return false;
             
             _itemTypes.Add(itemType);
+            
             return true;
         }
     }

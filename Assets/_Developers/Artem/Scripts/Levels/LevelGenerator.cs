@@ -6,7 +6,6 @@ using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
 using MythicalBattles.Levels.EnemySpawner;
 using MythicalBattles.Services.AudioPlayback;
 using MythicalBattles.Services.LevelSelection;
-using Reflex.Attributes;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,7 +16,6 @@ namespace MythicalBattles.Levels
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private LevelConfig[] _levelConfigs;
-        //[SerializeField] private Canvas _canvas;
         [SerializeField] private int _timeBetweenWaves = 6;
         [SerializeField] private float _enemyDyingTime = 3f;
 
@@ -26,24 +24,19 @@ namespace MythicalBattles.Levels
         private LevelEndAlgorithm _levelEndAlgorithm;
         private WavesSpawner _spawner;
         private int _currentLevelNumber;
-
         private Canvas _canvas;
-
-        [Inject]
-        private void Construct(ILevelSelectionService levelSelection, IAudioPlayback audioPlayback)
-        {
-            _levelSelection = levelSelection;
-            _audioPlayback = audioPlayback;
-        }
-
-        private void Awake()
+        
+        private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
 
             _levelSelection = container.Resolve<ILevelSelectionService>();
             _audioPlayback = container.Resolve<IAudioPlayback>();
+        }
 
-            //_canvas = FindObjectOfType<UIRootView>().GetComponentInChildren<Canvas>();
+        private void Awake()
+        {
+            Construct();
 
             _canvas = GetComponentInParent<WorldGameplayRootBinder>().GameplayContainer
                 .Resolve<UIRootView>().GetComponentInChildren<Canvas>();
@@ -64,10 +57,7 @@ namespace MythicalBattles.Levels
             _currentLevelNumber = _levelSelection.CurrentLevelNumber;
 
             if (_currentLevelNumber < 0 || _currentLevelNumber > _levelConfigs.Length)
-            {
-                Debug.LogError($"Invalid level index: {_currentLevelNumber}");
-                return;
-            }
+                throw new InvalidOperationException();
 
             SpawnLevelDesign(_currentLevelNumber);
 
@@ -81,10 +71,7 @@ namespace MythicalBattles.Levels
             var designPrefab = _levelConfigs[levelNumber - 1].LevelDesignPrefab;
 
             if (designPrefab == null)
-            {
-                Debug.LogError($"Interior prefab missing for level {levelNumber}");
-                return;
-            }
+                throw new InvalidOperationException();
 
             GameObject map = Instantiate(designPrefab);
 
@@ -96,19 +83,11 @@ namespace MythicalBattles.Levels
             var spawnerPrefab = _levelConfigs[levelNumber - 1].WavesSpawner;
 
             if (spawnerPrefab == null)
-            {
-                Debug.LogError($"WaveSpawner missing for level {levelNumber}");
-                return;
-            }
-
-            GameObject spawnerObject = Instantiate(spawnerPrefab);
-
-            if (spawnerObject.TryGetComponent(out WavesSpawner spawner) == false)
                 throw new InvalidOperationException();
 
-            _spawner = spawner;
+            _spawner = Instantiate(spawnerPrefab);
 
-            if (spawner.TryGetComponent(out WaveProgressHandler waveProgressHandler) == false)
+            if (_spawner.TryGetComponent(out WaveProgressHandler waveProgressHandler) == false)
                 throw new InvalidOperationException();
 
             waveProgressHandler.Initialize(_canvas, _spawner.WavesCount, _timeBetweenWaves);

@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using MythicalBattles.Boosts;
-using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +11,11 @@ namespace MythicalBattles.Levels.EnemySpawner
 {
     public class WaveProgressHandler : MonoBehaviour
     {
-        private readonly string _nextWaveTextFormat = "Next wave in";
-
+        private const float BoostDescriptionDisplayDuration = 2f;
+        private const float SliderSmoothDuration = 2f;
+        
         [SerializeField] private WaveProgressView _waveProgressView;
-        [SerializeField] private float _smoothSpeed = 2f;
+        [SerializeField] private float _sliderSmoothSpeed = 2f;
         [SerializeField] private float _fadeDuration = 0.4f;
         
         private Canvas _canvas;
@@ -27,35 +26,29 @@ namespace MythicalBattles.Levels.EnemySpawner
         private TMP_Text _nextWaveText;
         private TMP_Text _boostsDescriptionText;
         private BoostsDescription _boostsDescription;
+        private BetweenWavesTimer _betweenWavesTimer;
         private Coroutine _smoothProgressCoroutine;
         private ParticleSystem _sliderEffect;
         private RectTransform _fillRect;
-        private Tween _currentMainTween;
-        private Tween _currentBoostTween;
         private int _currentWaveTotalEnemies;
         private int _defeatedEnemies;
         private int _wavesCount;
         private int _currentWaveNumber;
         private int _timeBetweenWaves;
-        private int _ticksBetweenWaves;
-        private Queue<Boost> _boostQueue = new Queue<Boost>();
+        private Queue<Boost> _boostQueue = new();
         private bool _isDisplayingBoost;
-
-        private IDisposable _timerSubscription;
-
-        private void OnDestroy()
-        {
-            _timerSubscription?.Dispose();
-            _currentMainTween?.Kill();
-        }
-
+        
         public void Initialize(Canvas canvas, int wavesCount, int timeBetweenWaves)
         {
             _canvas = canvas;
             _wavesCount = wavesCount;
             _timeBetweenWaves = timeBetweenWaves;
             
-            HashVariables();
+            _betweenWavesTimer = new BetweenWavesTimer(_waveProgressView.NextWaveText, _timeBetweenWaves);
+
+            WaveProgressView progressSliderView = InstantiateWaveProgressView();
+
+            HashVariables(progressSliderView);
             
             _progressSliderObject.SetActive(false);
             _nextWaveText.gameObject.SetActive(false);
@@ -69,24 +62,13 @@ namespace MythicalBattles.Levels.EnemySpawner
 
             _currentWaveNumber = waveNumber;
             
-            FadeIn(_progressSliderCanvasGroup, _currentMainTween);
-
-            _waveNumberText.text = $"{waveNumber}";
-            
-            _currentWaveTotalEnemies = totalEnemies;
-            _defeatedEnemies = 0;
-        
-            if(_waveProgressSlider != null)
-            {
-                _waveProgressSlider.value = 0f;
-                if(_smoothProgressCoroutine != null)
-                    StopCoroutine(_smoothProgressCoroutine);
-            }
+            ShowProgressBar(totalEnemies);
         }
 
         public void OnEnemyDefeated()
         {
             _defeatedEnemies++;
+            
             UpdateProgressSmoothly();
         }
 
@@ -95,11 +77,17 @@ namespace MythicalBattles.Levels.EnemySpawner
             boost.Applied += OnBoostApplied;
         }
 
-        private void HashVariables()
+        private WaveProgressView InstantiateWaveProgressView()
         {
             WaveProgressView progressSliderView = Instantiate(_waveProgressView, _canvas.transform);
+            
             progressSliderView.transform.SetAsFirstSibling();
+            
+            return progressSliderView;
+        }
 
+        private void HashVariables(WaveProgressView progressSliderView)
+        {
             _progressSliderObject = progressSliderView.ProgressBar;
             _nextWaveText = progressSliderView.NextWaveText;
             _boostsDescription = progressSliderView.BoostsDescription;
@@ -121,6 +109,23 @@ namespace MythicalBattles.Levels.EnemySpawner
             _progressSliderCanvasGroup.alpha = 0f;
         }
 
+        private void ShowProgressBar(int totalEnemies)
+        {
+            FadeIn(_progressSliderCanvasGroup);
+
+            _waveNumberText.text = $"{_currentWaveNumber}";
+            _currentWaveTotalEnemies = totalEnemies;
+            _defeatedEnemies = 0;
+        
+            if(_waveProgressSlider != null)
+            {
+                _waveProgressSlider.value = 0f;
+                
+                if(_smoothProgressCoroutine != null)
+                    StopCoroutine(_smoothProgressCoroutine);
+            }
+        }
+
         private void OnBoostApplied(Boost boost)
         {
             _boostQueue.Enqueue(boost);
@@ -140,20 +145,21 @@ namespace MythicalBattles.Levels.EnemySpawner
             }
 
             _isDisplayingBoost = true;
+            
             Boost nextBoost = _boostQueue.Dequeue();
             
-            FadeIn(_boostsDescriptionText, _currentBoostTween);
+            FadeIn(_boostsDescriptionText);
             
             _boostsDescription.Display(nextBoost);
 
-            StartCoroutine(WaitAndFadeOut());
+            StartCoroutine(FadeOutBoostDescription());
         }
         
-        private IEnumerator WaitAndFadeOut()
+        private IEnumerator FadeOutBoostDescription()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(BoostDescriptionDisplayDuration);
             
-            FadeOut(_boostsDescriptionText, _currentBoostTween);
+            FadeOut(_boostsDescriptionText);
         }
 
         private void UpdateProgressSmoothly()
@@ -171,13 +177,13 @@ namespace MythicalBattles.Levels.EnemySpawner
             float startValue = _waveProgressSlider.value;
             float elapsed = 0f;
 
-            while(elapsed < 1f)
+            while(elapsed < SliderSmoothDuration)
             {
                 float currentProgress = Mathf.Lerp(startValue, targetProgress, elapsed);
                 
                 _waveProgressSlider.value = currentProgress;
 
-                elapsed += Time.deltaTime * _smoothSpeed;
+                elapsed += Time.deltaTime * _sliderSmoothSpeed;
                 
                 yield return null;
             }
@@ -186,83 +192,65 @@ namespace MythicalBattles.Levels.EnemySpawner
 
             if (_defeatedEnemies == _currentWaveTotalEnemies)
             {
-                FadeOut(_progressSliderCanvasGroup, _currentMainTween);
+                FadeOut(_progressSliderCanvasGroup);
                 
                 yield return new WaitForSeconds(_fadeDuration);
 
                 if (_currentWaveNumber != _wavesCount)
                 {
-                    FadeIn(_nextWaveText, _currentMainTween);
+                    FadeIn(_nextWaveText);
+
+                    _betweenWavesTimer.Start();
                     
-                    StartTimerForNextWave();
+                    _betweenWavesTimer.Elapsed += OnTimerBetweenWavesElapsed;
                 }
             }
         }
 
-        private void StartTimerForNextWave()
+        private void OnTimerBetweenWavesElapsed()
         {
-            _timerSubscription?.Dispose();
+            _betweenWavesTimer.Elapsed -= OnTimerBetweenWavesElapsed;
             
-            _ticksBetweenWaves = _timeBetweenWaves - 1;
-
-            _nextWaveText.text = $"{LanguagesDictionary.GetTranslation(_nextWaveTextFormat)} {_ticksBetweenWaves}";
-
-            _timerSubscription = Observable
-                .Interval(TimeSpan.FromSeconds(1f))
-                .Subscribe(_ => AddTick());
-        }
-
-        private void AddTick()
-        {
-            _ticksBetweenWaves--;
-            _nextWaveText.text = $"{LanguagesDictionary.GetTranslation(_nextWaveTextFormat)} {_ticksBetweenWaves}";
-
-            if (_ticksBetweenWaves == 1)
-            {
-                StartCoroutine(WaitForNextWaveTextFadeOut());
-            }
+            StartCoroutine(WaitForNextWaveTextFadeOut());
         }
 
         private IEnumerator WaitForNextWaveTextFadeOut()
         {
             yield return new WaitForSeconds(_fadeDuration);
             
-            FadeOut(_nextWaveText, _currentMainTween);
-                
-            _timerSubscription?.Dispose();
+            FadeOut(_nextWaveText);
         }
 
-        private void FadeIn(Component target, Tween tween)
+        private void FadeIn(Component target)
         {
             target.gameObject.SetActive(true);
             
             switch (target)
             {
                 case CanvasGroup canvasGroup:
-                    tween = canvasGroup.DOFade(1, _fadeDuration);
+                    canvasGroup.DOFade(1, _fadeDuration);
                     break;
                 case Graphic graphic:
-                    tween = graphic.DOFade(1, _fadeDuration);
+                    graphic.DOFade(1, _fadeDuration);
                     break;
                 default:
-                    Debug.LogError($"Unsupported type: {target.GetType()}");
-                    break;
+                    throw new InvalidOperationException();
             }
         }
         
-        private void FadeOut(Component target, Tween tween)
+        private void FadeOut(Component target)
         {
             switch (target)
             {
                 case CanvasGroup canvasGroup:
-                    tween = canvasGroup.DOFade(0, _fadeDuration)
+                    canvasGroup.DOFade(0, _fadeDuration)
                         .OnComplete(() => 
                         {
                             target.gameObject.SetActive(false);
                         });
                     break;
                 case Graphic graphic:
-                    tween = graphic.DOFade(0, _fadeDuration)
+                    graphic.DOFade(0, _fadeDuration)
                         .OnComplete(() => 
                         {
                             target.gameObject.SetActive(false);
@@ -271,8 +259,7 @@ namespace MythicalBattles.Levels.EnemySpawner
                         });
                     break;
                 default:
-                    Debug.LogError($"Unsupported type: {target.GetType()}");
-                    break;
+                    throw new InvalidOperationException();
             }
         }
         

@@ -19,9 +19,9 @@ namespace MythicalBattles.Services.PlayerStats
             _itemSelector = itemSelector;
         }
 
-        public ReactiveProperty<float> MaxHealth { get; } = new ReactiveProperty<float>();
-        public ReactiveProperty<float> Damage { get; } = new ReactiveProperty<float>();
-        public ReactiveProperty<float> AttackSpeed { get; } = new ReactiveProperty<float>();
+        public ReactiveProperty<float> MaxHealth { get; } = new();
+        public ReactiveProperty<float> Damage { get; } = new();
+        public ReactiveProperty<float> AttackSpeed { get; } = new();
 
         public void UpdatePlayerData(PlayerData playerData)
         {

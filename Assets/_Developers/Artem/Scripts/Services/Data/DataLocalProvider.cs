@@ -58,15 +58,6 @@ namespace MythicalBattles.Services.Data
                 return;
             }
 
-            // string json = YandexGame.savesData.JsonGameProgressData ??= string.Empty;
-            //
-            // if (json != string.Empty && json[1] == 'n')
-            // {
-            //     Debug.Log(json);
-            //     Debug.LogWarning("Replacing chars");
-            //     json = ConvertJsonString(json);
-            // }
-
             _persistentData.GameProgressData = JsonConvert.DeserializeObject<GameProgressData>(YG2.saves.JsonGameProgressData);
         }
 
@@ -78,15 +69,6 @@ namespace MythicalBattles.Services.Data
 
                 return;
             }
-
-            // string json = YandexGame.savesData.JsonGameSettingsData ??= string.Empty;
-            //
-            // if (json != string.Empty && json[1] == 'n')
-            // {
-            //     Debug.Log(json);
-            //     Debug.LogWarning("Replacing chars");
-            //     json = ConvertJsonString(json);
-            // }
 
             _persistentData.SettingsData = JsonConvert.DeserializeObject<SettingsData>(YG2.saves.JsonGameSettingsData);
         }
@@ -106,28 +88,5 @@ namespace MythicalBattles.Services.Data
 
             SaveGameProgressData();
         }
-
-        // private string ConvertJsonString(string json)
-        // {
-        //     char previous;
-        //     char next;
-        //
-        //     for (int i = 0; i < json.Length; i++)
-        //     {
-        //         if (json[i] == 'n')
-        //         {
-        //             previous = json[i - 1];
-        //             next = json[i + 1];
-        //
-        //             if (previous == '{' || previous == '}' || previous == ',' || next == ' ' || next == '}')
-        //             {
-        //                 json = json.Remove(i, 1);
-        //                 json = json.Insert(i, "\n");
-        //             }
-        //         }
-        //     }
-        //
-        //     return json;
-        // }
     }
 }

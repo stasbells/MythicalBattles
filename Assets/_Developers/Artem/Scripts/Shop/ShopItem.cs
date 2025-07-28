@@ -11,7 +11,6 @@ namespace MythicalBattles.Shop
         [SerializeField, Range(0,10000)] private int _price;
         
         public string ItemID => this.name;
-        public GameObject Model => _model;
         public Sprite ItemImage => _itemImage;
         public Sprite BackgroundImage => _backgroundImage;
         public int Price => _price;

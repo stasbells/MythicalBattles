@@ -14,18 +14,7 @@ namespace MythicalBattles.Services.Data
     {
         private const int LevelsCount = 9;
 
-        [SerializeField] private List<LevelResultData> _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
-        
-        // public GameProgressData()
-        // {
-        //     _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
-        // }
-        //
-        // [JsonConstructor]
-        // public GameProgressData(IEnumerable<LevelResultData> levelsResults)
-        // {
-        //     _levelsResults = new List<LevelResultData>(levelsResults);
-        // }
+        [SerializeField] private List<LevelResultData> _levelsResults = new( new LevelResultData[LevelsCount]);
         
         public IReadOnlyList<LevelResultData> LevelsResults => _levelsResults.AsReadOnly();
 
@@ -72,10 +61,8 @@ namespace MythicalBattles.Services.Data
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public void Reset()

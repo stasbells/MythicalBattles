@@ -6,11 +6,11 @@ namespace MythicalBattles.Shop.EquipmentShop
     [CreateAssetMenu(fileName = "ArmorItem", menuName = "Shop/EquipmentItems/ArmorItem")]
     public class ArmorItem : EquipmentItem
     {
+        private const string ItemName = "Armor";
+        private const string ImprovementType = "Health";
+
         [SerializeField] private float _additionalHealth;
-
-        private readonly string _itemName = "Armor";
-        private readonly string _improvementType = "Health";
-
+        
         public float AdditionalHealth => _additionalHealth;
         public override string DisplayText => GetDisplayText();
         public override string TypeText => GetTypeText();
@@ -19,12 +19,12 @@ namespace MythicalBattles.Shop.EquipmentShop
 
         private string GetDisplayText()
         {
-            return $"+{_additionalHealth} {LanguagesDictionary.GetTranslation(_improvementType)}";
+            return $"+{_additionalHealth} {LanguagesDictionary.GetTranslation(ImprovementType)}";
         }
 
         private string GetTypeText()
         {
-            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
+            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {ItemName}")}";
         }
     }
 }

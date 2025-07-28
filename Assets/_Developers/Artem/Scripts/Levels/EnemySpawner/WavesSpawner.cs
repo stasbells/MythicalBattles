@@ -103,15 +103,14 @@ namespace MythicalBattles.Levels.EnemySpawner
             }
 
             _currentWaveNumber++;
+            
             StartCoroutine(SpawnWaveWithDelay());
         }
 
         private IEnumerator SpawnWaveWithDelay()
         {
             if (_currentWaveNumber > 1)
-            {
                 yield return new WaitForSeconds(_timeBetweenWaves);
-            }
 
             SpawnWave(_waves[_currentWaveNumber - 1], _currentWaveNumber);
         }
@@ -128,7 +127,7 @@ namespace MythicalBattles.Levels.EnemySpawner
                 {
                     Enemy enemy = _enemyPools[config.EnemyPrefab.GetType()].GetEnemy();
                     
-                    enemy.transform.position = GetSpawnPosition(wave, config);
+                    enemy.transform.position = GetSpawnPosition();
                         
                     ActivateEnemy(enemy, wave);
                 }
@@ -138,11 +137,11 @@ namespace MythicalBattles.Levels.EnemySpawner
             {
                 EnemyWaveConfig bossConfig = bossWave.GetBossConfig();
 
-                Enemy enemyGameobject = _enemyPools[bossConfig.EnemyPrefab.GetType()].GetEnemy();
+                Enemy boss = _enemyPools[bossConfig.EnemyPrefab.GetType()].GetEnemy();
                 
-                enemyGameobject.transform.position = _enemySpawnPoints.GetBossSpawnPointPosition();
+                boss.transform.position = _enemySpawnPoints.GetBossSpawnPointPosition();
                     
-                ActivateEnemy(enemyGameobject, wave);
+                ActivateEnemy(boss, wave);
             }
 
             ActualizeMusicTheme(wave, waveNumber);
@@ -161,9 +160,7 @@ namespace MythicalBattles.Levels.EnemySpawner
             else
             {
                 if (_audioPlayback.AudioContainer.CurrentPlayingMusicID == bossTheme)
-                {
                     _audioPlayback.PlayLevelThemeAfterBossTheme();
-                }
             }
         }
 
@@ -196,13 +193,15 @@ namespace MythicalBattles.Levels.EnemySpawner
             _shuffledSpawnPoints = spawnPoints;
         }
 
-        private Vector3 GetSpawnPosition(EnemyWave wave, EnemyWaveConfig config)
+        private Vector3 GetSpawnPosition()
         {
             if (_shuffledSpawnPoints.Count == 0)
                 throw new InvalidOperationException();
 
             Vector3 point = _shuffledSpawnPoints.FirstOrDefault();
+            
             _shuffledSpawnPoints.Remove(point);
+            
             return point;
         }
 
@@ -233,9 +232,7 @@ namespace MythicalBattles.Levels.EnemySpawner
         private void DropHealWithChance(Vector3 position)
         {
             if (_random.Next(100) < _healDropPercentChance)
-            {
                 _ = Instantiate(_boostsStorage.GetHealBoost(), position, Quaternion.identity);
-            }
         }
 
         private IEnumerator ReturnEnemyToPool(Enemy enemy)
