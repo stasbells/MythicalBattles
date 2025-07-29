@@ -103,9 +103,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
 
             _itemSelector.Visit(_shopItemView.Item);
 
-            SoundID paySound = _audioPlayback.AudioContainer.PayMoney;
-
-            _audioPlayback.PlaySound(paySound);
+            _audioPlayback.PlaySound(_audioPlayback.AudioContainer.PayMoney);
 
             _dataProvider.SavePlayerData();
 

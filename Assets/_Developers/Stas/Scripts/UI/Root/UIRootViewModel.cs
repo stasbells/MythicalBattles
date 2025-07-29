@@ -53,12 +53,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
             }
         }
 
-        public void ClosePopup(string popupName)
-        {
-            var openedPopupViewModel = _openedPopups.FirstOrDefault(popup => popup.Name == popupName);
-            ClosePopup(openedPopupViewModel);
-        }
-
         public void CloseAllPopups()
         {
             foreach (var openedPopup in _openedPopups.ToList())

@@ -15,13 +15,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         private IPersistentData _persistentData;
         private IPlayerStats _playerStats;
 
-        private void Awake()
+        private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
 
             _persistentData = container.Resolve<IPersistentData>();
             _dataProvider = container.Resolve<IDataProvider>();
             _playerStats = container.Resolve<IPlayerStats>();
+        }
+
+        private void Awake()
+        {
+            Construct();
 
             _shop.ItemsContent.InitializeRegistry();
 

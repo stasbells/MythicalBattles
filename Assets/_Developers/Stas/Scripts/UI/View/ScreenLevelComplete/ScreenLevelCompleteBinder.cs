@@ -24,9 +24,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelCom
 
         private void Construct()
         {
-            var container = SceneManager.GetActiveScene().GetSceneContainer();
-
-            _levelSelectionService = container.Resolve<ILevelSelectionService>();
+            _levelSelectionService = SceneManager.GetActiveScene().GetSceneContainer()
+                .Resolve<ILevelSelectionService>();
         }
 
         private void Awake()

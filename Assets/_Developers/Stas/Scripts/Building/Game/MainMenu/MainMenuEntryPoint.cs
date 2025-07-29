@@ -17,6 +17,14 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
         private IDataProvider _dataProvider;
         private IAudioPlayback _audioPlayback;
 
+        private void Construct()
+        {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _dataProvider = container.Resolve<IDataProvider>();
+            _audioPlayback = container.Resolve<IAudioPlayback>();
+        }
+
         private void Awake()
         {
             Construct();
@@ -41,12 +49,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
             var exitSceneSignal = mainMenuViewModelsContainer.Build().Resolve<Subject<Unit>>();
 
             return exitSceneSignal.AsObservable();
-        }
-
-        private void Construct()
-        {
-            _dataProvider = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IDataProvider>();
-            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
 
         private void LoadData()
