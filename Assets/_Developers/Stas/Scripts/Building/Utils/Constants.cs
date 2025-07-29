@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
 {
     public static class Constants
     {
@@ -8,13 +8,17 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
         public const string BestScoreLeaderboard = nameof(BestScoreLeaderboard);
         public const string TestLeaderboard = nameof(TestLeaderboard);
 
-        public static readonly float MoveControllerRotationAngle = 45f;
+        public const string RuDomain = "ru";
+        public const string EnDomain = "en";
+        public const string TrDomain = "tr";
 
-        public static readonly float SpawnPointXPlus = 11.5f;
-        public static readonly float SpawnPointXMinus = -11.5f;
-        public static readonly float SpawnPointZPlus = 6.5f;
-        public static readonly float SpawnPointZMinus = -26.5f;
-        public static readonly float SpawnPointY = 8.0f;
+        public const float MoveControllerRotationAngle = 45f;
+
+        public const float SpawnPointXPlus = 11.5f;
+        public const float SpawnPointXMinus = -11.5f;
+        public const float SpawnPointZPlus = 6.5f;
+        public const float SpawnPointZMinus = -26.5f;
+        public const float SpawnPointY = 8.0f;
 
         public static readonly int LayerDefault = LayerMask.NameToLayer("Default");
         public static readonly int LayerTransparentFX = LayerMask.NameToLayer("TransparentFX");

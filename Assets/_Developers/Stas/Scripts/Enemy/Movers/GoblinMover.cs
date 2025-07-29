@@ -1,4 +1,4 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
@@ -21,18 +21,14 @@ namespace MythicalBattles
             _isMovingRandomly = false;
         }
 
-        protected override void OnAwake()
+        protected override void OnMeleeEnemyMoverAwake()
         {
-            base.OnAwake();
-
-            _randomMovementLogic = new RandomMovementLogic(this, Transform, _durationOfRandomMove, _directionChangeInterval,
-                _raycastDistance);
+            _randomMovementLogic = new RandomMovementLogic(this, Transform,
+                _durationOfRandomMove, _directionChangeInterval, _raycastDistance);
         }
 
-        protected override void OnFixedUpdate()
+        protected override void OnMeleeEnemyMoverFixedUpdate()
         {
-            base.OnFixedUpdate();
-            
             if (Animator.GetBool(Constants.IsDead))
                 return;
 

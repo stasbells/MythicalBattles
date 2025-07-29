@@ -1,12 +1,10 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
 {
     public class RangeEnemyMover : EnemyMover, IRandomlyMover
     {
-        private const float MoveDurationDeviation = 0.5f;
-
         [SerializeField] private float _moveDuration;
         [SerializeField] private float _directionChangeInterval;
         [SerializeField] private float _raycastDistance;
@@ -14,7 +12,6 @@ namespace MythicalBattles
 
         private RandomMovementLogic _randomMovementLogic;
         private float _stopTimer;
-        private float _deviatedMoveDuration;
         private bool _isMoving;
 
         public void StopRandomMoving()
@@ -27,32 +24,24 @@ namespace MythicalBattles
             _stopTimer = 0f;
         }
 
-        protected override void OnAwake()
+        protected override void OnEnemyMoverAwake()
         {
-            base.OnAwake();
+            _randomMovementLogic = new RandomMovementLogic(this, Transform, _moveDuration,
+                _directionChangeInterval, _raycastDistance);
 
-            _randomMovementLogic = new RandomMovementLogic(this, Transform, _moveDuration, _directionChangeInterval,
-                _raycastDistance);
-
-            float minMoveDuration = _moveDuration - MoveDurationDeviation;
-            float maxMoveDuration = _moveDuration + MoveDurationDeviation;
-
-            _deviatedMoveDuration = Random.Range(minMoveDuration, maxMoveDuration);
+            OnRangeEnemyMoverAwake();
         }
 
-        protected override void OnEnableBehaviour()
+        protected override void OnEnemyMoverEnable()
         {
-            base.OnEnableBehaviour();
-
             _isMoving = true;
-
             Animator.SetBool(Constants.IsMove, true);
+
+            OnRangeEnemyMoverEnable();
         }
 
-        protected override void OnFixedUpdate()
+        protected override void OnEnemyMoverFixedUpdate()
         {
-            base.OnFixedUpdate();
-
             if (Animator.GetBool(Constants.IsDead))
                 return;
 
@@ -66,12 +55,20 @@ namespace MythicalBattles
         {
             Animator.SetBool(Constants.IsAttack, true);
             Animator.SetBool(Constants.IsMove, false);
+
+            OnRangeEnemyMoverAttack();
         }
+
+        protected virtual void OnRangeEnemyMoverAwake() { }
+
+        protected virtual void OnRangeEnemyMoverEnable() { }
+
+        protected virtual void OnRangeEnemyMoverAttack() { }
 
         private void Shoot()
         {
             _isMoving = false;
-            
+
             _stopTimer += Time.deltaTime;
 
             if (_stopTimer >= _stopDuration)

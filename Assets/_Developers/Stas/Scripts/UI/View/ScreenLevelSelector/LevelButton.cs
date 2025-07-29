@@ -14,7 +14,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         [SerializeField] private TMP_Text _levelNumber;
 
         public RectTransform RectTransform => _rectTransform;
-        public Button Button => _levelButton;
 
         public void SetLocked(bool isLocked)
         {       

@@ -2231,11 +2231,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ceb99c5cd327d43a436718fec12219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  PlayerSearchRadius: 50
-  RotationSpeed: 10
-  InitDamage: 10
-  AttackDistance: 1
+  _moveSpeed: 4
+  _playerSearchRadius: 50
+  _rotationSpeed: 10
+  _initDamage: 10
+  _initDamageReserv: 10
+  _attackDistance: 1
+  _attackDistanceReserv: 1
   _durationOfRandomMove: 2
   _directionChangeInterval: 1
   _raycastDistance: 7

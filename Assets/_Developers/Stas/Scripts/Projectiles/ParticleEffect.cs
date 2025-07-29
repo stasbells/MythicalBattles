@@ -6,15 +6,14 @@ namespace MythicalBattles
     {
         public ParticleSystem ParticleSystem { get; internal set; }
 
-        private void Awake()
-        {
-            _transform = transform;
-            ParticleSystem = GetComponent<ParticleSystem>();
-        }
-
         private void OnParticleSystemStopped()
         {
-            _pool.ReturnItem(this);
+            Pool.ReturnItem(this);
+        }
+
+        protected override void OnAwake()
+        {
+            ParticleSystem = GetComponent<ParticleSystem>();
         }
     }
 }

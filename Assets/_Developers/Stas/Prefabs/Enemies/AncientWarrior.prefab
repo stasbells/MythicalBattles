@@ -461,9 +461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb7804745e355d48896900cc8554737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
-  PlayerSearchRadius: 50
-  RotationSpeed: 10
+  _moveSpeed: 2
+  _playerSearchRadius: 50
+  _rotationSpeed: 10
   _moveDuration: 2
   _directionChangeInterval: 3
   _raycastDistance: 6
@@ -481,10 +481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  _shootDelay: 0.1
-  ShootPoint: {fileID: 7462337520997259198}
-  Damage: 10
+  _shootPoint: {fileID: 7462337520997259198}
   _projectilePrefab: {fileID: 7822837374249201035, guid: dad939317fc9a024187181dfca1881a7, type: 3}
+  _damage: 10
 --- !u!114 &3730180216024647316
 MonoBehaviour:
   m_ObjectHideFlags: 0

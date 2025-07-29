@@ -39,10 +39,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             _itemSelector = (IShopItemVisitor)container.Resolve<IItemSelector>();
         }
 
-        protected override void Start()
+        protected override void OnPopupBinderStart()
         {
-            base.Start();
-
             Construct();
 
             _shopItemView = ViewModel.ShopItemView;
@@ -64,7 +62,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
             if (_shopItemView.IsAvailableToBuy)
             {
                 _priceCountText.text = _shopItemView.Price.ToString();
-                
+
                 _buyItemButton.onClick.AddListener(OnBuyItemButtonClicked);
 
                 if (_wallet.GetCurrentCoins() < _shopItemView.Price)
@@ -90,29 +88,25 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
                 _backgroundUnprice.gameObject.SetActive(true);
             }
         }
-        
-        protected override void OnDestroy()
+
+        protected override void OnPopupBinderDestroy()
         {
-            base.OnDestroy();
-            
             _buyItemButton.onClick?.RemoveListener(OnBuyItemButtonClicked);
         }
-        
+
         private void OnBuyItemButtonClicked()
         {
             if (_wallet.GetCurrentCoins() < _shopItemView.Price)
                 return;
-            
+
             _wallet.Spend(_shopItemView.Price);
-            
+
             _itemSelector.Visit(_shopItemView.Item);
 
-            SoundID paySound = _audioPlayback.AudioContainer.PayMoney;
-            
-            _audioPlayback.PlaySound(paySound);
-            
+            _audioPlayback.PlaySound(_audioPlayback.AudioContainer.PayMoney);
+
             _dataProvider.SavePlayerData();
-            
+
             ViewModel.ShopPanel.Refresh();
         }
     }

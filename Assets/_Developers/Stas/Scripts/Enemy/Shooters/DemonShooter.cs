@@ -1,6 +1,6 @@
 using Ami.BroAudio;
 using DG.Tweening;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using Reflex.Extensions;
 using System.Collections;
 using UnityEngine;
@@ -10,6 +10,8 @@ namespace MythicalBattles
 {
     public class DemonShooter : Shooter, IWaveDamageMultiplier
     {
+        private readonly SpawnPointGenerator _spawnPointGenerator = new();
+
         [SerializeField] private int _projectileCount = 6;
         [SerializeField] private ProjectilesObjectPool _projectilePool;
         [SerializeField] private ProjectilesObjectPool _effectPool;
@@ -17,20 +19,12 @@ namespace MythicalBattles
         [SerializeField] private float _afterAttackDelay = 1f;
         [SerializeField] private ParticleSystem _spawnPlaceMarker;
 
-        private SpawnPointGenerator _spawnPointGenerator = new SpawnPointGenerator();
         private Vector3[] _spawnPoints;
         private WaitForSeconds _projectilesSpawnDelay;
         private WaitForSeconds _animationDelay;
         private Transform _cameraTransform;
         private Coroutine _attackCoroutine;
         private IAudioPlayback _audioPlayback;
-
-        protected override void OnAwake()
-        {
-            base.OnAwake();
-            
-            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
-        }
 
         private void Start()
         {
@@ -53,9 +47,14 @@ namespace MythicalBattles
         {
             foreach (var item in _projectilePool.Items)
             {
-                if(item.TryGetComponent(out UltimateDamager damager))
+                if (item.TryGetComponent(out UltimateDamager damager))
                     damager.CancelMultiplier();
             }
+        }
+
+        protected override void OnShooterAwake()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
         }
 
         protected override void Shoot()
@@ -63,7 +62,7 @@ namespace MythicalBattles
             if (_attackCoroutine == null)
             {
                 GetSpawnPoints();
-            
+
                 _attackCoroutine = StartCoroutine(UltimateAttack());
             }
         }
@@ -83,9 +82,9 @@ namespace MythicalBattles
                 particle.Transform.parent = null;
                 particle.Transform.position = _spawnPoints[i];
             }
-            
+
             SoundID bossSpell = _audioPlayback.AudioContainer.BossSpell;
-            
+
             _audioPlayback.PlaySound(bossSpell);
         }
 
@@ -112,8 +111,8 @@ namespace MythicalBattles
 
             yield return _animationDelay;
 
-            _animator.SetBool(Constants.IsMove, true);
-            _animator.SetBool(Constants.IsShoot, false);
+            Animator.SetBool(Constants.IsMove, true);
+            Animator.SetBool(Constants.IsShoot, false);
 
             _attackCoroutine = null;
         }

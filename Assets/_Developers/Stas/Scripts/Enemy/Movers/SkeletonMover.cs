@@ -1,13 +1,11 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 
 namespace MythicalBattles
 {
     public class SkeletonMover : MeleeEnemyMover
     {
-        protected override void OnFixedUpdate()
+        protected override void OnMeleeEnemyMoverFixedUpdate()
         {
-            base.OnFixedUpdate();
-            
             if (Animator.GetBool(Constants.IsDead))
                 return;
             

@@ -8,8 +8,8 @@
     false
   ],
   "IsFirstSession": false,
-  "IdSave": 2,
-  "JsonPlayerData": "{\"_money\":1000,\"_selectedWeaponID\":\"BowSimple\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
-  "JsonGameProgressData": null,
-  "JsonGameSettingsData": null
+  "IdSave": 134,
+  "JsonPlayerData": "{\"_money\":7339,\"_selectedWeaponID\":\"BowCommon\",\"_selectedArmorID\":\"ArmorSimple\",\"_selectedHelmetID\":\"HelmetSimple\",\"_selectedBootsID\":\"BootsSimple\",\"_selectedNecklaceID\":\"NecklaceSimple\",\"_selectedRingID\":\"RingSimple\"}",
+  "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":223.113327,\"Points\":977.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
+  "JsonGameSettingsData": "{\"_musicVolume\":0.279610336,\"_soundsVolume\":0.323320836}"
 }

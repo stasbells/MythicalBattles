@@ -113,8 +113,6 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7274114511238327400}
-  - {fileID: 7858588479937273352}
   - {fileID: 156853783887020747}
   - {fileID: 3962393495117828930}
   - {fileID: 646244321648444446}
@@ -200,9 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initRateOfFire: 1
-  ShootPoint: {fileID: 6282566242958126188}
-  Damage: 0
+  _shootPoint: {fileID: 6282566242958126188}
   _projectilePrefab: {fileID: 2651084798854190789, guid: dfe925e94a6d6ee46b56cc7f03ea5e6b, type: 3}
+  _damage: 0
 --- !u!136 &8362647555677677297
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5496,53 +5494,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3949742924488628702}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &1773019400831570967
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7858588479937273352}
-  - component: {fileID: 4523552585018349944}
-  m_Layer: 0
-  m_Name: EffectPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7858588479937273352
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773019400831570967}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3949742924488628702}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4523552585018349944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773019400831570967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9dbcd02df8b93488e30af2cf208083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 6372463842321586431, guid: 17a64ec97b0a698478a6f86675e4b4a2, type: 3}
-  _itemsCount: 15
-  _projectileLayer: 8
 --- !u!1 &1882479083185807258
 GameObject:
   m_ObjectHideFlags: 0
@@ -11309,53 +11260,6 @@ Transform:
   - {fileID: 4491041382426460015}
   m_Father: {fileID: 5362000467455262425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4780259238888559014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7274114511238327400}
-  - component: {fileID: 6692331851016518656}
-  m_Layer: 0
-  m_Name: ProjectilePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7274114511238327400
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4780259238888559014}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3949742924488628702}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6692331851016518656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4780259238888559014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9dbcd02df8b93488e30af2cf208083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 5806943366580904958, guid: e631a284060e5f448972d766854fe0c4, type: 3}
-  _itemsCount: 15
-  _projectileLayer: 8
 --- !u!1 &4792705170644455713
 GameObject:
   m_ObjectHideFlags: 0
@@ -11623,9 +11527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc6edd597ef4e8438c361c843d5e184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 5290554001449627160}
-  _smoothHealthBar: {fileID: 1121711264553512831}
   _damageNumber: {fileID: 1869058827713599941, guid: 81a38aa2a7dc66442a38ed333dca6f10, type: 3}
+  _smoothHealthBar: {fileID: 1121711264553512831}
+  _healthBar: {fileID: 5290554001449627160}
   _recoveryRate: 0.3
   _healthBarScale: 0.3
 --- !u!1 &5687686170922222622

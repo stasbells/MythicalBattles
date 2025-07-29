@@ -22,6 +22,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
             InitCameraSystem(InitArcher());
         }
 
+        public void InitCameraSystem(Transform archerTransform)
+        {
+            var cameraInstance = Instantiate(_cameraSystemPrefab);
+            cameraInstance.SetTarget(archerTransform);
+        }
+
         private void InitLevelGenerator(Container gamplayContainer)
         {
             _uiManager = gamplayContainer.Resolve<GameplayUIManager>();
@@ -39,12 +45,6 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay
             _uiManager.SubscribeOnPlayerDeath(archerInstance.IsDead);
 
             return archerInstance.transform;
-        }
-
-        public void InitCameraSystem(Transform archerTransform)
-        {
-            var cameraInstance = Instantiate(_cameraSystemPrefab);
-            cameraInstance.SetTarget(archerTransform);
         }
     }
 }

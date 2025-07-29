@@ -1,28 +1,30 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles
 {
-    [RequireComponent(typeof(Animator), typeof(Transform), typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CapsuleCollider))]
+    [RequireComponent(typeof(Animator))]
     public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
 
-        protected CharacterController _controller;
         private CapsuleCollider _capsuleCollider;
-        private Controls _controls;
-        private Animator _animator;
+        private CharacterController _controller;
         private Transform _transform;
+        private Animator _animator;
+        private Controls _controls;
 
-        private Vector2 _moveDirection;
-        private Vector2 _currentInputVector;
         private Vector2 _smoothInputVelocity;
-        private Vector2 _rotateInput = new Vector2(0.7f, 0.7f);
+        private Vector2 _currentInputVector;
+        private Vector2 _moveDirection;
+
         private void Awake()
         {
-            _controller = GetComponent<CharacterController>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
+            _controller = GetComponent<CharacterController>();
             _transform = GetComponent<Transform>();
             _animator = GetComponent<Animator>();
         }
@@ -33,7 +35,7 @@ namespace MythicalBattles
             _controls.Player.Enable();
         }
 
-        public void OnDisable()
+        private void OnDisable()
         {
             _controls.Player.Disable();
         }
@@ -75,9 +77,10 @@ namespace MythicalBattles
             float rotationAngle = Mathf.Atan2(_currentInputVector.x, _currentInputVector.y) * Mathf.Rad2Deg;
             _transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
 
-            Vector3 move = new(_moveDirection.x, 0, _moveDirection.y);
+            Vector3 move = new(_moveDirection.x, 0f, _moveDirection.y);
             _controller.Move(_moveSpeed * Time.deltaTime * move);
         }
+
         private void Die()
         {
             _animator.SetBool(Constants.IsMove, false);

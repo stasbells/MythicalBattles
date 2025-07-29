@@ -4,13 +4,15 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 {
     public class ScreenBinder<T> : MonoBehaviour, IScreenBinder where T : ScreenViewModel
     {
-        protected T ViewModel;
+        private T _viewModel;
+
+        public T ViewModel => _viewModel;
 
         public void Bind(ScreenViewModel viewModel)
         {
-            ViewModel = (T)viewModel;
+            _viewModel = (T)viewModel;
 
-            OnBind(ViewModel);
+            OnBind(_viewModel);
         }
 
         public virtual void Close()

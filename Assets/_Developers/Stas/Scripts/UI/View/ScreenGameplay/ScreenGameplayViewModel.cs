@@ -1,6 +1,6 @@
 ﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
 {
-    public class ScreenGameplayViewModel : ScreenViewModel 
+    public class ScreenGameplayViewModel : ScreenViewModel
     {
         private readonly GameplayUIManager _uiManager;
 

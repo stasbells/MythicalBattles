@@ -2,7 +2,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipment
 {
     public class PopupEquipmentItemViewModel : ScreenViewModel
     {
-        private InventoryItemView _inventoryItemView;
+        private readonly InventoryItemView _inventoryItemView;
 
         public override string Name => "PopupEquipmentItem";
         public InventoryItemView InventoryItemView => _inventoryItemView;

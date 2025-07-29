@@ -15,13 +15,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         private IPersistentData _persistentData;
         private IPlayerStats _playerStats;
 
-        private void Awake()
+        private void Construct()
         {
             var container = SceneManager.GetActiveScene().GetSceneContainer();
 
             _persistentData = container.Resolve<IPersistentData>();
             _dataProvider = container.Resolve<IDataProvider>();
             _playerStats = container.Resolve<IPlayerStats>();
+        }
+
+        private void Awake()
+        {
+            Construct();
 
             _shop.ItemsContent.InitializeRegistry();
 
@@ -38,6 +43,12 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
             _goToScreenMainMenuButton.onClick.RemoveListener(OnGoToScreenMainMenuButtonClicked);
         }
 
+        protected override void OnBind(ScreenShopViewModel viewModel)
+        {
+            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
+            viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
+        }
+
         private void OnGoToScreenMainMenuButtonClicked()
         {
             ViewModel.RequestGoToScreenMainMenu();
@@ -46,17 +57,8 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
         private void LoadOrInitPlayerData()
         {
             _dataProvider.LoadPlayerData();
-            
             _persistentData.PlayerData.Initialize(_shop.ItemsContent);
-
             _playerStats.UpdatePlayerData(_persistentData.PlayerData);
-        }
-
-        protected override void OnBind(ScreenShopViewModel viewModel)
-        {
-            viewModel.ShopPanel.OnNext(_shop.ShopPanel);
-
-            viewModel.OnShopPanelChanged(_shop.ShopPanel, _inventory);
         }
     }
 }

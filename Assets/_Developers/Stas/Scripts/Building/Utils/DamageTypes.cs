@@ -1,4 +1,4 @@
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Constants
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
 {
     public enum DamageTypes
     {

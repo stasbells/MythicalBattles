@@ -1,5 +1,5 @@
 using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,9 +11,14 @@ namespace MythicalBattles
         private float _damage;
         private IAudioPlayback _audioPlayback;
 
-        private void Awake()
+        private void Construct()
         {
             _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+
+        private void Awake()
+        {
+            Construct();
         }
 
         private void OnParticleCollision(GameObject other)
@@ -21,24 +26,18 @@ namespace MythicalBattles
             if (other.layer == Constants.LayerPlayer || other.layer == Constants.LayerEnemy)
             {
                 other.GetComponent<Health>().TakeDamage(_damage);
-                
-                if(other.layer == Constants.LayerEnemy && TryGetComponent(out PeriodicDamageProjectile projectile) == false)
+
+                if (other.layer == Constants.LayerEnemy && TryGetComponent(out PeriodicDamageProjectile projectile) == false)
                 {
                     SoundID shotSound = _audioPlayback.AudioContainer.BaseShot;
-                    
+
                     _audioPlayback.PlaySound(shotSound);
                 }
             }
         }
 
-        public void SetDamage(float damage)
-        {
-            _damage = damage;
-        }
+        public void SetDamage(float damage) => _damage = damage;
 
-        public float GetDamage()
-        {
-            return _damage;
-        }
+        public float GetDamage() => _damage;
     }
 }

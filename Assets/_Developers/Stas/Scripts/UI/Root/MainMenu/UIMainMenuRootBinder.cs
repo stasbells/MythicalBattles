@@ -1,7 +1,7 @@
 ﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu
 {
-    class UIMainMenuRootBinder : UIRootBinder
+    public class UIMainMenuRootBinder : UIRootBinder
     {
-        
+
     }
 }
