@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Reflex.Extensions;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public class HealBoost : Boost
     {

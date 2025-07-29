@@ -1,10 +1,13 @@
 using System.Collections;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.LevelCompletionStopwatch;
+using MythicalBattles.Services.Wallet;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels
 {
     public class LevelEndAlgorithm : MonoBehaviour
     {
@@ -38,6 +41,7 @@ namespace MythicalBattles
             Construct();
             
             _levelCompletionStopwatch.Reset();
+            
             _levelCompletionStopwatch.Start();
         }
 
@@ -48,38 +52,71 @@ namespace MythicalBattles
 
         public IEnumerator Run(int levelNumber, float baselevelReward, float maxScore)
         {
+            _levelPassTime = GetLevelPassTime();
+
+            _score = GetScore(maxScore);
+
+            _rewardMoney = GetRewardMoney(baselevelReward);
+
+            yield return new WaitForSeconds(DelayBeforeShowUI);
+
+            float bestTime = GetBestTime(levelNumber);
+
+            _gameplayUIManager.OpenScreenLevelComplete(_levelPassTime, bestTime, _score, _rewardMoney);
+        }
+
+        private float GetLevelPassTime()
+        {
             _levelCompletionStopwatch.Stop();
             
-            _levelPassTime = _levelCompletionStopwatch.ElapsedTime;
-            
+            return _levelCompletionStopwatch.ElapsedTime;
+        }
+
+        private int GetScore(float maxScore)
+        {
+            if (_levelPassTime >= MaxTimeInSecondsForBonus)
+            {
+                return 1;
+            }
+            else
+            {
+                float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
+
+                return CalculateScore(timeRatio, maxScore);
+            }
+        }
+
+        private int GetRewardMoney(float baselevelReward)
+        {
             _maxAdditionalGold = baselevelReward * AdditionalGoldFactor;
+
+            int rewardMoney;
 
             if (_levelPassTime >= MaxTimeInSecondsForBonus)
             {
-                _rewardMoney = (int)baselevelReward;
-                _score = 1;
+                rewardMoney = (int)baselevelReward;
             }
             else
             {
                 float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
                 
-                _rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
-
-                _score = CalculateScore(timeRatio, maxScore);
+                rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
             }
             
-            yield return new WaitForSeconds(DelayBeforeShowUI);
-            
-            _wallet.AddCoins(_rewardMoney);
-            
-            if (_persistentData.GameProgressData.TryUpdateLevelRecord(levelNumber, _score, _levelPassTime))  
+            _wallet.AddCoins(rewardMoney);
+
+            return rewardMoney;
+        }
+
+        private float GetBestTime(int levelNumber)
+        {
+            if (_persistentData.GameProgressData.
+                TryUpdateLevelRecord(levelNumber, _score, _levelPassTime))  
             {
                 _dataProvider.SaveGameProgressData();
             }
 
-            float bestTime = _persistentData.GameProgressData.LevelsResults[levelNumber - 1].Time;
-
-            _gameplayUIManager.OpenScreenLevelComplete(_levelPassTime, bestTime, _score, _rewardMoney);
+            return _persistentData.GameProgressData.LevelsResults[levelNumber - 1].Time;
         }
 
         private int CalculateRewardMoney(float timeRatio, float baselevelReward)

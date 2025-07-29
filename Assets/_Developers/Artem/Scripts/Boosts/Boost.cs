@@ -1,10 +1,11 @@
 using System;
 using Ami.BroAudio;
+using MythicalBattles.Services.AudioPlayback;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public abstract class Boost : MonoBehaviour
     {
@@ -14,9 +15,14 @@ namespace MythicalBattles
         public event Action<Boost> Applied; 
         protected Transform Player { get; private set; }
 
-        private void Awake()
+        private void Construct()
         {
             _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+        
+        private void Awake()
+        {
+           Construct(); 
         }
 
         private void OnTriggerEnter(Collider otherCollider)

@@ -3,28 +3,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop
 {
     [RequireComponent(typeof(Image))]
     public class ShopItemView : MonoBehaviour, IPointerClickHandler
     {
-        public event Action<ShopItemView> Clicked;
-
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _lockImage;
         [SerializeField] private Image _backgroundImage;
         [SerializeField] private Image _selectedImage;
-
         [SerializeField] private IntValueView _priceView;
 
         private Image _currentBackgroundImage;
+        
+        public event Action<ShopItemView> Clicked;
         
         public ShopItem Item { get; private set; }
         public bool IsLock { get; private set; }
         public bool IsSelected { get; private set; }
         public bool IsAvailableToBuy { get; private set; }
         public int Price => Item.Price;
-        public GameObject Model => Item.Model;
 
         public void Initialize(ShopItem item)
         {
@@ -56,12 +54,6 @@ namespace MythicalBattles
             IsSelected = true;
             _selectedImage.gameObject.SetActive(true);
             HidePrice();
-        }
-        
-        public void Unselect()
-        {
-            IsSelected = false;
-            _selectedImage.gameObject.SetActive(false);
         }
 
         public void ShowPrice()

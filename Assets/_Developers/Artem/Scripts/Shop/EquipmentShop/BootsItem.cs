@@ -1,16 +1,16 @@
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "BootsItem", menuName = "Shop/EquipmentItems/BootsItem")]
     public class BootsItem : EquipmentItem
     {
+        private const string ItemName = "Boots";
+        private const string ImprovementType = "Attack speed";
+        private const float ImprovementFactor = 100f;
+        
         [SerializeField] private float _additionalAttackSpeed;
-
-        private readonly string _itemName = "Boots";
-        private readonly string _improvementType = "Attack speed";
-        private readonly float _improvmentFactor = 100f;
 
         public float AdditionalAttackSpeed => _additionalAttackSpeed;
         public override string DisplayText => GetDisplayText();
@@ -20,12 +20,12 @@ namespace MythicalBattles
 
         private string GetDisplayText()
         {
-            return $"+{_additionalAttackSpeed * _improvmentFactor}% {LanguagesDictionary.GetTranslation(_improvementType)}";
+            return $"+{_additionalAttackSpeed * ImprovementFactor}% {LanguagesDictionary.GetTranslation(ImprovementType)}";
         }
 
         private string GetTypeText()
         {
-            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
+            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {ItemName}")}";
         }
     }
 }

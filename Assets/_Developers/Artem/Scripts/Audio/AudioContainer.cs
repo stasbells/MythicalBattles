@@ -4,7 +4,7 @@ using System.Linq;
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Audio
 {
     [CreateAssetMenu(fileName = "New AudioContainer", menuName = "AudioContainer/Create New AudioContainer",
         order = 51)]
@@ -29,14 +29,14 @@ namespace MythicalBattles
         [field: SerializeField] public SoundID PayMoney { get; private set; }
         [field: SerializeField] public SoundID ButtonClick { get; private set; }
 
-        public SoundID CurrentPlayingMusicID;
-
         private SoundID _themePlayedBeforeBossThemeID;
+        
+        public SoundID CurrentPlayingMusicID { get; private set; }
 
         public void PlayMusic(SoundID soundID, float volume)
         {
             if (GetMusicIdList().Contains(soundID) == false)
-                throw new InvalidCastException("Music ID not found");
+                throw new InvalidOperationException();
 
             if (soundID == BossTheme)
                 _themePlayedBeforeBossThemeID = CurrentPlayingMusicID;
@@ -65,7 +65,7 @@ namespace MythicalBattles
         public void PlaySound(SoundID soundID, float volume)
         {
             if (GetSoundsIdList().Contains(soundID) == false)
-                throw new InvalidCastException("Sound ID not found");
+                throw new InvalidOperationException();
 
             BroAudio.Play(soundID);
             

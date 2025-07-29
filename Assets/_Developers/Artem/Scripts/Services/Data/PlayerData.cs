@@ -1,8 +1,9 @@
-using Newtonsoft.Json;
 using System;
+using MythicalBattles.Shop.EquipmentShop;
+using Newtonsoft.Json;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]
@@ -20,45 +21,7 @@ namespace MythicalBattles
         [SerializeField] private string _selectedNecklaceID = DefaultItemsID.Necklace;
         [SerializeField] private string _selectedRingID = DefaultItemsID.Ring;
 
-        // public PlayerData()
-        // {
-        //     Money = InitMoney;
-        //
-        //     SelectedWeaponID = DefaultItemsID.Weapon;
-        //
-        //     SelectedArmorID = DefaultItemsID.Armor;
-        //
-        //     SelectedHelmetID = DefaultItemsID.Helmet;
-        //
-        //     SelectedBootsID = DefaultItemsID.Boots;
-        //
-        //     SelectedNecklaceID = DefaultItemsID.Necklace;
-        //
-        //     SelectedRingID = DefaultItemsID.Ring;
-        // }
-
-        // [JsonConstructor]
-        // public PlayerData(int money, string selectedWeaponID, string selectedArmorID, string selectedHelmetID,
-        //     string selectedBootsID, string selectedNecklaceID, string selectedRingID)
-        // {
-        //     Money = money;
-        //     SelectedWeaponID = selectedWeaponID;
-        //     SelectedArmorID = selectedArmorID;
-        //     SelectedHelmetID = selectedHelmetID;
-        //     SelectedBootsID = selectedBootsID;
-        //     SelectedNecklaceID = selectedNecklaceID;
-        //     SelectedRingID = selectedRingID;
-        // }
-
         public int Money => _money;
-        
-        // public string SelectedWeaponID => _selectedWeaponID;
-        // public string SelectedArmorID => _selectedArmorID;
-        // public string SelectedHelmetID => _selectedHelmetID;
-        // public string SelectedBootsID => _selectedBootsID;
-        // public string SelectedNecklaceID => _selectedNecklaceID;
-        // public string SelectedRingID => _selectedRingID;
-
 
         public void Initialize(EquipmentsShopContent shopContent)
         {

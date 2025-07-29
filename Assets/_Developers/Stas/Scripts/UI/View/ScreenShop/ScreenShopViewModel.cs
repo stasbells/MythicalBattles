@@ -1,4 +1,5 @@
 ﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
+using MythicalBattles.Shop;
 using R3;
 
 namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop

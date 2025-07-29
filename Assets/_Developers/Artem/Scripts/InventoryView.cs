@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.ItemSelector;
+using MythicalBattles.Shop.EquipmentShop;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -52,7 +55,7 @@ namespace MythicalBattles
 
         private void OnDisable()
         {
-              _itemSelector.SelectedItemChanged -= OnSelectedItemChange;
+            _itemSelector.SelectedItemChanged -= OnSelectedItemChange;
             
             foreach (InventoryItemView item in _items)
             {

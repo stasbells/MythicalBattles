@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     public class PersistentData : IPersistentData
     {

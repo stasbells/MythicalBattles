@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level7
   m_EditorClassIdentifier: 
   <LevelDesignPrefab>k__BackingField: {fileID: 5171649854648822856, guid: 9490029c1c6b4a94fa938b7e78e2f679, type: 3}
-  <WavesSpawner>k__BackingField: {fileID: 7038811949709905118, guid: 77965cb7f94d6d840a925222363af46b, type: 3}
+  <WavesSpawner>k__BackingField: {fileID: 4779218795524742020, guid: 77965cb7f94d6d840a925222363af46b, type: 3}
   <BaseRewardMoney>k__BackingField: 30000
   <MaxScore>k__BackingField: 2400
   <MusicTheme>k__BackingField:

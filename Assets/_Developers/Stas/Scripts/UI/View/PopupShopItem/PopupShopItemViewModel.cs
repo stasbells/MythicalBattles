@@ -1,4 +1,6 @@
-﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
+﻿using MythicalBattles.Shop;
+
+namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB
 {
     public class PopupShopItemViewModel : ScreenViewModel
     {

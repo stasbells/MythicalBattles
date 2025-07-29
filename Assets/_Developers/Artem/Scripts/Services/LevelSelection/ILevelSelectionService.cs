@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Services.LevelSelection
 {
     public interface ILevelSelectionService
     {

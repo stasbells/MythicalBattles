@@ -1,6 +1,6 @@
 using System;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     public interface IDataProvider
     {

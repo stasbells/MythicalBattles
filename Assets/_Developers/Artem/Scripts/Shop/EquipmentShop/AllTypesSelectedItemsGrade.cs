@@ -1,13 +1,13 @@
-using UnityEngine;
+using MythicalBattles.Services.Data;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     public class AllTypesSelectedItemsGrade : IShopItemVisitor
     {
         private IPersistentData _persistentData;
         private EquipmentGrades _selectedGrade;
         
-        public  AllTypesSelectedItemsGrade(IPersistentData persistentData) => _persistentData = persistentData;
+        public AllTypesSelectedItemsGrade(IPersistentData persistentData) => _persistentData = persistentData;
 
         public EquipmentGrades GetGrade(ShopItem shopItem)
         {

@@ -1,4 +1,5 @@
 using System;
+using MythicalBattles.Shop.EquipmentShop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,10 +8,10 @@ namespace MythicalBattles
 {
     public class InventoryItemView : MonoBehaviour, IPointerClickHandler
     {
-        public event Action<InventoryItemView> Clicked;
-
         [SerializeField] private Image _contentImage;
         [SerializeField] private Image _backgroundImage;
+        
+        public event Action<InventoryItemView> Clicked;
 
         public EquipmentItem Item { get; private set; }
 

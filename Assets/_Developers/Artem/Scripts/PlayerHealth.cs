@@ -1,5 +1,6 @@
 using Ami.BroAudio;
-using Reflex.Attributes;
+using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine.SceneManagement;
 
@@ -9,18 +10,24 @@ namespace MythicalBattles
     {
         private float _startMaxHealth;
         private IAudioPlayback _audioPlayback;
-
-        [Inject]
-        private void Construct(IPlayerStats playerStats, IAudioPlayback audioPlayback)
+        
+        private void Construct()
         {
-            MaxHealth.Value = playerStats.MaxHealth.Value;
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            MaxHealth.Value = container.Resolve<IPlayerStats>().MaxHealth.Value;
             _startMaxHealth = MaxHealth.Value;
-            _audioPlayback = audioPlayback;
+            _audioPlayback = container.Resolve<IAudioPlayback>();
+        }
+        
+        protected override void OnAwakeBehaviour()
+        {
+            Construct();
         }
 
         public void IncreaseMaxHealth(float healthMultiplier)
         {
-             float newMaxHealth = _startMaxHealth * healthMultiplier + MaxHealth.Value;
+            float newMaxHealth = _startMaxHealth * healthMultiplier + MaxHealth.Value;
             
             ChangeMaxHealthValue(newMaxHealth);
         }
@@ -35,15 +42,6 @@ namespace MythicalBattles
             SoundID damageSound = _audioPlayback.AudioContainer.PlayerDamaged;
             
             _audioPlayback.PlaySound(damageSound);
-        }
-
-        protected override void OnAwakeBehaviour()
-        {
-            var container = SceneManager.GetActiveScene().GetSceneContainer();
-
-            MaxHealth.Value = container.Resolve<IPlayerStats>().MaxHealth.Value;
-            _startMaxHealth = MaxHealth.Value;
-            _audioPlayback = container.Resolve<IAudioPlayback>();
         }
 
         protected override void Die()

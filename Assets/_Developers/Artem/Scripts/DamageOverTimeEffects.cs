@@ -36,24 +36,23 @@ namespace MythicalBattles
 
         public void PlayFireEffect(float timeBetweenTicks, int ticksCount)
         {
-            if (_fireEffectCoroutine != null)
-            {
-                _fireParticle.SetActive(false);
-                StopCoroutine(_fireEffectCoroutine);
-            }
-
-            _fireEffectCoroutine = StartCoroutine(StartEffect(_fireParticle, timeBetweenTicks, ticksCount));
+            PlayEffect(ref _fireEffectCoroutine, _fireParticle, timeBetweenTicks, ticksCount);
         }
         
         public void PlayPoisonEffect(float timeBetweenTicks, int ticksCount)
         {
-            if (_poisonEffectCoroutine != null)
+            PlayEffect(ref _poisonEffectCoroutine, _poisonParticle, timeBetweenTicks, ticksCount);
+        }
+
+        private void PlayEffect(ref Coroutine effectCoroutine, GameObject particle, float timeBetweenTicks, int ticksCount)
+        {
+            if (effectCoroutine != null)
             {
-                _poisonParticle.SetActive(false);
-                StopCoroutine(_poisonEffectCoroutine);
+                particle.SetActive(false);
+                StopCoroutine(effectCoroutine);
             }
 
-            _poisonEffectCoroutine = StartCoroutine(StartEffect(_poisonParticle, timeBetweenTicks, ticksCount));
+            effectCoroutine = StartCoroutine(StartEffect(particle, timeBetweenTicks, ticksCount));
         }
 
         private IEnumerator StartEffect(GameObject effect, float timeBetweenTicks, int ticksCount)

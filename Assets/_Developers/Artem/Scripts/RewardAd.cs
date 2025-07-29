@@ -1,3 +1,4 @@
+using MythicalBattles.Services.Wallet;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,8 +10,8 @@ namespace MythicalBattles
     public class RewardAd : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private int _moneyReward = 1000;
-        private string rewardId;
         
+        private string rewardId;
         private IWallet _wallet;
 
         private void Construct()

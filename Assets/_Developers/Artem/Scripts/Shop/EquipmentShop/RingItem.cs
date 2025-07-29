@@ -1,7 +1,7 @@
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "RingItem", menuName = "Shop/EquipmentItems/RingItem")]
     public class RingItem : EquipmentItem

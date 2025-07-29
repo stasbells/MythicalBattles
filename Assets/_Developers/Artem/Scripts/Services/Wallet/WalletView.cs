@@ -1,10 +1,10 @@
-using Reflex.Attributes;
+using MythicalBattles.Services.Data;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Wallet
 {
     public class WalletView : MonoBehaviour
     {
@@ -12,7 +12,6 @@ namespace MythicalBattles
         
         private IWallet _wallet;
         private IPersistentData _persistentData;
-        
 
         private void Construct()
         {

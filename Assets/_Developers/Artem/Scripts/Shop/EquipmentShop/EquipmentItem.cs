@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     public abstract class EquipmentItem : ShopItem
     {

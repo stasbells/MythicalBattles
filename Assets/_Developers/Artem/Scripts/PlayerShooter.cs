@@ -7,6 +7,7 @@ namespace MythicalBattles
     {
         private float _startDamage;
         private float _attackSpeed;
+        private IPlayerStats _playerStats;
 
         private void Construct()
         {
@@ -14,6 +15,7 @@ namespace MythicalBattles
 
             _startDamage = container.Resolve<IPlayerStats>().Damage.Value;
             _attackSpeed = container.Resolve<IPlayerStats>().AttackSpeed.Value;
+            
         }
 
         public void IncreaseDamage(float damageMultiplier)

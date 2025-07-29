@@ -61,7 +61,10 @@ namespace MythicalBattles
 
             _particle.transform.SetParent(_shootPoint);
             _particle.Stop();
-            _particle.TryGetComponent(out SimpleProjectile projectile);
+
+            if(_particle.TryGetComponent(out SimpleProjectile projectile) == false)
+                throw new InvalidOperationException();
+
             _projectile = projectile;
 
             SetProjectileDamage(_damage);

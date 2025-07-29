@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public class ProjectileBoost : Boost
     {

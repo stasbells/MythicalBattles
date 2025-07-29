@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public class AttackSpeedBoost : Boost
     {

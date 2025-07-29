@@ -1,5 +1,4 @@
 using Reflex.Extensions;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

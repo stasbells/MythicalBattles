@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Boosts
 {
     public class PoisonCompanionBoost : CompanionBoost
     {

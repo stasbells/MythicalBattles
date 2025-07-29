@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     public class CompanionMover : MonoBehaviour
     {

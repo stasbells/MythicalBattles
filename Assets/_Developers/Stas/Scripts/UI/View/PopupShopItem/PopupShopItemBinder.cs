@@ -1,5 +1,11 @@
 ﻿using Ami.BroAudio;
 using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
+using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.ItemSelector;
+using MythicalBattles.Services.Wallet;
+using MythicalBattles.Shop;
+using MythicalBattles.Shop.EquipmentShop;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;

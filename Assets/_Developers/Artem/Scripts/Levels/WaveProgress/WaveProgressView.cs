@@ -1,7 +1,8 @@
+using MythicalBattles.Boosts;
 using TMPro;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     public class WaveProgressView : MonoBehaviour
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,7 +9,7 @@ namespace MythicalBattles
     public class HoverColorAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private float _animationDuration = 0.5f;
-        [SerializeField] private Color hoverColor = new Color(1, 0.9f, 0.5f, 1);
+        [SerializeField] private Color _hoverColor = new Color(1, 0.9f, 0.5f, 1);
 
         private Color _originalColor;
         private Tween _сolorTween;
@@ -25,28 +23,19 @@ namespace MythicalBattles
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            StartHoverEffect();
+            SetColorWithDuration(_hoverColor);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            EndHoverEffect();
+            SetColorWithDuration(_originalColor);
         }
 
-        private void StartHoverEffect()
+        private void SetColorWithDuration(Color color)
         {
             _сolorTween?.Kill();
             
-            _сolorTween = _targetImage.DOColor(hoverColor, _animationDuration)
-                .SetEase(Ease.OutQuad)
-                .OnComplete(() => _сolorTween = null);
-        }
-
-        private void EndHoverEffect()
-        {
-            _сolorTween?.Kill();
-            
-            _сolorTween = _targetImage.DOColor(_originalColor, _animationDuration)
+            _сolorTween = _targetImage.DOColor(color, _animationDuration)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() => _сolorTween = null);
         }
@@ -54,6 +43,7 @@ namespace MythicalBattles
         private void OnDisable()
         {
             _сolorTween?.Kill();
+            
             _targetImage.color = _originalColor;
         }
     }

@@ -2140,12 +2140,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8789738611341214791}
   - component: {fileID: 5093405426137362873}
-  - component: {fileID: 4372366671960313055}
   - component: {fileID: 5567152621250926882}
   - component: {fileID: 4046743542941728330}
   - component: {fileID: 4449166721780064360}
   - component: {fileID: 2051526553924574892}
   - component: {fileID: 8826346420077944229}
+  - component: {fileID: -1914276872863095563}
   m_Layer: 3
   m_Name: Goblin
   m_TagString: Untagged
@@ -2194,18 +2194,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4372366671960313055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264312157407485693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5567152621250926882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,6 +2294,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &-1914276872863095563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264312157407485693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ba73a99cf98044db8aa5945298d054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8344829794305094444
 GameObject:
   m_ObjectHideFlags: 0

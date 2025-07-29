@@ -1,7 +1,9 @@
 using System;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.ItemSelector;
 using R3;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.PlayerStats
 {
     public class PlayerStats : IPlayerStats, IDisposable
     {
@@ -17,9 +19,9 @@ namespace MythicalBattles
             _itemSelector = itemSelector;
         }
 
-        public ReactiveProperty<float> MaxHealth { get; } = new ReactiveProperty<float>();
-        public ReactiveProperty<float> Damage { get; } = new ReactiveProperty<float>();
-        public ReactiveProperty<float> AttackSpeed { get; } = new ReactiveProperty<float>();
+        public ReactiveProperty<float> MaxHealth { get; } = new();
+        public ReactiveProperty<float> Damage { get; } = new();
+        public ReactiveProperty<float> AttackSpeed { get; } = new();
 
         public void UpdatePlayerData(PlayerData playerData)
         {

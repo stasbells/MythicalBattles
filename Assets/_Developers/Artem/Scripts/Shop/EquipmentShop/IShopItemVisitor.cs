@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     public interface IShopItemVisitor
     {

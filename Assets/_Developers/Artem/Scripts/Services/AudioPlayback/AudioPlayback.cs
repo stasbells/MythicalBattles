@@ -1,7 +1,9 @@
 using Ami.BroAudio;
+using MythicalBattles.Audio;
+using MythicalBattles.Services.Data;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.AudioPlayback
 {
     public class AudioPlayback : IAudioPlayback
     {
@@ -43,7 +45,6 @@ namespace MythicalBattles
             AudioContainer.PlayLevelThemeAfterBossTheme(_currentMusicVolume);
         }
         
-        
         public void StopPlay(SoundID soundID)
         {
             AudioContainer.Stop(soundID);
@@ -67,13 +68,6 @@ namespace MythicalBattles
             _persistentData.SettingsData.SetSoundsVolume(volume);
             
             _dataProvider.SaveSettingsData();
-        }
-        
-        private void SetLoadedVolume()
-        {
-            ChangeMusicVolume(_persistentData.SettingsData.MusicVolume);
-            
-            ChangeSoundsVolume(_persistentData.SettingsData.SoundsVolume);
         }
     }
 }

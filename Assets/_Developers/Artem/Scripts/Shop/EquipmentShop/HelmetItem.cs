@@ -1,15 +1,16 @@
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "HelmetItem", menuName = "Shop/EquipmentItems/HelmetItem")]
     public class HelmetItem : EquipmentItem
     {
+        private const string ItemName = "Helmet";
+        private const string ImprovementType = "Health";
+        private const string Plus = "+";
+        
         [SerializeField] private float _additionalHealth;
-
-        private readonly string _itemName = "Helmet";
-        private readonly string _improvementType = "Health";
 
         public float AdditionalHealth => _additionalHealth;
         public override string DisplayText => GetDisplayText();
@@ -19,12 +20,12 @@ namespace MythicalBattles
 
         private string GetDisplayText()
         {
-            return $"+{_additionalHealth} {LanguagesDictionary.GetTranslation(_improvementType)}";
+            return $"{Plus}{_additionalHealth} {LanguagesDictionary.GetTranslation(ImprovementType)}";
         }
 
         private string GetTypeText()
         {
-            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
+            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {ItemName}")}";
         }
     }
 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Constants;
+using MythicalBattles.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {
@@ -26,6 +28,15 @@ namespace MythicalBattles
             _damage = playerStats.Damage.Value * DamagePart;
         }
         
+        private void Awake()
+        {
+            Construct();
+            
+            _transform = transform;
+            
+            Rigidbody = GetComponent<Rigidbody>();
+        }
+
         private void OnEnable()
         {
             PlayEffects(_baseEffects);
@@ -60,6 +71,7 @@ namespace MythicalBattles
             foreach (ParticleSystem particleSystem in effects)
             {
                 particleSystem.gameObject.SetActive(true);
+                
                 particleSystem.Play();
             }
         }
@@ -69,6 +81,7 @@ namespace MythicalBattles
             foreach (ParticleSystem particleSystem in effects)
             {
                 particleSystem.Stop();
+                
                 particleSystem.gameObject.SetActive(false);
             }
         }
@@ -79,7 +92,12 @@ namespace MythicalBattles
             
             StopEffects(_collisionEffects);
             
-            Pool.ReturnItem(this);
+            _pool.ReturnItem(this);
+        }
+
+        public float GetDamage()
+        {
+            return _damage;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "EquipmentShopContent", menuName = "Shop/EquipmentShopContent")]
     public class EquipmentsShopContent : ScriptableObject
@@ -26,11 +26,8 @@ namespace MythicalBattles
             foreach(ShopItem item in GetItems())
             {
                 if(_itemsRegistry.ContainsKey(item.ItemID))
-                {
-                    Debug.LogError($"Duplicate ID found: {item.ItemID}");
-                    continue;
-                }
-            
+                    throw new InvalidOperationException();
+                
                 _itemsRegistry.Add(item.ItemID, item);
             }
         }
@@ -38,20 +35,16 @@ namespace MythicalBattles
         public T GetItem<T>(string itemID) where T : ShopItem
         {
             if (string.IsNullOrEmpty(itemID))
-            {
-                Debug.LogError("ItemID cannot be null or empty!");
-                return null;
-            }
+                throw new InvalidOperationException();
             
             if(_itemsRegistry.TryGetValue(itemID, out ShopItem item))
             {
                 if(item is T typedItem)
                     return typedItem;
-            
-                Debug.LogError($"Type mismatch for item {itemID}");
-            }
 
-            Debug.LogWarning($"Item not found: {itemID}");
+                throw new InvalidOperationException();
+            }
+            
             return null;
         }
 

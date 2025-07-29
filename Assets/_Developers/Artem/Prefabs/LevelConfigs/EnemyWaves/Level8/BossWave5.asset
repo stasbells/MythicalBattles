@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BossWave5
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - <EnemyPrefab>k__BackingField: {fileID: 8395176564760867790, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
-    <Count>k__BackingField: 4
+  - EnemyPrefab: {fileID: 2363240037292941549, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    Count: 4
   _powerMultiplier: 5
   _bossConfig:
-    <EnemyPrefab>k__BackingField: {fileID: 4132383025755851166, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
-    <Count>k__BackingField: 1
+    EnemyPrefab: {fileID: -6908880495821882910, guid: 457fe28b7fee2c740a303255f3b01b61, type: 3}
+    Count: 1

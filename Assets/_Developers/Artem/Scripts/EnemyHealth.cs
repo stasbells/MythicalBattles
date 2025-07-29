@@ -10,7 +10,7 @@ namespace MythicalBattles
     {
         [SerializeField] private float _initMaxHealthValue;
         
-        private readonly Dictionary<Color, Coroutine> _colorsCoroutines = new Dictionary<Color, Coroutine>();
+        private readonly Dictionary<Color, Coroutine> _damageNumbersCoroutines = new Dictionary<Color, Coroutine>();
         
         private readonly CompositeDisposable _disposable = new();
 
@@ -21,29 +21,27 @@ namespace MythicalBattles
         
         public void TakeTickDamage(float timeBetweenTicks, float tickDamage, int ticksCount, Color damageNumbersColor)
         {
-            if (!_colorsCoroutines.ContainsKey(damageNumbersColor))
+            if (!_damageNumbersCoroutines.ContainsKey(damageNumbersColor))
             {
-                _colorsCoroutines.Add(damageNumbersColor, StartCoroutine(
+                _damageNumbersCoroutines.Add(damageNumbersColor, StartCoroutine(
                     ApplyPeriodicDamage(timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor)));
             }
             else
             {
-                _colorsCoroutines.TryGetValue(damageNumbersColor, out Coroutine coroutine);
+                _damageNumbersCoroutines.TryGetValue(damageNumbersColor, out Coroutine damageNumbersCoroutine);
 
-                if (coroutine != null)
-                    StopCoroutine(coroutine);
+                if (damageNumbersCoroutine != null)
+                    StopCoroutine(damageNumbersCoroutine);
 
-                coroutine = StartCoroutine(ApplyPeriodicDamage(timeBetweenTicks, tickDamage, ticksCount,
-                    damageNumbersColor));
+                damageNumbersCoroutine = StartCoroutine(ApplyPeriodicDamage
+                (timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor));
 
-                _colorsCoroutines[damageNumbersColor] = coroutine;
+                _damageNumbersCoroutines[damageNumbersColor] = damageNumbersCoroutine;
             }
         }
 
         protected override void OnEnableBehaviour()
         {
-            base.OnEnableBehaviour();
-
             IsDead.Subscribe(OnDeadStateChanged).AddTo(_disposable);
         }
         
@@ -72,6 +70,7 @@ namespace MythicalBattles
         public void Reset()
         {
             Animator.SetBool(Constants.IsDead, false);
+            
             IsDead.Value = false;
      
             MaxHealth.Value = _initMaxHealthValue;
@@ -86,12 +85,12 @@ namespace MythicalBattles
 
         private void OnDeadStateChanged(bool isDead)
         {
-            if (isDead)
+            if (isDead == false) 
+                return;
+            
+            foreach (KeyValuePair<Color, Coroutine> pair in _damageNumbersCoroutines)
             {
-                foreach (KeyValuePair<Color, Coroutine> pair in _colorsCoroutines)
-                {
-                    StopCoroutine(pair.Value);
-                }
+                StopCoroutine(pair.Value);
             }
         }
     }

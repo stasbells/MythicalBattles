@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Companions
 {
     public class CompanionSpawner : MonoBehaviour
     {

@@ -1,11 +1,10 @@
-using UnityEngine;
-
-namespace MythicalBattles
+namespace MythicalBattles.Levels.EnemySpawner
 {
     [System.Serializable]
     public class EnemyWaveConfig
     {
-        [field: SerializeField] public GameObject EnemyPrefab { get; private set; }
-        [field: SerializeField] public int Count { get; private set; }
+        public Enemy EnemyPrefab;
+        
+        public int Count;
     }
 }

@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Services.Data
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]
@@ -12,20 +12,6 @@ namespace MythicalBattles
 
         [SerializeField] private float _musicVolume = InitVolume;
         [SerializeField] private float _soundsVolume = InitVolume;
-
-        // public SettingsData()
-        // {
-        //     MusicVolume = InitVolume;
-        //     SoundsVolume = InitVolume;
-        // }
-        //
-        // [JsonConstructor]
-        // public SettingsData(float musicVolume, float soundsVolume)
-        // {
-        //     SetMusicVolume(musicVolume);
-        //     
-        //     SetSoundsVolume(soundsVolume);
-        // }
 
         public float MusicVolume => _musicVolume;
         public float SoundsVolume => _soundsVolume;
