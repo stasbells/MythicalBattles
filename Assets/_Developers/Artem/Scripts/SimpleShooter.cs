@@ -12,8 +12,7 @@ namespace MythicalBattles
         private ParticleSystem _particle;
         private SimpleProjectile _projectile;
 
-        public Transform ShootPoint => _shootPoint;
-        public float Damage => _damage;
+        protected float Damage => _damage;
 
         public void SetProjectilePrefab(ParticleSystem projectilePrefab)
         {
@@ -22,7 +21,7 @@ namespace MythicalBattles
             InstantiateNewProjectileParticle();
         }
 
-        public void SetDamage(float damage)
+        protected void SetDamage(float damage)
         {
             _damage = damage;
         }
@@ -52,7 +51,7 @@ namespace MythicalBattles
             _projectile.SetDamage(damage);
         }
 
-        protected virtual void InstantiateNewProjectileParticle()
+        private void InstantiateNewProjectileParticle()
         {
             if (_particle != null)
                 Destroy(_particle);

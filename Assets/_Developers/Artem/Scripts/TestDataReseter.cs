@@ -1,4 +1,5 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Services.Data;
+using MythicalBattles.Services.LevelSelection;
 using Reflex.Attributes;
 using Reflex.Extensions;
 using UnityEngine;
@@ -10,13 +11,6 @@ namespace MythicalBattles
     {
         private IDataProvider _dataProvider;
         private ILevelSelectionService _levelSelection;
-        
-        [Inject]
-        private void Construct(IDataProvider dataProvider, ILevelSelectionService levelSelection)
-        {
-            _dataProvider = dataProvider;
-            _levelSelection = levelSelection;
-        }
 
         private void Awake()
         {

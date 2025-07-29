@@ -20,7 +20,6 @@ namespace MythicalBattles.Shop
         
         public ShopItem Item { get; private set; }
         public bool IsLock { get; private set; }
-        public bool IsSelected { get; private set; }
         public bool IsAvailableToBuy { get; private set; }
         public int Price => Item.Price;
 
@@ -51,7 +50,6 @@ namespace MythicalBattles.Shop
 
         public void Select()
         {
-            IsSelected = true;
             _selectedImage.gameObject.SetActive(true);
             HidePrice();
         }

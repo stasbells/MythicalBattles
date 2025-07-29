@@ -1,4 +1,5 @@
 using System.Collections;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Companions
@@ -63,7 +64,7 @@ namespace MythicalBattles.Companions
         {
             yield return new WaitForSeconds(_shootDelay);
 
-            while (_animator.GetBool("IsAttack"))
+            while (_animator.GetBool(Constants.IsAttack))
             {
                 Shoot();
 

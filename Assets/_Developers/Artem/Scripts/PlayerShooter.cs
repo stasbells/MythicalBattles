@@ -1,3 +1,4 @@
+using MythicalBattles.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,6 @@ namespace MythicalBattles
 
             _startDamage = container.Resolve<IPlayerStats>().Damage.Value;
             _attackSpeed = container.Resolve<IPlayerStats>().AttackSpeed.Value;
-            
         }
 
         public void IncreaseDamage(float damageMultiplier)

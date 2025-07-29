@@ -8,23 +8,11 @@ namespace MythicalBattles.Shop.EquipmentShop
     {
         [SerializeField] private float _additionalDamage;
 
-        private readonly string _itemName = "Necklace";
-        private readonly string _improvementType = "Damage";
-
         public float AdditionalDamage => _additionalDamage;
-        public override string DisplayText => GetDisplayText();
-        public override string TypeText => GetTypeText();
+        protected override string ItemName => Constants.Necklace;
+        protected override string ImprovementType => Constants.Damage;
+        protected override string DisplayValue => $"{Prefix}{_additionalDamage}";
 
         public override void Accept(IShopItemVisitor visitor) => visitor.Visit(this);
-
-        private string GetDisplayText()
-        {
-            return $"+{_additionalDamage} {LanguagesDictionary.GetTranslation(_improvementType)}";
-        }
-
-        private string GetTypeText()
-        {
-            return $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {_itemName}")}";
-        }
     }
 }

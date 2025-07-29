@@ -10,7 +10,7 @@ namespace MythicalBattles
     {
         [SerializeField] private float _initMaxHealthValue;
         
-        private readonly Dictionary<Color, Coroutine> _damageNumbersCoroutines = new Dictionary<Color, Coroutine>();
+        private readonly Dictionary<Color, Coroutine> _damageNumbersCoroutines = new();
         
         private readonly CompositeDisposable _disposable = new();
 

@@ -78,12 +78,10 @@ namespace MythicalBattles.Levels
             {
                 return 1;
             }
-            else
-            {
-                float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
 
-                return CalculateScore(timeRatio, maxScore);
-            }
+            float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
+
+            return CalculateScore(timeRatio, maxScore);
         }
 
         private int GetRewardMoney(float baselevelReward)

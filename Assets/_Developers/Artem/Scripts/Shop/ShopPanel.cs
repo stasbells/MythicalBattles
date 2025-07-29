@@ -15,9 +15,9 @@ namespace MythicalBattles.Shop
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
 
         private IPersistentData _persistentData;
-        private EquipmentItemsTypes _equipmentItemsTypes = new EquipmentItemsTypes();
+        private EquipmentItemsTypes _equipmentItemsTypes = new();
         private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
-        private List<ShopItemView> _shopItemViews = new List<ShopItemView>();
+        private List<ShopItemView> _shopItemViews = new();
         private ScreenShopViewModel _viewModel;
         private IEnumerable<ShopItem> _shopItems;
 

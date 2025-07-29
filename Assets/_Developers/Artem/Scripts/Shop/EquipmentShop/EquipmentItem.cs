@@ -1,4 +1,5 @@
 using System;
+using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Shop.EquipmentShop
@@ -12,9 +13,15 @@ namespace MythicalBattles.Shop.EquipmentShop
         private readonly Color LegendaryColor = new(0.85f, 0.32f, 0.12f);
 
         [SerializeField] private EquipmentGrades _equipmentGrade;
+        
         public EquipmentGrades EquipmentGrade => _equipmentGrade;
-        public abstract string TypeText { get; }
-
+        public override string DisplayText => $"{DisplayValue} {LanguagesDictionary.GetTranslation(ImprovementType)}";
+        public string TypeText => $"{LanguagesDictionary.GetTranslation($"{EquipmentGrade} {ItemName}")}";
+        protected abstract string ItemName { get; }
+        protected abstract string ImprovementType { get; }
+        protected abstract string DisplayValue { get; }
+        protected string Prefix => "+";
+        
         public Color GradeTextColor
         {
             get
