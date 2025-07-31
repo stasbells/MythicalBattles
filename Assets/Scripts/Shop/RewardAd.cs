@@ -9,9 +9,10 @@ namespace MythicalBattles
 {
     public class RewardAd : MonoBehaviour, IPointerClickHandler
     {
+        private readonly string _rewardId;
+
         [SerializeField] private int _moneyReward = 1000;
         
-        private string rewardId;
         private IWallet _wallet;
 
         private void Construct()
@@ -26,7 +27,7 @@ namespace MythicalBattles
         
         public void OnPointerClick(PointerEventData eventData)
         {
-            YG2.RewardedAdvShow(rewardId, () =>
+            YG2.RewardedAdvShow(_rewardId, () =>
             {
                 _wallet.AddCoins(_moneyReward);
             });
