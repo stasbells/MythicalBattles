@@ -42,7 +42,7 @@ namespace MythicalBattles.Assets.Scripts.Game
         private void RunGame()
         {
 #if UNITY_EDITOR
-            var sceneName = SceneManager.GetActiveScene().name;
+            string sceneName = SceneManager.GetActiveScene().name;
 
             if (sceneName == Scenes.Gameplay)
             {

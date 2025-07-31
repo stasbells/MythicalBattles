@@ -8,6 +8,8 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerMover : MonoBehaviour
     {
+        private const float MinMoveValue = 0.1f;
+
         [SerializeField] private float _moveSpeed = 1.0f;
         [SerializeField] private float _smoothInputSpeed = 0.2f;
 
@@ -62,7 +64,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
             _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
             _moveDirection = Quaternion.AngleAxis(Constants.MoveControllerRotationAngle, Vector3.forward) * _moveDirection;
 
-            if (_moveDirection.sqrMagnitude < 0.1f)
+            if (_moveDirection.sqrMagnitude < MinMoveValue)
             {
                 SetMovingState(false);
 

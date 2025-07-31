@@ -60,7 +60,5 @@ namespace MythicalBattles.Assets.Scripts.Utils
         public static readonly string Damage = "Damage";
         public static readonly string Health = "Health";
         public static readonly string AttackSpeed = "Attack speed";
-
-
     }
 }

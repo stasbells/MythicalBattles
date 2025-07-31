@@ -10,12 +10,13 @@ namespace MythicalBattles.Assets.Scripts.Shop
 {
     public class StatsView : MonoBehaviour
     {
+        private readonly CompositeDisposable _disposable = new ();
+
         [SerializeField] private TMP_Text _damage;
         [SerializeField] private TMP_Text _health;
         [SerializeField] private TMP_Text _attackSpeed;
 
         private IPlayerStats _playerStats;
-        private readonly CompositeDisposable _disposable = new ();
         
         private void Construct()
         {

@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 namespace MythicalBattles.Assets.Scripts.Game.MainMenuScene
 {
-    class MainMenuEntryPoint : MonoBehaviour
+    public class MainMenuEntryPoint : MonoBehaviour
     {
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
 

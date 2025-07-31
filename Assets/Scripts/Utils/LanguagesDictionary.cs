@@ -129,9 +129,9 @@ namespace MythicalBattles.Assets.Scripts.Utils
 
             return language.ToLower() switch
             {
-                Constants.RuDomain => s_ruDomainDictionary.TryGetValue(key, out var ruValue) ? ruValue : key,
-                Constants.EnDomain => s_enDomainDictionary.TryGetValue(key, out var enValue) ? enValue : key,
-                Constants.TrDomain => s_trDomainDictionary.TryGetValue(key, out var trValue) ? trValue : key,
+                Constants.RuDomain => s_ruDomainDictionary.TryGetValue(key, out string ruValue) ? ruValue : key,
+                Constants.EnDomain => s_enDomainDictionary.TryGetValue(key, out string enValue) ? enValue : key,
+                Constants.TrDomain => s_trDomainDictionary.TryGetValue(key, out string trValue) ? trValue : key,
                 _ => throw new ArgumentException($"Unsupported language: {language}"),
             };
         }

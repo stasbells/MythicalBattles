@@ -14,9 +14,9 @@ namespace MythicalBattles.Assets.Scripts.UI
 
         public void OpenPopup(ScreenViewModel viewModel)
         {
-            var prefabPath = GetPrefabPath(viewModel);
+            string prefabPath = GetPrefabPath(viewModel);
             var prefab = Resources.Load<GameObject>(prefabPath);
-            var createdPopup = Instantiate(prefab, _popupsContainer);
+            GameObject createdPopup = Instantiate(prefab, _popupsContainer);
             var binder = createdPopup.GetComponent<IScreenBinder>();
 
             binder.Bind(viewModel);
@@ -38,9 +38,9 @@ namespace MythicalBattles.Assets.Scripts.UI
 
             _openedScreenBinder?.Close();
 
-            var prefabPath = GetPrefabPath(viewModel);
+            string prefabPath = GetPrefabPath(viewModel);
             var prefab = Resources.Load<GameObject>(prefabPath);
-            var createdScreen = Instantiate(prefab, _screensContainer);
+            GameObject createdScreen = Instantiate(prefab, _screensContainer);
             var binder = createdScreen.GetComponent<IScreenBinder>();
 
             binder.Bind(viewModel);

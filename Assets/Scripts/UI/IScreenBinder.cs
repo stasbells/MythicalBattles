@@ -2,8 +2,8 @@
 {
     public interface IScreenBinder
     {
-        void Bind(ScreenViewModel viewModel);
+        public void Bind(ScreenViewModel viewModel);
 
-        void Close();
+        public void Close();
     }
 }
