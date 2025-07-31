@@ -1,18 +1,16 @@
-﻿using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Services.ItemSelector;
-using MythicalBattles.Services.Wallet;
-using MythicalBattles.Shop;
-using MythicalBattles.Shop.EquipmentShop;
+﻿using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.ItemSelector;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Shop;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupShopItem
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupShopItem
 {
     public class PopupShopItemBinder : PopupBinder<PopupShopItemViewModel>
     {

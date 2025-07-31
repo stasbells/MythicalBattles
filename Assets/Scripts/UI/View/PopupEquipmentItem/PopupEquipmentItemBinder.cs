@@ -1,8 +1,9 @@
+using MythicalBattles.Assets.Scripts.Shop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipmentItem
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupEquipmentItem
 {
     public class PopupEquipmentItemBinder : PopupBinder<PopupEquipmentItemViewModel>
     {

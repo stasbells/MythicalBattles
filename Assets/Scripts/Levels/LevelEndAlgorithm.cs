@@ -1,13 +1,13 @@
 using System.Collections;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Services.LevelCompletionStopwatch;
-using MythicalBattles.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.LevelCompletionStopwatch;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Levels
+namespace MythicalBattles.Assets.Scripts.Levels
 {
     public class LevelEndAlgorithm : MonoBehaviour
     {
@@ -79,7 +79,7 @@ namespace MythicalBattles.Levels
                 return 1;
             }
 
-            float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
+            float timeRatio = 1 - _levelPassTime / MaxTimeInSecondsForBonus;
 
             return CalculateScore(timeRatio, maxScore);
         }
@@ -96,7 +96,7 @@ namespace MythicalBattles.Levels
             }
             else
             {
-                float timeRatio = 1 - (_levelPassTime / MaxTimeInSecondsForBonus);
+                float timeRatio = 1 - _levelPassTime / MaxTimeInSecondsForBonus;
                 
                 rewardMoney = CalculateRewardMoney(timeRatio, baselevelReward);
             }

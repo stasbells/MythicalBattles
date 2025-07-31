@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLeaderboard
 {
     public class ScreenLeaderboardBinder : ScreenBinder<ScreenLeaderboardViewModel>
     {

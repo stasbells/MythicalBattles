@@ -1,7 +1,7 @@
-﻿using MythicalBattles.Levels.EnemySpawner;
+﻿using MythicalBattles.Assets.Scripts.Levels.WaveProgress;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View
+namespace MythicalBattles.Assets.Scripts.UI.View
 {
     public class UIRootView : MonoBehaviour
     {

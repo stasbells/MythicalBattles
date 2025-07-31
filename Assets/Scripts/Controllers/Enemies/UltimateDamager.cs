@@ -1,8 +1,8 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 using System.Collections;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
 {
     public class UltimateDamager : MonoBehaviour, IWaveDamageMultiplier
     {

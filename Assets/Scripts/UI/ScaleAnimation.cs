@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.UI
 {
     public class ScaleAnimation : MonoBehaviour
     {
@@ -13,11 +13,11 @@ namespace MythicalBattles
         private void OnEnable()
         {
             transform.localScale = Vector3.one;
-            
+
             _tweener = transform.DOScale(_maxScale, _animateTime)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutSine)
-                .SetUpdate(true);;
+                .SetUpdate(true); ;
         }
 
         private void OnDisable()

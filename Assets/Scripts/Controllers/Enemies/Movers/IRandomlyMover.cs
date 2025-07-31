@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
 {
     public interface IRandomlyMover
     {

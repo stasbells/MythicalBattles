@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenShop;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Shop
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     public class ShopPanel : MonoBehaviour
     {

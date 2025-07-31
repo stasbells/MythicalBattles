@@ -4,7 +4,7 @@ using System.Linq;
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace MythicalBattles.Audio
+namespace MythicalBattles.Assets.Scripts.Audio
 {
     [CreateAssetMenu(fileName = "New AudioContainer", menuName = "AudioContainer/Create New AudioContainer",
         order = 51)]

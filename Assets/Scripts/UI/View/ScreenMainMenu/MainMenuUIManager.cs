@@ -1,16 +1,16 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupB;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipmentItem;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLeaderboard;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial;
-using MythicalBattles.Shop;
+﻿using MythicalBattles.Assets.Scripts.Shop;
+using MythicalBattles.Assets.Scripts.UI.Root.MainMenu;
+using MythicalBattles.Assets.Scripts.UI.View.PopupEquipmentItem;
+using MythicalBattles.Assets.Scripts.UI.View.PopupShopItem;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLeaderboard;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenSettings;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenShop;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenTutorial;
 using R3;
 using Reflex.Core;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
 {
     public class MainMenuUIManager : UIManager
     {

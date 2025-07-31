@@ -1,6 +1,6 @@
 using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenTutorial
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenTutorial
 {
     public class ScreenTutorialViewModel : ScreenViewModel
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles.Tools
+namespace MythicalBattles.Assets.Scripts.Tools
 {
     public static class TimeFormatter 
     {

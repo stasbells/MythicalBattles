@@ -1,14 +1,14 @@
-using System;
-using MythicalBattles.Services.LevelSelection;
-using MythicalBattles.Tools;
+using MythicalBattles.Assets.Scripts.Services.LevelSelection;
+using MythicalBattles.Assets.Scripts.Tools;
 using Reflex.Extensions;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelComplete
 {
     public class ScreenLevelCompleteBinder : ScreenBinder<ScreenLevelCompleteViewModel>
     {

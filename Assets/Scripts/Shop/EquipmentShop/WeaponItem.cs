@@ -1,7 +1,7 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
-namespace MythicalBattles.Shop.EquipmentShop
+namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "WeaponItem", menuName = "Shop/EquipmentItems/WeaponItem")]
     public class WeaponItem : EquipmentItem

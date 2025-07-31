@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles.Shop
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     [CreateAssetMenu(fileName = "ShopItemViewFactory", menuName = "Shop/ShopItemViewFactory")]
     public class ShopItemViewFactory : ScriptableObject

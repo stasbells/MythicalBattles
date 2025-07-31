@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
+namespace MythicalBattles.Assets.Scripts.Utils
 {
     public static class Constants
     {
@@ -49,18 +49,18 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
         public static readonly int IsMeleeAttack = Animator.StringToHash("isMeleeAttack");
         public static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         public static readonly int ShootSpeed = Animator.StringToHash("shootSpeed");
-        
+
         public static readonly string Armor = "Armor";
         public static readonly string Bow = "Bow";
         public static readonly string Helmet = "Helmet";
         public static readonly string Boots = "Boots";
         public static readonly string Necklace = "Necklace";
         public static readonly string Ring = "Ring";
-        
+
         public static readonly string Damage = "Damage";
         public static readonly string Health = "Health";
         public static readonly string AttackSpeed = "Attack speed";
-        
-        
+
+
     }
 }

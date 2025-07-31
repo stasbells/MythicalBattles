@@ -1,11 +1,12 @@
-﻿using MythicalBattles.Services.Data;
-using MythicalBattles.Services.PlayerStats;
+﻿using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Shop;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenShop
 {
     public class ScreenShopBinder : ScreenBinder<ScreenShopViewModel>
     {

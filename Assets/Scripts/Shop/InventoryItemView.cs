@@ -1,10 +1,10 @@
 using System;
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     public class InventoryItemView : MonoBehaviour, IPointerClickHandler
     {

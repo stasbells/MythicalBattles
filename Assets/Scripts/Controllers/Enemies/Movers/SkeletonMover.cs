@@ -1,6 +1,6 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
 {
     public class SkeletonMover : MeleeEnemyMover
     {

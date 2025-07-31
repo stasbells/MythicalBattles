@@ -1,12 +1,12 @@
 using Ami.BroAudio;
-using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Audio
+namespace MythicalBattles.Assets.Scripts.Audio
 {
     [RequireComponent(typeof(Button))]
     public class SoundedButton : MonoBehaviour, IPointerClickHandler

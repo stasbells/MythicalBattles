@@ -1,8 +1,9 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Controllers.Player;
+using MythicalBattles.Assets.Scripts.Utils;
 using System.Collections;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers
 {
     [RequireComponent(typeof(Animator))]
     public abstract class Shooter : MonoBehaviour

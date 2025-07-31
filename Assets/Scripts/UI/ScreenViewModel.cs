@@ -1,7 +1,7 @@
 using R3;
 using System;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
+namespace MythicalBattles.Assets.Scripts.UI
 {
     public abstract class ScreenViewModel : IDisposable
     {

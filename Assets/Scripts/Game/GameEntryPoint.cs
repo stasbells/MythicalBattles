@@ -1,14 +1,14 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
+﻿using MythicalBattles.Assets.Scripts.Game.GameplayScene;
+using MythicalBattles.Assets.Scripts.Game.MainMenuScene;
+using MythicalBattles.Assets.Scripts.UI.View;
+using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using Reflex.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building
+namespace MythicalBattles.Assets.Scripts.Game
 {
     public class GameEntryPoint
     {

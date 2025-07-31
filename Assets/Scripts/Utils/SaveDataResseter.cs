@@ -1,7 +1,7 @@
 using UnityEngine;
 using YG;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Utils
 {
     public class SaveDataResseter : MonoBehaviour
     {
@@ -9,8 +9,6 @@ namespace MythicalBattles
         {
             YG2.SetDefaultSaves();
             YG2.SaveProgress();
-
-            Debug.Log("Save data has been reset.");
         }
     }
 }

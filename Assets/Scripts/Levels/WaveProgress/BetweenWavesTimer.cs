@@ -1,9 +1,9 @@
 using System;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using TMPro;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
 {
     public class BetweenWavesTimer
     {

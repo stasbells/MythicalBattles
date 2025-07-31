@@ -1,9 +1,9 @@
 using Ami.BroAudio;
-using MythicalBattles.Audio;
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Audio;
+using MythicalBattles.Assets.Scripts.Services.Data;
 using UnityEngine;
 
-namespace MythicalBattles.Services.AudioPlayback
+namespace MythicalBattles.Assets.Scripts.Services.AudioPlayback
 {
     public class AudioPlayback : IAudioPlayback
     {

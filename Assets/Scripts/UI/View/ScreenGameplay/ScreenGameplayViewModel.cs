@@ -1,4 +1,4 @@
-﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
+﻿namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
 {
     public class ScreenGameplayViewModel : ScreenViewModel
     {

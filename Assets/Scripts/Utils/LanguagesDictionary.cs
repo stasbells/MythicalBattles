@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
+namespace MythicalBattles.Assets.Scripts.Utils
 {
     public static class LanguagesDictionary
     {

@@ -1,15 +1,17 @@
+using Ami.BroAudio;
+using MythicalBattles.Assets.Scripts.Controllers.Boosts;
+using MythicalBattles.Assets.Scripts.Controllers.Enemies;
+using MythicalBattles.Assets.Scripts.Levels.WaveProgress;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using Reflex.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Ami.BroAudio;
-using MythicalBattles.Boosts;
-using MythicalBattles.Services.AudioPlayback;
-using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Levels.EnemySpawner
+namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
 {
     [RequireComponent(typeof(WaveProgressHandler))]
     public class WavesSpawner : MonoBehaviour
@@ -86,7 +88,7 @@ namespace MythicalBattles.Levels.EnemySpawner
         {
             if (_enemyPools.ContainsKey(config.EnemyPrefab.GetType()) == false)
             {
-                _enemyPools.Add(config.EnemyPrefab.GetType(), new EnemyPool(config.EnemyPrefab, config.Count + 1, OnEnemyDead, this.transform));
+                _enemyPools.Add(config.EnemyPrefab.GetType(), new EnemyPool(config.EnemyPrefab, config.Count + 1, OnEnemyDead, transform));
             }
             else
             {

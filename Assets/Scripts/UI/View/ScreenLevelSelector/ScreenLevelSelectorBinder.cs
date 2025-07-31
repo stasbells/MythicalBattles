@@ -1,5 +1,5 @@
-﻿using MythicalBattles.Services.Data;
-using MythicalBattles.Services.LevelSelection;
+﻿using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.LevelSelection;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
 {
     public class ScreenLevelSelectorBinder : ScreenBinder<ScreenLevelSelectorViewModel>
     {

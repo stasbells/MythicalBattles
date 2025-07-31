@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
+using MythicalBattles.Assets.Scripts.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Companions
+namespace MythicalBattles.Assets.Scripts.Controllers.Companions
 {
     public class CompanionProjectile : ReturnableToPoolProjectile, IGetDamage
     {

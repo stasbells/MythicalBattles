@@ -1,14 +1,14 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComplete;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelComplete;
+﻿using MythicalBattles.Assets.Scripts.UI.Root.Gameplay;
+using MythicalBattles.Assets.Scripts.UI.View.PopupPause;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenDeath;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenGameComplete;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelComplete;
+using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using Reflex.Core;
 using System;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
 {
     public class GameplayUIManager : UIManager
     {

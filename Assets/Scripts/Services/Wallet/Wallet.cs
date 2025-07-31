@@ -1,7 +1,7 @@
 using System;
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.Data;
 
-namespace MythicalBattles.Services.Wallet
+namespace MythicalBattles.Assets.Scripts.Services.Wallet
 {
     public class Wallet : IWallet
     {

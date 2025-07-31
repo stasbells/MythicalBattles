@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
 {
     public interface IWaveDamageMultiplier
     {

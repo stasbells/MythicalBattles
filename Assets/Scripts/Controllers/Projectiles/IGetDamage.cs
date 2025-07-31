@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 {
     public interface IGetDamage
     {

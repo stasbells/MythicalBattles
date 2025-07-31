@@ -1,9 +1,10 @@
 using System;
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Utils;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace MythicalBattles.Services.Data
+namespace MythicalBattles.Assets.Scripts.Services.Data
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

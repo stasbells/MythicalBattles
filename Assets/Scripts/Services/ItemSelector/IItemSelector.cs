@@ -1,6 +1,6 @@
 using System;
 
-namespace MythicalBattles.Services.ItemSelector
+namespace MythicalBattles.Assets.Scripts.Services.ItemSelector
 {
     public interface IItemSelector
     {

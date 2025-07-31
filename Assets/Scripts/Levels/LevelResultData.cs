@@ -1,4 +1,4 @@
-namespace MythicalBattles.Levels
+namespace MythicalBattles.Assets.Scripts.Levels
 {
     public struct LevelResultData 
     {

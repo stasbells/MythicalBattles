@@ -1,4 +1,6 @@
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupEquipmentItem
+using MythicalBattles.Assets.Scripts.Shop;
+
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupEquipmentItem
 {
     public class PopupEquipmentItemViewModel : ScreenViewModel
     {

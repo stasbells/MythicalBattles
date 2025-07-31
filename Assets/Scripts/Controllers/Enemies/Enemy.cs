@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
 {
     [RequireComponent(typeof(EnemyHealth))]
     [RequireComponent(typeof(IWaveDamageMultiplier))]

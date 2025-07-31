@@ -1,11 +1,11 @@
-using MythicalBattles.Services.Data;
-using MythicalBattles.Services.Wallet;
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Shop
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     public class Shop : MonoBehaviour
     {

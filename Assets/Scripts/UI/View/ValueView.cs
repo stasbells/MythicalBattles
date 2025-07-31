@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.UI.View
 {
     public class ValueView<T> : MonoBehaviour where T : IConvertible
     {

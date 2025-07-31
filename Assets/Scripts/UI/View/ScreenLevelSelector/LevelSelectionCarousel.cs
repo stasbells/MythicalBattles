@@ -1,14 +1,14 @@
-﻿using Reflex.Extensions;
+﻿using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Tools;
+using Reflex.Extensions;
 using System.Collections.Generic;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Tools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
 {
     public class LevelSelectionCarousel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

@@ -1,7 +1,8 @@
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
 using System;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers
 {
     public class SimpleShooter : Shooter
     {

@@ -1,6 +1,6 @@
 using Ami.BroAudio;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.Data;
 using Reflex.Extensions;
 using System.Collections;
 using TMPro;
@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameComplete
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameComplete
 {
     public class ScreenGameCompleteBinder : ScreenBinder<ScreenGameCompleteViewModel>
     {

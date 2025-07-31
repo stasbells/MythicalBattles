@@ -2,7 +2,7 @@
 using R3;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root
+namespace MythicalBattles.Assets.Scripts.UI.Root
 {
     public class UIRootBinder : MonoBehaviour
     {

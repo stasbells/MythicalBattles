@@ -1,14 +1,13 @@
-using MythicalBattles.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Player
 {
     public class PlayerShooter : SimpleShooter
     {
         private float _startDamage;
         private float _attackSpeed;
-        private IPlayerStats _playerStats;
 
         private void Construct()
         {

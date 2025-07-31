@@ -1,8 +1,9 @@
 using System.Collections;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles.ObjectPool;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
-namespace MythicalBattles.Companions
+namespace MythicalBattles.Assets.Scripts.Controllers.Companions
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CompanionAutoAim))]

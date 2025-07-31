@@ -1,8 +1,9 @@
 using System;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
 
-namespace MythicalBattles.Services.ItemSelector
+namespace MythicalBattles.Assets.Scripts.Services.ItemSelector
 {
     public class ItemSelector : IItemSelector, IShopItemVisitor
     {

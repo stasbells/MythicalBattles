@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
 {
     [System.Serializable]
     public class LevelButton
@@ -16,7 +16,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSel
         public RectTransform RectTransform => _rectTransform;
 
         public void SetLocked(bool isLocked)
-        {       
+        {
             _lockedIcon.gameObject.SetActive(isLocked);
             _levelLabel.gameObject.SetActive(!isLocked);
             _levelNumber.gameObject.SetActive(!isLocked);

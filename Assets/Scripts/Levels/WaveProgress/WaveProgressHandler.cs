@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using MythicalBattles.Boosts;
+using MythicalBattles.Assets.Scripts.Controllers.Boosts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Levels.EnemySpawner
+namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
 {
     public class WaveProgressHandler : MonoBehaviour
     {

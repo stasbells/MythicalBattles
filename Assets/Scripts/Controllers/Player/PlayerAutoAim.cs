@@ -1,8 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Player
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAutoAim : MonoBehaviour

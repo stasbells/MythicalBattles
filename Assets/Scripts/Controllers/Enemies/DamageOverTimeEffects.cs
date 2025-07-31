@@ -2,7 +2,7 @@ using System.Collections;
 using R3;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
 {
     [RequireComponent(typeof(EnemyHealth))]
     public class DamageOverTimeEffects : MonoBehaviour

@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.UI
 {
     public class HoverScaleAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
@@ -21,22 +21,22 @@ namespace MythicalBattles
         public void OnPointerEnter(PointerEventData eventData)
         {
             _isHovered = true;
-            
+
             StartHoverAnimation();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             _isHovered = false;
-            
+
             _currentTween?.Kill();
-            
+
             transform.DOScale(_originalScale, _animationDuration).SetEase(Ease.OutQuad);
         }
 
         private void StartHoverAnimation()
         {
-            if (_currentTween != null && _currentTween.IsActive()) 
+            if (_currentTween != null && _currentTween.IsActive())
                 return;
 
             Sequence sequence = DOTween.Sequence();
@@ -52,11 +52,11 @@ namespace MythicalBattles
 
             sequence.OnStepComplete(() =>
             {
-                if (_isHovered) 
+                if (_isHovered)
                     return;
-                
+
                 sequence.Kill();
-                
+
                 transform.localScale = _originalScale;
             });
         }

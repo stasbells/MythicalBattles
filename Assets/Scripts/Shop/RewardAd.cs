@@ -1,11 +1,11 @@
-using MythicalBattles.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using YG;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     public class RewardAd : MonoBehaviour, IPointerClickHandler
     {

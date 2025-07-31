@@ -1,16 +1,16 @@
 ﻿using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.UI.Root.MainMenu;
+using MythicalBattles.Assets.Scripts.UI.View;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu;
 using R3;
 using Reflex.Core;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.MainMenu
+namespace MythicalBattles.Assets.Scripts.Game.MainMenuScene
 {
     class MainMenuEntryPoint : MonoBehaviour
     {

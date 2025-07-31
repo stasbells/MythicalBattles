@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
 {
     public class ScreenGameplayBinder : ScreenBinder<ScreenGameplayViewModel>
     {

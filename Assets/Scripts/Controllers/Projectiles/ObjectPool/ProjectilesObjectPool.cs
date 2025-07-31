@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles.ObjectPool
 {
     public class ProjectilesObjectPool : MonoBehaviour
     {

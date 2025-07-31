@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MythicalBattles.Boosts;
+using MythicalBattles.Assets.Scripts.Controllers.Boosts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace MythicalBattles.Levels
+namespace MythicalBattles.Assets.Scripts.Levels
 {
     public class BoostsStorage : MonoBehaviour
     {

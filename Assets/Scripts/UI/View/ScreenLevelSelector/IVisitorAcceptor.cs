@@ -1,9 +1,9 @@
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
 {
     public interface IVisitorAcceptor
     {
-       public void Accept(IShopItemVisitor visitor);
+        public void Accept(IShopItemVisitor visitor);
     }
 }

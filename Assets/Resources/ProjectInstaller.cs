@@ -1,11 +1,11 @@
 using MythicalBattles;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.Data;
-using MythicalBattles.Services.ItemSelector;
-using MythicalBattles.Services.LevelCompletionStopwatch;
-using MythicalBattles.Services.LevelSelection;
-using MythicalBattles.Services.PlayerStats;
-using MythicalBattles.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.ItemSelector;
+using MythicalBattles.Assets.Scripts.Services.LevelCompletionStopwatch;
+using MythicalBattles.Assets.Scripts.Services.LevelSelection;
+using MythicalBattles.Assets.Scripts.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
 using Reflex.Core;
 using UnityEngine;
 

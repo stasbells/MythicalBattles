@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using YG;
 
-namespace MythicalBattles.Services.Data
+namespace MythicalBattles.Assets.Scripts.Services.Data
 {
     public class DataLocalProvider : IDataProvider
     {

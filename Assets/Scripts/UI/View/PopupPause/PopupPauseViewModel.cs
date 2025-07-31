@@ -1,6 +1,6 @@
 ﻿using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupPause
 {
     public class PopupPauseViewModel : ScreenViewModel
     {

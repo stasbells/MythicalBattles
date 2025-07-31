@@ -1,5 +1,5 @@
-using MythicalBattles.Services.LevelCompletionStopwatch;
-using MythicalBattles.Services.Wallet;
+using MythicalBattles.Assets.Scripts.Services.LevelCompletionStopwatch;
+using MythicalBattles.Assets.Scripts.Services.Wallet;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenDeath
 {
     public class ScreenDeathBinder : ScreenBinder<ScreenDeathViewModel>
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
+namespace MythicalBattles.Assets.Scripts.UI
 {
     public class ScreenBinder<T> : MonoBehaviour, IScreenBinder where T : ScreenViewModel
     {

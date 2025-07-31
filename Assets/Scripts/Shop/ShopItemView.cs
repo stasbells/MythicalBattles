@@ -1,9 +1,10 @@
+using MythicalBattles.Assets.Scripts.UI.View;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Shop
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     [RequireComponent(typeof(Image))]
     public class ShopItemView : MonoBehaviour, IPointerClickHandler

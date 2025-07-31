@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
 {
     public class ScreenMainMenuBinder : ScreenBinder<ScreenMainMenuViewModel>
     {

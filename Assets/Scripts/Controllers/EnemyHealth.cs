@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers
 {
     public class EnemyHealth : Health
     {

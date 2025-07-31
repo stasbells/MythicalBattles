@@ -1,4 +1,4 @@
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Utils
 {
     public static class DefaultItemsID
     {

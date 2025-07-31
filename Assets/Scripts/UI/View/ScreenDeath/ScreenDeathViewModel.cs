@@ -1,6 +1,6 @@
 using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenDeath
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenDeath
 {
     public class ScreenDeathViewModel : ScreenViewModel
     {

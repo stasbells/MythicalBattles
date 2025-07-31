@@ -1,16 +1,17 @@
 using System;
 using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
-using MythicalBattles.Levels.EnemySpawner;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.LevelSelection;
+using MythicalBattles.Assets.Scripts.Game.GameplayScene.Root;
+using MythicalBattles.Assets.Scripts.Levels.EnemySpawner;
+using MythicalBattles.Assets.Scripts.Levels.WaveProgress;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.LevelSelection;
+using MythicalBattles.Assets.Scripts.UI.View;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Levels
+namespace MythicalBattles.Assets.Scripts.Levels
 {
     [RequireComponent(typeof(LevelEndAlgorithm))]
     public class LevelGenerator : MonoBehaviour

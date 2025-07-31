@@ -1,4 +1,6 @@
-namespace MythicalBattles.Levels.EnemySpawner
+using MythicalBattles.Assets.Scripts.Controllers.Enemies;
+
+namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
 {
     [System.Serializable]
     public class EnemyWaveConfig

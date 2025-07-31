@@ -1,6 +1,7 @@
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles.ObjectPool;
 using UnityEngine;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 {
     public abstract class ReturnableToPoolProjectile : MonoBehaviour
     {

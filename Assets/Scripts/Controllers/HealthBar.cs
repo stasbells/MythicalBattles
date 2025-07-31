@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class HealthBar : MonoBehaviour

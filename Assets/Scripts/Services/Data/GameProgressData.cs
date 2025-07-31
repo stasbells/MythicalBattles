@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Levels;
+using MythicalBattles.Assets.Scripts.Levels;
+using MythicalBattles.Assets.Scripts.Utils;
 using Newtonsoft.Json;
 using UnityEngine;
 using YG;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Services.Data
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

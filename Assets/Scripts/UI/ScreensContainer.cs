@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
+namespace MythicalBattles.Assets.Scripts.UI
 {
     public class ScreensContainer : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI
 
         public void OpenScreen(ScreenViewModel viewModel)
         {
-            if(viewModel == null)
+            if (viewModel == null)
                 return;
 
             _openedScreenBinder?.Close();

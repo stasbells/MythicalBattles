@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using YG;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.PopupPause
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupPause
 {
     public class PopupPauseBinder : PopupBinder<PopupPauseViewModel>
     {

@@ -1,8 +1,8 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
-using MythicalBattles.Shop;
+﻿using MythicalBattles.Assets.Scripts.Shop;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu;
 using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenShop
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenShop
 {
     public class ScreenShopViewModel : ScreenViewModel
     {

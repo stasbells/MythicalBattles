@@ -1,11 +1,12 @@
 using System;
 using Ami.BroAudio;
-using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Controllers.Player;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Boosts
+namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
 {
     public abstract class Boost : MonoBehaviour
     {

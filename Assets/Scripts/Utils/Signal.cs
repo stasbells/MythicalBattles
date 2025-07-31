@@ -1,6 +1,6 @@
 ﻿using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils
+namespace MythicalBattles.Assets.Scripts.Utils
 {
     public class Signal
     {

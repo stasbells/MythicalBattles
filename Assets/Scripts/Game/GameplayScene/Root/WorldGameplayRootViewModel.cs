@@ -1,6 +1,6 @@
 ﻿using Reflex.Core;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
+namespace MythicalBattles.Assets.Scripts.Game.GameplayScene.Root
 {
     public class WorldGameplayRootViewModel
     {

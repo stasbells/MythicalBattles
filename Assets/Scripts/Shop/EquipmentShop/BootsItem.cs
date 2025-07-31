@@ -1,7 +1,7 @@
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
-namespace MythicalBattles.Shop.EquipmentShop
+namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
 {
     [CreateAssetMenu(fileName = "BootsItem", menuName = "Shop/EquipmentItems/BootsItem")]
     public class BootsItem : EquipmentItem
@@ -16,7 +16,5 @@ namespace MythicalBattles.Shop.EquipmentShop
         protected override string DisplayValue => $"{Prefix}{_additionalAttackSpeed * ImprovementFactor}%";
 
         public override void Accept(IShopItemVisitor visitor) => visitor.Visit(this);
-
-     
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MythicalBattles.Companions
+namespace MythicalBattles.Assets.Scripts.Controllers.Companions
 {
     [RequireComponent(typeof(CompanionMover))]
     [RequireComponent(typeof(Animator))]

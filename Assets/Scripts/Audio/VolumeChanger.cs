@@ -1,11 +1,11 @@
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.Data;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Audio
+namespace MythicalBattles.Assets.Scripts.Audio
 {
     public class VolumeChanger : MonoBehaviour
     {

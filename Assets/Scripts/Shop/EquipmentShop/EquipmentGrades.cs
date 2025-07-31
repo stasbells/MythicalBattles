@@ -1,4 +1,4 @@
-namespace MythicalBattles.Shop.EquipmentShop
+namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
 {
     public enum EquipmentGrades 
     {

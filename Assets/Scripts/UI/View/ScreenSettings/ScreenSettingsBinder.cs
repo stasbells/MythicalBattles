@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenSettings
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenSettings
 {
     public class ScreenSettingsBinder : ScreenBinder<ScreenSettingsViewModel>
     {

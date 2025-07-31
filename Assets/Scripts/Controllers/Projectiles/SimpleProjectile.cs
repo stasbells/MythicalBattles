@@ -1,11 +1,11 @@
 using Ami.BroAudio;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 {
     public class SimpleProjectile : MonoBehaviour, IGetDamage
     {

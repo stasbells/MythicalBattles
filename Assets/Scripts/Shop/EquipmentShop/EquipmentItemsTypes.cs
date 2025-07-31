@@ -1,7 +1,8 @@
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
 using System;
 using System.Collections.Generic;
 
-namespace MythicalBattles.Shop.EquipmentShop
+namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
 {
     public class EquipmentItemsTypes : IShopItemVisitor
     {

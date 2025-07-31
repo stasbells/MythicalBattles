@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MythicalBattles.Levels.EnemySpawner
+namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
 {
     [CreateAssetMenu(fileName = "EnemyWave", menuName = "EnemyWaves/EnemyWave")]
     public class EnemyWave : ScriptableObject

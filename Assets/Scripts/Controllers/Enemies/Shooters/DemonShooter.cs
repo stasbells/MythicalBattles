@@ -1,13 +1,15 @@
 using Ami.BroAudio;
 using DG.Tweening;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
 using Reflex.Extensions;
 using System.Collections;
-using MythicalBattles.Services.AudioPlayback;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles.ObjectPool;
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Utils;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 {
     public class DemonShooter : Shooter, IWaveDamageMultiplier
     {

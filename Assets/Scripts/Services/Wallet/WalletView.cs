@@ -1,10 +1,10 @@
-using MythicalBattles.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.Data;
 using Reflex.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles.Services.Wallet
+namespace MythicalBattles.Assets.Scripts.Services.Wallet
 {
     public class WalletView : MonoBehaviour
     {

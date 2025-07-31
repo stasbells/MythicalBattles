@@ -1,7 +1,8 @@
+using MythicalBattles.Assets.Scripts.Controllers.Player;
 using System;
 using UnityEngine;
 
-namespace MythicalBattles.Boosts
+namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
 {
     public class AttackSpeedBoost : Boost
     {

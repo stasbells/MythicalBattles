@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.UI
 {
     [RequireComponent(typeof(Image))]
     public class HoverColorAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -34,7 +34,7 @@ namespace MythicalBattles
         private void SetColorWithDuration(Color color)
         {
             _сolorTween?.Kill();
-            
+
             _сolorTween = _targetImage.DOColor(color, _animationDuration)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() => _сolorTween = null);
@@ -43,7 +43,7 @@ namespace MythicalBattles
         private void OnDisable()
         {
             _сolorTween?.Kill();
-            
+
             _targetImage.color = _originalColor;
         }
     }

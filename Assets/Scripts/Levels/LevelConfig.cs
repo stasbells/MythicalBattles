@@ -1,8 +1,8 @@
 using Ami.BroAudio;
-using MythicalBattles.Levels.EnemySpawner;
+using MythicalBattles.Assets.Scripts.Levels.EnemySpawner;
 using UnityEngine;
 
-namespace MythicalBattles.Levels
+namespace MythicalBattles.Assets.Scripts.Levels
 {
     [CreateAssetMenu(fileName = "newLevelConfig", menuName = "LevelConfig")]
     public class LevelConfig : ScriptableObject

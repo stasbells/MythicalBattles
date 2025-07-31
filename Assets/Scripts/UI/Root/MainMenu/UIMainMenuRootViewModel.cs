@@ -1,4 +1,4 @@
-﻿namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.MainMenu
+﻿namespace MythicalBattles.Assets.Scripts.UI.Root.MainMenu
 {
     public class UIMainMenuRootViewModel : UIRootViewModel
     {

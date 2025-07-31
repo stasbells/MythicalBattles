@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace MythicalBattles.Boosts
+namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
 {
     public class BoostsDescription : MonoBehaviour
     {

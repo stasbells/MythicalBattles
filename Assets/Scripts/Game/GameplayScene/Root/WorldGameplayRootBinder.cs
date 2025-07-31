@@ -1,9 +1,10 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
-using MythicalBattles.Levels;
+﻿using MythicalBattles.Assets.Scripts.Controllers;
+using MythicalBattles.Assets.Scripts.Levels;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay;
 using Reflex.Core;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View
+namespace MythicalBattles.Assets.Scripts.Game.GameplayScene.Root
 {
     public class WorldGameplayRootBinder : MonoBehaviour
     {

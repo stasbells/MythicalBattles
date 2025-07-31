@@ -1,12 +1,13 @@
 using System;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Companions;
-using MythicalBattles.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Controllers.Companions;
+using MythicalBattles.Assets.Scripts.Controllers.Enemies;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 {
     [RequireComponent(typeof(IGetDamage))]
     public class PeriodicDamageProjectile : MonoBehaviour

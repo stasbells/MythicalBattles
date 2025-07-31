@@ -1,7 +1,8 @@
-using MythicalBattles.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.Shop.EquipmentShop;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
 using UnityEngine;
 
-namespace MythicalBattles.Shop
+namespace MythicalBattles.Assets.Scripts.Shop
 {
     public abstract class ShopItem : ScriptableObject, IVisitorAcceptor
     {
@@ -10,7 +11,7 @@ namespace MythicalBattles.Shop
         [SerializeField] private Sprite _itemImage;
         [SerializeField, Range(0,10000)] private int _price;
         
-        public string ItemID => this.name;
+        public string ItemID => name;
         public Sprite ItemImage => _itemImage;
         public Sprite BackgroundImage => _backgroundImage;
         public int Price => _price;

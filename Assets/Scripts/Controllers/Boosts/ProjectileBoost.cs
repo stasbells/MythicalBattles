@@ -1,6 +1,7 @@
+using MythicalBattles.Assets.Scripts.Controllers.Player;
 using UnityEngine;
 
-namespace MythicalBattles.Boosts
+namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
 {
     public class ProjectileBoost : Boost
     {

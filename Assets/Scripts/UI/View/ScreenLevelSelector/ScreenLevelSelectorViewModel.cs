@@ -1,7 +1,7 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenMainMenu;
+﻿using MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu;
 using R3;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenLevelSelector
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
 {
     public class ScreenLevelSelectorViewModel : ScreenViewModel
     {

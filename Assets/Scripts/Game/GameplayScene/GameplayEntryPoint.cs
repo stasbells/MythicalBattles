@@ -1,12 +1,13 @@
-﻿using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Gameplay.Root.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.Building.Utils;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.Root.Gameplay;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View;
-using MythicalBattles.Assets._Developers.Stas.Scripts.UI.View.ScreenGameplay;
+﻿using MythicalBattles.Assets.Scripts.Game.GameplayScene.Root;
+using MythicalBattles.Assets.Scripts.GameplayScene;
+using MythicalBattles.Assets.Scripts.UI.Root.Gameplay;
+using MythicalBattles.Assets.Scripts.UI.View;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay;
+using MythicalBattles.Assets.Scripts.Utils;
 using Reflex.Core;
 using UnityEngine;
 
-namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
+namespace MythicalBattles.Assets.Scripts.Game.GameplayScene
 {
     public class GameplayEntryPoint : MonoBehaviour
     {
@@ -23,7 +24,7 @@ namespace MythicalBattles.Assets._Developers.Stas.Scripts.Building.Game.Root
                 .AddSingleton(new WorldGameplayRootViewModel(gameplayContainer.Build()))
                 .AddSingleton(typeof(LevelGeneratorViewModel))
                 .AddSingleton(typeof(UIGameplayRootViewModel));
-                
+
             InitUI(gameplayContainer);
             InitWorld(gameplayContainer.Build());
 

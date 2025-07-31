@@ -1,10 +1,10 @@
 using Ami.BroAudio;
-using MythicalBattles.Services.AudioPlayback;
-using MythicalBattles.Services.PlayerStats;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Services.PlayerStats;
 using Reflex.Extensions;
 using UnityEngine.SceneManagement;
 
-namespace MythicalBattles
+namespace MythicalBattles.Assets.Scripts.Controllers
 {
     public class PlayerHealth : Health
     {

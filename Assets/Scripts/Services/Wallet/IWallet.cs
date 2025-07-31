@@ -1,6 +1,6 @@
 using System;
 
-namespace MythicalBattles.Services.Wallet
+namespace MythicalBattles.Assets.Scripts.Services.Wallet
 {
     public interface IWallet
     {
