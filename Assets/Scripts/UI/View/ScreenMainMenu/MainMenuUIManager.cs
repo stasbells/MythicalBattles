@@ -15,9 +15,10 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
     public class MainMenuUIManager : UIManager
     {
         private readonly Subject<Unit> _exitSceneRequest;
-        private readonly ReactiveProperty<ShopPanel> _shopPanel = new();
+        private readonly ReactiveProperty<ShopPanel> _shopPanel = new ();
 
-        public MainMenuUIManager(ContainerBuilder builder) : base(builder)
+        public MainMenuUIManager(ContainerBuilder builder) 
+            : base(builder)
         {
             _exitSceneRequest = builder.Build().Resolve<Subject<Unit>>();
         }
@@ -25,9 +26,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenLevelSelectorViewModel OpenScreenLevelSelector()
         {
             var viewModel = new ScreenLevelSelectorViewModel(this, _exitSceneRequest);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
+            
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -35,9 +35,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenMainMenuViewModel OpenScreenMainMenu()
         {
             var viewModel = new ScreenMainMenuViewModel(this);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
+            
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -45,9 +44,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenShopViewModel OpenScreenShop()
         {
             var viewModel = new ScreenShopViewModel(this, _shopPanel);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
+            
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -55,9 +53,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenTutorialViewModel OpenScreenTutorial()
         {
             var viewModel = new ScreenTutorialViewModel(_exitSceneRequest);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
+            
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -65,9 +62,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenLeaderboardViewModel OpenScreenLeaderboard()
         {
             var viewModel = new ScreenLeaderboardViewModel(this);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenScreen(viewModel);
+            
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -75,9 +71,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public ScreenSettingsViewModel OpenScreenSettings()
         {
             var viewModel = new ScreenSettingsViewModel(this);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
-            UIRoot.OpenScreen(viewModel);
+            OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -85,9 +80,8 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public PopupShopItemViewModel OpenPopupShopItem(ShopPanel shopPanel, ShopItemView shopItemView)
         {
             var shopItem = new PopupShopItemViewModel(shopPanel, shopItemView);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
-
-            UIRoot.OpenPopup(shopItem);
+            
+            OpenPopup(shopItem);
 
             return shopItem;
         }
@@ -95,11 +89,29 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
         public PopupEquipmentItemViewModel OpenPopupEquipmentItem(InventoryItemView inventoryItemView)
         {
             var inventoryItem = new PopupEquipmentItemViewModel(inventoryItemView);
-            var UIRoot = Container.Build().Resolve<UIMainMenuRootViewModel>();
 
-            UIRoot.OpenPopup(inventoryItem);
+            OpenPopup(inventoryItem);
 
             return inventoryItem;
+        }
+
+        private void OpenScreen(ScreenViewModel viewModel)
+        {
+            var uiRoot = GetUIRoot();
+
+            uiRoot.OpenScreen(viewModel);
+        }
+
+        private void OpenPopup(ScreenViewModel viewModel)
+        {
+            var uiRoot = GetUIRoot();
+            
+            uiRoot.OpenPopup(viewModel);
+        }
+
+        private UIMainMenuRootViewModel GetUIRoot()
+        {
+            return Container.Build().Resolve<UIMainMenuRootViewModel>();
         }
     }
 }

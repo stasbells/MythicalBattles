@@ -34,7 +34,6 @@ namespace MythicalBattles.Assets.Scripts.Shop
             _playerStats.MaxHealth.Subscribe(_ => OnStatsChanged()).AddTo(_disposable);
             
             _playerStats.AttackSpeed.Subscribe(_ => OnStatsChanged()).AddTo(_disposable);
-
         }
 
         private void OnDisable()

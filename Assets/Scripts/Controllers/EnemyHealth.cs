@@ -10,9 +10,8 @@ namespace MythicalBattles.Assets.Scripts.Controllers
     {
         [SerializeField] private float _initMaxHealthValue;
         
-        private readonly Dictionary<Color, Coroutine> _damageNumbersCoroutines = new();
-        
-        private readonly CompositeDisposable _disposable = new();
+        private readonly Dictionary<Color, Coroutine> _damageNumbersCoroutines = new ();
+        private readonly CompositeDisposable _disposable = new ();
 
         private void OnDisable()
         {
@@ -21,20 +20,24 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         
         public void TakeTickDamage(float timeBetweenTicks, float tickDamage, int ticksCount, Color damageNumbersColor)
         {
-            if (!_damageNumbersCoroutines.ContainsKey(damageNumbersColor))
+            Coroutine damageNumbersCoroutine;
+            
+            if (_damageNumbersCoroutines.ContainsKey(damageNumbersColor) == false)
             {
-                _damageNumbersCoroutines.Add(damageNumbersColor, StartCoroutine(
-                    ApplyPeriodicDamage(timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor)));
+                damageNumbersCoroutine = StartCoroutine(
+                    ApplyPeriodicDamage(timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor));
+                
+                _damageNumbersCoroutines.Add(damageNumbersColor, damageNumbersCoroutine);
             }
             else
             {
-                _damageNumbersCoroutines.TryGetValue(damageNumbersColor, out Coroutine damageNumbersCoroutine);
+                _damageNumbersCoroutines.TryGetValue(damageNumbersColor, out damageNumbersCoroutine);
 
                 if (damageNumbersCoroutine != null)
                     StopCoroutine(damageNumbersCoroutine);
 
-                damageNumbersCoroutine = StartCoroutine(ApplyPeriodicDamage
-                (timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor));
+                damageNumbersCoroutine = StartCoroutine(
+                    ApplyPeriodicDamage(timeBetweenTicks, tickDamage, ticksCount, damageNumbersColor));
 
                 _damageNumbersCoroutines[damageNumbersColor] = damageNumbersCoroutine;
             }
@@ -51,7 +54,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
             for (int i = 0; i < count; i++)
             {
-                if(IsDead.Value)
+                if (IsDead.Value)
                     break;
                 
                 yield return new WaitForSeconds(interval);

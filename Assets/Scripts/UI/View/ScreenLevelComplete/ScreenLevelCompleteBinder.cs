@@ -1,7 +1,7 @@
+using System;
 using MythicalBattles.Assets.Scripts.Services.LevelSelection;
 using MythicalBattles.Assets.Scripts.Tools;
 using Reflex.Extensions;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

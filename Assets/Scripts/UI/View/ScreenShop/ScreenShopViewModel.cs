@@ -7,16 +7,15 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenShop
     public class ScreenShopViewModel : ScreenViewModel
     {
         private readonly MainMenuUIManager _uiManager;
-        private readonly ReactiveProperty<ShopPanel> _shopPanel;
-
-        public ReactiveProperty<ShopPanel> ShopPanel => _shopPanel;
-        public override string Name => "ScreenShop";
 
         public ScreenShopViewModel(MainMenuUIManager mainMenuUIManager, ReactiveProperty<ShopPanel> shopPanel)
         {
             _uiManager = mainMenuUIManager;
-            _shopPanel = shopPanel;
+            ShopPanel = shopPanel;
         }
+        
+        public ReactiveProperty<ShopPanel> ShopPanel { get; }
+        public override string Name => "ScreenShop";
 
         public void RequestGoToScreenMainMenu()
         {

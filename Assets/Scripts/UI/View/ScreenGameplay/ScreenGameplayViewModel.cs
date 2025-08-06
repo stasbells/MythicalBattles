@@ -4,12 +4,12 @@
     {
         private readonly GameplayUIManager _uiManager;
 
-        public override string Name => "ScreenGameplay";
-
         public ScreenGameplayViewModel(GameplayUIManager uIManager)
         {
             _uiManager = uIManager;
         }
+        
+        public override string Name => "ScreenGameplay";
 
         public void RequestGoToPopupPause()
         {

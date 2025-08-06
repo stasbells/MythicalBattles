@@ -51,11 +51,11 @@ namespace MythicalBattles.Assets.Scripts.Services.AudioPlayback
         {
             _currentMusicVolume = volume;
             
-           _persistentData.SettingsData.SetMusicVolume(volume);
+            _persistentData.SettingsData.SetMusicVolume(volume);
 
-           AudioContainer.SetMusicVolume(volume);
+            AudioContainer.SetMusicVolume(volume);
            
-           _dataProvider.SaveSettingsData();
+            _dataProvider.SaveSettingsData();
         }
         
         public void ChangeSoundsVolume(float volume)

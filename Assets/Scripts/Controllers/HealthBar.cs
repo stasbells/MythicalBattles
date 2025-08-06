@@ -1,7 +1,7 @@
+using System.Collections;
 using DamageNumbersPro;
 using DG.Tweening;
 using R3;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +10,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
     [RequireComponent(typeof(CanvasGroup))]
     public class HealthBar : MonoBehaviour
     {
-        private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new ();
 
         [SerializeField] private DamageNumber _damageNumber;
         [SerializeField] private Image _smoothHealthBar;
@@ -24,12 +24,10 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         private Transform _transform;
         private Health _health;
         private Camera _camera;
-
-        private Color _healNumbersColor = new(0f, 0.81f, 0.02f);
+        private Color _healNumbersColor = new (0f, 0.81f, 0.02f);
         private Vector3 _initialLocalScale;
         private Vector3 _rotation;
         private Vector3 _scale;
-
         private float _initialMaxHealth;
         private float _initialScaleX;
 
@@ -60,7 +58,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
         private void OnEnable()
         {
-            _health.CurrentHealthPersentValueChanged += OnCurrentHealthPercentChanged;
+            _health.CurrentHealthPercentValueChanged += OnCurrentHealthPercentChanged;
             _health.Damaged += OnDamaged;
             _health.Healed += OnHealed;
 
@@ -69,7 +67,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
         private void OnDisable()
         {
-            _health.CurrentHealthPersentValueChanged -= OnCurrentHealthPercentChanged;
+            _health.CurrentHealthPercentValueChanged -= OnCurrentHealthPercentChanged;
             _health.Damaged -= OnDamaged;
             _health.Healed -= OnHealed;
 
@@ -93,8 +91,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
             _rectTransform.localScale = new Vector3(
                 newScaleX,
                 _rectTransform.localScale.y,
-                _rectTransform.localScale.z
-            );
+                _rectTransform.localScale.z);
         }
 
         private void ChangeValue(float healthValue)
@@ -111,8 +108,8 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         {
             while (Mathf.Approximately(_smoothHealthBar.fillAmount, healthValue) == false)
             {
-                _smoothHealthBar.fillAmount = Mathf.MoveTowards
-                    (_smoothHealthBar.fillAmount, healthValue, _recoveryRate * Time.deltaTime);
+                _smoothHealthBar.fillAmount = Mathf.MoveTowards(
+                    _smoothHealthBar.fillAmount, healthValue, _recoveryRate * Time.deltaTime);
 
                 yield return null;
             }

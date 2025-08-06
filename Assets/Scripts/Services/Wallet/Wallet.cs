@@ -48,7 +48,7 @@ namespace MythicalBattles.Assets.Scripts.Services.Wallet
 
         private bool CheckInputIsNotNegative(int coins)
         {
-            if(coins < 0)
+            if (coins < 0)
                 throw new ArgumentOutOfRangeException(nameof(coins));
 
             return true;

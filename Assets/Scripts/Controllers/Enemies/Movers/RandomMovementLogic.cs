@@ -15,8 +15,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
         private float _directionChangeTimer;
         private Vector3 _randomDirection;
         
-        public RandomMovementLogic(IRandomlyMover mover, Transform transform,
-            float durationOfRandomMove, float directionChangeInterval, float raycastDistance)
+        public RandomMovementLogic(
+            IRandomlyMover mover,
+            Transform transform,
+            float durationOfRandomMove,
+            float directionChangeInterval,
+            float raycastDistance)
         {
             _mover = mover;
             _transform = transform;
@@ -55,7 +59,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
                     _randomDirection = GetFreeRandomDirection();
                 }
 
-                if(_randomDirection == Vector3.zero)
+                if (_randomDirection == Vector3.zero)
                     _randomDirection = GetFreeRandomDirection();
 
                 _mover.MoveTo(_randomDirection);

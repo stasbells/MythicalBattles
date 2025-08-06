@@ -11,15 +11,15 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
 
         protected override void OnTriggerEnterBehaviour(Collider otherCollider)
         {
-            if (otherCollider.TryGetComponent(out PlayerMover player))
-            {
-                CompanionSpawner companionSpawner = otherCollider.gameObject.GetComponentInChildren<CompanionSpawner>();
+            if (otherCollider.TryGetComponent(out PlayerMover player) == false) 
+                return;
             
-                if(companionSpawner == null)
-                    throw new InvalidOperationException();
+            CompanionSpawner companionSpawner = otherCollider.gameObject.GetComponentInChildren<CompanionSpawner>();
+            
+            if (companionSpawner == null)
+                throw new InvalidOperationException();
 
-                CompanionSpawner = companionSpawner;
-            }
+            CompanionSpawner = companionSpawner;
         }
     }
 }

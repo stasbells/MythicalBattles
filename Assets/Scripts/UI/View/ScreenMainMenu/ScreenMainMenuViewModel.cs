@@ -4,12 +4,12 @@
     {
         private readonly MainMenuUIManager _uiManager;
 
-        public override string Name => "ScreenMainMenu";
-
         public ScreenMainMenuViewModel(MainMenuUIManager mainMenuUIManager)
         {
             _uiManager = mainMenuUIManager;
         }
+        
+        public override string Name => "ScreenMainMenu";
 
         public void RequestGoToScreenLevelSelector()
         {

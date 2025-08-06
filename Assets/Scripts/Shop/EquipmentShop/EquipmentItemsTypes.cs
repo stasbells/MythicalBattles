@@ -1,12 +1,12 @@
-using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
 using System;
 using System.Collections.Generic;
+using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector;
 
 namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
 {
     public class EquipmentItemsTypes : IShopItemVisitor
     {
-        private List<Type> _itemTypes = new();
+        private List<Type> _itemTypes = new ();
 
         public IEnumerable<Type> GetTypes()
         {

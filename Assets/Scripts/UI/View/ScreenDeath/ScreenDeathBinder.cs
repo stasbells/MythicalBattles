@@ -37,7 +37,6 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenDeath
 
         private void OnEnable()
         {
-
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _retryButton.onClick.AddListener(OnRetryButtonClicked);
 
@@ -59,7 +58,7 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenDeath
 
         private void ShowRewardMoney()
         {
-            if (MaxLifeTimeForReward < _levelCompletionStopwatch.ElapsedTime)
+            if (_levelCompletionStopwatch.ElapsedTime > MaxLifeTimeForReward)
             {
                 _moneyReward = MaxMoneyForTimeLife;
             }

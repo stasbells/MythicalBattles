@@ -1,16 +1,16 @@
-﻿using ObservableCollections;
-using R3;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ObservableCollections;
+using R3;
 
 namespace MythicalBattles.Assets.Scripts.UI.Root
 {
     public class UIRootViewModel : IDisposable
     {
-        private readonly ReactiveProperty<ScreenViewModel> _openedScreen = new(null);
-        private readonly ObservableList<ScreenViewModel> _openedPopups = new();
-        private readonly Dictionary<ScreenViewModel, IDisposable> _popupSubscriptions = new();
+        private readonly ReactiveProperty<ScreenViewModel> _openedScreen = new (null);
+        private readonly ObservableList<ScreenViewModel> _openedPopups = new ();
+        private readonly Dictionary<ScreenViewModel, IDisposable> _popupSubscriptions = new ();
 
         public ReadOnlyReactiveProperty<ScreenViewModel> OpenedScreen => _openedScreen;
         public IObservableCollection<ScreenViewModel> OpenedPopups => _openedPopups;
@@ -35,7 +35,7 @@ namespace MythicalBattles.Assets.Scripts.UI.Root
             if (_openedPopups.Any(popup => popup.Name == popupViewModel.Name))
                 return;
 
-            var subscription = popupViewModel.CloseReqested.Subscribe(ClosePopup);
+            var subscription = popupViewModel.CloseRequested.Subscribe(ClosePopup);
             _popupSubscriptions.Add(popupViewModel, subscription);
             _openedPopups.Add(popupViewModel);
         }

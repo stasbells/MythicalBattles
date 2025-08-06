@@ -10,12 +10,11 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
         [SerializeField] private GameObject _fireParticle;
         [SerializeField] private GameObject _poisonParticle;
 
+        private readonly CompositeDisposable _disposable = new ();
         private EnemyHealth _health;
         private Coroutine _fireEffectCoroutine;
         private Coroutine _poisonEffectCoroutine;
         
-        private readonly CompositeDisposable _disposable = new();
-
         private void Awake()
         {
             _health = GetComponent<EnemyHealth>(); 
@@ -49,6 +48,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
             if (effectCoroutine != null)
             {
                 particle.SetActive(false);
+                
                 StopCoroutine(effectCoroutine);
             }
 

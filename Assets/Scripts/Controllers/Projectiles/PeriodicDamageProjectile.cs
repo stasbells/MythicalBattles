@@ -45,16 +45,16 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 
         private void OnTriggerEnter(Collider other)
         {
-            if(_IsFirstContactComplete)
+            if (_IsFirstContactComplete)
                 return;
             
-            if(_mainDamageProjectile is CompanionProjectile)
+            if (_mainDamageProjectile is CompanionProjectile)
                 _ = TryContactWithTarget(other.gameObject);
         }
 
         private void OnParticleCollision(GameObject other)
         {
-            if(_mainDamageProjectile is SimpleProjectile)
+            if (_mainDamageProjectile is SimpleProjectile)
                 _ = TryContactWithTarget(other);
         }
 
@@ -97,10 +97,8 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         private void OnElectricDamage()

@@ -1,5 +1,5 @@
-using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
 using System;
+using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers
@@ -60,9 +60,10 @@ namespace MythicalBattles.Assets.Scripts.Controllers
             _particle = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
 
             _particle.transform.SetParent(_shootPoint);
+            
             _particle.Stop();
 
-            if(_particle.TryGetComponent(out SimpleProjectile projectile) == false)
+            if (_particle.TryGetComponent(out SimpleProjectile projectile) == false)
                 throw new InvalidOperationException();
 
             _projectile = projectile;

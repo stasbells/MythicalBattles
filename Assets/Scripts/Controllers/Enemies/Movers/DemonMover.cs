@@ -26,6 +26,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
         public void StopRandomMoveAndCastSpell()
         {
             _playerFollowTimer = 0f;
+            
             CastSpell();
         }
 
@@ -38,8 +39,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
         {
             _effect.Stop();
 
-            _randomMovementLogic = new RandomMovementLogic(this, Transform, _durationOfRandomMove,
-                _directionChangeInterval, _raycastDistance);
+            _randomMovementLogic = new RandomMovementLogic(
+                this,
+                Transform,
+                _durationOfRandomMove,
+                _directionChangeInterval,
+                _raycastDistance);
         }
 
         protected override void OnMeleeEnemyMoverStart()
@@ -58,12 +63,14 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
             if (Animator.GetBool(Constants.IsMeleeAttack))
             {
                 RotateTowards(GetDirectionToPlayer());
+                
                 return;
             }
 
             if (GetDistanceToPlayer() <= AttackDistance && _isMovingRandomly == false)
             {
                 AttackInMelee();
+                
                 _playerFollowTimer = 0f;
             }
             else if (_isMovingRandomly)
@@ -79,10 +86,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
                 _playerFollowTimer += Time.deltaTime;
 
                 if (_playerFollowTimer >= _playerFollowTime)
-                {
-                    _playerFollowTimer = 0f;
-                    CastSpell();
-                }
+                    StopRandomMoveAndCastSpell();
             }
         }
 
@@ -94,6 +98,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
         private void CorrectMoveAnimationSpeed()
         {
             _moveAnimationSpeedMultiplier = MoveSpeed / BaseMoveSpeed;
+            
             Animator.SetFloat(Constants.MoveSpeed, _moveAnimationSpeedMultiplier);
         }
 

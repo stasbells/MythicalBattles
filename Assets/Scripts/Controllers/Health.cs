@@ -1,32 +1,31 @@
+using System;
 using MythicalBattles.Assets.Scripts.Utils;
 using R3;
-using System;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers
 {
     public class Health : MonoBehaviour
     {
-        public readonly ReactiveProperty<float> MaxHealth = new();
-        public readonly ReactiveProperty<bool> IsDead = new();
+        public readonly ReactiveProperty<float> MaxHealth = new ();
+        public readonly ReactiveProperty<bool> IsDead = new ();
 
         private const float MinHealthValue = 0;
 
-        private Animator _animator;
         private float _currentHealth;
         private Color _baseDamageNumberColor = Color.white;
 
-        public event Action<float> CurrentHealthPersentValueChanged;
+        public event Action<float> CurrentHealthPercentValueChanged;
         public event Action<float, Color> Damaged;
         public event Action<float> Healed;
 
-        public Animator Animator => _animator;
+        protected Animator Animator { get; private set; }
 
         private void Awake()
         {
             OnAwakeBehaviour();
 
-            _animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
         }
 
         private void OnEnable()
@@ -35,7 +34,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
             _currentHealth = MaxHealth.Value;
 
-            CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
+            CurrentHealthPercentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
         public virtual void TakeDamage(float damage)
@@ -65,6 +64,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         protected void TakeDamage(float damage, Color damageNumberColor)
         {
             ChangeHealthValue(_currentHealth - damage);
+            
             Damaged?.Invoke(damage, damageNumberColor);
         }
 
@@ -72,12 +72,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         {
             MaxHealth.Value = maxHealth;
 
-            CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
+            CurrentHealthPercentValueChanged?.Invoke(CalculateHealthPercentValue());
         }
 
         protected virtual void Die()
         {
-            _animator.SetBool(Constants.IsDead, true);
+            Animator.SetBool(Constants.IsDead, true);
 
             IsDead.Value = true;
         }
@@ -95,7 +95,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         {
             _currentHealth = Math.Clamp(healthValue, MinHealthValue, MaxHealth.Value);
 
-            CurrentHealthPersentValueChanged?.Invoke(CalculateHealthPercentValue());
+            CurrentHealthPercentValueChanged?.Invoke(CalculateHealthPercentValue());
 
             if (_currentHealth <= MinHealthValue)
                 Die();

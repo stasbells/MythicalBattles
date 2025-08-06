@@ -35,7 +35,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
         private int _wavesCount;
         private int _currentWaveNumber;
         private int _timeBetweenWaves;
-        private Queue<Boost> _boostQueue = new();
+        private Queue<Boost> _boostQueue = new ();
         private bool _isDisplayingBoost;
         
         public void Initialize(Canvas canvas, int wavesCount, int timeBetweenWaves)
@@ -92,12 +92,12 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
             _nextWaveText = progressSliderView.NextWaveText;
             _boostsDescription = progressSliderView.BoostsDescription;
             
-            if(_boostsDescription.TryGetComponent(out TMP_Text text) == false)
+            if (_boostsDescription.TryGetComponent(out TMP_Text text) == false)
                 throw new InvalidOperationException();
                 
             _boostsDescriptionText = text;
 
-            if(_progressSliderObject.TryGetComponent(out CanvasGroup canvasGroup) == false)
+            if (_progressSliderObject.TryGetComponent(out CanvasGroup canvasGroup) == false)
                 throw new InvalidOperationException();
 
             _progressSliderCanvasGroup = canvasGroup;
@@ -117,11 +117,11 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
             _currentWaveTotalEnemies = totalEnemies;
             _defeatedEnemies = 0;
         
-            if(_waveProgressSlider != null)
+            if (_waveProgressSlider != null)
             {
                 _waveProgressSlider.value = 0f;
                 
-                if(_smoothProgressCoroutine != null)
+                if (_smoothProgressCoroutine != null)
                     StopCoroutine(_smoothProgressCoroutine);
             }
         }
@@ -166,7 +166,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
         {
             float targetProgress = (float)_defeatedEnemies / _currentWaveTotalEnemies;
         
-            if(_smoothProgressCoroutine != null)
+            if (_smoothProgressCoroutine != null)
                 StopCoroutine(_smoothProgressCoroutine);
         
             _smoothProgressCoroutine = StartCoroutine(SmoothProgressUpdate(targetProgress));
@@ -177,7 +177,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
             float startValue = _waveProgressSlider.value;
             float elapsed = 0f;
 
-            while(elapsed < SliderSmoothDuration)
+            while (elapsed < SliderSmoothDuration)
             {
                 float currentProgress = Mathf.Lerp(startValue, targetProgress, elapsed);
                 

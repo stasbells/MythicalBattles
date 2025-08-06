@@ -1,8 +1,8 @@
+using System.Collections;
 using Ami.BroAudio;
 using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
 using MythicalBattles.Assets.Scripts.Services.Data;
 using Reflex.Extensions;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

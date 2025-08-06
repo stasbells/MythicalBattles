@@ -18,7 +18,7 @@ namespace MythicalBattles.Assets.Scripts.Services.Data
         
         public void SetMusicVolume(float volume)
         {
-            if(volume < 0 || volume > 1)
+            if (volume < 0 || volume > 1)
                 throw new InvalidOperationException();
 
             _musicVolume = volume;
@@ -26,7 +26,7 @@ namespace MythicalBattles.Assets.Scripts.Services.Data
         
         public void SetSoundsVolume(float volume)
         {
-            if(volume < 0 || volume > 1)
+            if (volume < 0 || volume > 1)
                 throw new InvalidOperationException();
 
             _soundsVolume = volume;

@@ -37,7 +37,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Companions
 
                     CompanionMover newCompanion = newCompanionObject.GetComponent<CompanionMover>();
                     
-                    if(newCompanion == null)
+                    if (newCompanion == null)
                         throw new InvalidOperationException();
                     
                     spot.Fill(newCompanion);

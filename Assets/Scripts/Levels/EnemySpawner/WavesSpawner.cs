@@ -1,13 +1,13 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Ami.BroAudio;
 using MythicalBattles.Assets.Scripts.Controllers.Boosts;
 using MythicalBattles.Assets.Scripts.Controllers.Enemies;
 using MythicalBattles.Assets.Scripts.Levels.WaveProgress;
 using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
 using Reflex.Extensions;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,9 +33,10 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
         private System.Random _random = new System.Random();
         private WaveProgressHandler _waveProgressHandler;
         private IAudioPlayback _audioPlayback;
-
-        public int WavesCount => _waves.Length;
+        
         public event Action AllWavesCompleted;
+        
+        public int WavesCount => _waves.Length;
 
         private void Construct()
         {
@@ -58,7 +59,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
 
         public void SetTimeBetweenWaves(int timeBetweenWaves)
         {
-            if(timeBetweenWaves < 0)
+            if (timeBetweenWaves < 0)
                 throw new InvalidOperationException();
             
             _timeBetweenWaves = timeBetweenWaves;
@@ -66,7 +67,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
         
         public void SetEnemiesDyingTime(float dyingTime)
         {
-            if(dyingTime < 0)
+            if (dyingTime < 0)
                 throw new InvalidOperationException();
             
             _enemyDyingTime = dyingTime;

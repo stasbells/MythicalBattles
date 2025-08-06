@@ -39,14 +39,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Companions
         {
             while (_isActive)
             {
-  
                 _transform.position = Vector3.SmoothDamp(
                     current: transform.position,
                     target: target.position,
                     currentVelocity: ref _velocity,
                     smoothTime: _smoothTime,
-                    maxSpeed: _maxSpeed
-                );
+                    maxSpeed: _maxSpeed);
 
                 yield return null; 
             }

@@ -1,10 +1,10 @@
-﻿using MythicalBattles.Assets.Scripts.Game.GameplayScene;
+﻿using System.Collections;
+using MythicalBattles.Assets.Scripts.Game.GameplayScene;
 using MythicalBattles.Assets.Scripts.Game.MainMenuScene;
 using MythicalBattles.Assets.Scripts.UI.View;
 using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using Reflex.Core;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,16 +16,9 @@ namespace MythicalBattles.Assets.Scripts.Game
 
         private readonly Corutines _corutines;
         private readonly UIRootView _uiRoot;
-        private readonly ContainerBuilder _rootContainer = new();
+        private readonly ContainerBuilder _rootContainer = new ();
 
         private Container _cachedSceneContainer;
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static void AutostartGame()
-        {
-            s_instance = new GameEntryPoint();
-            s_instance.RunGame();
-        }
 
         private GameEntryPoint()
         {
@@ -37,6 +30,13 @@ namespace MythicalBattles.Assets.Scripts.Game
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
 
             _rootContainer.AddSingleton(_uiRoot);
+        }
+        
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void AutostartGame()
+        {
+            s_instance = new GameEntryPoint();
+            s_instance.RunGame();
         }
 
         private void RunGame()
@@ -74,8 +74,7 @@ namespace MythicalBattles.Assets.Scripts.Game
                 ? Object.FindFirstObjectByType<GameplayEntryPoint>()
                 : Object.FindFirstObjectByType<MainMenuEntryPoint>();
 
-            _cachedSceneContainer = new ContainerBuilder().SetParent
-                (_rootContainer.Build()).Build();
+            _cachedSceneContainer = new ContainerBuilder().SetParent(_rootContainer.Build()).Build();
 
             RunScene(sceneEntryPoint);
 

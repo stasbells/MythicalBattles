@@ -9,8 +9,14 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelComplete
         private readonly Subject<Unit> _restartSceneRequest;
         private readonly GameplayUIManager _uiManager;
 
-        public ScreenLevelCompleteViewModel(GameplayUIManager uiManager, float levelPassTime, float bestTime, int score, int rewardMoney,
-            Subject<Unit> exitSceneRequest, Subject<Unit> restartSceneRequest)
+        public ScreenLevelCompleteViewModel(
+            GameplayUIManager uiManager,
+            float levelPassTime,
+            float bestTime,
+            int score,
+            int rewardMoney,
+            Subject<Unit> exitSceneRequest,
+            Subject<Unit> restartSceneRequest)
         {
             LevelPassTime = levelPassTime;
             BestTime = bestTime;

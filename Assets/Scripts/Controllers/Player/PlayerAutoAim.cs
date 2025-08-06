@@ -1,6 +1,6 @@
-using UnityEngine;
 using DG.Tweening;
 using MythicalBattles.Assets.Scripts.Utils;
+using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Player
 {

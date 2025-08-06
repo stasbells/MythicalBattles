@@ -23,23 +23,22 @@ namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
             
             _itemsRegistry = new Dictionary<string, ShopItem>();
         
-            foreach(ShopItem item in GetItems())
+            foreach (ShopItem item in GetItems())
             {
-                if(_itemsRegistry.ContainsKey(item.ItemID))
+                if (_itemsRegistry.TryAdd(item.ItemID, item) == false)
                     throw new InvalidOperationException();
-                
-                _itemsRegistry.Add(item.ItemID, item);
             }
         }
         
-        public T GetItem<T>(string itemID) where T : ShopItem
+        public T GetItem<T>(string itemID)
+            where T : ShopItem
         {
             if (string.IsNullOrEmpty(itemID))
                 throw new InvalidOperationException();
             
-            if(_itemsRegistry.TryGetValue(itemID, out ShopItem item))
+            if (_itemsRegistry.TryGetValue(itemID, out ShopItem item))
             {
-                if(item is T typedItem)
+                if (item is T typedItem)
                     return typedItem;
 
                 throw new InvalidOperationException();
@@ -73,7 +72,7 @@ namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
             var itemsDuplicates = items.GroupBy(item => item.EquipmentGrade)
                     .Where(array => array.Count() > 1);
             
-            if(itemsDuplicates.Any())
+            if (itemsDuplicates.Any())
                 throw new InvalidOperationException();
         }
     }

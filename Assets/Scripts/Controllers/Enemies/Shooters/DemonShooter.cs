@@ -1,19 +1,19 @@
+using System.Collections;
 using Ami.BroAudio;
 using DG.Tweening;
-using Reflex.Extensions;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using MythicalBattles.Assets.Scripts.Controllers.Projectiles.ObjectPool;
 using MythicalBattles.Assets.Scripts.Controllers.Projectiles;
 using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
 using MythicalBattles.Assets.Scripts.Utils;
+using Reflex.Extensions;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 {
     public class DemonShooter : Shooter, IWaveDamageMultiplier
     {
-        private readonly SpawnPointGenerator _spawnPointGenerator = new();
+        private readonly SpawnPointGenerator _spawnPointGenerator = new ();
 
         [SerializeField] private int _projectileCount = 6;
         [SerializeField] private ProjectilesObjectPool _projectilePool;
@@ -78,30 +78,31 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 
         private void SpawnPlaceMarkers()
         {
-            for (int i = 0; i < _projectileCount; i++)
-            {
-                ParticleEffect particle = (ParticleEffect)_effectPool.GetItem();
-                particle.gameObject.SetActive(true);
-                particle.Transform.parent = null;
-                particle.Transform.position = _spawnPoints[i];
-            }
+            SpawnEffects(_effectPool);
 
             SoundID bossSpell = _audioPlayback.AudioContainer.BossSpell;
 
             _audioPlayback.PlaySound(bossSpell);
         }
 
-        private void SpawnProjecttiles()
+        private void SpawnProjectiles()
+        {
+            SpawnEffects(_projectilePool);
+
+            _cameraTransform.DOShakePosition(0.5f, 0.5f, 15, 90, false, true);
+        }
+
+        private void SpawnEffects(ProjectilesObjectPool objectPool)
         {
             for (int i = 0; i < _projectileCount; i++)
             {
-                ParticleEffect particle = (ParticleEffect)_projectilePool.GetItem();
+                ParticleEffect particle = (ParticleEffect)objectPool.GetItem();
+                
                 particle.gameObject.SetActive(true);
+                
                 particle.Transform.parent = null;
                 particle.Transform.position = _spawnPoints[i];
             }
-
-            _cameraTransform.DOShakePosition(0.5f, 0.5f, 15, 90, false, true);
         }
 
         private IEnumerator UltimateAttack()
@@ -110,7 +111,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 
             yield return _projectilesSpawnDelay;
 
-            SpawnProjecttiles();
+            SpawnProjectiles();
 
             yield return _animationDelay;
 

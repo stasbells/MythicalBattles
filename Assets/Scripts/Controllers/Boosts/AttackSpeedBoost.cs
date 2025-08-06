@@ -1,5 +1,5 @@
-using MythicalBattles.Assets.Scripts.Controllers.Player;
 using System;
+using MythicalBattles.Assets.Scripts.Controllers.Player;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
@@ -12,7 +12,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
         {
             base.Apply();
             
-            if(Player.TryGetComponent(out PlayerShooter shooter) == false)
+            if (Player.TryGetComponent(out PlayerShooter shooter) == false)
                 throw new InvalidOperationException();
             
             shooter.IncreaseAttackSpeed(_additionalAttackSpeed);

@@ -35,7 +35,11 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
         private void Follow()
         {
-            Vector3 targetPosition = new(_playerTransform.position.x + _offsetX, _transform.position.y, _playerTransform.position.z + _offsetZ);
+            Vector3 targetPosition = new (
+                _playerTransform.position.x + _offsetX,
+                _transform.position.y,
+                _playerTransform.position.z + _offsetZ);
+            
             _transform.position = Vector3.Lerp(_transform.position, targetPosition, _smoothSpeed * Time.deltaTime);
         }
 

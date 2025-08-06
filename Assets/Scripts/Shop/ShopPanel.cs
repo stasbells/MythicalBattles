@@ -15,9 +15,9 @@ namespace MythicalBattles.Assets.Scripts.Shop
         [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
 
         private IPersistentData _persistentData;
-        private EquipmentItemsTypes _equipmentItemsTypes = new();
+        private EquipmentItemsTypes _equipmentItemsTypes = new ();
         private AllTypesSelectedItemsGrade _allTypesSelectedItemsGrade;
-        private List<ShopItemView> _shopItemViews = new();
+        private List<ShopItemView> _shopItemViews = new ();
         private ScreenShopViewModel _viewModel;
         private IEnumerable<ShopItem> _shopItems;
 
@@ -103,7 +103,7 @@ namespace MythicalBattles.Assets.Scripts.Shop
 
         public void Refresh()
         {
-            if(_shopItems == null)
+            if (_shopItems == null)
                 throw new InvalidOperationException();
                 
             Show(_shopItems);
@@ -122,7 +122,7 @@ namespace MythicalBattles.Assets.Scripts.Shop
 
         private void OnItemViewClick(ShopItemView itemView)
         {
-            if(itemView.IsLock)
+            if (itemView.IsLock)
                 return;
             
             _viewModel.RequestOpenPopupShopItem(this, itemView);

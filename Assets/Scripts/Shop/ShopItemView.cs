@@ -1,5 +1,5 @@
-using MythicalBattles.Assets.Scripts.UI.View;
 using System;
+using MythicalBattles.Assets.Scripts.UI.View;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

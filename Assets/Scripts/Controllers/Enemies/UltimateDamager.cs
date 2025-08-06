@@ -1,5 +1,5 @@
-using MythicalBattles.Assets.Scripts.Utils;
 using System.Collections;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
@@ -25,6 +25,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
             if (other.gameObject.layer == Constants.LayerPlayer && _isPlayerGetDamage == false)
             {
                 _isPlayerGetDamage = true;
+                
                 Damage(other.GetComponent<Health>());
             }
         }

@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 namespace MythicalBattles.Assets.Scripts.UI
 {
-    public abstract class PopupBinder<T> : ScreenBinder<T> where T : ScreenViewModel
+    public abstract class PopupBinder<T> : ScreenBinder<T>
+        where T : ScreenViewModel
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _closeAltButton;

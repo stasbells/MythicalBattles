@@ -6,7 +6,7 @@ namespace MythicalBattles.Assets.Scripts.UI.Root
 {
     public class UIRootBinder : MonoBehaviour
     {
-        private readonly CompositeDisposable _subscriptions = new();
+        private readonly CompositeDisposable _subscriptions = new ();
 
         [SerializeField] private ScreensContainer _screensContainer;
 

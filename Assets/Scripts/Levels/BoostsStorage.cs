@@ -23,14 +23,14 @@ namespace MythicalBattles.Assets.Scripts.Levels
         private Boost[] _statsBoosts;
         private Boost[] _projectileBoosts;
         private Boost[] _companionBoosts;
-        private List<Boost> _usedCompanions = new();
+        private List<Boost> _usedCompanions = new ();
         private bool _isProjectileBoostAlreadyUsed = false;
 
         private void Awake()
         {
-            _statsBoosts = new[]{_damageBoost, _maxHealthBoost, _attackSpeedBoost};
-            _projectileBoosts =  new[]{_fireBoost, _electricityBoost, _poisonBoost};
-            _companionBoosts = new[]{_fireCompanionBoost, _electricCompanionBoost, _poisonCompanionBoost};
+            _statsBoosts = new[] { _damageBoost, _maxHealthBoost, _attackSpeedBoost };
+            _projectileBoosts = new[] { _fireBoost, _electricityBoost, _poisonBoost };
+            _companionBoosts = new[] { _fireCompanionBoost, _electricCompanionBoost, _poisonCompanionBoost };
         }
 
         public Boost GetRandomBoost()

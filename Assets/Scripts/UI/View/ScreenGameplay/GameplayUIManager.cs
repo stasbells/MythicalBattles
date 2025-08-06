@@ -1,4 +1,5 @@
-﻿using MythicalBattles.Assets.Scripts.UI.Root.Gameplay;
+﻿using System;
+using MythicalBattles.Assets.Scripts.UI.Root.Gameplay;
 using MythicalBattles.Assets.Scripts.UI.View.PopupPause;
 using MythicalBattles.Assets.Scripts.UI.View.ScreenDeath;
 using MythicalBattles.Assets.Scripts.UI.View.ScreenGameComplete;
@@ -6,7 +7,6 @@ using MythicalBattles.Assets.Scripts.UI.View.ScreenLevelComplete;
 using MythicalBattles.Assets.Scripts.Utils;
 using R3;
 using Reflex.Core;
-using System;
 
 namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
 {
@@ -15,7 +15,7 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
         private const float DeathScreenDelay = 2.5f;
 
         private readonly Signal _signal;
-        private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new ();
 
         public GameplayUIManager(ContainerBuilder builder) : base(builder)
         {
@@ -26,9 +26,9 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
         {
             var viewModel = new ScreenGameplayViewModel(this);
 
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+            var uiRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenScreen(viewModel);
+            uiRoot.OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -36,12 +36,18 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
         public ScreenLevelCompleteViewModel OpenScreenLevelComplete(
             float levelPassTime, float bestTime, int score, int rewardMoney)
         {
-            var viewModel = new ScreenLevelCompleteViewModel(this, levelPassTime, bestTime, score, rewardMoney,
-                _signal.ExitSceneRequest, _signal.RestartSceneRequest);
+            var viewModel = new ScreenLevelCompleteViewModel(
+                this,
+                levelPassTime,
+                bestTime,
+                score,
+                rewardMoney,
+                _signal.ExitSceneRequest,
+                _signal.RestartSceneRequest);
 
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+            var uiRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenScreen(viewModel);
+            uiRoot.OpenScreen(viewModel);
 
             return viewModel;
         }
@@ -50,22 +56,22 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
         {
             var viewModel = new ScreenGameCompleteViewModel(_signal.ExitSceneRequest);
 
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+            var uiRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenScreen(viewModel);
+            uiRoot.OpenScreen(viewModel);
 
             return viewModel;
         }
 
         public PopupPauseViewModel OpenPopupPause()
         {
-            var Pause = new PopupPauseViewModel(_signal.ExitSceneRequest);
+            var pause = new PopupPauseViewModel(_signal.ExitSceneRequest);
 
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+            var uiRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenPopup(Pause);
+            uiRoot.OpenPopup(pause);
 
-            return Pause;
+            return pause;
         }
 
         public void SubscribeOnPlayerDeath(ReadOnlyReactiveProperty<bool> isDead)
@@ -94,9 +100,9 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay
         {
             var viewModel = new ScreenDeathViewModel(_signal.ExitSceneRequest, _signal.RestartSceneRequest);
 
-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+            var uiRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
 
-            UIRoot.OpenScreen(viewModel);
+            uiRoot.OpenScreen(viewModel);
 
             return viewModel;
         }

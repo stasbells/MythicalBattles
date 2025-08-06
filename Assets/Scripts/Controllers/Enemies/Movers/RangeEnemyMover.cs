@@ -26,8 +26,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
 
         protected override void OnEnemyMoverAwake()
         {
-            _randomMovementLogic = new RandomMovementLogic(this, Transform, _moveDuration,
-                _directionChangeInterval, _raycastDistance);
+            _randomMovementLogic = new RandomMovementLogic(
+                this,
+                Transform,
+                _moveDuration,
+                _directionChangeInterval,
+                _raycastDistance);
 
             OnRangeEnemyMoverAwake();
         }

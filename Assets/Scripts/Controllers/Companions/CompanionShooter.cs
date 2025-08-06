@@ -52,7 +52,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Companions
 
         private void Shoot()
         {
-            CompanionProjectile projectile = (CompanionProjectile) _projectilePool.GetItem();
+            CompanionProjectile projectile = (CompanionProjectile)_projectilePool.GetItem();
 
             projectile.gameObject.SetActive(true);
 

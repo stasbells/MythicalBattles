@@ -37,7 +37,7 @@ namespace MythicalBattles.Assets.Scripts.Shop
 
             _items = new List<InventoryItemView>
             {
-                _weaponView, _armorView, _bootsView, _helmetView, _necklaceView, _ringView
+                _weaponView, _armorView, _bootsView, _helmetView, _necklaceView, _ringView,
             };
         }
 

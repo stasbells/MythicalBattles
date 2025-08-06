@@ -31,7 +31,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Boosts
                _poisonArrowsBoostText,
                _fireCompanionBoostText,
                _electricCompanionBoostText,
-               _poisonCompanionBoostText
+               _poisonCompanionBoostText,
            };
         }
 

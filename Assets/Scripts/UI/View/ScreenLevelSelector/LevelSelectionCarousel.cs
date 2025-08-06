@@ -1,7 +1,7 @@
-﻿using MythicalBattles.Assets.Scripts.Services.Data;
+﻿using System.Collections.Generic;
+using MythicalBattles.Assets.Scripts.Services.Data;
 using MythicalBattles.Assets.Scripts.Tools;
 using Reflex.Extensions;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,7 +21,7 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
         [Header("References")]
         [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] private RectTransform _content;
-        [SerializeField] private List<LevelButton> _levelButtons = new();
+        [SerializeField] private List<LevelButton> _levelButtons = new ();
         [SerializeField] private TMP_Text _levelTimeRecord;
         [SerializeField] private TMP_Text _levelScore;
         [SerializeField] private GameObject _results;
@@ -115,8 +115,12 @@ namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
         {
             float targetPosition = (float)_currentLevelIndex / (_levelButtons.Count - 1);
 
-            _scrollRect.horizontalNormalizedPosition = Mathf.Lerp
-                (_scrollRect.horizontalNormalizedPosition, targetPosition, _snapSpeed * Time.deltaTime);
+            float smoothedSnapSpeed = _snapSpeed * Time.deltaTime;
+
+            _scrollRect.horizontalNormalizedPosition = Mathf.Lerp(
+                _scrollRect.horizontalNormalizedPosition,
+                targetPosition,
+                smoothedSnapSpeed);
 
             UpdateVisuals();
         }

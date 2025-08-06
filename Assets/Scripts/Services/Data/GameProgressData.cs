@@ -14,7 +14,7 @@ namespace MythicalBattles.Assets.Scripts.Services.Data
     {
         private const int LevelsCount = 9;
 
-        [SerializeField] private List<LevelResultData> _levelsResults = new( new LevelResultData[LevelsCount]);
+        [SerializeField] private List<LevelResultData> _levelsResults = new (new LevelResultData[LevelsCount]);
         
         public IReadOnlyList<LevelResultData> LevelsResults => _levelsResults.AsReadOnly();
 
@@ -67,7 +67,7 @@ namespace MythicalBattles.Assets.Scripts.Services.Data
 
         public void Reset()
         {
-            _levelsResults = new List<LevelResultData>( new LevelResultData[LevelsCount]);
+            _levelsResults = new List<LevelResultData>(new LevelResultData[LevelsCount]);
         }
 
         private void SetLevelResults(int levelNumber, int resultPoints, float resultTime)

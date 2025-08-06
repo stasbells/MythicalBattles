@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Audio
 {
-    [CreateAssetMenu(fileName = "New AudioContainer", menuName = "AudioContainer/Create New AudioContainer",
-        order = 51)]
+    [CreateAssetMenu(fileName = "New AudioContainer", menuName = "AudioContainer/Create New AudioContainer", order = 51)]
     public class AudioContainer : ScriptableObject
     {
         [SerializeField] private float _volumeDecayTime = 1.5f;
 
+        private SoundID _themePlayedBeforeBossThemeID;
+        
         [field: SerializeField] public SoundID MenuTheme { get; private set; }
         [field: SerializeField] public SoundID BossTheme { get; private set; }
         [field: SerializeField] public SoundID GraveyardTheme { get; private set; }
@@ -28,8 +29,6 @@ namespace MythicalBattles.Assets.Scripts.Audio
         [field: SerializeField] public SoundID BossSpell { get; private set; }
         [field: SerializeField] public SoundID PayMoney { get; private set; }
         [field: SerializeField] public SoundID ButtonClick { get; private set; }
-
-        private SoundID _themePlayedBeforeBossThemeID;
         
         public SoundID CurrentPlayingMusicID { get; private set; }
 
@@ -59,7 +58,6 @@ namespace MythicalBattles.Assets.Scripts.Audio
             BroAudio.Play(_themePlayedBeforeBossThemeID);
             
             BroAudio.SetVolume(_themePlayedBeforeBossThemeID, volume);
-
         }
 
         public void PlaySound(SoundID soundID, float volume)
@@ -91,7 +89,7 @@ namespace MythicalBattles.Assets.Scripts.Audio
                 FinalTittlesTheme,
                 GraveyardTheme,
                 CastleTheme,
-                DungeonTheme
+                DungeonTheme,
             };
 
             return idList;

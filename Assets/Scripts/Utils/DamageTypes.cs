@@ -5,6 +5,6 @@ namespace MythicalBattles.Assets.Scripts.Utils
         None,
         Electric,
         Fire,
-        Poison
+        Poison,
     }
 }

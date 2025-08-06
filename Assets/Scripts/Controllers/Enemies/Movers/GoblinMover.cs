@@ -23,8 +23,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
 
         protected override void OnMeleeEnemyMoverAwake()
         {
-            _randomMovementLogic = new RandomMovementLogic(this, Transform,
-                _durationOfRandomMove, _directionChangeInterval, _raycastDistance);
+            _randomMovementLogic = new RandomMovementLogic(
+                this, 
+                Transform,
+                _durationOfRandomMove,
+                _directionChangeInterval,
+                _raycastDistance);
         }
 
         protected override void OnMeleeEnemyMoverFixedUpdate()
@@ -42,13 +46,18 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
                 else
                 {
                     _attackTimer += Time.deltaTime;
+                    
                     Animator.SetBool(Constants.IsAttack, true);
                 }
             }
             else if (_isMovingRandomly)
+            {
                 _randomMovementLogic.MoveRandomly();
+            }
             else
+            {
                 MoveTo(GetDirectionToPlayer());
+            }
         }
     }
 }

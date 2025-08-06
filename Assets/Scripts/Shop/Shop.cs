@@ -16,6 +16,7 @@ namespace MythicalBattles.Assets.Scripts.Shop
         private IDataProvider _dataProvider;
 
         public ShopPanel ShopPanel => _shopPanel;
+        public EquipmentsShopContent ItemsContent => _itemsContent;
 
         private void Awake()
         {
@@ -24,8 +25,6 @@ namespace MythicalBattles.Assets.Scripts.Shop
             _dataProvider = container.Resolve<IDataProvider>();
             _wallet = container.Resolve<IWallet>();
         }
-
-        public EquipmentsShopContent ItemsContent => _itemsContent;
 
         private void Start()
         {

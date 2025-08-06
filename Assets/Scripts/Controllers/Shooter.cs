@@ -1,6 +1,6 @@
+using System.Collections;
 using MythicalBattles.Assets.Scripts.Controllers.Player;
 using MythicalBattles.Assets.Scripts.Utils;
-using System.Collections;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers
@@ -12,19 +12,18 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
         [SerializeField] private float _initRateOfFire = 1f;
 
-        private Animator _animator;
         private Coroutine _shootCoroutine;
         private float _shootSpeedAnimationMultiplier;
         private float _rateOfFire;
         private float _remainingDelay;
         private bool _wasAttacking;
 
-        public Animator Animator => _animator;
+        protected Animator Animator { get; private set; }
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
-            _animator.SetBool(Constants.IsAttack, false);
+            Animator = GetComponent<Animator>();
+            Animator.SetBool(Constants.IsAttack, false);
             _rateOfFire = _initRateOfFire;
 
             if (this is PlayerShooter)
@@ -41,10 +40,10 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
         private void Update()
         {
-            if (_animator.GetBool(Constants.IsDead))
+            if (Animator.GetBool(Constants.IsDead))
                 return;
 
-            bool isAttacking = !_animator.GetBool(Constants.IsMove) && _animator.GetBool(Constants.IsAttack);
+            bool isAttacking = !Animator.GetBool(Constants.IsMove) && Animator.GetBool(Constants.IsAttack);
 
             if (isAttacking)
             {
@@ -80,7 +79,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
         private void ApplyShootAnimationSpeed(float rateOfFire)
         {
             _shootSpeedAnimationMultiplier = 1 / rateOfFire;
-            _animator.SetFloat(Constants.ShootSpeed, _shootSpeedAnimationMultiplier);
+            Animator.SetFloat(Constants.ShootSpeed, _shootSpeedAnimationMultiplier);
         }
 
         private void StartShootCoroutine()
@@ -95,7 +94,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
             while (timer < delay)
             {
-                if (_animator.GetBool(Constants.IsDead) || _animator.GetBool(Constants.IsMove) || !_animator.GetBool(Constants.IsAttack))
+                if (Animator.GetBool(Constants.IsDead) || Animator.GetBool(Constants.IsMove) || !Animator.GetBool(Constants.IsAttack))
                 {
                     _remainingDelay = delay - timer;
 
@@ -107,7 +106,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
                 yield return null;
             }
 
-            while (!_animator.GetBool(Constants.IsDead))
+            while (!Animator.GetBool(Constants.IsDead))
             {
                 _remainingDelay = _rateOfFire;
 
@@ -117,7 +116,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers
 
                 while (timer < _rateOfFire)
                 {
-                    if (_animator.GetBool(Constants.IsDead) || _animator.GetBool(Constants.IsMove) || !_animator.GetBool(Constants.IsAttack))
+                    if (Animator.GetBool(Constants.IsDead) || Animator.GetBool(Constants.IsMove) || !Animator.GetBool(Constants.IsAttack))
                     {
                         _remainingDelay = _rateOfFire - timer;
 

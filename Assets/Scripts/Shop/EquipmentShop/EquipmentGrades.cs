@@ -6,6 +6,6 @@ namespace MythicalBattles.Assets.Scripts.Shop.EquipmentShop
         Common,
         Rare,
         Epic,
-        Legendary
+        Legendary,
     }
 }

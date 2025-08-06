@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.UI.View
 {
-    public class ValueView<T> : MonoBehaviour where T : IConvertible
+    public class ValueView<T> : MonoBehaviour
+        where T : IConvertible
     {
         [SerializeField] private TMP_Text _text;
 

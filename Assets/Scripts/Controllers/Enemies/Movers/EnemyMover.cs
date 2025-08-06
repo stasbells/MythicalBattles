@@ -1,5 +1,5 @@
-using MythicalBattles.Assets.Scripts.Utils;
 using System;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
@@ -86,16 +86,24 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Movers
         protected void RotateTowards(Vector3 direction)
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            _transform.rotation = Quaternion.Slerp(_transform.rotation,
-                lookRotation, Time.deltaTime * _rotationSpeed);
+            
+            float smoothedRotationSpeed = Time.deltaTime * _rotationSpeed;
+            
+            _transform.rotation = Quaternion.Slerp(
+                _transform.rotation,
+                lookRotation,
+                smoothedRotationSpeed);
         }
 
         private bool TryFindPlayer()
         {
             Collider[] colliders = new Collider[1];
 
-            int hitCount = Physics.OverlapSphereNonAlloc(_transform.position,
-                _playerSearchRadius, colliders, Constants.MaskLayerPlayer);
+            int hitCount = Physics.OverlapSphereNonAlloc(
+                _transform.position,
+                _playerSearchRadius,
+                colliders,
+                Constants.MaskLayerPlayer);
 
             if (hitCount == 0)
                 return false;

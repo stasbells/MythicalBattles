@@ -5,7 +5,7 @@ namespace MythicalBattles.Assets.Scripts.UI
 {
     public class ScreensContainer : MonoBehaviour
     {
-        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopupBinders = new();
+        private readonly Dictionary<ScreenViewModel, IScreenBinder> _openedPopupBinders = new ();
 
         [SerializeField] private Transform _screensContainer;
         [SerializeField] private Transform _popupsContainer;

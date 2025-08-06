@@ -8,9 +8,9 @@ namespace MythicalBattles.Assets.Scripts.Services.Data
     {
         private IPersistentData _persistentData;
 
-        public event Action PlayerDataReseted;
-
         public DataLocalProvider(IPersistentData persistentData) => _persistentData = persistentData;
+        
+        public event Action PlayerDataReseted;
 
         public void SavePlayerData()
         {

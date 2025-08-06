@@ -6,7 +6,7 @@ namespace MythicalBattles.Assets.Scripts.Utils
 {
     public static class LanguagesDictionary
     {
-        private static readonly Dictionary<string, string> s_ruDomainDictionary = new()
+        private static readonly Dictionary<string, string> S_ruDomainDictionary = new ()
             {
                 { "Attack speed", "Скорость атаки" },
                 { "Health", "Здоровья" },
@@ -42,10 +42,10 @@ namespace MythicalBattles.Assets.Scripts.Utils
                 { "Epic Bow", "Эпический Лук" },
                 { "Legendary Bow", "Легендарный Лук" },
                 { "Wave", "Волна" },
-                { "Next wave in", "Следующая волна через" }
+                { "Next wave in", "Следующая волна через" },
             };
 
-        private static readonly Dictionary<string, string> s_enDomainDictionary = new()
+        private static readonly Dictionary<string, string> S_enDomainDictionary = new ()
             {
                 { "Attack speed", "Attack speed" },
                 { "Health", "Health" },
@@ -81,10 +81,10 @@ namespace MythicalBattles.Assets.Scripts.Utils
                 { "Epic Bow", "Epic Bow" },
                 { "Legendary Bow", "Legendary Bow" },
                 { "Wave", "Wave" },
-                { "Next wave in", "Next wave in" }
+                { "Next wave in", "Next wave in" },
             };
 
-        private static readonly Dictionary<string, string> s_trDomainDictionary = new()
+        private static readonly Dictionary<string, string> S_trDomainDictionary = new ()
             {
                 { "Attack speed", "Saldırı hızı" },
                 { "Health", "Sağlık" },
@@ -120,7 +120,7 @@ namespace MythicalBattles.Assets.Scripts.Utils
                 { "Epic Bow", "Epik Yay" },
                 { "Legendary Bow", "Efsanevi Yay" },
                 { "Wave", "Dalga" },
-                { "Next wave in", "Sonraki dalga" }
+                { "Next wave in", "Sonraki dalga" },
             };
 
         public static string GetTranslation(string key)
@@ -129,9 +129,9 @@ namespace MythicalBattles.Assets.Scripts.Utils
 
             return language.ToLower() switch
             {
-                Constants.RuDomain => s_ruDomainDictionary.TryGetValue(key, out string ruValue) ? ruValue : key,
-                Constants.EnDomain => s_enDomainDictionary.TryGetValue(key, out string enValue) ? enValue : key,
-                Constants.TrDomain => s_trDomainDictionary.TryGetValue(key, out string trValue) ? trValue : key,
+                Constants.RuDomain => S_ruDomainDictionary.GetValueOrDefault(key, key),
+                Constants.EnDomain => S_enDomainDictionary.GetValueOrDefault(key, key),
+                Constants.TrDomain => S_trDomainDictionary.GetValueOrDefault(key, key),
                 _ => throw new ArgumentException($"Unsupported language: {language}"),
             };
         }

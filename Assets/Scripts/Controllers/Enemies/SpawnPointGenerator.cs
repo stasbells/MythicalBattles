@@ -7,6 +7,8 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
     {
         private readonly float _unspawnRadius = 3f;
         private readonly Collider[] _overlapResults = new Collider[10];
+        private float _spawnPointX;
+        private float _spawnPointZ;
 
         public Vector3 GetRandomPointOutsideRadius()
         {
@@ -20,8 +22,11 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
 
         private Vector3 GetRandomPoint()
         {
-            return new Vector3(Random.Range(Constants.SpawnPointXMinus, Constants.SpawnPointXPlus),
-                Constants.SpawnPointY, Random.Range(Constants.SpawnPointZMinus, Constants.SpawnPointZPlus));
+            _spawnPointX = Random.Range(Constants.SpawnPointXMinus, Constants.SpawnPointXPlus);
+            
+            _spawnPointZ = Random.Range(Constants.SpawnPointZMinus, Constants.SpawnPointZPlus);
+            
+            return new Vector3(_spawnPointX, Constants.SpawnPointY, _spawnPointZ);
         }
     }
 }

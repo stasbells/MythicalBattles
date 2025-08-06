@@ -17,7 +17,7 @@ namespace MythicalBattles.Assets.Scripts.UI
             _tweener = transform.DOScale(_maxScale, _animateTime)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutSine)
-                .SetUpdate(true); ;
+                .SetUpdate(true);
         }
 
         private void OnDisable()
