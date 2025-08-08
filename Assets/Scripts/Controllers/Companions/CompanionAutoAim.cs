@@ -1,4 +1,5 @@
 using System;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Companions
@@ -99,21 +100,21 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Companions
         {
             if (_targetEnemy)
             {
-                if (_animator.GetBool("IsAttack")) 
+                if (_animator.GetBool(Constants.IsAttack)) 
                     return;
                 
                 EnemyFound?.Invoke();
                     
-                _animator.SetBool("IsAttack", true);
+                _animator.SetBool(Constants.IsAttack, true);
             }
             else
             {
-                if (_animator.GetBool("IsAttack") == false) 
+                if (_animator.GetBool(Constants.IsAttack) == false) 
                     return;
                 
                 EnemyMissed?.Invoke();
                     
-                _animator.SetBool("IsAttack", false);
+                _animator.SetBool(Constants.IsAttack, false);
             }
         }
     }

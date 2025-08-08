@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using MythicalBattles.Assets.Scripts.Controllers.Boosts;
+using MythicalBattles.Assets.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
 {
     public class WaveProgressHandler : MonoBehaviour
     {
+        private const string NextWaveTextFormat = "Next wave in";
         private const float BoostDescriptionDisplayDuration = 2f;
         private const float SliderSmoothDuration = 2f;
         
@@ -44,7 +46,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
             _wavesCount = wavesCount;
             _timeBetweenWaves = timeBetweenWaves;
             
-            _betweenWavesTimer = new BetweenWavesTimer(_waveProgressView.NextWaveText, _timeBetweenWaves);
+            _betweenWavesTimer = new BetweenWavesTimer(_timeBetweenWaves);
 
             WaveProgressView progressSliderView = InstantiateWaveProgressView();
 
@@ -202,13 +204,22 @@ namespace MythicalBattles.Assets.Scripts.Levels.WaveProgress
 
                     _betweenWavesTimer.Start();
                     
+                    _betweenWavesTimer.Ticked += OnTimerBetweenWavesTicked;
+                    
                     _betweenWavesTimer.Elapsed += OnTimerBetweenWavesElapsed;
                 }
             }
         }
+        
+        private void OnTimerBetweenWavesTicked(int ticks)
+        {
+            _waveProgressView.NextWaveText.text = $"{LanguagesDictionary.GetTranslation(NextWaveTextFormat)} {ticks}";
+        }
 
         private void OnTimerBetweenWavesElapsed()
         {
+            _betweenWavesTimer.Ticked -= OnTimerBetweenWavesTicked;
+            
             _betweenWavesTimer.Elapsed -= OnTimerBetweenWavesElapsed;
             
             StartCoroutine(WaitForNextWaveTextFadeOut());

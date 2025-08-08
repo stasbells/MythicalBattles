@@ -1,5 +1,4 @@
 ﻿using MythicalBattles.Assets.Scripts.Game.GameplayScene.Root;
-using MythicalBattles.Assets.Scripts.GameplayScene;
 using MythicalBattles.Assets.Scripts.UI.Root.Gameplay;
 using MythicalBattles.Assets.Scripts.UI.View;
 using MythicalBattles.Assets.Scripts.UI.View.ScreenGameplay;
@@ -22,7 +21,6 @@ namespace MythicalBattles.Assets.Scripts.Game.GameplayScene
                 .AddSingleton(new Signal())
                 .AddSingleton(new GameplayUIManager(gameplayContainer))
                 .AddSingleton(new WorldGameplayRootViewModel(gameplayContainer.Build()))
-                .AddSingleton(typeof(LevelGeneratorViewModel))
                 .AddSingleton(typeof(UIGameplayRootViewModel));
 
             InitUI(gameplayContainer);
@@ -31,9 +29,9 @@ namespace MythicalBattles.Assets.Scripts.Game.GameplayScene
             return gameplayContainer.Build().Resolve<Signal>();
         }
 
-        private void InitWorld(Container gamplayContainer)
+        private void InitWorld(Container gameplayContainer)
         {
-            _worldRootBinder.Bind(gamplayContainer.Resolve<WorldGameplayRootViewModel>());
+            _worldRootBinder.Bind(gameplayContainer.Resolve<WorldGameplayRootViewModel>());
         }
 
         private void InitUI(ContainerBuilder gameplayContainer)

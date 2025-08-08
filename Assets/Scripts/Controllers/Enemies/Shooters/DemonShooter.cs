@@ -17,7 +17,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 
         [SerializeField] private int _projectileCount = 6;
         [SerializeField] private ProjectilesObjectPool _projectilePool;
-        [SerializeField] private ProjectilesObjectPool _effectPool;
+        [SerializeField] private ProjectilesObjectPool _glowPool;
         [SerializeField] private float _attackDelay = 2f;
         [SerializeField] private float _afterAttackDelay = 1f;
         [SerializeField] private ParticleSystem _spawnPlaceMarker;
@@ -78,7 +78,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
 
         private void SpawnPlaceMarkers()
         {
-            SpawnEffects(_effectPool);
+            SpawnEffects(_glowPool);
 
             SoundID bossSpell = _audioPlayback.AudioContainer.BossSpell;
 
@@ -96,12 +96,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies.Shooters
         {
             for (int i = 0; i < _projectileCount; i++)
             {
-                ParticleEffect particle = (ParticleEffect)objectPool.GetItem();
+                DemonSpellEffect demonSpell = (DemonSpellEffect)objectPool.GetItem();
                 
-                particle.gameObject.SetActive(true);
+                demonSpell.gameObject.SetActive(true);
                 
-                particle.Transform.parent = null;
-                particle.Transform.position = _spawnPoints[i];
+                demonSpell.Transform.parent = null;
+                demonSpell.Transform.position = _spawnPoints[i];
             }
         }
 

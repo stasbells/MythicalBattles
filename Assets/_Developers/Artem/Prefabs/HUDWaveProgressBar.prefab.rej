@@ -1,9 +1,0 @@
-diff a/Assets/_Developers/Artem/Prefabs/HUDWaveProgressBar.prefab b/Assets/_Developers/Artem/Prefabs/HUDWaveProgressBar.prefab	(rejected hunks)
-@@ -361,6 +361,7 @@
-   - component: {fileID: 5743689719206065761}
-   - component: {fileID: 6791106280986755708}
-   - component: {fileID: 7209773418354742375}
-+  - component: {fileID: 3485326454586596590}
-   m_Layer: 5
-   m_Name: FireArrows
-   m_TagString: Untagged

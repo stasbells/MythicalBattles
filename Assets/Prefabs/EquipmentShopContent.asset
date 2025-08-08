@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905e9113ab9a0254fabb079f18b7e60c, type: 3}
+  m_Name: EquipmentShopContent
+  m_EditorClassIdentifier: 
+  _weaponItems:
+  - {fileID: 11400000, guid: 5f009d32adb009941ae356c7ee3738ea, type: 2}
+  - {fileID: 11400000, guid: 19e925ec13ca80142afc481e9c56c0d8, type: 2}
+  - {fileID: 11400000, guid: c7b27d5177dd47f48a7af38ab1c1ff70, type: 2}
+  - {fileID: 11400000, guid: 7460134a2fb2a304ea356f2dd51211c8, type: 2}
+  - {fileID: 11400000, guid: af87616786349bc47996ce631e4de84d, type: 2}
+  _armorItems:
+  - {fileID: 11400000, guid: 99284f82e99f5aa489674d7e189a0af1, type: 2}
+  - {fileID: 11400000, guid: 439bf4b2b39a37d41a9b4d47b91fe669, type: 2}
+  - {fileID: 11400000, guid: 6e973e0798ace744a82a0739de0244bc, type: 2}
+  - {fileID: 11400000, guid: a2a3b350a118f36408293ce5f1a1f229, type: 2}
+  - {fileID: 11400000, guid: 93c9f9d09902a004daf17eeb233e5fe5, type: 2}
+  _helmetItems:
+  - {fileID: 11400000, guid: 715eb067e27188a4c8236f9b245e04a6, type: 2}
+  - {fileID: 11400000, guid: 31a43835c135bde4580d683ff59a24b0, type: 2}
+  - {fileID: 11400000, guid: c0a8335d906671d40bdf4b15c3c46139, type: 2}
+  - {fileID: 11400000, guid: c926a3a5561d3a440bec3715f2ded553, type: 2}
+  - {fileID: 11400000, guid: f2c39b3023a29474b8446c6ada471aee, type: 2}
+  _bootsItems:
+  - {fileID: 11400000, guid: 2f54e54f194be08428768bfb1e433679, type: 2}
+  - {fileID: 11400000, guid: 8b1cf4c8c1de53443bd01eb4f79d26a1, type: 2}
+  - {fileID: 11400000, guid: a8fd40b6ec55f294e84dfa1f90a75038, type: 2}
+  - {fileID: 11400000, guid: 54249b49a7e48b24489d0ad0024e91ef, type: 2}
+  - {fileID: 11400000, guid: 09f01bcb03fb2b84190bdb5cc65484a7, type: 2}
+  _necklaceItems:
+  - {fileID: 11400000, guid: 61fc1681c37d12c4989dfea1070b3f51, type: 2}
+  - {fileID: 11400000, guid: 20a3125753267184f9fc1c63d6a74666, type: 2}
+  - {fileID: 11400000, guid: 050e127ac19e52540862436c37f3a829, type: 2}
+  - {fileID: 11400000, guid: c3a375cc8935ed840aef6072f538dd1d, type: 2}
+  - {fileID: 11400000, guid: 57508b892be1f124eae6fd29ddbf478a, type: 2}
+  _ringItems:
+  - {fileID: 11400000, guid: d676f9f6436f0a84598b15df487dfbaf, type: 2}
+  - {fileID: 11400000, guid: 10c1b3708ee1cfa41b75b537bb08b231, type: 2}
+  - {fileID: 11400000, guid: dcadea8df40e4504383b0a4561b08e37, type: 2}
+  - {fileID: 11400000, guid: 2433c5f53c80acf4b83a672a188f93b9, type: 2}
+  - {fileID: 11400000, guid: 217e6468a1a431a4bb14652a64ee0bf9, type: 2}
