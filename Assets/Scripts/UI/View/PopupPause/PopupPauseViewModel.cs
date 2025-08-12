@@ -1,0 +1,21 @@
+﻿using R3;
+
+namespace MythicalBattles.Assets.Scripts.UI.View.PopupPause
+{
+    public class PopupPauseViewModel : ScreenViewModel
+    {
+        private readonly Subject<Unit> _exitSceneRequest;
+
+        public PopupPauseViewModel(Subject<Unit> exitSceneRequest)
+        {
+            _exitSceneRequest = exitSceneRequest;
+        }
+        
+        public override string Name => "PopupPause";
+        
+        public void RequestGoToMainMenu()
+        {
+            _exitSceneRequest.OnNext(Unit.Default);
+        }
+    }
+}

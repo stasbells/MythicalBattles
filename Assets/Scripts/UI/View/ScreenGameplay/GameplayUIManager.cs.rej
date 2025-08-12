@@ -1,0 +1,22 @@
+diff a/Assets/_Developers/Stas/Scripts/UI/View/ScreenGameplay/GameplayUIManager.cs b/Assets/_Developers/Stas/Scripts/UI/View/ScreenGameplay/GameplayUIManager.cs	(rejected hunks)
+@@ -18,20 +18,6 @@
+         public ScreenGameplayViewModel OpenScreenGameplay()
+         {
+             var viewModel = new ScreenGameplayViewModel(this);
+-            
+-            var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+-
+-            UIRoot.OpenScreen(viewModel);
+-
+-            return viewModel;
+-        }
+-        
+-        public ScreenLevelCompleteViewModel OpenScreenLevelComplete(
+-            float levelPassTime, float bestTime, int score, int rewardMoney)
+-        {
+-            var viewModel = new ScreenLevelCompleteViewModel(levelPassTime, bestTime, score, rewardMoney,
+-                _exitSceneRequest, _restartSceneRequest);
+-            
+             var UIRoot = Container.Build().Resolve<UIGameplayRootViewModel>();
+ 
+             UIRoot.OpenScreen(viewModel);

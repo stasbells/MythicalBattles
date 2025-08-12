@@ -1,0 +1,15 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "IsFirstSession": false,
+    "IdSave": 47,
+    "JsonPlayerData": "{\"_money\":255,\"_selectedWeaponID\":\"BowEpic\",\"_selectedArmorID\":\"ArmorCommon\",\"_selectedHelmetID\":\"HelmetCommon\",\"_selectedBootsID\":\"BootsCommon\",\"_selectedNecklaceID\":\"NecklaceCommon\",\"_selectedRingID\":\"RingSimple\"}",
+    "JsonGameProgressData": "{\"_levelsResults\":[{\"Time\":149.096451,\"Points\":1051.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0},{\"Time\":0.0,\"Points\":0.0}]}",
+    "JsonGameSettingsData": "{\"_musicVolume\":0.481832057,\"_soundsVolume\":0.5775197}"
+}

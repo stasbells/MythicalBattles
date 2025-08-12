@@ -1,0 +1,66 @@
+﻿using MythicalBattles.Assets.Scripts.Services.Data;
+using MythicalBattles.Assets.Scripts.Services.LevelSelection;
+using Reflex.Extensions;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using YG;
+
+namespace MythicalBattles.Assets.Scripts.UI.View.ScreenLevelSelector
+{
+    public class ScreenLevelSelectorBinder : ScreenBinder<ScreenLevelSelectorViewModel>
+    {
+        [SerializeField] private Button _goToSceneGameplayButton;
+        [SerializeField] private Button _goToScreenMainMenuButton;
+        [SerializeField] private LevelSelectionCarousel _levelSelectionCarousel;
+        [SerializeField] private TMP_Text _totalScore;
+
+        private IPersistentData _persistentData;
+        private ILevelSelectionService _levelSelectionService;
+
+        private void Construct()
+        {
+            var container = SceneManager.GetActiveScene().GetSceneContainer();
+
+            _persistentData = container.Resolve<IPersistentData>();
+            _levelSelectionService = container.Resolve<ILevelSelectionService>();
+        }
+
+        private void Awake()
+        {
+            Construct();
+
+            int totalScore = (int)_persistentData.GameProgressData.GetAllPoints();
+
+            _totalScore.text = totalScore.ToString();
+        }
+
+        private void OnEnable()
+        {
+            _goToSceneGameplayButton.onClick.AddListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenMainMenuButton.onClick.AddListener(OnGoToScreenMainMenuButtonClicked);
+        }
+
+        private void OnDisable()
+        {
+            _goToSceneGameplayButton.onClick.RemoveListener(OnGoToSceneGameplayButtonClicked);
+            _goToScreenMainMenuButton.onClick.RemoveListener(OnGoToScreenMainMenuButtonClicked);
+        }
+
+        private void OnGoToSceneGameplayButtonClicked()
+        {
+            _levelSelectionService.SelectLevel(_levelSelectionCarousel.CurrentLevelNumber);
+
+            if (YG2.saves.IsFirstSession)
+                ViewModel.RequestGoToTutorial();
+            else
+                ViewModel.RequestGoToSceneGameplay();
+        }
+
+        private void OnGoToScreenMainMenuButtonClicked()
+        {
+            ViewModel.RequestGoToScreenMainMenu();
+        }
+    }
+}

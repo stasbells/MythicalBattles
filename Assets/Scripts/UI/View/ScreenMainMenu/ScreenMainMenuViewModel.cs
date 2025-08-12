@@ -1,0 +1,34 @@
+﻿namespace MythicalBattles.Assets.Scripts.UI.View.ScreenMainMenu
+{
+    public class ScreenMainMenuViewModel : ScreenViewModel
+    {
+        private readonly MainMenuUIManager _uiManager;
+
+        public ScreenMainMenuViewModel(MainMenuUIManager mainMenuUIManager)
+        {
+            _uiManager = mainMenuUIManager;
+        }
+        
+        public override string Name => "ScreenMainMenu";
+
+        public void RequestGoToScreenLevelSelector()
+        {
+            _uiManager.OpenScreenLevelSelector();
+        }
+
+        public void RequestGoToScreenSettings()
+        {
+            _uiManager.OpenScreenSettings();
+        }
+
+        public void RequestGoToScreenShop()
+        {
+            _uiManager.OpenScreenShop();
+        }
+
+        public void RequestGoToScreenLeaderboard()
+        {
+            _uiManager.OpenScreenLeaderboard();
+        }
+    }
+}

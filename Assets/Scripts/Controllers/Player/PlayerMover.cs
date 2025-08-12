@@ -1,0 +1,98 @@
+using MythicalBattles.Assets.Scripts.Utils;
+using UnityEngine;
+
+namespace MythicalBattles.Assets.Scripts.Controllers.Player
+{
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CapsuleCollider))]
+    [RequireComponent(typeof(Animator))]
+    public class PlayerMover : MonoBehaviour
+    {
+        private const float MinMoveValue = 0.1f;
+
+        [SerializeField] private float _moveSpeed = 1.0f;
+        [SerializeField] private float _smoothInputSpeed = 0.2f;
+
+        private CapsuleCollider _capsuleCollider;
+        private CharacterController _controller;
+        private Transform _transform;
+        private Animator _animator;
+        private Controls _controls;
+        private Vector2 _smoothInputVelocity;
+        private Vector2 _currentInputVector;
+        private Vector2 _moveDirection;
+
+        private void Awake()
+        {
+            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _controller = GetComponent<CharacterController>();
+            _transform = GetComponent<Transform>();
+            _animator = GetComponent<Animator>();
+        }
+
+        private void OnEnable()
+        {
+            _controls ??= new Controls();
+            
+            _controls.Player.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _controls.Player.Disable();
+        }
+
+        private void Update()
+        {
+            if (_animator.GetBool(Constants.IsDead))
+            {
+                Die();
+
+                return;
+            }
+
+            Move();
+        }
+
+        private void SetMovingState(bool value)
+        {
+            _animator.SetBool(Constants.IsMove, value);
+        }
+
+        private void Move()
+        {
+            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+            
+            _moveDirection = Quaternion.AngleAxis(Constants.MoveControllerRotationAngle, Vector3.forward) * _moveDirection;
+
+            if (_moveDirection.sqrMagnitude < MinMoveValue)
+            {
+                SetMovingState(false);
+
+                return;
+            }
+
+            if (_animator.GetBool(Constants.IsMove) == false)
+                SetMovingState(true);
+
+            _currentInputVector = Vector2.SmoothDamp(_currentInputVector, _moveDirection, ref _smoothInputVelocity, _smoothInputSpeed);
+
+            float rotationAngle = Mathf.Atan2(_currentInputVector.x, _currentInputVector.y) * Mathf.Rad2Deg;
+            
+            _transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+
+            Vector3 move = new (_moveDirection.x, 0f, _moveDirection.y);
+            
+            _controller.Move(_moveSpeed * Time.deltaTime * move);
+        }
+
+        private void Die()
+        {
+            _animator.SetBool(Constants.IsMove, false);
+            _animator.SetBool(Constants.IsAttack, false);
+            
+            _capsuleCollider.enabled = false;
+            gameObject.layer = Constants.LayerDefault;
+        }
+    }
+}

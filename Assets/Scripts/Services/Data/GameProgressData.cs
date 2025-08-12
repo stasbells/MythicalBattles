@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using MythicalBattles.Assets.Scripts.Levels;
+using MythicalBattles.Assets.Scripts.Utils;
+using Newtonsoft.Json;
+using UnityEngine;
+using YG;
+
+namespace MythicalBattles.Assets.Scripts.Services.Data
+{
+    [Serializable]
+    [JsonObject(MemberSerialization.Fields)]
+    public class GameProgressData
+    {
+        private const int LevelsCount = 9;
+
+        [SerializeField] private List<LevelResultData> _levelsResults = new (new LevelResultData[LevelsCount]);
+        
+        public IReadOnlyList<LevelResultData> LevelsResults => _levelsResults.AsReadOnly();
+
+        public float GetLevelRecordTime(int levelNumber)
+        {
+            return _levelsResults[levelNumber - 1].Time;
+        }
+
+        public float GetLevelRecordPoints(int levelNumber)
+        {
+            return _levelsResults[levelNumber - 1].Points;
+        }
+
+        public float GetAllPoints()
+        {
+            float resultsSum = 0;
+
+            for (int i = 0; i < _levelsResults.Count; i++)
+            {
+                resultsSum += _levelsResults[i].Points;
+            }
+
+            return resultsSum;
+        }
+
+        public int GetLastUnlockedLevelNumber()
+        {
+            for (int i = 0; i < _levelsResults.Count; i++)
+            {
+                if (Mathf.Approximately(_levelsResults[i].Points, 0f))
+                    return i + 1;
+            }
+
+            return _levelsResults.Count;
+        }
+
+        public bool TryUpdateLevelRecord(int levelNumber, int resultPoints, float resultTime)
+        {
+            if (resultPoints > _levelsResults[levelNumber - 1].Points)
+            {
+                SetLevelResults(levelNumber, resultPoints, resultTime);
+
+                YG2.SetLeaderboard(Constants.TestLeaderboard, (int)GetAllPoints());
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            _levelsResults = new List<LevelResultData>(new LevelResultData[LevelsCount]);
+        }
+
+        private void SetLevelResults(int levelNumber, int resultPoints, float resultTime)
+        {
+            var levelResult = _levelsResults[levelNumber - 1];
+            levelResult.Points = resultPoints;
+            levelResult.Time = resultTime;
+            _levelsResults[levelNumber - 1] = levelResult;
+        }      
+    }
+}

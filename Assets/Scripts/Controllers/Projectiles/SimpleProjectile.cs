@@ -1,0 +1,44 @@
+using Ami.BroAudio;
+using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Utils;
+using Reflex.Extensions;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace MythicalBattles.Assets.Scripts.Controllers.Projectiles
+{
+    public class SimpleProjectile : MonoBehaviour, IGetDamage
+    {
+        private float _damage;
+        private IAudioPlayback _audioPlayback;
+
+        private void Construct()
+        {
+            _audioPlayback = SceneManager.GetActiveScene().GetSceneContainer().Resolve<IAudioPlayback>();
+        }
+
+        private void Awake()
+        {
+            Construct();
+        }
+
+        private void OnParticleCollision(GameObject other)
+        {
+            if (other.layer == Constants.LayerPlayer || other.layer == Constants.LayerEnemy)
+            {
+                other.GetComponent<Health>().TakeDamage(_damage);
+
+                if (other.layer == Constants.LayerEnemy && TryGetComponent(out PeriodicDamageProjectile projectile) == false)
+                {
+                    SoundID shotSound = _audioPlayback.AudioContainer.BaseShot;
+
+                    _audioPlayback.PlaySound(shotSound);
+                }
+            }
+        }
+
+        public void SetDamage(float damage) => _damage = damage;
+
+        public float GetDamage() => _damage;
+    }
+}

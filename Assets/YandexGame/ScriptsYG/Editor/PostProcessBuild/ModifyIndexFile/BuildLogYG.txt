@@ -1,2 +1,0 @@
-Build path: C:/Users/Stanislav/UnityProgects/ProdjectBuilds/MythicalBattles/Build
-Build number: 78
