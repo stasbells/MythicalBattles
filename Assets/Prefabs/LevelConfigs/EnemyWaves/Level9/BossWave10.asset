@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: BossWave10
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - EnemyPrefab: {fileID: -5687413642731485126, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+  - EnemyPrefab: {fileID: 7522016302822119964, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    EnemyType: 3
     Count: 6
   _powerMultiplier: 6
   _bossConfig:
-    EnemyPrefab: {fileID: -282895482060848348, guid: 576e374570873d94ca7028abf4520084, type: 3}
+    EnemyPrefab: {fileID: 2594783136215196421, guid: 576e374570873d94ca7028abf4520084, type: 3}
+    EnemyType: 5
     Count: 1

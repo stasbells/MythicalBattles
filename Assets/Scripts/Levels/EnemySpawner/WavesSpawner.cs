@@ -7,6 +7,7 @@ using MythicalBattles.Assets.Scripts.Controllers.Boosts;
 using MythicalBattles.Assets.Scripts.Controllers.Enemies;
 using MythicalBattles.Assets.Scripts.Levels.WaveProgress;
 using MythicalBattles.Assets.Scripts.Services.AudioPlayback;
+using MythicalBattles.Assets.Scripts.Utils;
 using Reflex.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
         [SerializeField] private BoostsStorage _boostsStorage;
         [SerializeField] private float _healDropPercentChance = 30f;
 
-        private Dictionary<Type, EnemyPool> _enemyPools = new Dictionary<Type, EnemyPool>();
+        private Dictionary<EnemyTypes, EnemyPool> _enemyPools = new Dictionary<EnemyTypes, EnemyPool>();
         private List<Vector3> _shuffledSpawnPoints = new List<Vector3>();
         private int _currentWaveNumber;
         private int _activeEnemiesCount;
@@ -87,13 +88,13 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
 
         private void UpdatePool(EnemyWaveConfig config)
         {
-            if (_enemyPools.ContainsKey(config.EnemyPrefab.GetType()) == false)
+            if (_enemyPools.ContainsKey(config.EnemyPrefab.Type) == false)
             {
-                _enemyPools.Add(config.EnemyPrefab.GetType(), new EnemyPool(config.EnemyPrefab, config.Count + 1, OnEnemyDead, transform));
+                _enemyPools.Add(config.EnemyPrefab.Type, new EnemyPool(config.EnemyPrefab, config.Count + 1, OnEnemyDead, transform));
             }
             else
             {
-                _ = _enemyPools[config.EnemyPrefab.GetType()].TryUpdateSize(config.Count + 1);
+                _ = _enemyPools[config.EnemyPrefab.Type].TryUpdateSize(config.Count + 1);
             }
         }
 
@@ -128,7 +129,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
             {
                 for (int i = 0; i < config.Count; i++)
                 {
-                    Enemy enemy = _enemyPools[config.EnemyPrefab.GetType()].GetEnemy();
+                    Enemy enemy = _enemyPools[config.EnemyPrefab.Type].GetEnemy();
                     
                     enemy.transform.position = GetSpawnPosition();
                         
@@ -140,7 +141,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
             {
                 EnemyWaveConfig bossConfig = bossWave.GetBossConfig();
 
-                Enemy boss = _enemyPools[bossConfig.EnemyPrefab.GetType()].GetEnemy();
+                Enemy boss = _enemyPools[bossConfig.EnemyPrefab.Type].GetEnemy();
                 
                 boss.transform.position = _enemySpawnPoints.GetBossSpawnPointPosition();
                     
@@ -242,7 +243,7 @@ namespace MythicalBattles.Assets.Scripts.Levels.EnemySpawner
         {
             yield return new WaitForSeconds(_enemyDyingTime);
 
-            _enemyPools[enemy.GetType()].ReturnEnemy(enemy);
+            _enemyPools[enemy.Type].ReturnEnemy(enemy);
         }
     }
 }

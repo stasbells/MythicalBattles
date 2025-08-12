@@ -1664,7 +1664,7 @@ GameObject:
   - component: {fileID: 3281316014478903760}
   - component: {fileID: 1292108779451077425}
   - component: {fileID: 5668335556150871968}
-  - component: {fileID: 6925700052454992749}
+  - component: {fileID: 6324930398513494980}
   m_Layer: 3
   m_Name: EasyDemon
   m_TagString: Untagged
@@ -1834,7 +1834,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &6925700052454992749
+--- !u!114 &6324930398513494980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1843,9 +1843,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5863105753833881016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f6fb6e7ccf80644afd49eeeeec5042, type: 3}
+  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 5
 --- !u!1 &6042182692522371431
 GameObject:
   m_ObjectHideFlags: 0

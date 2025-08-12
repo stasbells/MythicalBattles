@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using MythicalBattles.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
@@ -8,8 +9,12 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Enemies
     [RequireComponent(typeof(IWaveDamageMultiplier))]
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] private EnemyTypes _type;
+        
         private EnemyHealth _health;
         private List<IWaveDamageMultiplier> _waveDamageMultipliers;
+
+        public EnemyTypes Type => _type;
 
         private void Awake()
         {

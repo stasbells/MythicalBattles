@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - EnemyPrefab: {fileID: -5960286821623647622, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+  - EnemyPrefab: {fileID: 6235713983022635230, guid: 1d676bd36bd623743a0e201cecd994b9, type: 3}
+    EnemyType: 2
     Count: 2
-  - EnemyPrefab: {fileID: -5687413642731485126, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+  - EnemyPrefab: {fileID: 7522016302822119964, guid: bf002db4c0912034fb520dfb84a076d8, type: 3}
+    EnemyType: 3
     Count: 2
   _powerMultiplier: 2

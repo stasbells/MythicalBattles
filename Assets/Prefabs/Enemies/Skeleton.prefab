@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 1984212904086549765}
   - component: {fileID: 6887080056222959762}
   - component: {fileID: 1229125760942934957}
-  - component: {fileID: 2400983923281424960}
+  - component: {fileID: -7239963549628581397}
   m_Layer: 3
   m_Name: Skeleton
   m_TagString: Untagged
@@ -702,9 +702,7 @@ MonoBehaviour:
   _playerSearchRadius: 50
   _rotationSpeed: 10
   _initDamage: 10
-  _initDamageReserv: 10
   _attackDistance: 1
-  _attackDistanceReserv: 1
 --- !u!114 &1984212904086549765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +767,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &2400983923281424960
+--- !u!114 &-7239963549628581397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -778,7 +776,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703131478790005849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e936df2da4a97a047bef764842fdff7d, type: 3}
+  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1765327782812313712

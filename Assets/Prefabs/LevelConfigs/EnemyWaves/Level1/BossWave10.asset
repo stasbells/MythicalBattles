@@ -15,5 +15,6 @@ MonoBehaviour:
   enemyConfigs: []
   _powerMultiplier: 1
   _bossConfig:
-    EnemyPrefab: {fileID: 6925700052454992749, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+    EnemyPrefab: {fileID: 6324930398513494980, guid: 6a98d20279f071d4cb58009fcc9c6a7f, type: 3}
+    EnemyType: 5
     Count: 1

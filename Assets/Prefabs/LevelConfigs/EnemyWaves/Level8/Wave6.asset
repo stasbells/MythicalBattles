@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wave6
   m_EditorClassIdentifier: 
   enemyConfigs:
-  - EnemyPrefab: {fileID: 2400983923281424960, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+  - EnemyPrefab: {fileID: -7239963549628581397, guid: 1bb46ea98df35f448bdcd4e6100ce15c, type: 3}
+    EnemyType: 0
     Count: 16
   _powerMultiplier: 5

@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 4449166721780064360}
   - component: {fileID: 2051526553924574892}
   - component: {fileID: 8826346420077944229}
-  - component: {fileID: -1914276872863095563}
+  - component: {fileID: -8129565024758908207}
   m_Layer: 3
   m_Name: Goblin
   m_TagString: Untagged
@@ -2223,9 +2223,7 @@ MonoBehaviour:
   _playerSearchRadius: 50
   _rotationSpeed: 10
   _initDamage: 10
-  _initDamageReserv: 10
   _attackDistance: 1
-  _attackDistanceReserv: 1
   _durationOfRandomMove: 2
   _directionChangeInterval: 1
   _raycastDistance: 7
@@ -2294,7 +2292,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &-1914276872863095563
+--- !u!114 &-8129565024758908207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2303,9 +2301,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8264312157407485693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ba73a99cf98044db8aa5945298d054, type: 3}
+  m_Script: {fileID: 11500000, guid: e08883fb6619eae4fad1e291c73af4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1 &8344829794305094444
 GameObject:
   m_ObjectHideFlags: 0
