@@ -1,4 +1,5 @@
 using MythicalBattles.Assets.Scripts.Utils;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace MythicalBattles.Assets.Scripts.Controllers.Player
@@ -33,7 +34,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
         private void OnEnable()
         {
             _controls ??= new Controls();
-            
+
             _controls.Player.Enable();
         }
 
@@ -62,7 +63,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
         private void Move()
         {
             _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
-            
+
             _moveDirection = Quaternion.AngleAxis(Constants.MoveControllerRotationAngle, Vector3.forward) * _moveDirection;
 
             if (_moveDirection.sqrMagnitude < MinMoveValue)
@@ -78,11 +79,11 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
             _currentInputVector = Vector2.SmoothDamp(_currentInputVector, _moveDirection, ref _smoothInputVelocity, _smoothInputSpeed);
 
             float rotationAngle = Mathf.Atan2(_currentInputVector.x, _currentInputVector.y) * Mathf.Rad2Deg;
-            
+
             _transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
 
-            Vector3 move = new (_moveDirection.x, 0f, _moveDirection.y);
-            
+            Vector3 move = new(_moveDirection.x, 0f, _moveDirection.y);
+
             _controller.Move(_moveSpeed * Time.deltaTime * move);
         }
 
@@ -90,7 +91,7 @@ namespace MythicalBattles.Assets.Scripts.Controllers.Player
         {
             _animator.SetBool(Constants.IsMove, false);
             _animator.SetBool(Constants.IsAttack, false);
-            
+
             _capsuleCollider.enabled = false;
             gameObject.layer = Constants.LayerDefault;
         }
